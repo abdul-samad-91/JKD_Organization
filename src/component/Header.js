@@ -12,7 +12,7 @@ export default function Header() {
   const  pages = [{path:'#' , name:'Home'},{path:'#' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'Achievements'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'},{path:'#' , name:'How we work?'}]
 
   return (
-    <header className="w-full bg-black">
+    <header className="w-full ">
       <div className="  flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto">
         {/* Logo Section */}
       <div className="flex items-center h-full lg:ml-[-30px]">
@@ -36,7 +36,7 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:block ">
-          <ul className="flex gap-6 items-center text-white text-sm md:text-[14px] lg:text-base">
+          <ul className="flex gap-6 items-center text-sm md:text-[14px] lg:text-base">
             {pages.map((page, index) => (
               <li key={index} className="hover:text-[#00d17a] cursor-pointer">
                 {page.name}
@@ -53,7 +53,7 @@ export default function Header() {
         {/* Hamburger (mobile only) */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-[#00d17a] text-2xl"
+          className="md:hidden text-[#00d17a] text-2xl cursor-pointer"
         >
           {menuOpen ? "✖" : "☰"}
         </button>
@@ -61,7 +61,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-black text-white flex flex-col items-center gap-4 py-6">
+        <div className="md:hidden bg-[] flex flex-col items-center gap-4 py-6">
           {pages.map((page, index) => (
             <a
               key={index}
