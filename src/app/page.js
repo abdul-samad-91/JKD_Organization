@@ -1,8 +1,11 @@
+"use client"
+import Header from "@/component/Header";
+
 
 export default function Home() {
   return (
-    <div>
-      Welcome to jkd
-    </div>
+    <>
+    <Header />
+    </>
   );
 }
