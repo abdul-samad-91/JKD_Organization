@@ -24,7 +24,7 @@ export default function Header() {
             className="object-fill"
           />        
         </div>
-        <div className="relative md:hidden lg-block h-[80px]   w-[150px] ml-[-30px] ">         
+        <div className="relative md:hidden lg:block h-[80px]   w-[150px] ml-[-30px] ">         
           <Image 
             src={text} 
             alt="TEXT" 
