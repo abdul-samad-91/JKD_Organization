@@ -9,7 +9,7 @@ import { useState } from "react"
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const  pages = [{path:'#' , name:'Home'},{path:'#' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'Achievements'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'},{path:'#' , name:'How we work?'}]
+  const  pages = [{path:'#' , name:'Home'},{path:'#' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'How we work?'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'}]
 
   return (
     <header className="w-full ">
