@@ -5,7 +5,7 @@ import text from "../../public/logo-text.png"
 import { useState } from "react"
 import { useGlobal } from "@/context/GlobleContext"
 // transform transition-transform duration-700 hover:translate-x-10
-// // Blue: #0068B5
+// // Blue: #177faa
 // // Green: #00874F
 
 export default function Header() {
