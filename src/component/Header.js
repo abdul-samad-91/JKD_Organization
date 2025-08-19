@@ -3,36 +3,80 @@ import Image from "next/image"
 import logo from "../../public/jkd-icon.png"
 import text from "../../public/logo-text.png"
 import { useState } from "react"
-
+import { useGlobal } from "@/context/GlobleContext"
+// transform transition-transform duration-700 hover:translate-x-10
 // // Blue: #0068B5
 // // Green: #00874F
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const  pages = [{path:'#' , name:'Home'},{path:'#' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'How we work?'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'}]
+  const  pages = [{path:'#' , name:'Home'},{path:'#' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'Achievements'},{path:'#' , name:'How we work?'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'}]
+  const {theme , setTheme} = useGlobal();
+  console.log(theme)
+
+  const themeChange = ()=>{
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+  }
 
   return (
-    <header className="w-full ">
-      <div className="  flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto">
+    <header className={`w-full ${theme === 'light' ? 'bg-white':'bg-[black] text-white'} `}>
+      <div className= {` overflow-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto`}>
         {/* Logo Section */}
-      <div className="flex items-center h-full lg:ml-[-30px]">
-        <div className="relative  h-[100px]   w-[80px]"> 
-          <Image 
-            src={logo} 
-            alt="LOGO" 
-            fill
-            className="object-fill"
-          />        
+        <div className="flex items-center h-full md:ml-[-175px] lg:ml-[-165px] group">
+          {/* TEXT (medium and large screen) */}
+          <div className=" hidden md:block relative transform transition-transform duration-700 lg:group-hover:translate-x-[150px] h-[70px] w-[150px]">
+            <Image 
+              src={text} 
+              alt="TEXT" 
+              fill
+              className="object-fill"
+            />
+          </div>    
+
+          {/* LOGO */}
+          <div className="relative h-full transform transition-all duration-700 lg:group-hover:translate-x-[100px] lg:group-hover:translate-y-[-50px] lg:group-hover:opacity-0 w-[70px] lg:h-[80px] lg:w-[70px] z-10">            
+            <Image 
+              src={logo} 
+              alt="LOGO" 
+              fill
+            />        
+          </div>
+
+          {/* TEXT (mobile screen) */}
+          <div className=" md:hidden relative transform transition-transform duration-700 lg:group-hover:translate-x-[150px] h-[70px] w-[150px] ml-[-20px]">
+            <Image 
+              src={text} 
+              alt="TEXT" 
+              fill
+              className="object-fill"
+            />
+          </div>    
         </div>
-        <div className="relative md:hidden lg:block h-[80px]   w-[150px] ml-[-30px] ">         
-          <Image 
-            src={text} 
-            alt="TEXT" 
-            fill
-            className="object-fill"
+
+        {/* Toggle Button */}
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            className="sr-only peer"
+            checked={theme === "dark"}   
+            onChange={themeChange}
           />
-        </div>     
-      </div>
+          
+          {/* Track */}
+          <div
+            className={`w-11 h-6 rounded-full transition-colors duration-300 ${
+              theme === "dark" ? "bg-gray-300" : "bg-black"
+            }`}
+          ></div>
+
+          {/* Knob */}
+          <div
+            className={`absolute left-1 top-1 w-4 h-4 rounded-full transition-all duration-300 peer-checked:translate-x-5 ${
+              theme === "light" ? "bg-white" : "bg-black"
+            }`}
+          ></div>
+        </label>
+
 
         {/* Desktop Nav */}
         <nav className="hidden md:block ">
@@ -46,7 +90,7 @@ export default function Header() {
         </nav>
 
         {/* Contact Button (desktop only) */}
-        <button className="hidden md:block px-4 py-2 rounded bg-[#00874F] text-white text-sm md:text-[14px] lg:text-base">
+        <button className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F]' : 'bg-[#0068B5]'} text-white text-sm md:text-[14px] lg:text-base`}>
           Contact Us
         </button>
 

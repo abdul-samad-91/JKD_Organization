@@ -1,5 +1,6 @@
 import { Noto_Sans} from "next/font/google";
 import "./globals.css";
+import { GlobalProvider } from "@/context/GlobleContext";
 
 const notoSans = Noto_Sans({
  subsets: ["latin"],
@@ -18,7 +19,7 @@ export default function RootLayout({ children }) {
         className={`${notoSans.className} flex flex-col items-center
           antialiased`}
       >
-        {children}
+        <GlobalProvider>{children}</GlobalProvider>
       </body>
     </html>
   );
