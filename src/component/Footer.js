@@ -5,7 +5,7 @@ import text from "../../public/logo-text.png"
 import Image from 'next/image'
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaTiktok , FaEnvelope, FaPhone, FaWhatsapp, FaPhoneAlt} from "react-icons/fa";
 
-const Footer = () => {
+export default function Footer() {
   const {theme} = useGlobal();
   const Links = [
     { icon: <FaFacebookF />, path: 'https://facebook.com' },
@@ -18,7 +18,7 @@ const Footer = () => {
     {path:'#' , name:'Home'},
     {path:'#' , name:'About'},
     {path:'#' , name:'Programs'},
-    {path:'#' , name:'Achievements'},
+    // {path:'#' , name:'Achievements'},
     {path:'#' , name:'How we work?'},
     {path:'#' , name:'Get Involved'},
     {path:'#' , name:'Donations'}
@@ -107,5 +107,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer

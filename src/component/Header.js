@@ -10,7 +10,7 @@ import { useGlobal } from "@/context/GlobleContext"
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const  pages = [{path:'#' , name:'Home'},{path:'#' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'Achievements'},{path:'#' , name:'How we work?'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'}]
+  const  pages = [{path:'#' , name:'Home'},{path:'#' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'How we work?'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'}]
   const {theme , setTheme} = useGlobal();
   console.log(theme)
 
