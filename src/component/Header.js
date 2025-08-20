@@ -90,7 +90,7 @@ export default function Header() {
         </nav>
 
         {/* Contact Button (desktop only) */}
-        <button className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F]' : 'bg-[#0068B5]'} text-white text-sm md:text-[14px] lg:text-base`}>
+        <button className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
           Contact Us
         </button>
 
