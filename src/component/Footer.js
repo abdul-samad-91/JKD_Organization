@@ -32,7 +32,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className={`w-full ${theme === 'light' ? 'bg-[white]':'bg-[black] text-white text-sm md:text-[14px] lg:text-base'} `}>
+    <footer className={`w-full ${theme === 'light' ? 'bg-[#e3f7ff]':'bg-[black] text-white text-sm md:text-[14px] lg:text-base'} `}>
       <div className= {` overflow-hidden px-6 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto`}>
         <div className='flex justify-center gap-5 md:gap-0 md:justify-between py-5 flex-wrap'>
           {/* JKD info */}

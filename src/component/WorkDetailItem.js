@@ -15,9 +15,9 @@ const WorkDetailItem = ({ detail }) => {
 
   return (
     <div key={detail.titel} ref={ref} className="flex gap-3 flex-col items-center">
-      <Icon className="text-5xl text-green-600 mb-2" />
-      <h2 className="text-4xl font-bold">{count} <span className="text-3xl text-green-600 relative top-[-10px]">+</span></h2>
-      <h4 className="text-gray-600">{detail.titel}</h4>
+      <Icon className="text-5xl  mb-2" />
+      <h2 className="text-4xl font-bold">{count} <span className="text-3xl relative top-[-10px]">+</span></h2>
+      <h4 className="">{detail.titel}</h4>
     </div>
   );
 };

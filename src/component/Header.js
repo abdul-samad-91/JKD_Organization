@@ -2,13 +2,12 @@
 import Image from "next/image"
 import logo from "../../public/jkd-icon.png"
 import text from "../../public/logo-text.png"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useGlobal } from "@/context/GlobleContext"
 // // Blue: #177faa
 // // Green: #00874F
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const  pages = [{path:'#' , name:'Home'},{path:'#' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'How we work?'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'}]
   const {theme , setTheme} = useGlobal();
 
@@ -16,8 +15,24 @@ export default function Header() {
     theme === 'light' ? setTheme('dark') : setTheme('light')
   }
 
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className={`fixed z-50 w-full ${theme === 'light' ? 'bg-white':'bg-[black] text-white'} `}>
+    <header className={`fixed z-50 w-full ${scrolled ? theme === 'light' ? 'bg-white text-black shadow-md':'bg-[black] text-white  shadow-md' : 'bg-transparent '} ${theme === 'light' ? 'bg-white shadow-gray-200 text-black shadow-md':'bg-[black] shadow-gray-800 text-white  shadow-md'} `}>
       <div className= {` overflow-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto`}>
         {/* Logo Section */}
         <div className="flex items-center h-full md:ml-[-175px] lg:ml-[-165px] group">
@@ -80,7 +95,7 @@ export default function Header() {
         <nav className="hidden md:block ">
           <ul className="flex gap-6 items-center text-sm md:text-[14px] lg:text-base">
             {pages.map((page, index) => (
-              <li key={index} className="hover:text-[#00d17a] cursor-pointer">
+              <li key={index} className="hover:text-[#00d17a] cursor-pointer font-semibold">
                 {page.name}
               </li>
             ))}
