@@ -4,7 +4,6 @@ import logo from "../../public/jkd-icon.png"
 import text from "../../public/logo-text.png"
 import { useState } from "react"
 import { useGlobal } from "@/context/GlobleContext"
-// transform transition-transform duration-700 hover:translate-x-10
 // // Blue: #177faa
 // // Green: #00874F
 
@@ -12,14 +11,13 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const  pages = [{path:'#' , name:'Home'},{path:'#' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'How we work?'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'}]
   const {theme , setTheme} = useGlobal();
-  console.log(theme)
 
   const themeChange = ()=>{
     theme === 'light' ? setTheme('dark') : setTheme('light')
   }
 
   return (
-    <header className={`w-full ${theme === 'light' ? 'bg-white':'bg-[black] text-white'} `}>
+    <header className={`fixed z-50 w-full ${theme === 'light' ? 'bg-white':'bg-[black] text-white'} `}>
       <div className= {` overflow-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto`}>
         {/* Logo Section */}
         <div className="flex items-center h-full md:ml-[-175px] lg:ml-[-165px] group">
