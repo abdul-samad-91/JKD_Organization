@@ -24,12 +24,12 @@ export default function Footer() {
     {path:'#' , name:'Donations'}
   ];
 
-    const contacts = [
-    { icon: <FaEnvelope />, text:"info@jkdpakistan.org" },
-    { icon: <FaPhone />, text: '+92 3339118828' },
-    { icon: <FaWhatsapp />, text: '+92 3355008500' },
-    { icon: <FaPhoneAlt />, text: '+92 919216622' }
-  ];
+const contacts = [
+  { icon: <FaEnvelope />, text:"info@jkdpakistan.org", link: "https://mail.google.com/mail/?view=cm&fs=1&to=info@jkdpakistan.org" },
+  { icon: <FaPhone />, text: '+92 3339118828', link: "tel:+923339118828" },
+  { icon: <FaWhatsapp />, text: '+92 3355008500', link: "https://wa.me/923355008500" },
+  { icon: <FaPhoneAlt />, text: '+92 919216622', link: "tel:+92919216622" }
+];
 
   return (
     <footer className={`w-full ${theme === 'light' ? 'bg-[#e3f7ff]':'bg-[black] text-white text-sm md:text-[14px] lg:text-base'} `}>
@@ -84,8 +84,18 @@ export default function Footer() {
           <div className='w-full md:w-auto'>
             <h3 className='text-2xl font-bold mt-6'>Contact Us</h3>
             <ul className='mt-5'>
-              {contacts?.map((contact , index) =>
-              <li key={index} className='flex justify-start items-center gap-4 pt-1'>{contact.icon}<span>{contact.text}</span></li>
+              {contacts?.map((contact, index) =>
+                <li key={index} className='flex items-center gap-4 pt-1'>
+                  {contact.icon}
+                  <a 
+                    href={contact.link} 
+                    target={contact.link.startsWith("http") ? "_blank" : "_self"} 
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    {contact.text}
+                  </a>
+                </li>
               )}
             </ul>
           </div>  
