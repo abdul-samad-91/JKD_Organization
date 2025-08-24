@@ -42,7 +42,7 @@ export default function Header() {
         ${scrolled 
           ? theme === 'light'
             ? 'bg-white  shadow-md shadow-gray-200' 
-            : 'bg-black  shadow-md shadow-gray-800'
+            : 'bg-black  shadow-md shadow-gray-900'
           : 'bg-transparent'
         }`
       }

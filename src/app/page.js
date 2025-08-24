@@ -35,9 +35,11 @@ import programImage6 from '../../public/program-image6.jpg';
 import programImage7 from '../../public/program-image7.jpg';
 import programImage8 from '../../public/program-image8.jpeg';
 import programImage9 from '../../public/program-image9.jpg';
+import shaheen from '../../public/shaheenShahAfrid.png'
 import { FaHandshake, FaRegSmile, FaAward, FaUserFriends } from 'react-icons/fa';
 import WorkDetailItem from "@/component/WorkDetailItem";
 import React from "react";
+
 const programs = [
   {
     title:'JKD School',
@@ -124,16 +126,16 @@ export default function Home() {
         
         {/* hero section */}
         <section 
-          className={`relative h-[400px] md:h-[460px] lg:h-[560px] bg-cover bg-center`}
+          className={`relative h-[400px] md:h-[460px] lg:h-screen bg-cover bg-center`}
         >
           <div 
             className="absolute inset-0 bg-cover bg-center " 
             style={{ backgroundImage: `url(${jkdPhoto.src})` }} 
           />
           <div className={`relative z-10 w-full h-full text-start flex ${theme === 'light' ? 'text-black bg-white/5 ' : ' text-white bg-black/50'}  flex-col  justify-center px-6 lg:pl-20 `}>
-            <h1 className="text-[30px] md:text-[34px] lg:text-[39px] font-bold sm:w-[70%] md:w-[65%] lg-w-full " >Together for a Brighter Future</h1>
-            <p className="text-justify text-[16px] md:text-[17px] lg:text-[22px] sm:w-[60%] md:w-[55%] lg:w-[46%] mt-5  " >JKD Pakistan is a social development and welfare organization dedicated to uplifting communities through education, healthcare, youth empowerment, and community development.</p>
-            <button className={`text-sm md:text-[16px] lg:text-[19px] ${theme === 'light' ? 'bg-[#00874F]': 'bg-[#177faa]'} text-white w-[59%] sm:w-[30%] md:w-[25%] lg:w-[20%] mt-2 rounded p-2 sm:px-2 `}>Be a part of the change!</button>
+            <h1 className="text-[30px] md:text-[34px] lg:text-[50px] lg:font-extrabold font-bold sm:w-[70%] md:w-[65%] lg-w-full " >Together for a Brighter Future</h1>
+            <p className="text-justify text-[16px] md:text-[17px] lg:text-[25px] lg:font-semibold sm:w-[60%] md:w-[55%] lg:w-[46%] mt-5  " >JKD Pakistan is a social development and welfare organization dedicated to uplifting communities through education, healthcare, youth empowerment, and community development.</p>
+            <button className={`text-sm md:text-[16px] lg:text-[19px] ${theme === 'light' ? 'bg-[#00874F]': 'bg-[#177faa]'} text-white w-[59%] sm:w-[30%] md:w-[25%] lg:w-[25%] mt-2 rounded p-2 lg:p-4 lg:px-7 sm:px-2 `}>Be a part of the change!</button>
           </div>
         </section>
 
@@ -145,12 +147,12 @@ export default function Home() {
               {programs?.map((program, index) => (
                 <div
                   key={index}
-                  className="relative program-card overflow-hidden bg-[#e3f7ff]  shadow-lg rounded  text-center min-w-[250px] transition-transform duration-300 hover:scale-110 hover:shadow-2xl"
+                  className="relative px-4 program-card overflow-hidden bg-[#e3f7ff]  shadow-lg rounded  text-center min-w-[280px] transition-transform duration-300 hover:scale-110 hover:shadow-2xl"
                 >
                   <div className="w-full relative z-10" >                  
                     <Image
                       src={program.image}
-                      className="relative h-[200px] w-full object-cover mx-auto"
+                      className="relative rounded-b h-[200px] w-full object-cover mx-auto"
                       alt={program.title}
                       
                     />
@@ -260,7 +262,21 @@ export default function Home() {
             ))}
           </div>
         </section>
-
+          
+        {/* Testimonels */}
+        <section>
+          <div className="h-[500px] flex flex-col justify-center items-center ">
+            <Image src={shaheen} className="rounded-full object-contian relative w-[150px] h-[150px]" alt="shaheen" />
+            <p className="w-[50%] text-center  py-5">"JKD Pakistan's event planning and execution surpassed expectations. Jehanzeb Khan Dhakki and his team are simply the best in the business."</p>
+            <h3 className="text-[22px] font-semibold text-[#00874F]">Shaheen Shah Afridi</h3>
+            <h4 className="pt-1 text-[14px] text-gray-800">Pakistn National T20I Team Captiain</h4>
+            <div className="pt-7 flex gap-2">
+              <div className="h-5 w-5 rounded-full   border-2 bg-[#00874F]"></div >
+              <div className="h-5 w-5 rounded-full  border-2 "> </div>
+              <div className="h-5 w-5 rounded-full  border-2 "> </div>
+            </div>
+          </div>
+        </section>
       </div>  
       <Footer />
     </div>
