@@ -20,7 +20,8 @@ export default function Header() {
 
     useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
+      console.log(window.scrollY)
+      if (window.scrollY > 20) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -32,7 +33,20 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`fixed z-50 w-full ${scrolled ? theme === 'light' ? 'bg-white text-black shadow-md':'bg-[black] text-white  shadow-md' : 'bg-transparent '} ${theme === 'light' ? 'bg-white shadow-gray-200 text-black shadow-md':'bg-[black] shadow-gray-800 text-white  shadow-md'} `}>
+    <header 
+      className={`fixed z-50 w-full 
+        ${theme === 'dark'
+          ?'text-white'
+          :'text-black'
+        } 
+        ${scrolled 
+          ? theme === 'light'
+            ? 'bg-white  shadow-md shadow-gray-200' 
+            : 'bg-black  shadow-md shadow-gray-800'
+          : 'bg-transparent'
+        }`
+      }
+    >
       <div className= {` overflow-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto`}>
         {/* Logo Section */}
         <div className="flex items-center h-full md:ml-[-175px] lg:ml-[-165px] group">

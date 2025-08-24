@@ -254,7 +254,7 @@ export default function Home() {
               <React.Fragment key={index}>
                 <WorkDetailItem detail={detail} />
                 {workDetails.length - 1 !== index && (
-                  <div className="rounded-full h-full bg-black w-[7px]"></div>
+                  <div className={`${theme === 'light' ? 'bg-white' :'bg-black'} rounded-full h-full w-[7px]`}></div>
                 )}
               </React.Fragment>
             ))}
