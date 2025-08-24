@@ -264,7 +264,7 @@ export default function Home() {
         </section>
           
         {/* Testimonels */}
-        <section>
+        <section className={`${theme === 'light' ? 'text-black bg-white ' : 'text-white bg-black'} `}>
           <div className=" h-[500px] flex flex-col justify-center items-center ">
             <Image src={shaheen} className="rounded-full object-contian relative w-[150px] h-[150px]" alt="shaheen" />
             <p className="relative w-[50%] text-center  py-5
