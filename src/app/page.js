@@ -61,7 +61,7 @@ export default function Home() {
 
         {/* hero section */}
         <HeroSection />
-        <section className={`flex justify-center ${theme === 'light' ? 'bg-[#dee9ee]':'bg-black'} w-full my-10`}>
+        <section className={`flex justify-center ${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full my-10`}>
           <div className="flex items-center gap-4 h-[300px]  w-[1200px] relative">
             {[ cardPic3, cardPic1, cardPic2, cardPic4, cardPic5].map((src, index) => {
               const left = `-${index * 205}px`; 
@@ -101,7 +101,7 @@ export default function Home() {
         <Programs />
 
         {/* Partners  */}
-        <section className={`my-10 flex w-full flex-col items-center py-15  ${theme === 'light' ? 'text-black bg-[#dee9ee] ' : 'text-white bg-black'} `}>
+        <section className={`my-10 flex w-full flex-col items-center py-15  ${theme === 'light' ? 'text-black bg-[#eefbff] ' : 'text-white bg-black'} `}>
           {/* <h1 className={`text-[39px] font-semibold w-[1200px]   `}>Partners</h1> */}
           <div className=" overflow-x-hidden w-[1351px] ">
             <div className="flex animate-reverse-scroll gap-10">
@@ -134,7 +134,7 @@ export default function Home() {
         </section>
 
         {/* Work History */}
-        <section className="py-15 flex justify-center bg-[#dee9ee] w-full">
+        <section className="py-15 flex justify-center bg-[#eefbff] w-full">
           <div className="flex gap-10 justify-between text-center w-[1200px]">
             {workDetails?.map((detail, index) => (
               <React.Fragment key={index}>
@@ -148,7 +148,7 @@ export default function Home() {
         </section>
           
         {/* Testimonels */}
-        <section className={`w-full my-10 ${theme === 'light' ? 'text-black bg-[#dee9ee]' : 'text-white bg-black'} `}>
+        <section className={`w-full my-10 ${theme === 'light' ? 'text-black bg-[#eefbff]' : 'text-white bg-black'} `}>
           <div className=" h-[500px] flex flex-col justify-center items-center ">
             <Image src={shaheen} className="rounded-full object-contian relative w-[150px] h-[150px]" alt="shaheen" />
             <p className="relative w-[50%] text-center  py-5

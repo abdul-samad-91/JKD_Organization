@@ -102,7 +102,7 @@ const Programs = () => {
   return (
     <section
       className={`mt-10 flex flex-col items-center pt-15 pb-5 w-full ${
-        theme === "light" ? "bg-[#dee9ee]" : "bg-black"
+        theme === "light" ? "bg-[#eefbff]" : "bg-black"
       }`}
     >
       <h1
