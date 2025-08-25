@@ -6,7 +6,7 @@ import { useGlobal } from '@/context/GlobleContext';
 const About = () => {
     const {theme} = useGlobal();
   return (
-    <section className={` w-full flex justify-center py-15 ${theme === 'light' ? 'text-gray-700 bg-[#dee9ee]' : 'text-white bg-black'}`}>
+    <section className={` w-full flex justify-center py-15 ${theme === 'light' ? 'text-gray-700 bg-[#e7eff1]' : 'text-white bg-black'}`}>
         <div className="w-[1200px]">
         <div className="flex gap-10  ">
             <div className="w-[50%]">
