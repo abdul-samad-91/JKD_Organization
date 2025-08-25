@@ -18,33 +18,34 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-    useEffect(() => {
-    const handleScroll = () => {
-      console.log(window.scrollY)
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
+  //   useEffect(() => {
+  //   const handleScroll = () => {
+  //     console.log(window.scrollY)
+  //     if (window.scrollY > 20) {
+  //       setScrolled(true);
+  //     } else {
+  //       setScrolled(false);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   return (
     <header 
       className={`fixed z-50 w-full 
         ${theme === 'dark'
-          ?'text-white'
-          :'text-black'
-        } 
-        ${scrolled 
-          ? theme === 'light'
-            ? 'bg-white  shadow-md shadow-gray-200' 
-            : 'bg-black  shadow-md shadow-gray-900'
-          : 'bg-transparent'
-        }`
+          ?'text-white bg-black '
+          :'text-black bg-white '
+        }
+        `
+        //         ${scrolled 
+        //   ? theme === 'light'
+        //     ? 'bg-white  shadow-md shadow-gray-200' 
+        //     : 'bg-black  shadow-md shadow-gray-900'
+        //   : 'bg-transparent'
+        // }
       }
     >
       <div className= {` overflow-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto`}>
@@ -118,7 +119,7 @@ export default function Header() {
 
         {/* Contact Button (desktop only) */}
         <button className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
-          Contact Us
+          Apply Now
         </button>
 
         {/* Hamburger (mobile only) */}
@@ -144,7 +145,7 @@ export default function Header() {
             </a>
           ))}
           <button className="px-4 py-2 rounded bg-[#00874F] text-white">
-            Contact Us
+            Apply Now
           </button>
         </div>
       )}
