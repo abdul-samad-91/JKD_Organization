@@ -101,7 +101,7 @@ export default function Home() {
         <Programs />
 
         {/* Partners  */}
-        <section className={`my-10 flex flex-col items-center py-15  ${theme === 'light' ? 'text-black bg-[#dee9ee] ' : 'text-white bg-black'} `}>
+        <section className={`my-10 flex w-full flex-col items-center py-15  ${theme === 'light' ? 'text-black bg-[#dee9ee] ' : 'text-white bg-black'} `}>
           {/* <h1 className={`text-[39px] font-semibold w-[1200px]   `}>Partners</h1> */}
           <div className=" overflow-x-hidden w-[1351px] ">
             <div className="flex animate-reverse-scroll gap-10">
