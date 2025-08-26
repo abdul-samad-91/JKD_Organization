@@ -22,7 +22,7 @@ const About = () => {
                 <li className="leading-7">Provide skills and training for youth</li>
                 <li className="leading-7">Work on community welfare and development projects</li>
             </ul>
-            <button className={`mt-5 p-2 px-2 ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white rounded`} >Learn more</button>
+            {/* <button className={`mt-5 p-2 px-2 ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white rounded`} >Learn more</button> */}
             </div>
             <div className="relative w-[50%]  ">
             <Image src={jkdPhoto2} className="objext-fill h-[50%] rounded" fill alt="jkdPhoto2"   />
