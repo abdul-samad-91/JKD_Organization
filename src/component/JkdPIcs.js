@@ -32,7 +32,7 @@ const JkdPIcs = () => {
         if (isLg) cardOffset = 203;
     }
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(5);
     const handlePicChange = (type) => {
         if (type === "left" ) {
         setCurrentIndex((prev) => prev + 1);
