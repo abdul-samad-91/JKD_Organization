@@ -22,10 +22,10 @@ export default function Home() {
         <HeroSection />
         <JkdPIcs />
         <About />
-        {/* <Programs />
+        <Programs />
         <Partners />
         <WorkHistory />
-        <Testimonel /> */}
+        <Testimonel />
       </div>  
       <Footer />
     </div>
