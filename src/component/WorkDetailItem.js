@@ -16,7 +16,7 @@ const WorkDetailItem = ({ detail }) => {
   const {theme} = useGlobal();
 
   return (
-    <div key={detail.titel} ref={ref} className={`${theme === 'light' ? 'text-[#00874F]' :'text-white'} flex gap-3 flex-col items-center`}>
+    <div key={detail.titel} ref={ref} className={`${theme === 'light' ? 'text-[#00874F]' :'text-[#177faa] '} flex gap-3 flex-col items-center`}>
       <Icon className="text-5xl  mb-2" />
       <h2 className="text-4xl font-bold">{count} <span className=" text-3xl relative top-[-10px]">+</span></h2>
       <h4 className="font-semibold">{detail.titel}</h4>

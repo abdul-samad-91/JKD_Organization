@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import programImage1 from "../../public/program-image1.jpeg";
 import programImage2 from "../../public/program-image2.jpg";
 import programImage3 from "../../public/program-image3.jpeg";
@@ -22,7 +22,7 @@ import { useGlobal } from "@/context/GlobleContext";
 import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const programs = [
+const allprograms = [
   {
     title: "JKD TVETA",
     image: programImage1,
@@ -83,21 +83,32 @@ const programs = [
 const Programs = () => {
   const { theme } = useGlobal();
   const scrollRef = useRef(null);
+  const [ programs , setPrograms] = useState(allprograms)
 
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      console.log(scrollRef.current)
-      const scrollAmount = clientWidth * 0.8; // scroll by ~80% width
-      scrollRef.current.scrollTo({
-        left:
-          direction === "left"
-            ? scrollLeft - scrollAmount
-            : scrollLeft + scrollAmount,
-        behavior: "smooth",
-      });
+  // const scroll = (direction) => {
+  //   if (scrollRef.current) {
+  //     const { scrollLeft, clientWidth } = scrollRef.current;
+  //     console.log(scrollRef.current)
+  //     const scrollAmount = clientWidth * 0.8; // scroll by ~80% width
+  //     scrollRef.current.scrollTo({
+  //       left:
+  //         direction === "left"
+  //           ? scrollLeft - scrollAmount
+  //           : scrollLeft + scrollAmount,
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // };
+
+      const handlePicChange =(type) => {
+        if (type === 'left') {
+            let program = programs.shift();
+            setPrograms((pre) => [...pre , program])
+        } else {
+            let program = programs.pop();
+            setPrograms((pre) => [program , ...pre ])
+        }
     }
-  };
 
   return (
     <section
@@ -113,11 +124,11 @@ const Programs = () => {
         Programs
       </h1>
 
-      <div className="relative w-[1351px] pt-10 pb-15">
+      <div className="relative w-[1200px] pt-10 pb-15">
         {/* Left Button */}
         <button
-          onClick={() => scroll("left")}
-          className="absolute z-50 left-1 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-md  hover:scale-110 transition"
+          onClick={() => handlePicChange("left")}
+          className={`absolute z-50 left-[-50px] top-1/2 -translate-y-1/2 ${theme === 'dark' ? 'bg-[white] text-black':'text-white bg-black'} p-3 rounded-full shadow-md  hover:scale-110 transition`}
         >
           <FaChevronLeft size={24} />
         </button>
@@ -125,12 +136,12 @@ const Programs = () => {
         {/* Scrollable Container */}
         <div
           ref={scrollRef}
-          className="flex gap-10 overflow-x-hidden scroll-smooth scrollbar-hide px-14"
+          className="flex gap-8 overflow-x-hidden scroll-smooth scrollbar-hide "
         >
           {programs?.map((program, index) => (
             <div
               key={index}
-              className="relative px-4 program-card overflow-hidden bg-white shadow-lg rounded text-center min-w-[280px] "
+              className="relative px-4 program-card overflow-hidden bg-white shadow-lg rounded text-center min-w-[275px] "
             >
               <div className="w-full relative z-10">
                 <Image
@@ -160,8 +171,8 @@ const Programs = () => {
 
         {/* Right Button */}
         <button
-          onClick={() => scroll("right")}
-          className="absolute right-1 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-md z-50 hover:scale-110 transition"
+          onClick={() => handlePicChange("right")}
+          className={`absolute right-[-50px] top-1/2 ${theme === 'dark' ? 'bg-[white] text-black':'text-white bg-black'} -translate-y-1/2  p-3 rounded-full shadow-md z-50 hover:scale-110 transition`}
         >
           <FaChevronRight size={24} />
         </button>
