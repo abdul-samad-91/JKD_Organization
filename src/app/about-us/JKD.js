@@ -20,12 +20,12 @@ const JKD = () => {
             </div>
             <div className='pt-10 flex gap-5'>
                     <div className='w-[60%] h-full'>
-                        <Image src={jkd2} alt='jkd' className=' rounded-2xl h-[470px] w-full relative object-cover' />
+                        <Image src={jkd2} alt='jkd' className=' rounded-2xl h-[500px] w-full relative object-cover' />
                     </div>
                     <div className='w-[40%]'>                
                         <h2 className='text-[30px] font-semibold'>Vision</h2>
                         <p className='text-gray-700 text-justify'>To uplift and empower under-served communities through innovative and sustainable initiatives in vocational training, skill development, sustainable tourism, sports for development, health-care, and organizing events that promote social causes, community cohesion, and cultural exchange</p> 
-                        <h2 className='text-[30px] font-semibold'>Values</h2>
+                        <h2 className='text-[30px] font-semibold pt-6 '>Values</h2>
                         <ul className='text-gray-700 text-justify'>
                             <li><span className='font-semibold text-black'>Empowerment:</span> Unlocking potential through skills and resources.</li>
                             <li><span className='font-semibold text-black'>Sustainability:</span> Fostering growth that benefits present and future generations.</li>
