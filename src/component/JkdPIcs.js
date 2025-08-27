@@ -80,8 +80,6 @@ const JkdPIcs = () => {
          }
         const width = "w-full sm:w-[300px] md:w-[350px] lg:w-[390px]";
         const zIndex =diff >4 || diff<0 ? 'z-0' : diff === 2 ? 'z-30' : diff % 2 === 0  ? 'z-10' : 'z-20';
-        // const opacity =diff >4 || diff<0 ? '0%' :'100%';
-        console.log(index , offset)
         return (
             <div
             key={index}

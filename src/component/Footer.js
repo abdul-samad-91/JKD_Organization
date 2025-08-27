@@ -4,9 +4,12 @@ import logo from "../../public/jkd-icon.png"
 import text from "../../public/logo-text.png"
 import Image from 'next/image'
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaTiktok , FaEnvelope, FaPhone, FaWhatsapp, FaPhoneAlt} from "react-icons/fa";
+import { useRouter } from 'next/navigation'
 
 export default function Footer() {
   const {theme} = useGlobal();
+  const router = useRouter();
+  
   const Links = [
     { icon: <FaFacebookF />, path: 'https://facebook.com' },
     { icon: <FaTwitter />, path: 'https://twitter.com' },
@@ -15,8 +18,8 @@ export default function Footer() {
     { icon: <FaTiktok />, path: 'https://tiktok.com' },
   ];
   const  pages = [
-    {path:'#' , name:'Home'},
-    {path:'#' , name:'About'},
+    {path:'/' , name:'Home'},
+    {path:'/about-us' , name:'About'},
     {path:'#' , name:'Programs'},
     // {path:'#' , name:'Achievements'},
     {path:'#' , name:'How we work?'},
@@ -30,6 +33,10 @@ const contacts = [
   { icon: <FaWhatsapp />, text: '+92 3355008500', link: "https://wa.me/923355008500" },
   { icon: <FaPhoneAlt />, text: '+92 919216622', link: "tel:+92919216622" }
 ];
+
+  const routChange = (path) =>{
+    router.push(path)
+  }
 
   return (
     <footer className={`w-full ${theme === 'light' ? 'bg-white':'bg-[black] text-white text-sm md:text-[14px] lg:text-base'} `}>
@@ -76,8 +83,8 @@ const contacts = [
             <h3 className='text-2xl font-bold mt-6'>Explore</h3>
             <ul className='list-disc list-inside mt-6'>
               {pages.map((page , index) =>
-                <li key={index}>{page.name}</li>
-              )}
+                <li  onClick={()=> routChange(page.path)} className="hover:text-[#00d17a] cursor-pointer " key={index}>{page.name}</li>
+              )} 
             </ul>
           </nav>
           {/* Conatact Us */}

@@ -4,12 +4,16 @@ import logo from "../../public/jkd-icon.png"
 import text from "../../public/logo-text.png"
 import { useEffect, useState } from "react"
 import { useGlobal } from "@/context/GlobleContext"
+import { useRouter  , usePathname } from "next/navigation"
 // // Blue: #177faa
 // // Green: #00874F
 
 export default function Header() {
-  const  pages = [{path:'#' , name:'Home'},{path:'#' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'How we work?'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'}]
+  const  pages = [{path:'/' , name:'Home'},{path:'/about-us' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'How we work?'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'}]
   const {theme , setTheme} = useGlobal();
+  const router = useRouter();
+  const pathname = usePathname();
+  console.log(pathname)
 
   const themeChange = ()=>{
     theme === 'light' ? setTheme('dark') : setTheme('light')
@@ -17,6 +21,10 @@ export default function Header() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const routChange = (path) =>{
+    router.push(path)
+  }
 
   //   useEffect(() => {
   //   const handleScroll = () => {
@@ -110,7 +118,7 @@ export default function Header() {
         <nav className="hidden md:block ">
           <ul className="flex gap-6 items-center text-sm md:text-[14px] lg:text-base">
             {pages.map((page, index) => (
-              <li key={index} className="hover:text-[#00d17a] cursor-pointer font-semibold">
+              <li key={index} onClick={()=> routChange(page.path)} className={`${theme === 'light' ? 'hover:text-[#00d17a]  ' : 'hover:text-[#177faa] '} ${ page.path === pathname ? theme === 'light' ? 'text-[#00d17a] font-bold' : 'text-[#177faa] font-bold' : ''} cursor-pointer `}>
                 {page.name}
               </li>
             ))}
