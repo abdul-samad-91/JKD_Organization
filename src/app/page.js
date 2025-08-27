@@ -18,7 +18,7 @@ export default function Home() {
   return (
     < div className={` h-screen w-full  flex flex-col justify-between `}>
       <Header />
-      <div className={`${theme === 'light' ? 'bg-white':'bg-black'} flex flex-col items-center `}>
+      <div className={`${theme === 'light' ? 'bg-white':'bg-black'} flex flex-col items-center mt-10`}>
         <HeroSection />
         <JkdPIcs />
         <About />

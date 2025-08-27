@@ -29,12 +29,12 @@ const WorkHistory = () => {
     ];
   return (
     <section className={`py-15 flex justify-center ${theme === 'light' ? 'bg-[#eefbff]' : 'bg-black'}  w-full`}>
-        <div className="flex gap-10 justify-between text-center w-[1200px]">
+        <div className="flex gap-10 flex-wrap justify-center lg:justify-between text-center lg:w-[1200px]">
         {workDetails?.map((detail, index) => (
             <React.Fragment key={index}>
             <WorkDetailItem detail={detail} />
             {workDetails.length - 1 !== index && (
-                <div className={`${theme === 'light' ? 'bg-[#00874F]' :'bg-[#177faa]'} rounded-full h-full w-[7px]`}></div>
+                <div className={`${theme === 'light' ? 'bg-[#00874F]' :'bg-[#177faa]'} rounded-full h-full w-[7px] hidden lg:block`}></div>
             )}
             </React.Fragment>
         ))}

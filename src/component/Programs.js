@@ -112,23 +112,23 @@ const Programs = () => {
 
   return (
     <section
-      className={`mt-10 flex flex-col items-center pt-15 pb-5 w-full ${
+      className={` relative mt-10 flex flex-col items-center pt-15 pb-5 w-full ${
         theme === "light" ? "bg-[#eefbff]" : "bg-black"
       }`}
     >
       <h1
-        className={`text-[39px] font-semibold w-[1200px] ${
+        className={`text-[39px] font-semibold  w-[250px] sm:w-[600px] md:w-[900px]  lg:w-[1200px] ${
           theme === "light" ? "text-black" : "text-white"
         }`}
       >
         Programs
       </h1>
 
-      <div className="relative w-[1200px] pt-10 pb-15">
+      <div className="w-[275px] sm:w-[600px] md:w-[900px] overflow-hidden lg:w-[1200px] pt-10 pb-15">
         {/* Left Button */}
         <button
           onClick={() => handlePicChange("left")}
-          className={`absolute z-50 left-[-50px] top-1/2 -translate-y-1/2 ${theme === 'dark' ? 'bg-[white] text-black':'text-white bg-black'} p-3 rounded-full shadow-md  hover:scale-110 transition`}
+          className={`absolute z-50 left-1 top-1/2 -translate-y-1/2 ${theme === 'dark' ? 'bg-[white] text-black':'text-white bg-black'} p-3 rounded-full shadow-md  hover:scale-110 transition`}
         >
           <FaChevronLeft size={24} />
         </button>
@@ -136,12 +136,12 @@ const Programs = () => {
         {/* Scrollable Container */}
         <div
           ref={scrollRef}
-          className="flex gap-8 overflow-x-hidden scroll-smooth scrollbar-hide "
+          className="flex gap-8 w-full overflow-x-hidden scroll-smooth scrollbar-hide "
         >
           {programs?.map((program, index) => (
             <div
               key={index}
-              className="relative px-4 program-card overflow-hidden bg-white shadow-lg rounded text-center min-w-[275px] "
+              className="relative px-4 program-card overflow-hidden bg-white shadow-lg rounded text-center min-w-[275px] sm:min-w-[275px] "
             >
               <div className="w-full relative z-10">
                 <Image
@@ -172,7 +172,7 @@ const Programs = () => {
         {/* Right Button */}
         <button
           onClick={() => handlePicChange("right")}
-          className={`absolute right-[-50px] top-1/2 ${theme === 'dark' ? 'bg-[white] text-black':'text-white bg-black'} -translate-y-1/2  p-3 rounded-full shadow-md z-50 hover:scale-110 transition`}
+          className={`absolute right-1 sm:right-1 top-1/2 ${theme === 'dark' ? 'bg-[white] text-black':'text-white bg-black'} -translate-y-1/2  p-3 rounded-full shadow-md z-50 hover:scale-110 transition`}
         >
           <FaChevronRight size={24} />
         </button>

@@ -19,14 +19,14 @@ const Partners = () => {
     const partners = [partner1 ,partner2 ,partner3 ,partner4 ,partner5 ,partner6 ,partner7 ,partner8 ,partner9 ,partner10 ,partner11 ,partner12];
 
   return (        
-    <section className={`my-10 flex w-full flex-col items-center py-15  ${theme === 'light' ? 'text-black bg-[#eefbff] ' : 'text-white bg-black'} `}>
+    <section className={`my-10 flex w-full flex-col items-center sm:py-15  ${theme === 'light' ? 'text-black bg-[#eefbff] ' : 'text-white bg-black'} `}>
         {/* <h1 className={`text-[39px] font-semibold w-[1200px]   `}>Partners</h1> */}
-        <div className=" overflow-x-hidden w-[1351px] ">
+        <div className=" overflow-x-hidden w-full lg:w-[1351px] ">
         <div className="flex animate-reverse-scroll gap-10">
             {partners?.map((partner, index) => (
             <div
                 key={index}
-                className="program-card rounded-2xl text-center  min-w-[150px] "
+                className="program-card rounded-2xl text-center  min-w-[85px] sm:min-w-[150px] "
             >
                 <Image
                 src={partner}
