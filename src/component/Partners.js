@@ -20,7 +20,7 @@ const Partners = () => {
 
   return (        
     <section className={`my-10 flex w-full flex-col items-center sm:py-15  ${theme === 'light' ? 'text-black bg-[#eefbff] ' : 'text-white bg-black'} `}>
-        {/* <h1 className={`text-[39px] font-semibold w-[1200px]   `}>Partners</h1> */}
+        <h1 className={`text-[39px] font-semibold w-[1200px] `}>Partner</h1>
         <div className=" overflow-x-hidden w-full lg:w-[1351px] ">
         <div className="flex animate-reverse-scroll gap-10">
             {partners?.map((partner, index) => (

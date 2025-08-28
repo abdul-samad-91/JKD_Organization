@@ -121,7 +121,7 @@ const Programs = () => {
           theme === "light" ? "text-black" : "text-white"
         }`}
       >
-        Programs
+        Program
       </h1>
 
       <div className="w-[275px] sm:w-[600px] md:w-[900px] overflow-hidden lg:w-[1200px] pt-10 pb-15">

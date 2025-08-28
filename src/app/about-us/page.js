@@ -5,6 +5,10 @@ import Header from '@/component/Header'
 import { useGlobal } from '@/context/GlobleContext'
 import { useRouter } from 'next/navigation'
 import JKD from './JKD'
+import CEO from './CEO'
+import WhoWeAre from './WhatWeValue'
+import WhyChooseUs from './WhyChooseUs'
+import Carrer from './Carrer'
 
 
 const AboutUs = () => {
@@ -24,7 +28,23 @@ const AboutUs = () => {
         </div>
         <div className='w-full'>
           <JKD />
+          <CEO />
+          <div className='bg-[#eefbff] w-full flex flex-col items-center my-10 py-10'>
+            <div className='w-[1200px]'>
+              <h2 className='text-[35px] font-semibold '>Who We <span className={`text-[#00874F]`}>Are?</span></h2>
+              <p className=' text-justify  text-gray-700 pt-4' >JKD Pakistan is a dynamic organization dedicated to empowering marginalized & under served communities through sustainable economic opportunities and social development. Through its diverse and innovative programs and services, JKD Pakistan bridges the gap for vulnerable generations, ensuring equal access to opportunities and cultivating resilient communities for a brighter future.</p>
+            </div>
+          </div>
+          <WhoWeAre />
+          <WhyChooseUs />
+          <div className='bg-[#eefbff] w-full flex flex-col items-center my-10 py-10'>
+            <div className='w-[1200px]'>
+              <h2 className='text-[35px] font-semibold '>Meet our <span className={`text-[#00874F]`}>team</span></h2>
+              <p className=' text-justify  text-gray-700 pt-4' >At JKD Pakistan, we are proud to have some of the best trainers and instructors who are not only experts in their fields but also passionate about teaching. They focus on guiding students with care, making learning engaging and practical. With their mentorship, students don’t just gain knowledge they develop the skills and confidence needed to succeed in real life.</p>
+            </div>
+          </div>
         </div>
+        <Carrer />
       </div>  
       <Footer />
     </div>

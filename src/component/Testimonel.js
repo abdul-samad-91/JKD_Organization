@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import shaheen from '../../public/shaheenShahAfrid.png'
 import kabir from '../../public/kabir.jpg'
 import tahir from '../../public/tahir.jpg'
@@ -33,6 +33,14 @@ const Testimonel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
 
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [testimonials.length]);;
+
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
@@ -44,12 +52,13 @@ const Testimonel = () => {
   };
 
   return (
-        <section className={`w-full my-10 relative overflow-hidden ${theme === 'light' ? 'text-black bg-[#eefbff]' : 'text-white bg-black'} `}>
+    <section className={`flex flex-col items-center justify-center w-full py-10 my-10 relative overflow-hidden ${theme === 'light' ? 'text-black bg-[#eefbff]' : 'text-white bg-black'} `}>
+      <h1 className={`text-[39px] font-semibold w-[1200px]  `}>Testimonial</h1>
       <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {testimonials?.map((testimonial, index) => (
           <div
             key={index}
-            className="h-[500px] w-full flex flex-col justify-center items-center flex-shrink-0 p-4" // Added p-4 for padding on smaller screens
+            className="h-[400px] w-full flex flex-col justify-center items-center flex-shrink-0 p-4 " // Added p-4 for padding on smaller screens
           >
             <Image
               src={testimonial.image}
@@ -99,40 +108,6 @@ const Testimonel = () => {
         &#8250; Right arrow
       </button> */}
     </section>
-    // <section className={`w-full my-10 ${theme === 'light' ? 'text-black bg-[#eefbff]' : 'text-white bg-black'} `}>
-    //   <div className="flex shrink-0 w-full">
-    //     {testimonels?.map((testimonel, index) => (
-    //       <div
-    //         key={index}
-    //         className="h-[500px] w-full flex flex-col justify-center items-center"
-    //       >
-    //         <Image
-    //           src={testimonel.image}
-    //           className="rounded-full object-cover relative w-[150px] h-[150px]"
-    //           alt={testimonel.name}
-    //         />
-    //         <p
-    //           className="relative w-[50%] text-center py-5
-    //             before:content-['“'] before:absolute before:-left-5 before:top-2 before:text-4xl before:text-gray-400 
-    //             after:content-['”'] after:absolute after:-right-5 after:bottom-2 after:text-4xl after:text-gray-400"
-    //         >
-    //           {testimonel.review}
-    //         </p>
-    //         <h3 className="text-[22px] font-semibold text-[#00874F]">
-    //           {testimonel.name}
-    //         </h3>
-    //         <h4 className="pt-1 text-[14px] text-gray-800">{testimonel.profession}</h4>
-
-    //         {/* Indicators */}
-    //         <div className="pt-7 flex gap-2">
-    //           <div className="h-5 w-5 rounded-full border-2 bg-[#00874F]"></div>
-    //           <div className="h-5 w-5 rounded-full border-2"></div>
-    //           <div className="h-5 w-5 rounded-full border-2"></div>
-    //         </div>
-    //       </div>
-    //     ))}
-    //   </div>
-    // </section>  
   )
 }
 
