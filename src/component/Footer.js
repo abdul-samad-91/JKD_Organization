@@ -20,7 +20,7 @@ export default function Footer() {
   const  pages = [
     {path:'/' , name:'Home'},
     {path:'/about-us' , name:'About'},
-    {path:'#' , name:'Programs'},
+    {path:'/programs' , name:'Programs'},
     // {path:'#' , name:'Achievements'},
     {path:'#' , name:'How we work?'},
     {path:'#' , name:'Get Involved'},

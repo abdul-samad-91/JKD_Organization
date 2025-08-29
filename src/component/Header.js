@@ -9,7 +9,7 @@ import { useRouter  , usePathname } from "next/navigation"
 // // Green: #00874F
 
 export default function Header() {
-  const  pages = [{path:'/' , name:'Home'},{path:'/about-us' , name:'About'},{path:'#' , name:'Programs'},{path:'#' , name:'How we work?'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'}]
+  const  pages = [{path:'/' , name:'Home'},{path:'/about-us' , name:'About'},{path:'/programs' , name:'Programs'},{path:'#' , name:'How we work?'},{path:'#' , name:'Get Involved'},{path:'#' , name:'Donations'}]
   const {theme , setTheme} = useGlobal();
   const router = useRouter();
   const pathname = usePathname();
