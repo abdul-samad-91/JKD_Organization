@@ -3,7 +3,7 @@ import Footer from '@/component/Footer'
 import Header from '@/component/Header'
 import { useGlobal } from '@/context/GlobleContext'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useState } from 'react'
 import program1 from "../../../public/progaram-1.png";
 import program2 from "../../../public/progaram-2.png";
 import program3 from "../../../public/progaram-3.png";
@@ -19,64 +19,86 @@ import Image from 'next/image'
 const allprograms = [
   {
     title: "JKD TVETA",
-    description:
-      "Providing quality education that nurtures creativity, leadership, and knowledge for the future.",
+    description: "As a key component of JKD PAKISTAN, TVETA -Technical and Vocational Education and Training",
+    fullDescription : "As a key component of JKD PAKISTAN, TVETA -Technical and Vocational Education and Training Academy is a premier institution provides customized training programs, consultancy services, skills development courses, professional certifications and Capacity building to empower individuals and organizations, fostering growth and development. JKD TVETA also offers flexible and convenient trainings and consultancy services, delivered right to your home, office and organization.",
     pIcon: program2,
   },
   {
     title: "JKD Tech-Park",
-    description: "A hub for innovation, startups, and digital entrepreneurship",
+    description: "Tech Park is a leading technology training hub of JKD Pakistan offering comprehensive computer",
+    fullDescription:"Tech Park is a leading technology training hub of JKD Pakistan offering comprehensive computer short courses and trainings. Our expert instructors and state-of-the-art facilities ensure students gain practical skills to succeed in today's digital landscape. JKD Tech Park is a vibrant ecosystem for entrepreneurs, enterprises, and innovators offering flexible desk arrangements, high-speed internet, meeting rooms, event spaces and networking opportunities.",
     pIcon: program3,
   },
   {
     title: "JKD Sports-Spark",
-    description:
-      "Inspiring youth to excel in sports, teamwork, and healthy lifestyles.",
+    description: "As a flagship initiative and an inclusive Sports Centre of the JKD PAKISTAN, dedicated to igniting",
+    fullDescription: "As a flagship initiative and an inclusive Sports Centre of the JKD PAKISTAN, dedicated to igniting a passion for sports in everyone. Our mission is to provide a welcoming and accessible environment where people of all abilities can come together to play, learn, and grow. Fields of play, organizing sports events and trainings in JKD Sports Arena & JKD Sports Academy are available both outdoors and indoors.",
     pIcon: program4,
   },
   {
     title: "JKD Fitness-Zone",
     description:
-      "Promoting wellness through modern fitness facilities and health programs.",
+      "JKD Pakistan is proud to launch its comprehensive weight loss and physical fitness program.",
+    fullDescription: "JKD Pakistan is proud to launch its comprehensive weight loss and physical fitness program through Expert trainers and weight loss specialists, tailored specifically for the people of Peshawar and surrounding areas. Our holistic approach combines cutting-edge techniques with expert guidance to empower individuals in achieving their wellness goals." ,
     pIcon: program5,
   },
   {
     title: "JKD Green-Tourism",
     description:
-      "Encouraging eco-friendly tourism and preserving the natural beauty of our region.",
+      "As a core initiative of the JKD PAKISTAN, Green Tourism is a pioneering travel & tours",
+    fullDescription:" As a core initiative of the JKD PAKISTAN, Green Tourism is a pioneering travel & tours consultancy and training organization dedicated to crafting extraordinary, eco-friendly, and responsible travel experiences. Our mission is to promote sustainable tourism practices, support local communities, and preserve Pakistan's natural beauty for future generations. Experience the beauty of the world with our eco-friendly tourism solutions.",
     pIcon: program6,
   },
   {
     title: "JKD Parlour",
     description:
-      "Providing grooming and beauty services while empowering women entrepreneurs.",
+      "At JKD Beauty Parlour & Skincare Clinic, we offer expert beauty and skincare solutions tailored to",
+    fullDescription:"At JKD Beauty Parlour & Skincare Clinic, we offer expert beauty and skincare solutions tailored to your unique needs. Our state-of-the-art facility provides a relaxing atmosphere, cutting-edge technology, customized training programs and personalized services.",
     pIcon: program7,
-  },
+  },  
   {
     title: "JKD Boutique",
     description:
-      "Showcasing fashion and culture through unique designs and creative clothing.",
+      "JKD Pakistan proudly presents JKD Boutique, a haven for fashion enthusiasts, offering an",
+    fullDescription:"JKD Pakistan proudly presents JKD Boutique, a haven for fashion enthusiasts, offering an exclusive range of clothing, dress making, and fashion designs that seamlessly merge traditional craftsmanship with modern aesthetics, epitomizing Pakistani elegance, sophistication and cultural heritage.",
     pIcon: program8,
   },
   {
     title: "JKD Uplift-Events",
     description:
-      "Celebrating food culture with a variety of delicious and innovative cuisines.",
+      "As a vital part of the JKD PAKISTAN, Uplift-Events is a dynamic and innovative event management",
+    fullDescription:"program dedicated to creating unforgettable experiences that inspire, educate, and uplift individuals and communities. Our team of passionate and experienced professionals is committed to delivering exceptional events that exceed expectations and leave a lasting impact.",
     pIcon: program9,
   },
 ];
 
+
+
 const Programs = () => {
     const router = useRouter();
     const {theme} = useGlobal();
-  return (
+
+    const [expanded, setExpanded] = useState(
+      Array(allprograms.length).fill(false)
+    );
+
+    const toggleExpand = (index) => {
+      setExpanded((prev) => {
+        const newState = [...prev];
+        newState[index] = !newState[index]; // toggle only that card
+        return newState;
+      });
+    };
+
+
+    return (
     < div className={` h-screen w-full  flex flex-col justify-between `}>
       <Header />
       <div className={`${theme === 'light' ? 'bg-white text-black':'bg-black text-white'} flex flex-col items-center mt-20`}>
         <div className=' w-full lg:w-[1200px]'> 
             <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full lg:text-[39px] lg:font-extrabold font-bold  `}>Programs</h1>
             <div className='text-sm'>
-                <span className={`${theme === 'light' ? 'text-gray-800': 'text-white'}} cursor-pointer`} onClick={()=> router.push('/')}>Home - </span>
+                <span className={`${theme === 'light' ? 'text-gray': 'text-white'}} cursor-pointer`} onClick={()=> router.push('/')}>Home - </span>
                 <span className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa] '} cursor-pointer`} >Programs</span>
             </div>
         </div>
@@ -85,15 +107,25 @@ const Programs = () => {
           <div className='w-[1200px] flex gap-5 flex-wrap justify-start'>
           {
             allprograms?.map((program , index)=>
-              <div key={index} className={`p-4 ${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} overflow-hidden flex flex-col justify-between  h-[300px] relative  w-[32%] rounded`}>
+              <div key={index} className={`p-4 ${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} overflow-hidden flex flex-col justify-between relative  w-[32%] rounded`}>
                 <div>
                   <Image src={program.pIcon} className={`relative top-0 left-[-50px] w-[200px] object-cover h-[100px]  `} alt='icon' />
                   <div className='  w-full '>
                     <h3 className='text-[30px] font-semibold w-full'>{program.title}</h3>
-                    <p>{program.description}</p>
+                    <p className={`${theme === 'dark' ? 'text-white' : 'text-black'} text-sm`}>
+                      {expanded[index]
+                        ? program.fullDescription
+                        : program.description}
+                      <span
+                        className="font-bold hover:underline cursor-pointer ml-1"
+                        onClick={() => toggleExpand(index)}
+                      >
+                        {expanded[index] ? "View Less" : "View More"}
+                      </span>
+                    </p>
                   </div>
                 </div>
-                <button className={` w-[100px] px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+                <button className={` mt-5 w-[100px] px-4 py-1 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
                   Explore
                 </button>
               </div>
