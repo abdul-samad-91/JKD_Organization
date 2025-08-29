@@ -85,9 +85,9 @@ const Programs = () => {
           <div className='w-[1200px] flex gap-5 flex-wrap justify-start'>
           {
             allprograms?.map((program , index)=>
-              <div key={index} className={`p-4 ${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} flex flex-col justify-between  h-[300px] relative  w-[32%] rounded`}>
+              <div key={index} className={`p-4 ${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} overflow-hidden flex flex-col justify-between  h-[300px] relative  w-[32%] rounded`}>
                 <div>
-                  <Image src={program.pIcon} className='relative top-0 w-[200px] object-cover h-[100px]' alt='icon' />
+                  <Image src={program.pIcon} className={`relative top-0 left-[-50px] w-[200px] object-cover h-[100px]  `} alt='icon' />
                   <div className='  w-full '>
                     <h3 className='text-[30px] font-semibold w-full'>{program.title}</h3>
                     <p>{program.description}</p>
