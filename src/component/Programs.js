@@ -141,7 +141,7 @@ const Programs = () => {
           {programs?.map((program, index) => (
             <div
               key={index}
-              className="relative px-4 program-card overflow-hidden bg-white shadow-lg rounded text-center min-w-[275px] sm:min-w-[275px] "
+              className={`relative px-4 program-card overflow-hidden  shadow-lg rounded text-center min-w-[275px] sm:min-w-[275px] ${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'}`}
             >
               <div className="w-full relative z-10">
                 <Image
@@ -163,8 +163,8 @@ const Programs = () => {
                   alt={program.title}
                 />
               </div>
-              <h3 className="mt-4 text-lg font-bold">{program.title}</h3>
-              <p className="text-gray-600 text-sm">{program.description}</p>
+              <h3 className={`mt-4 text-lg font-bold ${theme === 'dark' ? 'text-white' : 'text-black'}`}>{program.title}</h3>
+              <p className={`${theme === 'dark' ? 'text-white' : 'text-black'} text-sm`}>{program.description}</p>
             </div>
           ))}
         </div>
