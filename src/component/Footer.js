@@ -1,3 +1,4 @@
+"use client"
 import { useGlobal } from '@/context/GlobleContext'
 import React from 'react'
 import logo from "../../public/jkd-icon.png"

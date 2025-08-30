@@ -1,9 +1,10 @@
 'use client'
-import Footer from '@/component/Footer'
-import Header from '@/component/Header'
-import { useGlobal } from '@/context/GlobleContext'
-import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import Footer from '@/component/Footer';
+import Header from '@/component/Header';
+import { useGlobal } from '@/context/GlobleContext';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+
 import program1 from "../../../public/progaram-1.png";
 import program2 from "../../../public/progaram-2.png";
 import program3 from "../../../public/progaram-3.png";
@@ -13,8 +14,7 @@ import program6 from "../../../public/progaram-6.png";
 import program7 from "../../../public/progaram-7.png";
 import program8 from "../../../public/progaram-8.png";
 import program9 from "../../../public/progaram-9.png";
-import Image from 'next/image'
-
+import Image from 'next/image';
 
 const allprograms = [
   {
@@ -71,8 +71,6 @@ const allprograms = [
     pIcon: program7 ,
   }
 ];
-
-
 
 const Programs = () => {
     const router = useRouter();

@@ -126,7 +126,7 @@ export default function Header() {
         </nav>
 
         {/* Contact Button (desktop only) */}
-        <button className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+        <button onClick={()=> router.push('/apply')} className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
           Apply Now
         </button>
 
@@ -152,7 +152,7 @@ export default function Header() {
               {page.name}
             </a>
           ))}
-          <button className="px-4 py-2 rounded bg-[#00874F] text-white">
+          <button onClick={()=> router.push('/apply')} className="px-4 py-2 rounded bg-[#00874F] text-white">
             Apply Now
           </button>
         </div>
