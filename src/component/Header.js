@@ -21,24 +21,15 @@ export default function Header() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [view , setView] = useState(false);
+
+  const handleClick = ()=>{
+    setView(!view)
+  }
 
   const routChange = (path) =>{
     router.push(path)
   }
-
-  //   useEffect(() => {
-  //   const handleScroll = () => {
-  //     console.log(window.scrollY)
-  //     if (window.scrollY > 20) {
-  //       setScrolled(true);
-  //     } else {
-  //       setScrolled(false);
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
 
   return (
     <header 
@@ -48,15 +39,9 @@ export default function Header() {
           :'text-black bg-white '
         }
         `
-        //         ${scrolled 
-        //   ? theme === 'light'
-        //     ? 'bg-white  shadow-md shadow-gray-200' 
-        //     : 'bg-black  shadow-md shadow-gray-900'
-        //   : 'bg-transparent'
-        // }
       }
     >
-      <div className= {` overflow-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto`}>
+      <div className= {`  overflow-x-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto`}>
         {/* Logo Section */}
         <div className="flex items-center h-full md:ml-[-175px] lg:ml-[-165px] group">
           {/* TEXT (medium and large screen) */}
@@ -126,9 +111,17 @@ export default function Header() {
         </nav>
 
         {/* Contact Button (desktop only) */}
-        <button onClick={()=> router.push('/apply')} className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+        <button onClick={handleClick} className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
           Apply Now
         </button>
+
+        {
+          view && 
+          <div className={`absolute ${theme === 'light' ? 'bg-black text-white' :'bg-white text-black'} flex flex-col p-4 gap-5 top-16 right-20 rounded z-50 `}>
+            <button onClick={()=> {router.push('/booking'); handleClick()}} className={`cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Booking Events</button>
+            <button onClick={()=> {router.push('/apply'); handleClick()}} className={`cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Apply Program</button>
+          </div>
+        }
 
         {/* Hamburger (mobile only) */}
         <button
