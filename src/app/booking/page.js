@@ -62,15 +62,15 @@ const Booking = () => {
                 <div >
                     <p className="font-medium">Payment Method:</p>
                     <div className=" flex mt-5 gap-5 ">
-                        <label className="flex items-center gap-2">
+                        <label className="flex  gap-2">
                             <input type="radio" name="paymentMethod" value="cash" />
                             Cash
                         </label>
-                        <label className="flex items-center gap-2">
+                        <label className="flex  gap-2">
                             <input type="radio" name="paymentMethod" value="bank"  />
                             Bank Transfer
                         </label>
-                        <label className="flex items-center gap-2">
+                        <label className="flex  gap-2">
                             <input type="radio"  name="paymentMethod"  value="online" />
                             Online Payment
                         </label>
