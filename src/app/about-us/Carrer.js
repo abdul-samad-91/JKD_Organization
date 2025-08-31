@@ -10,7 +10,7 @@ const Carrer = () => {
   ];
   const {theme} = useGlobal();
   return (
-    <section className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full flex flex-col items-center my-10 py-10`}>
+    <section className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full flex flex-col items-center  py-10`}>
         <div className='max-w-[1200px] px-4'>
             <h2 className='text-[35px] font-semibold '>Carrer At <span className={` ${theme === 'dark' ? 'text-[#177faa]' : 'text-[#00874F]'}`}>JKD</span></h2>
             <div className='md:flex  gap-5 rounded w-full justify-center items-center md:pt-5'>
