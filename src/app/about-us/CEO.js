@@ -1,5 +1,5 @@
 import React from 'react'
-import ceoPic from '../../../public/cardPic5.jpg'
+import ceoPic from '../../../public/ceo.jpg'
 import Image from 'next/image'
 import { useGlobal } from '@/context/GlobleContext'
 
@@ -15,7 +15,7 @@ const CEO = () => {
                     <p className={`text-justify   ${theme === 'dark' ? 'text-white' : 'text-gray-700'} pt-4`}>He has done Intermediate (FSc) from Edwards College Peshawar and has been graduated (BSc) from Islamia College Peshawar. He has also done MS in development studies from IM Sciences Peshawar.</p>
                 </div>
                 <div className='w-[60%] h-[340px]'>
-                    <Image src={ceoPic} alt='jkd' className=' rounded-2xl h-full w-full relative object-cover' />
+                    <Image src={ceoPic} alt='jkd' className='relative rounded-2xl h-full w-full object-contain' />
                 </div>
             </div>
             <p className={`text-justify ${theme === 'dark' ? 'text-white' : 'text-gray-700'} pt-4`}>He started his career as a teacher. He started a Primary School from one room in Peshawar, which further rose to JKD Pakistan. At the very young age, he started the mission to provide skill training, technical and vocational education, health & physical education, hospitality management, hotel management, sports for development, sustainable tourism and organizing uplift events.</p>
