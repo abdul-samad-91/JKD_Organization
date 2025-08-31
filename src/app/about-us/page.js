@@ -27,9 +27,9 @@ const AboutUs = () => {
         </div>
         <div className='w-full'>
           <JKD />
-          {/* {/* <CEO />
+          <CEO />
           <div className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full flex flex-col items-center my-10 py-10`}>
-            <div className='w-[1200px]'>
+            <div className='max-w-[1200px] px-4'>
               <h2 className='text-[35px] font-semibold '>Who We <span className={` ${theme === 'dark' ? 'text-[#177faa]' : 'text-[#00874F]'}`}>Are?</span></h2>
               <p className={` text-justify  ${theme === 'dark' ? 'text-white' : 'text-gray-700'} pt-4`} >JKD Pakistan is a dynamic organization dedicated to empowering marginalized & under served communities through sustainable economic opportunities and social development. Through its diverse and innovative programs and services, JKD Pakistan bridges the gap for vulnerable generations, ensuring equal access to opportunities and cultivating resilient communities for a brighter future.</p>
             </div>
@@ -37,13 +37,13 @@ const AboutUs = () => {
           <WhoWeAre />
           <WhyChooseUs />
           <div className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full flex flex-col items-center my-10 py-10`}>
-            <div className='w-[1200px]'>
+            <div className='max-w-[1200px] mx-4'> 
               <h2 className='text-[35px] font-semibold '>Meet our <span className={` ${theme === 'dark' ? 'text-[#177faa]' : 'text-[#00874F]'}`}>Team</span></h2>
               <p className={`${theme === 'dark' ? 'text-white' : 'text-gray-700'} text-justify pt-4`} >At JKD Pakistan, we are proud to have some of the best trainers and instructors who are not only experts in their fields but also passionate about teaching. They focus on guiding students with care, making learning engaging and practical. With their mentorship, students don’t just gain knowledge they develop the skills and confidence needed to succeed in real life.</p>
             </div>
-          </div> */}
+          </div>
         </div>
-        {/* <Carrer />  */}
+        <Carrer /> 
       </div>  
       <Footer />
     </div>
