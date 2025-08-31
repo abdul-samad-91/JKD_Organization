@@ -53,12 +53,12 @@ useEffect(() => {
 
   return (
     <section className={`flex flex-col items-center justify-center w-full py-10 my-10 relative overflow-hidden ${theme === 'light' ? 'text-black bg-[#eefbff]' : 'text-white bg-black'} `}>
-      <h1 className={`text-[39px] font-semibold w-[1200px]  `}>Testimonials</h1>
+      <h1 className={`text-[30px] md:text-[35px] lg:text-[39px] font-semibold w-[250px] sm:w-[600px] md:w-[900px] lg:w-[1200px]  `}>Testimonials</h1>
       <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {testimonials?.map((testimonial, index) => (
           <div
             key={index}
-            className="h-[400px] w-full flex flex-col justify-center items-center flex-shrink-0 p-4 " // Added p-4 for padding on smaller screens
+            className="w-full  sm:h-[400px] flex flex-col justify-center items-center flex-shrink-0 p-4 " // Added p-4 for padding on smaller screens
           >
             <Image
               src={testimonial.image}
@@ -66,7 +66,7 @@ useEffect(() => {
               alt={testimonial.name}
             />
             <p
-              className="relative w-full px-8 md:w-[50%] text-center py-5 text-lg
+              className="relative  w-[80%] sm:w-full sm:px-8 md:w-[70%] lg:w-[50%] text-center py-5 text-lg
                 before:content-['“'] before:absolute before:-left-1 md:before:-left-5 before:top-2 before:text-4xl before:text-gray-400
                 after:content-['”'] after:absolute after:-right-1 md:after:-right-5 after:bottom-2 after:text-4xl after:text-gray-400"
             >

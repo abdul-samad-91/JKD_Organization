@@ -24,59 +24,61 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const allprograms = [
   {
-    title: "JKD TVETA",
+    title: "TVET",
     image: programImage1,
     description:
       "Providing quality education that nurtures creativity, leadership, and knowledge for the future.",
     pIcon: program2,
   },
   {
-    title: "JKD Tech-Park",
-    image: programImage2,
-    description: "A hub for innovation, startups, and digital entrepreneurship",
-    pIcon: program3,
-  },
-  {
-    title: "JKD Sports-Spark",
+    title: "Sport and Fitness",
     image: programImage3,
     description:
       "Inspiring youth to excel in sports, teamwork, and healthy lifestyles.",
     pIcon: program4,
   },
   {
-    title: "JKD Fitness-Zone",
+    title: "It and Digital Skills",
+    image: programImage2,
+    description: "A hub for innovation, startups, and digital entrepreneurship",
+    pIcon: program3,
+  },
+
+  {
+    title: "Tourism",
+    image: programImage5,
+    description:
+      "Encouraging eco-friendly tourism and preserving the natural beauty of our region.",
+    pIcon: program6,
+  },
+  // hospitality
+  {
+    title: "Uplift-Events",
+    image: programImage9,
+    description:
+      "Celebrating food culture with a variety of delicious and innovative cuisines.",
+    pIcon: program9,
+  },
+  {
+    title: "Overseas Recruitment",
     image: programImage4,
     description:
       "Promoting wellness through modern fitness facilities and health programs.",
     pIcon: program5,
   },
   {
-    title: "JKD Green-Tourism",
-    image: programImage5,
-    description:
-      "Encouraging eco-friendly tourism and preserving the natural beauty of our region.",
-    pIcon: program6,
-  },
-  {
-    title: "JKD Parlour",
+    title: "Parlour",
     image: programImage6,
     description:
       "Providing grooming and beauty services while empowering women entrepreneurs.",
     pIcon: program7,
   },
   {
-    title: "JKD Boutique",
+    title: "Boutique",
     image: programImage8,
     description:
       "Showcasing fashion and culture through unique designs and creative clothing.",
     pIcon: program8,
-  },
-  {
-    title: "JKD Uplift-Events",
-    image: programImage9,
-    description:
-      "Celebrating food culture with a variety of delicious and innovative cuisines.",
-    pIcon: program9,
   },
 ];
 
@@ -117,11 +119,11 @@ const Programs = () => {
       }`}
     >
       <h1
-        className={`text-[39px] font-semibold  w-[250px] sm:w-[600px] md:w-[900px]  lg:w-[1200px] ${
+        className={`text-[30px] md:text-[35px] lg:text-[39px] font-semibold  w-[250px] sm:w-[600px] md:w-[900px]  lg:w-[1200px] ${
           theme === "light" ? "text-black" : "text-white"
         }`}
       >
-        Program
+        Programs
       </h1>
 
       <div className="w-[275px] sm:w-[600px] md:w-[900px] overflow-hidden lg:w-[1200px] pt-10 pb-15">

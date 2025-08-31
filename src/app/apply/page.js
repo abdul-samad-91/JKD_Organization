@@ -6,8 +6,8 @@ import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
   const SubProgram = {
-    IT_and_Digital_Skills : ["Mason – Carpenter","Welder – Plumber", "Steel Fixer – Shuttering Carpenter"," Tiles Fitter – Plaster Finisher"," Marble Fixer – Safety Supervisor"," Land Surveyor – Civil Draftsman","Building Painter – Interior Designer", "Scaffolder – Construction Labors","Electrician - Auto-mechanic","Cable Technician - HVAC Technician","CCTV Technician - Lift Operator","Loader - Auto-electrician","Refrigerator Technician","Fiber Technician - Machine Operator","Solar System Technician","Bike Mechanic - Bike Riders" ,"Housekeepers - Janitors/Cleaners","Super Store Workers/Helpers","HTV Drivers - LTV Drivers - Tyreman","Gardeners - Factory Workers", "General Farming - Dairy Farming","Poultry Farming - Aquaculture","Fruit Picker - Fruit Packaging","Construction     Workers"],
-    Tech_Park:["Graphic Designing","Web Development", "Software Development", "Digital Marketing", "Professional Photography","Documentary Ad Making 3D", "Animation VR Diploma in DIT", "Technical Drawing", "AutoCAD Civil 3D","eCommerce", "Artificial Intelligence", "Search Engine Optimization (SEO)","Cyber Security"," AI for Banking", "Investing/Trading in Stock/Forex Markets", "AI for Financial Institutes", "Anti-Money Laundering"," Diploma in Financial Market"," 3D CAD Interior Design"],
+    TVET : ["Mason – Carpenter","Welder – Plumber", "Steel Fixer – Shuttering Carpenter"," Tiles Fitter – Plaster Finisher"," Marble Fixer – Safety Supervisor"," Land Surveyor – Civil Draftsman","Building Painter – Interior Designer", "Scaffolder – Construction Labors","Electrician - Auto-mechanic","Cable Technician - HVAC Technician","CCTV Technician - Lift Operator","Loader - Auto-electrician","Refrigerator Technician","Fiber Technician - Machine Operator","Solar System Technician","Bike Mechanic - Bike Riders" ,"Housekeepers - Janitors/Cleaners","Super Store Workers/Helpers","HTV Drivers - LTV Drivers - Tyreman","Gardeners - Factory Workers", "General Farming - Dairy Farming","Poultry Farming - Aquaculture","Fruit Picker - Fruit Packaging","Construction     Workers"],
+    IT_and_Digital_Skills:["Graphic Designing","Web Development", "Software Development", "Digital Marketing", "Professional Photography","Documentary Ad Making 3D", "Animation VR Diploma in DIT", "Technical Drawing", "AutoCAD Civil 3D","eCommerce", "Artificial Intelligence", "Search Engine Optimization (SEO)","Cyber Security"," AI for Banking", "Investing/Trading in Stock/Forex Markets", "AI for Financial Institutes", "Anti-Money Laundering"," Diploma in Financial Market"," 3D CAD Interior Design"],
     Sports_and_Fitness:[ "Indoor Futsal","Indoor Cricket","Karate","Badminton","Yoga", "Table Tennis"," Volley Ball"," Gym & Fitness","Boxing"],
     Overseas_Recruitment:["Bodyweight Exercises","High-Intensity Interval Training","Spiritual & Meditative Practice","Yoga or Pilates","Exercise through Sports","Walking or Jogging","Outdoor Activities","Meal Planning & Mindful Eating","Sustainable weight loss","Increased energy and confidence","Enhanced mental well-being","Certified trainers and weightloss specialist","Personalized coaching and support","Customized fitness and training plans"],
     Travels_and_Tours:["Eco-Friendly Lodges Booking","Sustainable Air Travel Reservation","Green Transportation Facility","Eco-Friendly Events","Environmental Tour Guides","Eco-Focus Photography","Eco-Fresh Meals Experience","Sustainable Tourism Certifications","Tourism Management Courses","Airline Operations – Cargo and Logistics Courses","IATA Certified – Air Ticketing Courses","Religious Tourism","Cultural Tourism – Sports Tourism","Adventure Tourism","Educational Tourism","Health Tourism – Culinary Tourism","Trade Tourism","Industrial Tourism","Corporate/Business Tourism","Backpackers Tourism","Eco-Tourism – Agriculture Tourism","Rural Tourism – Urban Tourism"],
@@ -35,50 +35,57 @@ const Apply = () => {
         </div>
         {/* program page content */}
         <form className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full flex flex-col items-center my-10 py-10`}>
+            {/* first and last name */}
             <div className='flex w-[1200px] gap-5'>
-                <div className='flex flex-col gap-3  w-[33%]'>
+                <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>First Name</label>
                     <input type='text' placeholder='first name' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
-                <div className='flex flex-col gap-3 ] w-[33%]'>
+                <div className='flex flex-col gap-3 ] w-[50%]'>
                     <label className='font-semibold'>Last Name</label>
                     <input type='text' placeholder='last name' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
-                <div className='flex flex-col gap-3  w-[33%]'>
+            </div>
+            {/* email and DOB */}
+            <div className='flex w-[1200px] gap-5 pt-5'>
+                <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Email</label>
                     <input type='text' placeholder='email' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
-            </div>
-            <div className='flex w-[1200px] gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Date of Birth</label>
                     <input type='date' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
+            </div>
+            {/* Phone and Address */}
+            <div className='flex gap-3  w-[1200px]  pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Phone Number</label>
                     <input type='text' placeholder='number' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
+                <div className='flex flex-col gap-3  w-[50%]'>
+                    <label className='font-semibold'>Address</label>
+                    <input type='text' placeholder='address' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+                </div>
             </div>
-            <div className='flex flex-col gap-3  w-[1200px]  pt-5'>
-                <label className='font-semibold'>Address</label>
-                <input type='text' placeholder='address' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
-            </div>
+            {/* CNIC and Father CNIC */}
             <div className='flex w-[1200px] gap-5 pt-5'>
-                <div className='flex flex-col gap-3  w-[33%]'>
+                <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>CNIC</label>
                     <input type='number' placeholder='without dashes' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
-                <div className='flex flex-col gap-3  w-[33%]'>
+                <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Father / Mother CNIC</label>
                     <input type='number' placeholder='without dashes' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
-                <div className='flex flex-col gap-3  w-[33%]'>
-                    <label className='font-semibold'>Age</label>
-                    <input type='date' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
-                </div>
             </div>
+            {/* age and gender */}
             <div className='flex w-[1200px] gap-5 pt-5'>
-                <div className='flex flex-col gap-3  w-[33%]'>
+                <div className='flex flex-col gap-3  w-[50%]'>
+                    <label className='font-semibold'>Age</label>
+                    <input type='number' min={9} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+                </div>
+                <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Gender</label>
                     <select className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`}>
                         <option>Choose Gender</option>
@@ -86,22 +93,25 @@ const Apply = () => {
                         <option>Female</option>
                     </select>                    
                 </div>
-                <div className='flex flex-col gap-3  w-[33%]'>
+            </div>
+            {/* Program and sub Program */}
+            <div className='flex w-[1200px] gap-5 pt-5'>
+                <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Program</label>
                     <select onChange={(e)=>setProgm(e.target.value)} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`}>
                         <option>Choose Program</option>
+                        <option value={'TVET'}>TVET</option>
                         <option value={'IT_and_Digital_Skills'}>IT and Digital Skills</option>
-                        <option value={'Tech_Park'}>Tech Park</option>
                         <option value={'Sports_and_Fitness'}>Sports and Fitness</option>
-                        <option value={'Overseas_Recruitment'}>Overseas Recruitment</option>
-                        <option value={'Travels_and_Tours'}>Travels and Tours</option>
+                        {/* <option value={'Overseas_Recruitment'}>Overseas Recruitment</option> */}
+                        {/* <option value={'Travels_and_Tours'}>Travels and Tours</option> */}
                         <option value={'Parlour'}>Parlour</option>
                         <option value={'Boutique'}>Boutique</option>
-                        <option value={'Uplift_Events'}>Uplift Events</option>
-                        <option value={'Foudium'}>Foudium</option>
+                        {/* <option value={'Uplift_Events'}>Uplift Events</option> */}
+                        {/* <option value={'Foudium'}>Foudium</option> */}
                     </select>                    
                 </div>
-                <div className='flex flex-col gap-3  w-[33%]'>
+                <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>SubProgram</label>
                     <select className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`}>
                         <option>Choose Subprogram</option>

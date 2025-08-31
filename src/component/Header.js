@@ -118,8 +118,9 @@ export default function Header() {
         {
           view && 
           <div className={`absolute ${theme === 'light' ? 'bg-black text-white' :'bg-white text-black'} flex flex-col p-4 gap-5 top-16 right-20 rounded z-50 `}>
-            <button onClick={()=> {router.push('/booking'); handleClick()}} className={`cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Booking Events</button>
-            <button onClick={()=> {router.push('/apply'); handleClick()}} className={`cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Apply Program</button>
+            <button onClick={()=> {router.push('/apply'); handleClick()}} className={` text-start cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Join the Program</button>
+            <button onClick={()=> {router.push('/booking'); handleClick()}} className={`text-start  cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Book Events</button>
+            <button onClick={()=> {router.push('/service'); handleClick()}} className={`text-start  cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Services</button>
           </div>
         }
 

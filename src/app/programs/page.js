@@ -18,16 +18,10 @@ import Image from 'next/image';
 
 const allprograms = [
   {
-    title: "IT and Digital Skills",
+    title: "TVET ",
     description: "As a key component of JKD PAKISTAN, TVETA -Technical and Vocational Education and Training",
     fullDescription : "As a key component of JKD PAKISTAN, TVETA -Technical and Vocational Education and Training Academy is a premier institution provides customized training programs, consultancy services, skills development courses, professional certifications and Capacity building to empower individuals and organizations, fostering growth and development. JKD TVETA also offers flexible and convenient trainings and consultancy services, delivered right to your home, office and organization.",
     pIcon: program1,
-  },
-  {
-    title: "Tech-Park",
-    description: "Tech Park is a leading technology training hub of JKD Pakistan offering comprehensive computer",
-    fullDescription:"Tech Park is a leading technology training hub of JKD Pakistan offering comprehensive computer short courses and trainings. Our expert instructors and state-of-the-art facilities ensure students gain practical skills to succeed in today's digital landscape. JKD Tech Park is a vibrant ecosystem for entrepreneurs, enterprises, and innovators offering flexible desk arrangements, high-speed internet, meeting rooms, event spaces and networking opportunities.",
-    pIcon:program9,
   },
   {
     title: "Sports and Fitness",
@@ -36,10 +30,35 @@ const allprograms = [
     pIcon:program2 ,
   },
   {
+    title: "IT and Digital Skills",
+    description: "Tech Park is a leading technology training hub of JKD Pakistan offering comprehensive computer",
+    fullDescription:"Tech Park is a leading technology training hub of JKD Pakistan offering comprehensive computer short courses and trainings. Our expert instructors and state-of-the-art facilities ensure students gain practical skills to succeed in today's digital landscape. JKD Tech Park is a vibrant ecosystem for entrepreneurs, enterprises, and innovators offering flexible desk arrangements, high-speed internet, meeting rooms, event spaces and networking opportunities.",
+    pIcon:program9,
+  },
+  {
+    title: " Tourism",
+    description:"",
+    fullDescription:"",
+    pIcon:''
+  },
+  
+  {
+    title: " Hospitlaity",
+    description:"",
+    fullDescription:"",
+    pIcon:''
+  },
+  {
+    title: "Uplift Events",
+    description: "As a vital part of the JKD PAKISTAN, Uplift-Events is a dynamic and innovative event management",
+    fullDescription:"program dedicated to creating unforgettable experiences that inspire, educate, and uplift individuals and communities. Our team of passionate and experienced professionals is committed to delivering exceptional events that exceed expectations and leave a lasting impact.",
+    pIcon: program6 ,
+  },  
+  {
     title: "Overseas Recruitment",
     description: "JKD Pakistan is proud to launch its comprehensive weight loss and physical fitness program.",
     fullDescription: "JKD Pakistan is proud to launch its comprehensive weight loss and physical fitness program through Expert trainers and weight loss specialists, tailored specifically for the people of Peshawar and surrounding areas. Our holistic approach combines cutting-edge techniques with expert guidance to empower individuals in achieving their wellness goals." ,
-    pIcon:  program8,
+    pIcon:  '',
   },
   {
     title: "Travels and Tours",
@@ -59,17 +78,12 @@ const allprograms = [
     fullDescription:"JKD Pakistan proudly presents JKD Boutique, a haven for fashion enthusiasts, offering an exclusive range of clothing, dress making, and fashion designs that seamlessly merge traditional craftsmanship with modern aesthetics, epitomizing Pakistani elegance, sophistication and cultural heritage.",
     pIcon: program5,
   },
-  {
-    title: "Uplift Events",
-    description: "As a vital part of the JKD PAKISTAN, Uplift-Events is a dynamic and innovative event management",
-    fullDescription:"program dedicated to creating unforgettable experiences that inspire, educate, and uplift individuals and communities. Our team of passionate and experienced professionals is committed to delivering exceptional events that exceed expectations and leave a lasting impact.",
-    pIcon: program6 ,
-  },  {
-    title: "FOODIUM",
-    description: "As a cornerstone of JKD PAKISTAN, Foodium Café, not just a café - serving customers for Pakistani",
-    fullDescription:"As a cornerstone of JKD PAKISTAN, Foodium Café, not just a café - serving customers for Pakistani traditional foods and fast foods, we're a hub for hospitality training and hotel management. Our café serves as a live classroom, where students can learn and practice the skills needed to succeed in the fast-paced hospitality and hotel industry. Our expert trainers and mentors guide students through hands-on training, workshops, and mentorship programs, focusing on:",
-    pIcon: program7 ,
-  }
+  // {
+  //   title: "FOODIUM",
+  //   description: "As a cornerstone of JKD PAKISTAN, Foodium Café, not just a café - serving customers for Pakistani",
+  //   fullDescription:"As a cornerstone of JKD PAKISTAN, Foodium Café, not just a café - serving customers for Pakistani traditional foods and fast foods, we're a hub for hospitality training and hotel management. Our café serves as a live classroom, where students can learn and practice the skills needed to succeed in the fast-paced hospitality and hotel industry. Our expert trainers and mentors guide students through hands-on training, workshops, and mentorship programs, focusing on:",
+  //   pIcon: program7 ,
+  // }
 ];
 
 const Programs = () => {
@@ -101,16 +115,35 @@ const Programs = () => {
             </div>
         </div>
         {/* program page content */}
-        <section className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full flex flex-col items-center my-10 py-10`}>
-          <div className='w-[1200px] flex gap-5 flex-wrap justify-start'>
-          {
-            allprograms?.map((program , index)=>
-              <div key={index} className={`p-4 ${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} overflow-hidden flex flex-col justify-between relative  w-[32%] rounded`}>
+        <section
+          className={`${theme === "light" ? "bg-[#eefbff]" : "bg-black"} 
+                      w-full flex flex-col items-center my-10 py-10`}
+        >
+          <div
+            className="w-full max-w-[1200px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-4"
+          >
+            {allprograms?.map((program, index) => (
+              <div
+                key={index}
+                className={`p-4 ${
+                  theme === "dark" ? "bg-[#177eaa94]" : "bg-[#00874f85]"
+                } overflow-hidden flex flex-col justify-between relative rounded`}
+              >
                 <div>
-                  <Image src={program.pIcon} className={`relative top-0 left-[-50px] w-[200px] object-cover h-[100px]  `} alt='icon' />
-                  <div className='  w-full '>
-                    <h3 className='text-[30px] font-semibold w-full'>{program.title}</h3>
-                    <p className={`${theme === 'dark' ? 'text-white' : 'text-black'} text-sm`}>
+                  <Image
+                    src={program.pIcon}
+                    className="relative top-0 left-[-20px] w-[150px] sm:w-[180px] lg:w-[200px] object-cover h-[80px] sm:h-[100px]"
+                    alt="icon"
+                  />
+                  <div className="w-full">
+                    <h3 className="text-xl sm:text-2xl lg:text-[30px] font-semibold w-full">
+                      {program.title}
+                    </h3>
+                    <p
+                      className={`${
+                        theme === "dark" ? "text-white" : "text-black"
+                      } text-sm`}
+                    >
                       {expanded[index]
                         ? program.fullDescription
                         : program.description}
@@ -123,12 +156,17 @@ const Programs = () => {
                     </p>
                   </div>
                 </div>
-                <button className={` mt-5 w-[100px] px-4 py-1 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+                <button
+                  className={`mt-5 w-full sm:w-[120px] px-4 py-2 rounded ${
+                    theme === "light"
+                      ? "bg-[#00874F] hover:text-white hover:bg-black"
+                      : "hover:text-black hover:bg-white bg-[#177faa]"
+                  } transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}
+                >
                   Explore
                 </button>
               </div>
-            )
-          }
+            ))}
           </div>
         </section>
       </div>

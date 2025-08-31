@@ -21,32 +21,35 @@ const Booking = () => {
         </div>
         {/* program page content */}
         <form className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full flex flex-col items-center my-10 py-10`}>
+            {/* Name / Contact Number */}
             <div className='flex w-[1200px] gap-5'>
-                <div className='flex flex-col gap-3  w-[33%]'>
+                <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Full Name</label>
                     <input type='text' placeholder='full name' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
-                <div className='flex flex-col gap-3 ] w-[33%]'>
+                <div className='flex flex-col gap-3 ] w-[50%]'>
                     <label className='font-semibold'>Contact Number</label>
                     <input type='number' placeholder='phone Number' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
-                <div className='flex flex-col gap-3  w-[33%]'>
+            </div>
+            {/* Email / Booking Data */}
+            <div className='flex w-[1200px] gap-5 pt-5'>
+                <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Email Address</label>
                     <input type='text' placeholder='email' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
-            </div>
-            <div className='flex w-[1200px] gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Booking Date</label>
                     <input type='date' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
+            </div>
+            {/* time / service */}
+            <div className='flex w-[1200px] gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Time Slot</label>
                     <input type='time'  className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
-            </div>
-            <div className='flex w-[1200px] gap-5 pt-5'>
-                <div className='flex flex-col gap-3  w-[33%]'>
+                <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Select Service / Package</label>
                     <select className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`}>
                         <option value="">Select Service / Package</option>
@@ -55,7 +58,11 @@ const Booking = () => {
                         <option value="vip">VIP Package</option>
                     </select>                    
                 </div>
-                <div className='flex flex-col gap-3  w-[33%]'>                
+
+            </div>
+            {/* Persons / payment method */}
+            <div className='flex w-[1200px] gap-5 pt-5'>
+                <div className='flex flex-col gap-3  w-[50%]'>                
                     <label className='font-semibold'>Persons</label>
                     <input type='number' min={1}  className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
