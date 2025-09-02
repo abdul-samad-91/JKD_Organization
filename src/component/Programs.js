@@ -153,7 +153,7 @@ const Programs = () => {
                 />
               </div>
               <div
-                className={`absolute z-50 w-[50px] rounded-full overflow-hidden top-5 right-5 ${
+                className={`absolute z-40 w-[50px] rounded-full overflow-hidden top-5 right-5 ${
                   theme === "light" ? "bg-white" : "bg-white"
                 }`}
               >
