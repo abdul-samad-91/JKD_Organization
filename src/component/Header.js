@@ -5,11 +5,9 @@ import text from "../../public/logo-text.png"
 import { useEffect, useState } from "react"
 import { useGlobal } from "@/context/GlobleContext"
 import { useRouter  , usePathname } from "next/navigation"
-// // Blue: #177faa
-// // Green: #00874F
 
 export default function Header() {
-  const  pages = [{path:'/' , name:'Home'},{path:'/about-us' , name:'About'},{path:'/programs' , name:'Programs'},{path:'how-we-work' , name:'How we work?'},{path:'#' , name:'Services'},{path:'#' , name:'Donations'}, {path:'#', name:'Contact us'}]
+  const  pages = [{path:'/' , name:'Home'},{path:'/about-us' , name:'About'},{path:'/programs' , name:'Programs'},{path:'/how-we-work' , name:'How we work?'},{path:'#' , name:'Services'},{path:'#' , name:'Donations'}, {path:'/contact-us', name:'Contact us'}]
   const {theme , setTheme} = useGlobal();
   const router = useRouter();
   const pathname = usePathname();
