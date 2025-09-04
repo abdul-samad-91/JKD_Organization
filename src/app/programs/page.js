@@ -23,7 +23,11 @@ import tvetIcon2 from '../../../public/tvet-details-icon-2.png'
 import tvetIcon3 from '../../../public/tvet-details-icon-3.png'
 import IT from '../../../public/it-detail-pic.png'
 import ITIcon1 from '../../../public/it-detail-icon1.png'
-import ITIcon2 from '../../../public/it-detail-icon-2.png'
+import ITIcon2 from '../../../public/it-detail-icon2.png'
+import sport from '../../../public/sport-detail-pic.jpg'
+import sportIcon1 from '../../../public/sport-detail-icon1.png'
+import sportIcon2 from '../../../public/sport-detail-icon2.png'
+
 export const allprograms = [
   {
     _id:"12",
@@ -94,6 +98,9 @@ export const allprograms = [
     description: "As a flagship initiative and an inclusive Sports Centre of the JKD PAKISTAN, dedicated to igniting",
     fullDescription: "As a flagship initiative and an inclusive Sports Centre of the JKD PAKISTAN, dedicated to igniting a passion for sports in everyone. Our mission is to provide a welcoming and accessible environment where people of all abilities can come together to play, learn, and grow. Fields of play, organizing sports events and trainings in JKD Sports Arena & JKD Sports Academy are available both outdoors and indoors.",
     pIcon:program2 ,
+    detialPic: sport,
+    icon1: sportIcon1,
+    icon2: sportIcon2,
     trade1: [
       "Indoor Cricket Grounds",
       "Indoor Futsal Grounds",
@@ -120,6 +127,7 @@ export const allprograms = [
     description: "Tech Park is a leading technology training hub of JKD Pakistan offering comprehensive computer",
     fullDescription:"Tech Park is a leading technology training hub of JKD Pakistan offering comprehensive computer short courses and trainings. Our expert instructors and state-of-the-art facilities ensure students gain practical skills to succeed in today's digital landscape. JKD Tech Park is a vibrant ecosystem for entrepreneurs, enterprises, and innovators offering flexible desk arrangements, high-speed internet, meeting rooms, event spaces and networking opportunities.",
     pIcon:program9,
+    detialPic: IT,
     icon1: ITIcon1,
     icon2: ITIcon2,
     trade1: [
