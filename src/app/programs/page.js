@@ -28,7 +28,7 @@ import sport from '../../../public/sport-detail-pic.jpg'
 import sportIcon1 from '../../../public/sport-detail-icon1.png'
 import sportIcon2 from '../../../public/sport-detail-icon2.png'
 
-export const allprograms = [
+export const allprograms = [ 
   {
     _id:"12",
     title: "TVET ",
