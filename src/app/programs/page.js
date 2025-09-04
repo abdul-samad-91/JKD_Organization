@@ -21,9 +21,9 @@ import tvet from '../../../public/tvet-details-pic.png'
 import tvetIcon1 from '../../../public/tvet-details-icon-1.png'
 import tvetIcon2 from '../../../public/tvet-details-icon-2.png'
 import tvetIcon3 from '../../../public/tvet-details-icon-3.png'
-import IT from '../../../public/it-detail-pic.png'
-import ITIcon1 from '../../../public/it-detail-icon1.png'
-import ITIcon2 from '../../../public/it-detail-icon2.png'
+import It from '../../../public/it-detail-pic.png'
+import ItIcon1 from '../../../public/it-detail-icon1.png'
+import ItIcon2 from '../../../public/it-detail-icon2.png'
 import sport from '../../../public/sport-detail-pic.jpg'
 import sportIcon1 from '../../../public/sport-detail-icon1.png'
 import sportIcon2 from '../../../public/sport-detail-icon2.png'
@@ -127,9 +127,9 @@ export const allprograms = [
     description: "Tech Park is a leading technology training hub of JKD Pakistan offering comprehensive computer",
     fullDescription:"Tech Park is a leading technology training hub of JKD Pakistan offering comprehensive computer short courses and trainings. Our expert instructors and state-of-the-art facilities ensure students gain practical skills to succeed in today's digital landscape. JKD Tech Park is a vibrant ecosystem for entrepreneurs, enterprises, and innovators offering flexible desk arrangements, high-speed internet, meeting rooms, event spaces and networking opportunities.",
     pIcon:program9,
-    detialPic: IT,
-    icon1: ITIcon1,
-    icon2: ITIcon2,
+    detialPic: It,
+    icon1: ItIcon1,
+    icon2: ItIcon2,
     trade1: [
       "Graphic Designing",
       "Styling-coloring-treatment",
