@@ -4,7 +4,7 @@ import Header from '@/component/Header'
 import { useGlobal } from '@/context/GlobleContext'
 import React from 'react'
 
-const page = () => {
+const ContactUs = () => {
     const {theme} = useGlobal();
   return (
     <div className={` h-screen w-full  flex flex-col justify-between `}>
@@ -70,4 +70,4 @@ const page = () => {
   )
 }
 
-export default page
+export default ContactUs
