@@ -11,13 +11,13 @@ const WhatWeValue = () => {
 
   return (
     <section className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full flex flex-col items-center my-10 py-10`}>
-        <div className='w-[1200px]'>
+        <div className='max-w-[1200px] px-4'>
             <h2 className='text-[35px] font-semibold '>What We <span className={` ${theme === 'dark' ? 'text-[#177faa]' : 'text-[#00874F]'}`}>Value?</span></h2>
-            <div className='flex  gap-5 rounded w-full justify-center items-center pt-5'>
+            <div className='md:flex  gap-5 rounded w-full justify-center items-center md:pt-5'>
               {data?.map((card , index)=>
-                <div key={index} className={` flex flex-col justify-center px-5 h-[200px] rounded  ${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'}`}>
+                <div key={index} className={`mt-5 md:mt-0 flex flex-col justify-center p-5 lg:h-[220px] rounded  ${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'}`}>
                   <h3 className='text-[30px] font-semibold '>{card.title}</h3>
-                  <p className={`${theme === 'dark' ? 'text-white' : 'text-black'} text-justify pt-4`}>{card.text}</p>
+                  <p className={`${theme === 'dark' ? 'text-white' : 'text-black'} text-justify pt-2 md:pt-4`}>{card.text}</p>
                 </div>
               )}
             </div>

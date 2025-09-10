@@ -34,12 +34,13 @@ const WhyChooseUs = () => {
     const {theme} = useGlobal();
   return (
     <section className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full flex flex-col items-center my-10 py-10`}>
-        <div className='w-[1200px]'>
-            <h2 className='text-[35px] font-semibold '>Why Choose <span className={` ${theme === 'dark' ? 'text-[#177faa]' : 'text-[#00874F]'}`}>Us?</span></h2>
+      <div  className='max-w-[1200px] px-4'>
+        <div>
+            <h2 className='text-[35px] font-semibold w-full '>Why Choose <span className={` ${theme === 'dark' ? 'text-[#177faa]' : 'text-[#00874F]'}`}>Us?</span></h2>
         </div>
-        <div className='flex  gap-5 rounded w-full justify-center items-center pt-5'>
+        <div className='md:flex  gap-5 rounded justify-center items-center md:pt-5'>
               {data?.map((card , index)=>
-                <div key={index} className={`relative flex flex-col justify-start p-5 w-[390px] h-[390px]  border-5 rounded ${theme === 'dark' ? 'bg-black' : 'bg-white'}`} style={{borderColor:card.borderColor}}>
+                <div key={index} className={` mt-5 md:mt-0 relative flex flex-col justify-start p-5 md:w-[33%] lg:h-[390px]  border-5 rounded ${theme === 'dark' ? 'bg-black' : 'bg-white'}`} style={{borderColor:card.borderColor}}>
                   <h3 className='text-[30px] font-semibold w-[60%] '>{card.title} <span className={` ${theme === 'dark' ? 'text-[#177faa]' : 'text-[#00874F]'}`}>{card.titlePart}</span></h3>
                   <span className='absolute top-3 right-6 text-[60px] text-gray-400  font-bold'>0{index+1}</span>
                   <h4 className='text-[20px] font-semibold pt-6'>{card.subTitle1}</h4>
@@ -49,6 +50,7 @@ const WhyChooseUs = () => {
                 </div>
               )}
         </div>
+      </div>
     </section>
   )
 }
