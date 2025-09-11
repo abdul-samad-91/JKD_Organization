@@ -5,6 +5,7 @@ import { useGlobal } from "@/context/GlobleContext";
 import { useCounter } from "@/helper/useCounter";
 import { useInView } from "react-intersection-observer";
 
+//detail data
 const WorkDetailItem = ({ detail }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
