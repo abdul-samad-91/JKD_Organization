@@ -1,4 +1,6 @@
 "use client"
+
+import AdminLeftSidebar from '@/component/AdminLeftSidebar'
 import Footer from '@/component/Footer'
 import Header from '@/component/Header'
 import { useGlobal } from '@/context/GlobleContext'
@@ -22,21 +24,125 @@ const Apply = () => {
   const {theme} = useGlobal();
   const [progm , setProgm] = useState(null);
   const router = useRouter()
+//   return (
+//     <div className={` h-screen w-full  flex flex-col justify-between `}>
+//       <Header />
+//       <div className={`${theme === 'light' ? 'bg-white text-black':'bg-black text-white'} flex flex-col items-center mt-20`}>
+//         <div className=' w-full lg:w-[1200px]'> 
+//             <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full lg:text-[39px] lg:font-extrabold font-bold  `}>Apply</h1>
+//             <div className='text-sm'>
+//                 <span className={`${theme === 'light' ? 'text-gray': 'text-white'}} cursor-pointer`} onClick={()=> router.push('/')}>Home - </span>
+//                 <span className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa] '} cursor-pointer`} >Apply</span>
+//             </div>
+//         </div>
+//         {/* program page content */}
+        // <form className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full flex flex-col items-center my-10 py-10`}>
+        //     {/* first and last name */}
+        //     <div className='flex w-[1200px] gap-5'>
+        //         <div className='flex flex-col gap-3  w-[50%]'>
+        //             <label className='font-semibold'>First Name</label>
+        //             <input type='text' placeholder='first name' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+        //         </div>
+        //         <div className='flex flex-col gap-3 ] w-[50%]'>
+        //             <label className='font-semibold'>Last Name</label>
+        //             <input type='text' placeholder='last name' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+        //         </div>
+        //     </div>
+        //     {/* email and DOB */}
+        //     <div className='flex w-[1200px] gap-5 pt-5'>
+        //         <div className='flex flex-col gap-3  w-[50%]'>
+        //             <label className='font-semibold'>Email</label>
+        //             <input type='text' placeholder='email' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+        //         </div>
+        //         <div className='flex flex-col gap-3  w-[50%]'>
+        //             <label className='font-semibold'>Date of Birth</label>
+        //             <input type='date' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+        //         </div>
+        //     </div>
+        //     {/* Phone and Address */}
+        //     <div className='flex gap-3  w-[1200px]  pt-5'>
+        //         <div className='flex flex-col gap-3  w-[50%]'>
+        //             <label className='font-semibold'>Phone Number</label>
+        //             <input type='text' placeholder='number' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+        //         </div>
+        //         <div className='flex flex-col gap-3  w-[50%]'>
+        //             <label className='font-semibold'>Address</label>
+        //             <input type='text' placeholder='address' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+        //         </div>
+        //     </div>
+        //     {/* CNIC and Father CNIC */}
+        //     <div className='flex w-[1200px] gap-5 pt-5'>
+        //         <div className='flex flex-col gap-3  w-[50%]'>
+        //             <label className='font-semibold'>CNIC</label>
+        //             <input type='number' placeholder='without dashes' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+        //         </div>
+        //         <div className='flex flex-col gap-3  w-[50%]'>
+        //             <label className='font-semibold'>Father / Mother CNIC</label>
+        //             <input type='number' placeholder='without dashes' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+        //         </div>
+        //     </div>
+        //     {/* age and gender */}
+        //     <div className='flex w-[1200px] gap-5 pt-5'>
+        //         <div className='flex flex-col gap-3  w-[50%]'>
+        //             <label className='font-semibold'>Age</label>
+        //             <input type='number' min={9} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+        //         </div>
+        //         <div className='flex flex-col gap-3  w-[50%]'>
+        //             <label className='font-semibold'>Gender</label>
+        //             <select className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`}>
+        //                 <option>Choose Gender</option>
+        //                 <option>Male</option>
+        //                 <option>Female</option>
+        //             </select>                    
+        //         </div>
+        //     </div>
+        //     {/* Program and sub Program */}
+        //     <div className='flex w-[1200px] gap-5 pt-5'>
+        //         <div className='flex flex-col gap-3  w-[50%]'>
+        //             <label className='font-semibold'>Program</label>
+        //             <select onChange={(e)=>setProgm(e.target.value)} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`}>
+        //                 <option>Choose Program</option>
+        //                 <option value={'TVET'}>TVET</option>
+        //                 <option value={'IT_and_Digital_Skills'}>IT and Digital Skills</option>
+        //                 <option value={'Sports_and_Fitness'}>Sports and Fitness</option>
+        //                 {/* <option value={'Overseas_Recruitment'}>Overseas Recruitment</option> */}
+        //                 {/* <option value={'Travels_and_Tours'}>Travels and Tours</option> */}
+        //                 <option value={'Parlour'}>Parlour</option>
+        //                 <option value={'Boutique'}>Boutique</option>
+        //                 {/* <option value={'Uplift_Events'}>Uplift Events</option> */}
+        //                 {/* <option value={'Foudium'}>Foudium</option> */}
+        //             </select>                    
+        //         </div>
+        //         <div className='flex flex-col gap-3  w-[50%]'>
+        //             <label className='font-semibold'>SubProgram</label>
+        //             <select className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`}>
+        //                 <option>Choose Subprogram</option>
+        //                 {
+        //                     SubProgram[progm]?.map((Sprogram , index)=>
+        //                         <option key={index} value={Sprogram}>{Sprogram}</option>
+        //                     )
+        //                 }
+        //             </select>                     
+        //         </div>
+        //     </div>
+        //     <div className='w-[1200px]  pt-5'>
+        //         <button className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+        //             Submit
+        //         </button>
+        //     </div>
+        // </form>
+//       </div>
+//       <Footer />
+//     </div>
+//   )
+
   return (
-    <div className={` h-screen w-full  flex flex-col justify-between `}>
-      <Header />
-      <div className={`${theme === 'light' ? 'bg-white text-black':'bg-black text-white'} flex flex-col items-center mt-20`}>
-        <div className=' w-full lg:w-[1200px]'> 
-            <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full lg:text-[39px] lg:font-extrabold font-bold  `}>Apply</h1>
-            <div className='text-sm'>
-                <span className={`${theme === 'light' ? 'text-gray': 'text-white'}} cursor-pointer`} onClick={()=> router.push('/')}>Home - </span>
-                <span className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa] '} cursor-pointer`} >Apply</span>
-            </div>
-        </div>
-        {/* program page content */}
-        <form className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} w-full flex flex-col items-center my-10 py-10`}>
+    <div className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} flex  h-screen  w-full `}>
+      <AdminLeftSidebar className="w-[20%]" />
+        <form className={` w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
+            <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full pt-[18px] lg:text-[39px] lg:font-extrabold font-bold  `}>Apply</h1>
             {/* first and last name */}
-            <div className='flex w-[1200px] gap-5'>
+            <div className='flex w-full gap-5 pt-8'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>First Name</label>
                     <input type='text' placeholder='first name' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
@@ -47,7 +153,7 @@ const Apply = () => {
                 </div>
             </div>
             {/* email and DOB */}
-            <div className='flex w-[1200px] gap-5 pt-5'>
+            <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Email</label>
                     <input type='text' placeholder='email' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
@@ -58,7 +164,7 @@ const Apply = () => {
                 </div>
             </div>
             {/* Phone and Address */}
-            <div className='flex gap-3  w-[1200px]  pt-5'>
+            <div className='flex w-full gap-3    pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Phone Number</label>
                     <input type='text' placeholder='number' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
@@ -69,7 +175,7 @@ const Apply = () => {
                 </div>
             </div>
             {/* CNIC and Father CNIC */}
-            <div className='flex w-[1200px] gap-5 pt-5'>
+            <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>CNIC</label>
                     <input type='number' placeholder='without dashes' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
@@ -80,7 +186,7 @@ const Apply = () => {
                 </div>
             </div>
             {/* age and gender */}
-            <div className='flex w-[1200px] gap-5 pt-5'>
+            <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Age</label>
                     <input type='number' min={9} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
@@ -95,7 +201,7 @@ const Apply = () => {
                 </div>
             </div>
             {/* Program and sub Program */}
-            <div className='flex w-[1200px] gap-5 pt-5'>
+            <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Program</label>
                     <select onChange={(e)=>setProgm(e.target.value)} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`}>
@@ -123,14 +229,12 @@ const Apply = () => {
                     </select>                     
                 </div>
             </div>
-            <div className='w-[1200px]  pt-5'>
-                <button className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+            <div className='self-start  pt-5'>
+                <button className={`hidden md:block  px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
                     Submit
                 </button>
             </div>
         </form>
-      </div>
-      <Footer />
     </div>
   )
 }
