@@ -3,7 +3,7 @@ import Booking from "@/models/bookModel";
 
 export async function POST(req) {
   try {
-    await dbConnect();
+    await connectDB();
     const body = await req.json();
 
     // Create new booking
@@ -24,7 +24,7 @@ export async function POST(req) {
 
 export async function GET() {
   try {
-    await dbConnect();
+    await connectDB();
     const bookings = await Booking.find().sort({ createdAt: -1 });
 
     return new Response(
