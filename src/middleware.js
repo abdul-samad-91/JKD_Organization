@@ -33,5 +33,8 @@ export function middleware(req) {
 // Apply only to protected API routes
 export const config = {
     // i have to change this route
-  matcher: ["/api/admin/:path*"], 
+  matcher: [
+    "/api/admin/:path*",
+    "/api/apply"
+  ], 
 };

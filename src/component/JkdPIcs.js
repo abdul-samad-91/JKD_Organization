@@ -17,7 +17,7 @@ function useIsMounted() {
 
 const JkdPIcs = () => {
     const {theme} = useGlobal();
-    const [pics  , setPics] = useState([cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5]);
+    const [pics  , setPics] = useState([cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5,cardPic3, cardPic1, cardPic2, cardPic4, cardPic5]);
 
     const isSm = useMediaQuery({ minWidth :376 ,maxWidth: 767 });
     const isMd = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
@@ -32,7 +32,7 @@ const JkdPIcs = () => {
         if (isLg) cardOffset = 203;
     }
 
-    const [currentIndex, setCurrentIndex] = useState(5);
+    const [currentIndex, setCurrentIndex] = useState(27);
     const handlePicChange = (type) => {
         if (type === "left" ) {
         setCurrentIndex((prev) => prev + 1);
@@ -40,7 +40,6 @@ const JkdPIcs = () => {
         setCurrentIndex((prev) => prev - 1);
         }
     };
-
     if (!isMounted) {
         return (
         <section className={`relative flex overflow-hidden justify-center ${theme === 'light' ? 'bg-[#eefbff]' : 'bg-black'} w-full my-10`}>
@@ -99,11 +98,12 @@ const JkdPIcs = () => {
             </div>
         );
         })}
+
     </div>
     {/* Right Button */}
     <button
         onClick={() => handlePicChange('right')}
-        className={`absolute right-1 top-1/2 -translate-y-1/2 ${(pics.length-1) - currentIndex === 14 && 'hidden'} ${theme === 'light' ? 'bg-black text-white':'bg-white text-black'}   p-3 rounded-full shadow-md z-50 hover:scale-110 transition`}
+        className={`absolute right-1 top-1/2 -translate-y-1/2  ${(pics.length-1) - currentIndex === 54 && 'hidden'} ${theme === 'light' ? 'bg-black text-white':'bg-white text-black'}   p-3 rounded-full shadow-md z-50 hover:scale-110 transition`}
     >
         <FaChevronRight size={24} />
     </button>
@@ -112,3 +112,4 @@ const JkdPIcs = () => {
 }
 
 export default JkdPIcs
+

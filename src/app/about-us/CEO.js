@@ -1,5 +1,5 @@
 import React from 'react'
-import ceoPic from '../../../public/ceo.jpg'
+import ceoPic from '../../../public/ceo.png'
 import Image from 'next/image'
 import { useGlobal } from '@/context/GlobleContext'
 
@@ -16,12 +16,14 @@ const CEO = () => {
                     <h2 className='text-[35px] font-semibold '>CEO <span className={` ${theme === 'dark' ? 'text-[#177faa]' : 'text-[#00874F]'}`}>Profile</span></h2>
                     <p className={` text-justify ${theme === 'dark' ? 'text-white' : 'text-gray-700'}  pt-4`}>The Founder & CEO of JKD Pakistan is Jehanzeb Khan Dhakki, a well-known development Specialist, educationist, entrepreneur, Traveler, researcher & motivational speaker. Jehanzeb Khan Dhakki was born in village Dhakki, Tehsil Tangi, District Charsadda Khyber Pakhtunkhwa Pakistan. He did his Matriculation from Government Higher Secondary School Dhakki with outstanding performance by securing 1st position in the entire province.</p>
                     <p className={`text-justify   ${theme === 'dark' ? 'text-white' : 'text-gray-700'} pt-4`}>He has done Intermediate (FSc) from Edwards College Peshawar and has been graduated (BSc) from Islamia College Peshawar. He has also done MS in development studies from IM Sciences Peshawar.</p>
+            <p className={`text-justify ${theme === 'dark' ? 'text-white' : 'text-gray-700'} pt-4`}>He started his career as a teacher. He started a Primary School from one room in Peshawar, which further rose to JKD Pakistan. At the very young age, he started the mission to provide skill training, technical and vocational education, health & physical education, hospitality management, hotel management, sports for development, sustainable tourism and organizing uplift events.</p>
+
                 </div>
-                <div className='hidden md:block w-[60%] h-[340px]'>
-                    <Image src={ceoPic} alt='jkd' className='relative rounded-2xl h-full w-full object-contain' />
+                <div className='hidden md:block w-[60%] h-[440px]'>
+                    <Image src={ceoPic} alt='jkd' className='  relative rounded-2xl h-full w-full object-contain' />
                 </div>
             </div>
-            <p className={`text-justify ${theme === 'dark' ? 'text-white' : 'text-gray-700'} pt-4`}>He started his career as a teacher. He started a Primary School from one room in Peshawar, which further rose to JKD Pakistan. At the very young age, he started the mission to provide skill training, technical and vocational education, health & physical education, hospitality management, hotel management, sports for development, sustainable tourism and organizing uplift events.</p>
+            {/* <p className={`text-justify ${theme === 'dark' ? 'text-white' : 'text-gray-700'} pt-4`}>He started his career as a teacher. He started a Primary School from one room in Peshawar, which further rose to JKD Pakistan. At the very young age, he started the mission to provide skill training, technical and vocational education, health & physical education, hospitality management, hotel management, sports for development, sustainable tourism and organizing uplift events.</p> */}
         </div>
     </section>
   )

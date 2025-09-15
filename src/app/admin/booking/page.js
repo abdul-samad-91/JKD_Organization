@@ -4,11 +4,59 @@ import Footer from '@/component/Footer';
 import Header from '@/component/Header';
 import { useGlobal } from '@/context/GlobleContext';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 
 const Booking = () => {
   const {theme} = useGlobal();
   const router = useRouter()
+  const {bookingForm , setBookingForm} = useState({
+    fullName:'',
+    contactNumber:'',
+    emailAddress: '',
+    bookingDate: '',
+    timeSlot: '', 
+    selectService: '', 
+    persons: '',
+  })
+
+  const handleChange = (event) => {
+    const {value , name } = event.target;
+    setBookingForm((preValue) => {
+        return {
+            ...preValue,
+            [name] : value
+        }
+    })
+  }
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+  //   const {firstName,lastName,email,dateOfBirth,phoneNumber,address,CNIC,parentCNIC,age,gender,program,subProgram} = applyForm;
+  
+  //   if (!email || !password) {
+  //     toast.error("Email and password are required.");
+  //     return;
+  //   }
+  
+      setLoading(true);
+  
+    try {
+      const response = await axiosInstance.post("/api/booking", applyForm);
+      console.log(response);
+      const data = response.data;
+  
+      toast.success(data.message || "Login successful");
+  
+      router.push("/admin"  );
+    } catch (err) {
+      const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
+      toast.error(errorMessage);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 //   return (
 //     <div className={` h-screen w-full  flex flex-col justify-between `}>
 //       <Header />
@@ -99,39 +147,39 @@ const Booking = () => {
     <div className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} flex  h-screen  w-full `}>
       <AdminLeftSidebar className="w-[20%]" />
         {/* program page content */}
-        <form className={` w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
+        <form onSubmit={handleSubmit} className={` w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
             <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full pt-[18px] lg:text-[39px] lg:font-extrabold font-bold  `}>Booking</h1>
             {/* Name / Contact Number */}
             <div className='flex w-full gap-5 pt-8'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Full Name</label>
-                    <input type='text' placeholder='full name' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+                    <input type='text' name="fullName" value={bookingForm.fullName} onChange={handleChange} placeholder='full name' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
                 <div className='flex flex-col gap-3 ] w-[50%]'>
                     <label className='font-semibold'>Contact Number</label>
-                    <input type='number' placeholder='phone Number' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+                    <input type='number' name="contactNumber" value={bookingForm.contactNumber} onChange={handleChange} placeholder='phone Number' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
             </div>
             {/* Email / Booking Data */}
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Email Address</label>
-                    <input type='text' placeholder='email' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+                    <input type='text' name="emailAddress" value={bookingForm.emailAddress} onChange={handleChange} placeholder='email' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Booking Date</label>
-                    <input type='date' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+                    <input type='date' name="bookingDate" value={bookingForm.bookingDate} onChange={handleChange} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
             </div>
             {/* time / service */}
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Time Slot</label>
-                    <input type='time'  className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+                    <input type='time' name="timeSlot" value={bookingForm.timeSlot} onChange={handleChange} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Select Service / Package</label>
-                    <select className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`}>
+                    <select name="selectService" value={bookingForm.selectService} onChange={handleChange} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`}>
                         <option value="">Select Service / Package</option>
                         <option value="basic">Basic Package</option>
                         <option value="premium">Premium Package</option>
@@ -144,7 +192,7 @@ const Booking = () => {
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>                
                     <label className='font-semibold'>Persons</label>
-                    <input type='number' min={1}  className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
+                    <input name="persons" value={bookingForm.persons} onChange={handleChange} type='number' min={1}  className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                 </div>
                 <div >
                     <p className="font-medium">Payment Method:</p>
@@ -165,7 +213,7 @@ const Booking = () => {
                 </div>
             </div>
             <div className='self-start pt-5'>
-                <button className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+                <button type='submit' className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
                     Submit
                 </button>
             </div>

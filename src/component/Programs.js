@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import programImage1 from "../../public/program-image1.jpeg";
-import programImage2 from "../../public/program-image2.jpg";
+import programImage2 from "../../public/program-image2.webp";
 import programImage3 from "../../public/program-image3.jpeg";
 import programImage4 from "../../public/program-image4.jpeg";
 import programImage5 from "../../public/program-image5.webp";
@@ -38,7 +38,7 @@ const allprograms = [
     pIcon: program4,
   },
   {
-    title: "It and Digital Skills",
+    title: "IT and Digital Skills",
     image: programImage2,
     description: "A hub for innovation, startups, and digital entrepreneurship",
     pIcon: program3,

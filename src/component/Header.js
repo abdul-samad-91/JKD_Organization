@@ -7,7 +7,7 @@ import { useGlobal } from "@/context/GlobleContext"
 import { useRouter  , usePathname } from "next/navigation"
 
 export default function Header() {
-  const  pages = [{path:'/' , name:'Home'},{path:'/about-us' , name:'About'},{path:'/programs' , name:'Programs'},{path:'/how-we-work' , name:'How we work?'},{path:'#' , name:'Services'},{path:'#' , name:'Donations'}, {path:'/contact-us', name:'Contact us'}]
+  const  pages = [{path:'/' , name:'Home'},{path:'/about-us' , name:'About'},{path:'/programs' , name:'Vocational'},{path:'/how-we-work' , name:'How we work?'},{path:'#' , name:'Services'},{path:'#' , name:'IT Courses'}, {path:'/contact-us', name:'Contact us'}]
   const {theme , setTheme} = useGlobal();
   const router = useRouter();
   const pathname = usePathname();
@@ -41,7 +41,7 @@ export default function Header() {
     >
       <div className= {`  overflow-x-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto`}>
         {/* Logo Section */}
-        <div className="flex items-center h-full md:ml-[-175px] lg:ml-[-165px] group">
+        <div onClick={()=> router.push('/')} className="flex items-center h-full md:ml-[-175px] lg:ml-[-165px] group curesor-pointer">
           {/* TEXT (medium and large screen) */}
           <div className=" hidden md:block relative transform transition-transform duration-700 lg:group-hover:translate-x-[150px] h-[70px] w-[150px]">
             <Image 
