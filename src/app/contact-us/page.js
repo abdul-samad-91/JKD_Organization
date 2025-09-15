@@ -62,7 +62,7 @@ const ContactUs = () => {
                 </div>
             </section>
 
-            <section className={`${theme === "light" ? "bg-[#eefbff]" : "bg-black"} w-full flex flex-col items-center mb-10 py-10`}>    
+            <section className={`${theme === "light" ?  "bg-[#eefbff]" : "bg-black"} w-full flex flex-col items-center mb-10 py-10`}>    
             
                 <h3 className={`text-[16px] md:text-[17px] lg:text-[25px] lg:font-semibold pb-3 md:w-[600px] text-center px-5`}>Reach out to us by filling out the form below, and we’ll be in touch soon.</h3>
                 <form className='w-full  md:w-[600px]'>
@@ -87,7 +87,7 @@ const ContactUs = () => {
                         <input type='text' placeholder='subject' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                     </div>
                     {/* textarea */}
-                    <div className='flex flex-col gap-3  w-full pt-5'>
+                    <div className='flex flex-col gap-3 w-full pt-5'>
                         <label className='font-semibold'>Message</label>
                         <textarea rows={5}   className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} />
                     </div>
