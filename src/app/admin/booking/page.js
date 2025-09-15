@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 const Booking = () => {
   const {theme} = useGlobal();
   const router = useRouter()
-  const {bookingForm , setBookingForm} = useState({
+  const [bookingForm , setBookingForm] = useState({
     fullName:'',
     contactNumber:'',
     emailAddress: '',
