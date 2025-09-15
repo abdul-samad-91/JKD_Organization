@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import Booking from "@/models/Booking";
+import Booking from "@/models/bookModel";
 
 export async function POST(req) {
   try {
