@@ -21,16 +21,13 @@ const info = [
         color:"#177faa",
         name: "Contact info",
         icon:icon2,
-        details: [
-            "Days: Monday - Saturday",
-            "Time: 09:00 am - 05:00 pm"
-        ]    
+        details: ["Mobile: +92 333 9118828" , "Mail: info@jkdpakistan.org "]
     },
     {
         color:"#e98b28",
         name: "Work timer",
         icon:icon1,
-        details: ["Monday - Saturday: 09:00 am - 05:00 pm"]
+        details: [ "Days: Monday - Saturday","Time: 09:00 am - 05:00 pm" ]    
     }
 ];
 
