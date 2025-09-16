@@ -5,6 +5,8 @@ import text from "../../public/logo-text.png"
 import { useEffect, useState } from "react"
 import { useGlobal } from "@/context/GlobleContext"
 import { useRouter  , usePathname } from "next/navigation"
+import dark from '../../public/dark.png'
+import light from '../../public/light.png'
 
 export default function Header() {
   const  pages = [{path:'/' , name:'Home'},{path:'/about-us' , name:'About'},{path:'/programs' , name:'Vocational'},{path:'/how-we-work' , name:'How we work?'},{path:'#' , name:'Services'},{path:'#' , name:'IT Courses'}, {path:'/contact-us', name:'Contact us'}]
@@ -39,7 +41,7 @@ export default function Header() {
         `
       }
     >
-      <div className= {`  overflow-x-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6 lg:px-0 lg:max-w-[1200px] mx-auto`}>
+      <div className= {`  overflow-x-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6  mx-auto`}>
         {/* Logo Section */}
         <div onClick={()=> router.push('/')} className="flex items-center h-full md:ml-[-175px] lg:ml-[-165px] group curesor-pointer">
           {/* TEXT (medium and large screen) */}
@@ -72,30 +74,6 @@ export default function Header() {
           </div>    
         </div>
 
-        {/* Toggle Button */}
-        <label className="relative inline-flex items-center cursor-pointer">
-          <input
-            type="checkbox"
-            className="sr-only peer"
-            checked={theme === "dark"}   
-            onChange={themeChange}
-          />
-          
-          {/* Track */}
-          <div
-            className={`w-11 h-6 rounded-full transition-colors duration-300 ${
-              theme === "dark" ? "bg-gray-300" : "bg-black"
-            }`}
-          ></div>
-
-          {/* Knob */}
-          <div
-            className={`absolute left-1 top-1 w-4 h-4 rounded-full transition-all duration-300 peer-checked:translate-x-5 ${
-              theme === "light" ? "bg-white" : "bg-black"
-            }`}
-          ></div>
-        </label>
-
 
         {/* Desktop Nav */}
         <nav className="hidden md:block ">
@@ -108,29 +86,57 @@ export default function Header() {
           </ul>
         </nav>
 
-        {/* Contact Button (desktop only) */}
-        <button onClick={handleClick} className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
-          {/* Apply Now */}
-          Register
-        </button>
+        <div className="flex gap-5">  
+          {/* Toggle Button */}
+          <label className="relative inline-flex items-center cursor-pointer">
+            <div className="w-[50px] h-[25px] md:h-[30px] lg:h-[40px]  self-center " style={{
+                WebkitMaskImage: `url(${theme === "dark" ? light.src : dark.src})`,
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "center",
+                WebkitMaskSize: "contain",
+                maskImage: `url(${theme === "dark" ? light.src : dark.src})`,
+                maskRepeat: "no-repeat",
+                maskPosition: "center",
+                maskSize: "contain",
+                backgroundColor: theme === "dark" ? "white" : "black", 
+                }} 
+            ></div>
 
-        {
-          view && 
-          <div className={`absolute ${theme === 'light' ? 'bg-black text-white' :'bg-white text-black'} flex flex-col p-4 gap-5 top-16 right-20 rounded z-50 `}>
-            {/* <button onClick={()=> {router.push('/apply'); handleClick()}} className={` text-start cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Join the Program</button>
-            <button onClick={()=> {router.push('/booking'); handleClick()}} className={`text-start  cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Book Events</button> */}
-            <button onClick={()=> {router.push('/login'); handleClick()}} className={` text-start cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Login</button>
-            <button onClick={()=> {router.push('/signup'); handleClick()}} className={`text-start  cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>SignUp</button>
-          </div>
-        }
+            <input
+              type="checkbox"
+              className="sr-only peer"
+              checked={theme === "dark"}   
+              onChange={themeChange}
+            />
+            
+          </label>
 
-        {/* Hamburger (mobile only) */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-[#00d17a] text-2xl cursor-pointer"
-        >
-          {menuOpen ? "✖" : "☰"}
-        </button>
+
+
+          {/* Contact Button (desktop only) */}
+          <button onClick={handleClick} className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+            {/* Apply Now */}
+            Register
+          </button>
+
+          {
+            view && 
+            <div className={`hidden md:flex absolute ${theme === 'light' ? 'bg-black text-white' : 'bg-white text-black'} flex-col p-4 gap-5 top-16 right-20 rounded z-50`}>
+              {/* <button onClick={()=> {router.push('/apply'); handleClick()}} className={` text-start cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Join the Program</button>
+              <button onClick={()=> {router.push('/booking'); handleClick()}} className={`text-start  cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Book Events</button> */}
+              <button onClick={()=> {router.push('/login'); handleClick()}} className={` text-start cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Login</button>
+              <button onClick={()=> {router.push('/signup'); handleClick()}} className={`text-start  cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>SignUp</button>
+            </div>
+          }
+
+          {/* Hamburger (mobile only) */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden text-[#00d17a] text-2xl cursor-pointer"
+          >
+            {menuOpen ? "✖" : "☰"}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -146,9 +152,8 @@ export default function Header() {
               {page.name}
             </a>
           ))}
-          <button onClick={()=> router.push('/apply')} className="px-4 py-2 rounded bg-[#00874F] text-white">
-            Apply Now
-          </button>
+          <button onClick={()=> {router.push('/login'); handleClick()}} className={` text-start cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Login</button>
+          <button onClick={()=> {router.push('/signup'); handleClick()}} className={`text-start  cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>SignUp</button>
         </div>
       )}
     </header>

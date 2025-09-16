@@ -77,7 +77,7 @@ const handleSubmit = async (e) => {
   return (
     <div className={` h-screen w-full  flex flex-col justify-between `}>
         <Header />
-        <div className={`${theme === 'light' ? 'bg-white text-black':'bg-black text-white'} flex flex-col items-center mt-20`}>
+        <div className={`${theme === 'light' ? 'bg-white text-black':'bg-black text-white'} flex flex-col items-center mt-16 sm:mt-20`}>
             <div className=' max-w-[1200px] w-full px-4'> 
                 <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full text-[30px] md:text-[35px] lg:text-[39px] font-extrabold   `}>Contact Us</h1>
                 <div className='text-sm'>
@@ -91,7 +91,7 @@ const handleSubmit = async (e) => {
                     {
                         info?.map((details , index) =>
                         <div  key={index} className={` py-10 rounded md:w-[33%] border  ${theme === 'dark' ? 'bg-black border-[#177eaa94]' : 'bg-white border-[#00874f85]'} flex flex-col justify-center items-center`}>
-                            <div src={details.icon} alt={index}  className="w-[150px] h-[80px] object-contain self-center " style={{
+                            <div className="w-[150px] h-[80px] object-contain self-center " style={{
                                 WebkitMaskImage: `url(${details.icon.src})`,
                                 WebkitMaskRepeat: "no-repeat",
                                 WebkitMaskPosition: "center",
