@@ -219,7 +219,7 @@ const handleSubmit = async (e) => {
   return (
     <div className={`${theme === 'light' ? 'bg-[#eefbff] text-black':'bg-[#080808] text-white'} flex  h-screen  w-full `}>
         <AdminLeftSidebar className="w-[20%]" />
-        <form onSubmit={handleSubmit} className={` t w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
+        <form onSubmit={handleSubmit} className={` w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
             <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full pt-[18px] lg:text-[39px] lg:font-extrabold font-bold  `}>Regester</h1>
             {/* name and fatername */}
             <div className='flex w-full gap-5 pt-8'>
