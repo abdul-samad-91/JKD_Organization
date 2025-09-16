@@ -15,7 +15,7 @@ const info = [
         color:"#00874F",
         name: "Address Main Campus",
         icon:icon3,
-        details: ["16-B, Old Jamrud Road University Town Peshawa"]
+        details: ["16-B, Old Jamrud Road University Town Peshawr"]
     },
     {
         color:"#177faa",
@@ -85,8 +85,7 @@ const handleSubmit = async (e) => {
                     <span className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa] '} cursor-pointer`} >Contact Us</span>
                 </div>
             </div>
-            <section className={`${theme === "light" ? "bg-[#eefbff]" : "bg-[#080808]"} w-full flex flex-col items-center my-10 py-10`}>    
-            
+            <section className={`${theme === "light" ? "bg-[#eefbff]" : "bg-[#080808]"} w-full flex flex-col items-center my-10 py-10`}>                
                 <div className='flex flex-col md:flex-row justify-between gap-5 w-full lg:max-w-[1200px] px-4'>
                     {
                         info?.map((details , index) =>
@@ -105,7 +104,6 @@ const handleSubmit = async (e) => {
                             />
                             {/* <h3 className={`text-xl sm:text-2xl lg:text-[30px] pt-3 pb-4 font-semibold w-full text-center px-5`}>{details.name}</h3> */}
                             <h3 className=" text-[17px] md:text-[21px] lg:text-[25px] font-semibold pb-3 ">{details.name}</h3>
-
                             {
                                 details?.details?.map((text , index)=>
                                     <p key={index} className={`text-gray-700 text-sm  md:text-base px-2  text-center w-full ${theme === 'light' ? ' black ':'text-white'}`}>{text}</p>
@@ -117,13 +115,12 @@ const handleSubmit = async (e) => {
                 </div>
             </section>
 
-            <section className={`${theme === "light" ?  "bg-[#eefbff]" : "bg-[#080808]"} w-full flex flex-col items-center mb-10 py-10`}>    
-            
+            <section className={`${theme === "light" ?  "bg-[#eefbff]" : "bg-[#080808]"} w-full flex flex-col items-center mb-10 py-10`}>
                 <h3 className={`text-[17px] md:text-[21px] lg:text-[25px] font-semibold pb-3 w-full md:w-[600px] text-center px-5`}>Reach out to us by filling out the form below, and we’ll be in touch soon.</h3>
                 <form onSubmit={handleSubmit} className='w-full px-4 pt-3 md:pt-5 md:w-[600px]'>
                     {/* UserName */}
                     <div className='flex flex-col gap-3  w-full'>
-                        <label htmlFor='usrName' className=" text-sm font-semibold md:text-base">User Name</label>
+                        <label htmlFor='usrName' className=" text-sm md:text-base font-semibold ">User Name</label>
                         <input name='userName' value={contactForm.value} onChange={handleChange} type='text' id='usrName' placeholder='user name' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'}  p-2 rounded  outline-none`} />
                     </div>
                     {/* Email */}

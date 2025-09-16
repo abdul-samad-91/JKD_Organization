@@ -10,16 +10,18 @@ import { usePathname } from "next/navigation";
 import { toast } from "react-toastify";
 import Image from "next/image";
 import { useGlobal } from "@/context/GlobleContext";
+import dark from '../../public/dark.png'
+import light from '../../public/light.png'
 // import { useAuth } from "@/context/AuthContext";
 
 const AdminLeftSidebar = () => {
-  const {theme} = useGlobal();
+  const {theme , setTheme} = useGlobal();
   const router = useRouter();
   const pathname = usePathname();
 //   const {setUser} = useAuth();
 
   const menu = [
-    { path: "/admin", label: "Dashboard", icon: <MdDashboard /> },
+    { path: "/admin", label: "Profile", icon: <MdDashboard /> },
     // { path: "/transfers", label: "Transfers", icon: <FaExchangeAlt /> },
     { path: "/admin/apply", label: "Apply", icon: <FaPlus /> },
     { path: "/admin/booking", label: "Booking", icon: <FaUser /> },
@@ -69,9 +71,14 @@ const AdminLeftSidebar = () => {
 //         : " "
 //     }`;
 
+  const themeChange = ()=>{
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+  }
+// bg-[#177eaa94] bg-[#00874f85]
   return (
-    <div className={`w-[20%] h-full ${theme === "dark" ? "bg-[#177eaa94] text-white " : "bg-[#00874f85] text-black"} flex flex-col justify-between`}>
+    <div className={`w-[20%] h-full ${theme === "dark" ? " bg-black text-white " : "bg-white text-black"} flex flex-col justify-between`}>
       <div>
+        <div className="flex justify-between">
         {/* Logo Section */}
         <div className="flex items-center h-[100px]  md:ml-[-175px] lg:ml-[-145px] group">
             {/* TEXT (medium and large screen) */}
@@ -83,25 +90,45 @@ const AdminLeftSidebar = () => {
                 className="object-fill"
             />
             </div>    
-
-            {/* LOGO */}
-            <div className="relative h-full transform transition-all duration-700 lg:group-hover:translate-x-[100px] lg:group-hover:translate-y-[-50px] lg:group-hover:opacity-0 w-[70px] lg:h-[80px] lg:w-[70px] z-10">            
-            <Image 
-                src={logo} 
-                alt="LOGO" 
-                fill
-            />        
-            </div>
-
-            {/* TEXT (mobile screen) */}
-            <div className=" md:hidden relative transform transition-transform duration-700 lg:group-hover:translate-x-[150px] h-[70px] w-[150px] ml-[-20px]">
-            <Image 
-                src={text} 
-                alt="TEXT" 
-                fill
-                className="object-fill"
+              {/* LOGO */}
+              <div className="relative h-full transform transition-all duration-700 lg:group-hover:translate-x-[100px] lg:group-hover:translate-y-[-50px] lg:group-hover:opacity-0 w-[70px] lg:h-[80px] lg:w-[70px] z-10">            
+              <Image 
+                  src={logo} 
+                  alt="LOGO" 
+                  fill
+              />        
+              </div>
+              {/* TEXT (mobile screen) */}
+              <div className=" md:hidden relative transform transition-transform duration-700 lg:group-hover:translate-x-[150px] h-[70px] w-[150px] ml-[-20px]">
+              <Image 
+                  src={text} 
+                  alt="TEXT" 
+                  fill
+                  className="object-fill"
+              />
+              </div>    
+          </div>
+          {/* Toggle Button */}
+          <label className="relative inline-flex items-center cursor-pointer pr-2">
+            <div className="w-[50px] h-[25px] md:h-[30px] lg:h-[35px]  self-center " style={{
+                WebkitMaskImage: `url(${theme === "dark" ? light.src : dark.src})`,
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "center",
+                WebkitMaskSize: "contain",
+                maskImage: `url(${theme === "dark" ? light.src : dark.src})`,
+                maskRepeat: "no-repeat",
+                maskPosition: "center",
+                maskSize: "contain",
+                backgroundColor: theme === "dark" ? "white" : "black", 
+                }} 
+            ></div>
+            <input
+              type="checkbox"
+              className="sr-only peer"
+              checked={theme === "dark"}   
+              onChange={themeChange}
             />
-            </div>    
+          </label>
         </div>
 
         <nav className="flex flex-col space-y-2 px-4">

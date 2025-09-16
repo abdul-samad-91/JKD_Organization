@@ -144,7 +144,7 @@ const Booking = () => {
 //     </div>
 //   )
   return(
-    <div className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} flex  h-screen  w-full `}>
+    <div className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-[#080808]'} flex  h-screen  w-full `}>
       <AdminLeftSidebar className="w-[20%]" />
         {/* program page content */}
         <form onSubmit={handleSubmit} className={` w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>

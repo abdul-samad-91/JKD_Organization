@@ -89,7 +89,7 @@ export default function Header() {
         <div className="flex gap-5">  
           {/* Toggle Button */}
           <label className="relative inline-flex items-center cursor-pointer">
-            <div className="w-[50px] h-[25px] md:h-[30px] lg:h-[40px]  self-center " style={{
+            <div className="w-[50px] h-[25px] md:h-[30px] lg:h-[35px]  self-center " style={{
                 WebkitMaskImage: `url(${theme === "dark" ? light.src : dark.src})`,
                 WebkitMaskRepeat: "no-repeat",
                 WebkitMaskPosition: "center",

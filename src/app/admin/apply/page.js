@@ -26,16 +26,40 @@ const Apply = () => {
   const [progm , setProgm] = useState(null);
   const router = useRouter();
   const [applyForm , setApplyForm] = useState({
-    firstName:'',
-    lastName:'',
-    email:'',
-    dateOfBirth:'',
-    phoneNumber:'',
-    address:'',
-    CNIC:'',
-    parentCNIC:'',
-    age:'',
+    name:'',
+    fatherName:'',
     gender:'',
+    dateOfBirth:'',
+    email:'',
+    whatsappNumber:'',
+    phoneNumber:'',
+    CNIC:'',
+    expiryDate:'',
+    passportNo:'',
+    
+    // Candidate Address
+    province:'',
+    district:'',
+    tehsil:'',
+
+    // address for traning
+    traningRegion:'',
+    traningDistrict:'',
+    traningInstitute:'',
+    chooseSector:'',
+    chooseCourse:'',
+
+    qualification:'',
+    priorCertificate:'',
+    experience:'',
+
+    // Documents
+    CNICPicture:'',
+    qalificaion:'',
+    passportSizePic:'',
+    Passport:'',
+
+
     program:'',
     subProgram:''
   })
@@ -193,72 +217,188 @@ const handleSubmit = async (e) => {
 //   )
 
   return (
-    <div className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-black'} flex  h-screen  w-full `}>
+    <div className={`${theme === 'light' ? 'bg-[#eefbff] text-black':'bg-[#080808] text-white'} flex  h-screen  w-full `}>
         <AdminLeftSidebar className="w-[20%]" />
-        <form onSubmit={handleSubmit} className={` w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
-            <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full pt-[18px] lg:text-[39px] lg:font-extrabold font-bold  `}>Apply</h1>
-            {/* first and last name */}
+        <form onSubmit={handleSubmit} className={` t w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
+            <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full pt-[18px] lg:text-[39px] lg:font-extrabold font-bold  `}>Regester</h1>
+            {/* name and fatername */}
             <div className='flex w-full gap-5 pt-8'>
-                <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='font-semibold'>First Name</label>
-                    <input type='text' name='firstName' onChange={handleChange} value={applyForm.firstName} placeholder='first name' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`}  required/>
+                <div  className='flex flex-col gap-3  w-[50%]'>
+                    <label htmlFor="name" className='font-semibold text-sm md:text-base '>Name</label>
+                    <input id='name' type='text' name='name' onChange={handleChange} value={applyForm.name} placeholder='first name' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`}  required/>
                 </div>
                 <div className='flex flex-col gap-3 ] w-[50%]'>
-                    <label className='font-semibold'>Last Name</label>
-                    <input type='text' name='lastName' onChange={handleChange} value={applyForm.lastName} placeholder='last name' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <label htmlFor='fName' className='text-sm md:text-base font-semibold'>Father Name</label>
+                    <input id='fName' type='text' name='fatherName' onChange={handleChange} value={applyForm.lastName} placeholder='last name' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
+            </div>
+            {/* gender */}
+            <div className='flex flex-col gap-3  w-full pt-5'>
+                <label className='text-sm md:text-base font-semibold'>Gender</label>
+                <select name='gender' onChange={handleChange} value={applyForm.gender} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                    <option value="">Choose Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>                    
             </div>
             {/* email and DOB */}
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='font-semibold'>Email</label>
-                    <input type='text' name='email' onChange={handleChange} value={applyForm.email}  placeholder='email' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <label className='text-sm md:text-base font-semibold'>Email</label>
+                    <input type='text' name='email' onChange={handleChange} value={applyForm.email}  placeholder='email' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
                 <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='font-semibold'>Date of Birth</label>
-                    <input type='date' name='dateOfBirth' onChange={handleChange} value={applyForm.dateOfBirth} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <label className='text-sm md:text-base font-semibold'>Date of Birth</label>
+                    <input type='date' name='dateOfBirth' onChange={handleChange} value={applyForm.dateOfBirth} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* Phone and Address */}
-            <div className='flex w-full gap-3    pt-5'>
+            {/* whatsapp and Phone  number*/}
+            <div className='flex w-full gap-3 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='font-semibold'>Phone Number</label>
-                    <input type='text' name='phoneNumber' onChange={handleChange} value={applyForm.phoneNumber} placeholder='number' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <label className='text-sm md:text-base font-semibold'>Whatsapp Number</label>
+                    <input type='text' name='whatsappNumber' onChange={handleChange} value={applyForm.whatsappNumber} placeholder='number' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
                 <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='font-semibold'>Address</label>
-                    <input type='text' name='address' onChange={handleChange} value={applyForm.address} placeholder='address' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <label className='text-sm md:text-base font-semibold'>Phone Number</label>
+                    <input type='number' name='phoneNumber' onChange={handleChange} value={applyForm.phoneNumber} placeholder='address' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* CNIC and Father CNIC */}
+            {/* CNIC and expiryDate */}
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='font-semibold'>CNIC</label>
-                    <input type='number' name='CNIC' onChange={handleChange} value={applyForm.CNIC} placeholder='without dashes' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <label className='text-sm md:text-base font-semibold'>CNIC</label>
+                    <input type='number' name='CNIC' onChange={handleChange} value={applyForm.CNIC} placeholder='without dashes' className={`$text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
                 <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='font-semibold'>Father / Mother CNIC</label>
-                    <input type='number' name='parentCNIC' onChange={handleChange} value={applyForm.parentCNIC} placeholder='without dashes' className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <label className='text-sm md:text-base font-semibold'>Father / Mother CNIC</label>
+                    <input type='date' name='expiryDate' onChange={handleChange} value={applyForm.expiryDate} placeholder='without dashes' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* age and gender */}
+            {/* Applicant Address */}
+            <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  pt-10'>
+                Applicant Address
+            </h3>
+            {/* provience / district / tehsil */}
             <div className='flex w-full gap-5 pt-5'>
-                <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='font-semibold'>Age</label>
-                    <input type='number' name='age' onChange={handleChange} value={applyForm.age} min={9} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} required />
+                <div className='flex flex-col gap-3  w-[33%]'>
+                    <label className='text-sm md:text-base font-semibold'>Province</label>
+                    <select name='province' onChange={handleChange} value={applyForm.province} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                        <option value="">Province</option>
+                    </select>                    
+                </div>                
+                <div className='flex flex-col gap-3  w-[33%]'>
+                    <label className='text-sm md:text-base font-semibold'>District</label>
+                    <select name='district' onChange={handleChange} value={applyForm.district} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                        <option value="">District</option>
+                    </select>                    
                 </div>
-                <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='font-semibold'>Gender</label>
-                    <select name='gender' onChange={handleChange} value={applyForm.gender} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} required >
-                        <option value="">Choose Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
+                <div className='flex flex-col gap-3  w-[33%]'>
+                    <label className='text-sm md:text-base font-semibold'>Tehsil</label>
+                    <select name='tehsil' onChange={handleChange} value={applyForm.tehsil} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                        <option value="">Tehsil</option>
                     </select>                    
                 </div>
             </div>
-            {/* Program and sub Program */}
+            {/* Training Address*/}
+            <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  pt-10'>
+                Training Address
+            </h3>
+            {/* region / district */}
             <div className='flex w-full gap-5 pt-5'>
+                <div className='flex flex-col gap-3  w-[50%]'>
+                    <label className='text-sm md:text-base font-semibold'>Region</label>
+                    <select name='traningRegion' onChange={handleChange} value={applyForm.traningRegion} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                        <option value="">Region</option>
+                    </select>                    
+                </div>                
+                <div className='flex flex-col gap-3  w-[50%]'>
+                    <label className='text-sm md:text-base font-semibold'>District</label>
+                    <select name='traningDistrict' onChange={handleChange} value={applyForm.traningDistrict} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                        <option value="">District</option>
+                    </select>                    
+                </div>
+            </div>
+            {/* institute */}
+            <div className='flex flex-col gap-3 pt-5 w-full'>
+                <label className='text-sm md:text-base font-semibold'>District</label>
+                <select name='traningDistrict' onChange={handleChange} value={applyForm.traningDistrict} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                    <option value="">District</option>
+                </select>                    
+            </div> 
+
+            {/* sector / course */}
+            <div className='flex w-full gap-5 pt-10'>
+                <div className='flex flex-col gap-3  w-[50%]'>
+                    <label className='text-sm md:text-base font-semibold'>Choose Sector</label>
+                    <select name='chooseSector' onChange={handleChange} value={applyForm.chooseSector} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                        <option value="">-Select-</option>
+                    </select>                    
+                </div>                
+                <div className='flex flex-col gap-3  w-[50%]'>
+                    <label className='text-sm md:text-base font-semibold'>Choose Course</label>
+                    <select name='chooseCourse' onChange={handleChange} value={applyForm.chooseCourse} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                        <option value="">-Select-</option>
+                    </select>                    
+                </div>
+            </div> 
+
+            {/* qualification / certificates */}
+            <div className='flex w-full gap-5 pt-5'>
+                <div className='flex flex-col gap-3  w-[50%]'>
+                    <label className='text-sm md:text-base font-semibold'>Qualification</label>
+                    <select name='qualification' onChange={handleChange} value={applyForm.qualification} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                        <option value="">-Select-</option>
+                    </select>                    
+                </div>                
+                <div className='flex flex-col gap-3  w-[50%]'>
+                    <label className='text-sm md:text-base font-semibold'>Prior Certificate (if Any)</label>
+                    <select name='priorCertificate' onChange={handleChange} value={applyForm.priorCertificate} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                        <option value="">-Select-</option>
+                    </select>                    
+                </div>
+            </div> 
+
+            {/* Experience */}
+            <div className='flex flex-col gap-3  w-full pt-5'>
+                <label className='text-sm md:text-base font-semibold'>Experience</label>
+                <select name='experience' onChange={handleChange} value={applyForm.experience} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                    <option value="">-Select-</option>
+                </select>                    
+            </div>
+            {/* Documents */}
+            <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  pt-10'>
+                Documents
+            </h3>
+            <p className=' text-sm md:text-base w-full  '>
+                Please upload the following documents
+            </p>
+            {/* CNIC and qualification pic */}
+            <div className='flex w-full gap-5 pt-8'>
+                <div className='flex flex-col gap-3  w-[50%]'>
+                    <label className='text-sm md:text-base font-semibold'>CNIC Picture (Front & Back)</label>
+                    <input type='file' name='CNICPicture' className={`w-[95px] text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`}  required/>
+                </div>
+                <div className='flex flex-col gap-3 ] w-[50%]'>
+                    <label className='text-sm md:text-base font-semibold'>Latest Qualification Picture</label>
+                    <input type='file' name='qalificaion'  className={`w-[95px]  text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
+                </div>
+            </div>
+
+            {/* CNIC and qualification pic */}
+            <div className='flex w-full gap-5 pt-8'>
+                <div className='flex flex-col gap-3  w-[50%]'>
+                    <label className='text-sm md:text-base font-semibold'>Passport Size Photograph</label>
+                    <input type='file' name='passportSizePic' placeholder='first name' className={`w-[95px] text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`}  required/>
+                </div>
+                <div className='flex flex-col gap-3 ] w-[50%]'>
+                    <label className='text-sm md:text-base font-semibold'>Passport (optional)</label>
+                    <input type='file' name='Passport   '  className={`w-[95px]  text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
+                </div>
+            </div>    
+
+            {/* Program and sub Program */}
+            {/* <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Program</label>
                     <select name='program' onChange={handleChange} value={applyForm.program} className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded  outline-none`} required>
@@ -266,12 +406,8 @@ const handleSubmit = async (e) => {
                         <option value={'TVET'}>TVET</option>
                         <option value={'IT_and_Digital_Skills'}>IT and Digital Skills</option>
                         <option value={'Sports_and_Fitness'}>Sports and Fitness</option>
-                        {/* <option value={'Overseas_Recruitment'}>Overseas Recruitment</option> */}
-                        {/* <option value={'Travels_and_Tours'}>Travels and Tours</option> */}
                         <option value={'Parlour'}>Parlour</option>
                         <option value={'Boutique'}>Boutique</option>
-                        {/* <option value={'Uplift_Events'}>Uplift Events</option> */}
-                        {/* <option value={'Foudium'}>Foudium</option> */}
                     </select>                    
                 </div>
                 <div className='flex flex-col gap-3  w-[50%]'>
@@ -285,7 +421,9 @@ const handleSubmit = async (e) => {
                         }
                     </select>                     
                 </div>
-            </div>
+            </div> */}
+
+
             <div className='self-start  pt-5'>
                 <button type='submit' className={`hidden md:block  px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
                     {loading ? "Submiting..." : "Submit"}
