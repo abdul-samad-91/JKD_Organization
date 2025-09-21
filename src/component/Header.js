@@ -9,7 +9,15 @@ import dark from '../../public/dark.png'
 import light from '../../public/light.png'
 
 export default function Header() {
-  const  pages = [{path:'/' , name:'Home'},{path:'/about-us' , name:'About'},{path:'/programs' , name:'Vocational'},{path:'/how-we-work' , name:'How we work?'},{path:'#' , name:'Services'},{path:'#' , name:'IT Courses'}, {path:'/contact-us', name:'Contact us'}]
+  const  pages = [
+    {path:'/' , name:'Home'},
+    // {path:'/about-us' , name:'About'},
+    {path:'/programs' , name:'Vocational'},
+    {path:'#' , name:'IT Courses'}, 
+    // {path:'/how-we-work' , name:'How we work?'},
+    {path:'#' , name:'Services'},
+    {path:'/contact-us', name:'Contact us'}
+  ]
   const {theme , setTheme} = useGlobal();
   const router = useRouter();
   const pathname = usePathname();

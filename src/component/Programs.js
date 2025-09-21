@@ -114,8 +114,8 @@ const Programs = () => {
 
   return (
     <section
-      className={` relative mt-10 flex flex-col items-center pt-15 pb-5 w-full ${
-        theme === "light" ? "bg-[#eefbff]" : "bg-black"
+      className={` relative mb-10 flex flex-col items-center pt-10 pb-5 w-full ${
+        theme === "light" ? "bg-[#eefbff]" : "bg-[#0b0b0b]"
       }`}
     >
       <h1

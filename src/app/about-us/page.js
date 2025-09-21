@@ -4,7 +4,7 @@ import Footer from '@/component/Footer';
 import Header from '@/component/Header';
 import { useGlobal } from '@/context/GlobleContext';
 import { useRouter } from 'next/navigation';
-import JKD from './JKD';
+import JKD from '../../component/JKD';
 import CEO from './CEO';
 import WhoWeAre from './WhatWeValue';
 import WhyChooseUs from './WhyChooseUs';

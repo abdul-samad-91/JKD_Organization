@@ -52,7 +52,7 @@ useEffect(() => {
   };
 
   return (
-    <section className={`flex flex-col items-center justify-center w-full py-10 my-10 relative overflow-hidden ${theme === 'light' ? 'text-black bg-[#eefbff]' : 'text-white bg-black'} `}>
+    <section className={`flex flex-col items-center justify-center w-full py-10 my-10 relative overflow-hidden ${theme === 'light' ? 'text-black bg-[#eefbff]' : 'text-white bg-[#0b0b0b]'} `}>
       <h1 className={`text-[30px] md:text-[35px] lg:text-[39px] font-semibold w-[250px] sm:w-[600px] md:w-[900px] lg:w-[1200px]  `}>Testimonials</h1>
       <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {testimonials?.map((testimonial, index) => (

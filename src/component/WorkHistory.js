@@ -28,7 +28,7 @@ const WorkHistory = () => {
     },
     ];
   return (
-    <section className={`py-15 flex justify-center ${theme === 'light' ? 'bg-[#eefbff]' : 'bg-black'}  w-full`}>
+    <section className={`py-15 flex justify-center ${theme === 'light' ? 'bg-[#eefbff]' : 'bg-[#0b0b0b]'}  w-full`}>
         <div className="flex gap-10 flex-wrap justify-center lg:justify-between text-center lg:w-[1200px]">
         {workDetails?.map((detail, index) => (
             <React.Fragment key={index}>
