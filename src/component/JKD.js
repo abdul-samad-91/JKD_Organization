@@ -73,6 +73,7 @@ const JKD = () => {
                         <span className={`font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}>Collaboration:</span> Partnering for collective impact.
                         </p>
                     </li>
+                    
 
                     <li className="flex items-center gap-3 mb-1 ">
                         <FontAwesomeIcon icon={faLandmark} className="text-red-500 text-xl " />

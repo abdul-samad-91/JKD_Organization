@@ -8,6 +8,7 @@ import { useRouter  , usePathname } from "next/navigation"
 import dark from '../../public/dark.png'
 import light from '../../public/light.png'
 
+
 export default function Header() {
   const  pages = [
     {path:'/' , name:'Home'},
