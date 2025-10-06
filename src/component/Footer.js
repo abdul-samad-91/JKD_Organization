@@ -8,7 +8,8 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaTiktok , FaEnvelope, 
 import { useRouter } from 'next/navigation'
 
 export default function Footer() {
-  const {theme} = useGlobal();
+  // const {theme} = useGlobal();
+  const theme = 'dark';
   const router = useRouter();
   
   const Links = [

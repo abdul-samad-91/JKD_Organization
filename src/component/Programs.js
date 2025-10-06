@@ -114,19 +114,17 @@ const Programs = () => {
 
   return (
     <section
-      className={` relative mb-10 flex flex-col items-center pt-10 pb-5 w-full ${
-        theme === "light" ? "bg-[#eefbff]" : "bg-[#0b0b0b]"
-      }`}
+      className={` relative mb-10 flex flex-col items-center pt-10  w-full bg-white`}
     >
       <h1
-        className={`text-[30px] md:text-[35px] lg:text-[39px] font-semibold  w-[250px] sm:w-[600px] md:w-[900px]  lg:w-[1200px] ${
+        className={`text-center text-[30px] md:text-[35px] lg:text-[39px] font-semibold  w-[250px] sm:w-[600px] md:w-[900px]  lg:w-[1200px] ${
           theme === "light" ? "text-black" : "text-white"
         }`}
       >
         Programs
       </h1>
 
-      <div className="w-[275px] sm:w-[600px] md:w-[900px] overflow-hidden lg:w-[1200px] pt-10 pb-15">
+      <div className="w-[275px] sm:w-[600px] md:w-[900px] overflow-hidden  lg:w-[1200px] pt-10 p">
         {/* Left Button */}
         <button
           onClick={() => handlePicChange("left")}
@@ -143,16 +141,16 @@ const Programs = () => {
           {programs?.map((program, index) => (
             <div
               key={index}
-              className={`relative px-4 program-card overflow-hidden  shadow-lg rounded text-center min-w-[275px] sm:min-w-[275px] ${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'}`}
+              className={`relative px-4 mb-10 border border-gray-200 pt-4 program-card overflow-visible  shadow-lg rounded text-center min-w-[275px] sm:min-w-[275px] `}
             >
               <div className="w-full relative z-10">
                 <Image
                   src={program.image}
-                  className="relative rounded-b h-[200px] w-full object-cover mx-auto"
+                  className="relative rounded h-[200px] w-full object-cover mx-auto"
                   alt={program.title}
                 />
               </div>
-              <div
+              {/* <div
                 className={`absolute z-40 w-[50px] rounded-full overflow-hidden top-5 right-5 ${
                   theme === "light" ? "bg-white" : "bg-white"
                 }`}
@@ -164,7 +162,7 @@ const Programs = () => {
                   height={100}
                   alt={program.title}
                 />
-              </div>
+              </div> */}
               <h3 className={`mt-4 text-lg font-bold ${theme === 'dark' ? 'text-white' : 'text-black'}`}>{program.title}</h3>
               <p className={`${theme === 'dark' ? 'text-white' : 'text-black'} text-sm`}>{program.description}</p>
             </div>

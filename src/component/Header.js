@@ -19,7 +19,8 @@ export default function Header() {
     {path:'#' , name:'Services'},
     {path:'/contact-us', name:'Contact us'}
   ]
-  const {theme , setTheme} = useGlobal();
+  // const {theme , setTheme} = useGlobal();
+  const theme = "dark";
   const router = useRouter();
   const pathname = usePathname();
   console.log(pathname)
@@ -27,6 +28,7 @@ export default function Header() {
   const themeChange = ()=>{
     theme === 'light' ? setTheme('dark') : setTheme('light')
   }
+
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -43,10 +45,7 @@ export default function Header() {
   return (
     <header 
       className={`fixed z-50 w-full 
-        ${theme === 'dark'
-          ?'text-white bg-black '
-          :'text-black bg-white '
-        }
+        bg-white
         `
       }
     >
@@ -96,29 +95,6 @@ export default function Header() {
         </nav>
 
         <div className="flex gap-5">  
-          {/* Toggle Button */}
-          <label className="relative inline-flex items-center cursor-pointer">
-            <div className="w-[50px] h-[25px] md:h-[30px] lg:h-[35px]  self-center " style={{
-                WebkitMaskImage: `url(${theme === "dark" ? light.src : dark.src})`,
-                WebkitMaskRepeat: "no-repeat",
-                WebkitMaskPosition: "center",
-                WebkitMaskSize: "contain",
-                maskImage: `url(${theme === "dark" ? light.src : dark.src})`,
-                maskRepeat: "no-repeat",
-                maskPosition: "center",
-                maskSize: "contain",
-                backgroundColor: theme === "dark" ? "white" : "black", 
-                }} 
-            ></div>
-
-            <input
-              type="checkbox"
-              className="sr-only peer"
-              checked={theme === "dark"}   
-              onChange={themeChange}
-            />
-            
-          </label>
 
 
 
@@ -130,7 +106,7 @@ export default function Header() {
 
           {
             view && 
-            <div className={`hidden md:flex absolute ${theme === 'light' ? 'bg-black text-white' : 'bg-white text-black'} flex-col p-4 gap-5 top-16 right-20 rounded z-50`}>
+            <div className={`hidden md:flex absolute bg-black text-white flex-col p-4 gap-5 top-16 right-20 rounded z-50`}>
               {/* <button onClick={()=> {router.push('/apply'); handleClick()}} className={` text-start cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Join the Program</button>
               <button onClick={()=> {router.push('/booking'); handleClick()}} className={`text-start  cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Book Events</button> */}
               <button onClick={()=> {router.push('/login'); handleClick()}} className={` text-start cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>Login</button>

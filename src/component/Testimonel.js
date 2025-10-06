@@ -52,13 +52,13 @@ useEffect(() => {
   };
 
   return (
-    <section className={`flex flex-col items-center justify-center w-full py-10 my-10 relative overflow-hidden ${theme === 'light' ? 'text-black bg-[#eefbff]' : 'text-white bg-[#0b0b0b]'} `}>
-      <h1 className={`text-[30px] md:text-[35px] lg:text-[39px] font-semibold w-[250px] sm:w-[600px] md:w-[900px] lg:w-[1200px]  `}>Testimonials</h1>
+    <section className={`flex flex-col items-center justify-center w-full pb-10  mb-10 relative overflow-hidden bg-white `}>
+      <h1 className={`text-center text-[30px] md:text-[35px] lg:text-[39px] font-semibold w-[250px] sm:w-[600px] md:w-[900px] lg:w-[1200px]  `}>Testimonials</h1>
       <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {testimonials?.map((testimonial, index) => (
           <div
             key={index}
-            className="w-full  sm:h-[400px] flex flex-col justify-center items-center flex-shrink-0 p-4 " // Added p-4 for padding on smaller screens
+            className="w-full pt-10 sm:h-[400px] flex flex-col justify-center items-center flex-shrink-0 p-4 " // Added p-4 for padding on smaller screens
           >
             <Image
               src={testimonial.image}
