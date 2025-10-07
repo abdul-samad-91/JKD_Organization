@@ -43,7 +43,7 @@ const HeroSection = () => {
         <button
           key={index}
           onClick={() => goToSlide(index)}
-          className={`h-4 w-4 rounded-full   ${index === currentIndex ? theme === 'light'?'bg-white  ring-2 ring-white ' : 'bg-black  ring-2 ring-black ' :'bg-gray-400 '} `}
+          className={`h-4 w-4 rounded-full   ${index === currentIndex ?'bg-[#00874F] ring-2 ring-[#00874F] ' : 'bg-gray-400 '} `}
           aria-label={`Go to testimonial ${index + 1}`}
         ></button>
       ))}

@@ -3,18 +3,18 @@ import Image from "next/image"
 import logo from "../../public/jkd-icon.png"
 import text from "../../public/logo-text.png"
 import { useEffect, useState } from "react"
-import { useGlobal } from "@/context/GlobleContext"
 import { useRouter  , usePathname } from "next/navigation"
-import dark from '../../public/dark.png'
-import light from '../../public/light.png'
 
 
 export default function Header() {
+  const [dropDown,setDropDown] = useState({
+    itCourses:false,
+  })
   const  pages = [
     {path:'/' , name:'Home'},
     // {path:'/about-us' , name:'About'},
     {path:'/programs' , name:'Vocational'},
-    {path:'#' , name:'IT Courses'}, 
+    {path:'#' , name:'IT Courses' , hover:'itCourses'}, 
     // {path:'/how-we-work' , name:'How we work?'},
     {path:'#' , name:'Services'},
     {path:'/contact-us', name:'Contact us'}
@@ -43,11 +43,13 @@ export default function Header() {
   }
 
   return (
+  <>
     <header 
-      className={`fixed z-50 w-full 
+      className={`fixed  z-50 w-full 
         bg-white
         `
       }
+      // onMouseLeave={()=>setDropDown({itCourses:false})}
     >
       <div className= {`  overflow-x-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6  mx-auto`}>
         {/* Logo Section */}
@@ -87,7 +89,7 @@ export default function Header() {
         <nav className="hidden md:block ">
           <ul className="flex gap-6 items-center text-sm md:text-[14px] lg:text-base">
             {pages.map((page, index) => (
-              <li key={index} onClick={()=> routChange(page.path)} className={`${theme === 'light' ? 'hover:text-[#00d17a]  ' : 'hover:text-[#177faa] '} ${ page.path === pathname ? theme === 'light' ? 'text-[#00d17a] font-bold' : 'text-[#177faa] font-bold' : ''} cursor-pointer `}>
+              <li key={index} onClick={()=> routChange(page.path)} onMouseEnter={()=>setDropDown((preValue)=>{return{...preValue, [page.hover]:true}})}  className={`${theme === 'light' ? 'hover:text-[#00d17a]  ' : 'hover:text-[#177faa] '} ${ page.path === pathname ? theme === 'light' ? 'text-[#00d17a] font-bold' : 'text-[#177faa] font-bold' : ''} cursor-pointer `}>
                 {page.name}
               </li>
             ))}
@@ -95,9 +97,6 @@ export default function Header() {
         </nav>
 
         <div className="flex gap-5">  
-
-
-
           {/* Contact Button (desktop only) */}
           <button onClick={handleClick} className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
             {/* Apply Now */}
@@ -141,6 +140,44 @@ export default function Header() {
           <button onClick={()=> {router.push('/signup'); handleClick()}} className={`text-start  cursor-pointer py-1 px-2 rounded ${theme === 'light' ? 'hover:bg-[#00874F]  ': 'hover:text-white hover:bg-[#177faa]'}`}>SignUp</button>
         </div>
       )}
+
+            {/* dropdown */}
+      {
+        dropDown.itCourses &&
+        (      
+        <div className=" flex justify-center gap-10 bg-[#00874F]  py-8 text-white z-50"
+        onMouseEnter={() => setDropDown({ itCourses: true })}
+        onMouseLeave={() => setDropDown({ itCourses: false })}>
+          <div className="w-[30%]">
+            <h5 className="text-black font-semibold">Full Stack Development</h5>
+            <hr className="my-4"/>
+            <h6>MERN Stack</h6>
+            <hr className="my-2"/>
+            <h6>MEAN Stack</h6>
+            <hr className="my-2"/>
+          </div>
+          <div className="w-[30%]">
+            <h5 className="text-black font-semibold">Mobile App Development</h5>
+            <hr className="my-4"/>
+            <h6>Flutter</h6>
+            <hr className="my-2"/>
+            <h6>React Native</h6>
+            <hr className="my-2"/>
+          </div>
+          <div className="w-[30%]">
+            <h5 className="text-black font-semibold">Designing</h5>
+            <hr className="my-4"/>
+            <h6>Grapic</h6>
+            <hr className="my-2"/>
+            <h6>UI/UX</h6>
+            <hr className="my-2"/>
+          </div>
+        </div>
+        )
+      }
     </header>
+    
+
+  </> 
   );
 }
