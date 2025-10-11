@@ -4,7 +4,7 @@ import logo from "../../public/jkd-icon.png"
 import text from "../../public/logo-text.png"
 import { useEffect, useState } from "react"
 import { useRouter  , usePathname } from "next/navigation"
-
+import Link from "next/link"
 
 export default function Header() {
   const [dropDown,setDropDown] = useState({
@@ -151,25 +151,25 @@ export default function Header() {
           <div className="w-[30%]">
             <h5 className="text-black font-semibold">Full Stack Development</h5>
             <hr className="my-4"/>
-            <h6>MERN Stack</h6>
+            <Link href="/course/mern-stack">MERN Stack</Link>
             <hr className="my-2"/>
-            <h6>MEAN Stack</h6>
+            <Link href="/course/mean-stack">MEAN Stack</Link>
             <hr className="my-2"/>
           </div>
           <div className="w-[30%]">
             <h5 className="text-black font-semibold">Mobile App Development</h5>
             <hr className="my-4"/>
-            <h6>Flutter</h6>
+            <Link href="/course/flutter">Flutter</Link>
             <hr className="my-2"/>
-            <h6>React Native</h6>
+            <Link href="/course/react-native">React Native</Link>
             <hr className="my-2"/>
           </div>
           <div className="w-[30%]">
             <h5 className="text-black font-semibold">Designing</h5>
             <hr className="my-4"/>
-            <h6>Grapic</h6>
+            <Link href="/course/grapic-design"> Grapic </Link>
             <hr className="my-2"/>
-            <h6>UI/UX</h6>
+            <Link href="/course/uiux-design"> UI/UX </Link>
             <hr className="my-2"/>
           </div>
         </div>
