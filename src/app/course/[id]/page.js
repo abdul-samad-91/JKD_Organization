@@ -60,17 +60,32 @@ const Courses = () => {
 
         {/* certification */}
           <h4 className='text-[20px] font-semibold pb-3  text-black'>CERTIFICATION</h4>
-          {currCourse?.certification?.map((course , index)=>
-            <p key={index} className="text-gray-700  w-[60%]">
-              {course}
-              <br/>
-            </p>
-          )}
+          {currCourse?.certification?.map((course, index) => {
+              const isListItem = course.includes("<b>");
+              if (isListItem) {
+                return (
+                  <li
+                    key={index}
+                    className="list-disc ml-6"
+                    dangerouslySetInnerHTML={{ __html: course }}
+                  ></li>
+                );
+              } else {
+                return (
+                  <p
+                    className="text-gray-700 w-[60%] "
+                    key={index}
+                    dangerouslySetInnerHTML={{ __html: course }}
+                  ></p>
+                );
+              }
+            })}
 
           {/* leraning outcomes */}
           <br/>
           <h4 className='text-[20px] font-semibold pb-3  text-black'>LEARNING OUTCOMES</h4>
-          <ul className="w-[60%] list-disc ml-4">
+          <p className="text-gray-700 w-[60%]" >By the end of this course, students will be able to:</p>
+          <ul className="w-[60%] list-disc ml-10 pt-3">
             {currCourse?.learningOutcomes?.map((course , index)=>
               <li key={index} className="text-gray-700  ">
                 {course}
@@ -79,11 +94,33 @@ const Courses = () => {
             )}
           </ul>
 
-          <br/>
-          <h4 className='text-[20px] font-semibold pb-3  text-black'>{currCourse?.carrer &&"CARRIER"}</h4>
-          <p  className="text-gray-700  w-[60%]">
-            {currCourse?.carrer}
-          </p>
+          {
+            currCourse?.carrer && 
+            <>
+              <br/>
+              <h4 className='text-[20px] font-semibold pb-3  text-black'>{currCourse?.carrer &&"CARRIER"}</h4>
+              <p  className="text-gray-700  w-[60%]">
+                {currCourse?.carrer}
+              </p>
+            </>
+          }
+
+          {
+            currCourse?.programBinits && 
+            <>
+              <br/>
+              <h4 className='text-[20px] font-semibold pb-3  text-black'>Program Benefits</h4>
+              <ul className="w-[60%] list-disc ml-6 pt-3">
+                {currCourse?.learningOutcomes?.map((course , index)=>
+                  <li key={index} className="text-gray-700  ">
+                    {course}
+                    <br/>
+                  </li>
+                )}
+              </ul>
+            </>
+          }
+
         </div>
       </div>
 

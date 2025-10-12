@@ -5,6 +5,8 @@ import text from "../../public/logo-text.png"
 import { useEffect, useState } from "react"
 import { useRouter  , usePathname } from "next/navigation"
 import Link from "next/link"
+import upArrow from "../../public/arrowUp.png"
+import downArrow from "../../public/arrowDown.png"
 
 export default function Header() {
   const [dropDown,setDropDown] = useState({
@@ -12,10 +14,8 @@ export default function Header() {
   })
   const  pages = [
     {path:'/' , name:'Home'},
-    // {path:'/about-us' , name:'About'},
     {path:'/programs' , name:'Vocational'},
     {path:'#' , name:'IT Courses' , hover:'itCourses'}, 
-    // {path:'/how-we-work' , name:'How we work?'},
     {path:'#' , name:'Services'},
     {path:'/contact-us', name:'Contact us'}
   ]
@@ -89,8 +89,15 @@ export default function Header() {
         <nav className="hidden md:block ">
           <ul className="flex gap-6 items-center text-sm md:text-[14px] lg:text-base">
             {pages.map((page, index) => (
-              <li key={index} onClick={()=> routChange(page.path)} onMouseEnter={()=>setDropDown((preValue)=>{return{...preValue, [page.hover]:true}})}  className={`${theme === 'light' ? 'hover:text-[#00d17a]  ' : 'hover:text-[#177faa] '} ${ page.path === pathname ? theme === 'light' ? 'text-[#00d17a] font-bold' : 'text-[#177faa] font-bold' : ''} cursor-pointer `}>
+              <li key={index} onClick={()=> routChange(page.path)} onMouseEnter={()=>setDropDown((preValue)=>{return{...preValue, [page.hover]:true}})}  className={`flex gap-2 items-center ${theme === 'light' ? 'hover:text-[#00d17a]  ' : 'hover:text-[#177faa] '} ${ page.path === pathname ? theme === 'light' ? 'text-[#00d17a] font-bold' : 'text-[#177faa] font-bold' : ''} cursor-pointer `}>
                 {page.name}
+                {
+                  
+                  page.hover === 'itCourses' ? dropDown[page.hover] ?
+                  <Image src={upArrow} className="w-4 h-4" alt="icon" />
+                  :
+                  <Image src={downArrow} className="w-4 h-4" alt="icon" />:null
+                }
               </li>
             ))}
           </ul>
@@ -148,7 +155,8 @@ export default function Header() {
         <div className=" flex justify-center gap-10 bg-[#00874F]  py-8 text-white z-50"
         onMouseEnter={() => setDropDown({ itCourses: true })}
         onMouseLeave={() => setDropDown({ itCourses: false })}>
-          <div className="w-[30%]">
+          
+          <div className="w-[30%]" onClick={() => setDropDown({ itCourses: false })}>
             <h5 className="text-black font-semibold">Full Stack Development</h5>
             <hr className="my-4"/>
             <Link href="/course/mern-stack">MERN Stack</Link>
@@ -156,7 +164,7 @@ export default function Header() {
             <Link href="/course/mean-stack">MEAN Stack</Link>
             <hr className="my-2"/>
           </div>
-          <div className="w-[30%]">
+          <div className="w-[30%]" onClick={() => setDropDown({ itCourses: false })}>
             <h5 className="text-black font-semibold">Mobile App Development</h5>
             <hr className="my-4"/>
             <Link href="/course/flutter">Flutter</Link>
@@ -164,7 +172,7 @@ export default function Header() {
             <Link href="/course/react-native">React Native</Link>
             <hr className="my-2"/>
           </div>
-          <div className="w-[30%]">
+          <div className="w-[30%]" onClick={() => setDropDown({ itCourses: false })}>
             <h5 className="text-black font-semibold">Designing</h5>
             <hr className="my-4"/>
             <Link href="/course/grapic-design"> Grapic </Link>
