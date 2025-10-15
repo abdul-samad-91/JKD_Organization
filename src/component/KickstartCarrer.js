@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logoPart1 from "../../public/logo-part1.png"
 import logoPart2 from "../../public/logo-part2.png"
 import Image from 'next/image';
@@ -34,9 +34,32 @@ const KickstartCarrer = () => {
       }
   ];
   const theme = 'light';
+  const [isVisible, setIsVisible] = useState(false);
+const [offset, setOffset] = useState(0);
+  useEffect(() => {
+    const section = document.getElementById("kickstart-section");
+    console.log(section)
+    const handleScroll = () => {
+      const rect = section.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      setIsVisible(inView);
+      if (inView) {
+        console.log("hello");
+        setOffset(window.scrollY * -0.2 );
+      }
+    };
 
+    window.addEventListener("scroll", handleScroll);
+    // handleScroll(); // run once on mount
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  
+  
+console.log(isVisible ,offset)
   return (
-    <section className='bg-[#005f88] w-full flex flex-col items-center my-10 py-20 text-white'>
+    <section
+      id="kickstart-section" className='bg-[#005f88] w-full flex flex-col items-center my-10 py-20 text-white'>
         <h2 className='text-[35px] font-normal'>Ready to Kickstart your<span className={` font-bold text-[#e98b28]`}>Career?</span></h2>
         <h3 className='text-[23px] pt-2 '>Insterted in Innovation and Design</h3>
         <div className='my-3 py-5 flex items-center overflow-visible relative '>
@@ -49,7 +72,10 @@ const KickstartCarrer = () => {
           <div>
               <h2 className='text-[35px] font-semibold text-center '>Why JKD?</h2>
           </div>
-          <div className='md:flex  gap-5 rounded justify-center items-center md:pt-5'>
+          <div className='md:flex  gap-5 rounded justify-center items-center md:pt-5  transition-all duration-200'
+      style={{
+        transform: `translateY(${570+offset}px)`,
+      }}>
                 {data?.map((card , index)=>
                   <div key={index} className={` mt-5 md:mt-0 relative flex flex-col justify-start p-5 md:w-[33%] lg:h-[390px]  border-5 rounded bg-white`} 
                   >

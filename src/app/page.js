@@ -5,8 +5,6 @@ import { useGlobal } from "@/context/GlobleContext";
 import React from "react";
 import HeroSection from "@/component/HeroSection";
 import Programs from "@/component/Programs";
-import About from "@/component/About";
-import JkdPIcs from "@/component/JkdPIcs";
 import Partners from "@/component/Partners";
 import WorkHistory from "@/component/WorkHistory";
 import Testimonel from "@/component/Testimonel";
