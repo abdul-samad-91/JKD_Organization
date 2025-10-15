@@ -4,7 +4,7 @@ import AdminLeftSidebar from '@/component/AdminLeftSidebar'
 import Footer from '@/component/Footer'
 import Header from '@/component/Header'
 import { useGlobal } from '@/context/GlobleContext'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -21,8 +21,13 @@ Foudium:["Brunch & Breakfast","Lunch & Dinner","Pakistani Cuisine","Tandoori Chi
 
 };
 
+const itProgram=["MERN Stack","MEAN Stack" ,"Flutter ","React Native","UI/UX Design","Graphic Design",];
+const tevet=["Plumber & Pipe Fabricator Course","Tile Fixer","Plasterer","Steel Fixer","Carpenter","Building Electrician","Industrial Electrician","Fiber Optics Technician","Solar System Technician","CCTV Technician","Front Office Manager","Professional Cook","Fast Food Expert","Housekeeing","Tour Operator","Domestic Skilled Worker","Welder","HVACR Technician","Lift Operator",,"Arena Football","Football","Badminton","Table Tennis","Fitness Club","Cricket"]
+
 const Apply = () => {
-  const {theme} = useGlobal();
+  const {id} = useParams();
+//   const {theme} = useGlobal();
+  const theme = 'light';
   const [progm , setProgm] = useState(null);
   const router = useRouter();
   const [applyForm , setApplyForm] = useState({
@@ -217,10 +222,14 @@ const handleSubmit = async (e) => {
 //   )
 
   return (
-    <div className={`${theme === 'light' ? 'bg-[#eefbff] text-black':'bg-[#080808] text-white'} flex  h-screen  w-full `}>
+    <div className={`${theme === 'light' ? 'bg-[#eefbff] text-black':'bg-[#080808] text-white'} flex  flex-col   w-full `}>
+        <Header />
         {/* <AdminLeftSidebar className="w-[20%]" /> */}
-        <form onSubmit={handleSubmit} className={` w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
-            <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full pt-[18px] lg:text-[39px] lg:font-extrabold font-bold  `}>Regester</h1>
+        <form onSubmit={handleSubmit} className={` w-full  flex flex-col items-center overflow-y-scroll p-10 mt-20 `}>
+            {/* <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full  lg:text-[39px] lg:font-extrabold font-bold  `}>Regester</h1> */}
+            <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  '>
+               Perosnal Details
+            </h3>
             {/* name and fatername */}
             <div className='flex w-full gap-5 pt-8'>
                 <div  className='flex flex-col gap-3  w-[50%]'>
@@ -300,72 +309,29 @@ const handleSubmit = async (e) => {
                     </select>                    
                 </div>
             </div>
-            {/* Training Address*/}
+            {/* Preffered Course*/}
             <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  pt-10'>
-                Training Address
+                Preffered Course
             </h3>
-            {/* region / district */}
-            <div className='flex w-full gap-5 pt-5'>
-                <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='text-sm md:text-base font-semibold'>Region</label>
-                    <select name='traningRegion' onChange={handleChange} value={applyForm.traningRegion} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
-                        <option value="">Region</option>
-                    </select>                    
-                </div>                
-                <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='text-sm md:text-base font-semibold'>District</label>
-                    <select name='traningDistrict' onChange={handleChange} value={applyForm.traningDistrict} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
-                        <option value="">District</option>
-                    </select>                    
-                </div>
-            </div>
-            {/* institute */}
-            <div className='flex flex-col gap-3 pt-5 w-full'>
-                <label className='text-sm md:text-base font-semibold'>District</label>
-                <select name='traningDistrict' onChange={handleChange} value={applyForm.traningDistrict} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
-                    <option value="">District</option>
-                </select>                    
-            </div> 
-
             {/* sector / course */}
-            <div className='flex w-full gap-5 pt-10'>
-                <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='text-sm md:text-base font-semibold'>Choose Sector</label>
-                    <select name='chooseSector' onChange={handleChange} value={applyForm.chooseSector} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
-                        <option value="">-Select-</option>
-                    </select>                    
-                </div>                
-                <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='text-sm md:text-base font-semibold'>Choose Course</label>
-                    <select name='chooseCourse' onChange={handleChange} value={applyForm.chooseCourse} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
-                        <option value="">-Select-</option>
-                    </select>                    
-                </div>
-            </div> 
-
-            {/* qualification / certificates */}
-            <div className='flex w-full gap-5 pt-5'>
-                <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='text-sm md:text-base font-semibold'>Qualification</label>
-                    <select name='qualification' onChange={handleChange} value={applyForm.qualification} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
-                        <option value="">-Select-</option>
-                    </select>                    
-                </div>                
-                <div className='flex flex-col gap-3  w-[50%]'>
-                    <label className='text-sm md:text-base font-semibold'>Prior Certificate (if Any)</label>
-                    <select name='priorCertificate' onChange={handleChange} value={applyForm.priorCertificate} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
-                        <option value="">-Select-</option>
-                    </select>                    
-                </div>
-            </div> 
-
-            {/* Experience */}
-            <div className='flex flex-col gap-3  w-full pt-5'>
-                <label className='text-sm md:text-base font-semibold'>Experience</label>
-                <select name='experience' onChange={handleChange} value={applyForm.experience} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+            <div className='flex flex-col w-full gap-5 pt-5'>
+                <label className='text-sm md:text-base font-semibold'>Choose Sector</label>
+                <select name='chooseSector' onChange={handleChange} value={applyForm.chooseSector} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
                     <option value="">-Select-</option>
-                </select>                    
-            </div>
+                    {
+                    id === 'it-program'?
+                    itProgram.map((program , index)=>
+                        <option key={index} value={program}>{program}</option>
+                    )
+                    :id === 'tevet'?
+                    tevet.map((program , index)=>
+                        <option key={index} value={program}>{program}</option>
+                    ):
+                    null
+                    }
+                </select> 
+            </div> 
+
             {/* Documents */}
             <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  pt-10'>
                 Documents
@@ -430,6 +396,7 @@ const handleSubmit = async (e) => {
                 </button>
             </div>
         </form>
+        <Footer />
     </div>
   )
 }

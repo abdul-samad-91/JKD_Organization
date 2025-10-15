@@ -5,6 +5,7 @@ import Image from "next/image"
 import image1 from '../../../public/image1.jpg'
 import image2 from '../../../public/image2.jpg'
 import image3 from '../../../public/image3.jpg'
+import Link from "next/link"
 
 
 
@@ -13,18 +14,18 @@ const Apply = () => {
     const cards = [
     {
         name:"TEVET",
-        image:image1,
-        path:""
-    },
-    {
-        name:"Uplift Events",
         image:image2,
-        path:""
+        path:"/apply/tevet"
     },
     {
         name:"IT Program",
         image:image3,
-        path:""
+        path:"/apply/it-program"
+    },
+    {
+        name:"Uplift Events",
+        image:image1,
+        path:"/apply/events"
     },
 ]
   return (
@@ -36,9 +37,9 @@ const Apply = () => {
                 cards.map((card,index) => {
                     return (
                         <div key={index} className="w-[30%] hover:shadow-[0px_0px_10px_rgba(0,0,0,0.25)] p-2 ">
-                            <Image  src={card.image}  className=" w-full h-[300px] rounded" alt="image" />
+                            <Image  src={card.image}  className="object-cover w-full h-[300px] rounded" alt="image" />
                             <h4 className="text-center font-bold py-3">{card.name} </h4>
-                            <button className="w-full py-2 bg-[#00874F] text-white rounded">Apply Now</button>
+                            <Link href={card.path} className="w-[100%] px-[131px] py-2 bg-[#00874F] text-white rounded">Apply Now</Link>
                         </div>
                     )
                 })    
