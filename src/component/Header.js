@@ -190,71 +190,76 @@ export default function Header() {
           <div className="w-[30%]" onClick={() => setDropDown({ itCourses: false })}>
             <h5 className="text-black font-semibold">Civil Technology</h5>
             <hr className="my-4"/>
-            <Link href="/course/mern-stack">Plumber & Pipe Fabricator Course</Link>
+            <Link href="/course/plumber-and-pipe-fabricator">Plumber & Pipe Fabricator Course</Link>
             <hr className="my-2"/>
-            <Link href="/course/mean-stack">Tile Fixer</Link>
+            <Link href="#">Tile Fixer</Link>
             <hr className="my-2"/>
-            <Link href="/course/mean-stack">Plasterer</Link>
+            <Link href="#">Plasterer</Link>
             <hr className="my-2"/>
-            <Link href="/course/mean-stack">Steel Fixer</Link>
+            <Link href="/course/steel-fixer">Steel Fixer</Link>
             <hr className="my-2"/>
-            <Link href="/course/mean-stack">Carpenter</Link>
+            <Link href="/course/mason ">Mason </Link>
+            <hr className="my-2"/>
+            <Link href="/course/carpenter">Carpenter</Link>
             <hr className="my-2"/>
           </div>
           <div className="w-[30%]" onClick={() => setDropDown({ itCourses: false })}>
             <h5 className="text-black font-semibold">Electrical Technology</h5>
             <hr className="my-4"/>
-            <Link href="/course/flutter">Building Electrician</Link>
+            <Link href="/course/electrician">
+            {/* Building Electrician */}
+            Electrician
+            </Link>
+            {/* <hr className="my-2"/>
+            <Link href="/course/react-native">Industrial Electrician</Link> */}
             <hr className="my-2"/>
-            <Link href="/course/react-native">Industrial Electrician</Link>
+            <Link href="/course/fiber-optics-technician">Fiber Optics Technician</Link>
             <hr className="my-2"/>
-            <Link href="/course/react-native">Fiber Optics Technician</Link>
+            <Link href="#">Solar System Technician</Link>
             <hr className="my-2"/>
-            <Link href="/course/react-native">Solar System Technician</Link>
-            <hr className="my-2"/>
-            <Link href="/course/react-native">CCTV Technician</Link>
+            <Link href="/course/cctv-technician">CCTV Technician</Link>
             <hr className="my-2"/>
           </div>
           <div className="w-[30%]" onClick={() => setDropDown({ itCourses: false })}>
             <h5 className="text-black font-semibold">Hospitality Management</h5>
             <hr className="my-4"/>
-            <Link href="/course/grapic-design"> Front Office Manager </Link>
+            <Link href="/course/front-office-manager"> Front Office Manager </Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> Professional Cook </Link>
+            <Link href="/course/professional-cook-course"> Professional Cook </Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> Fast Food Expert </Link>
+            <Link href="/course/fast-food"> Fast Food Expert </Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> Housekeeing </Link>
+            <Link href="/course/house-keeping"> House keeping </Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> Tour Operator </Link>
+            <Link href="/course/tour-operator"> Tour Operator </Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> Domestic Skilled Worker </Link>
+            <Link href="#"> Domestic Skilled Worker </Link>
             <hr className="my-2"/>
           </div>
           <div className="w-[30%]" onClick={() => setDropDown({ itCourses: false })}>
             <h5 className="text-black font-semibold">Mechanical</h5>
             <hr className="my-4"/>
-            <Link href="/course/grapic-design"> Welder</Link>
+            <Link href="/course/welder"> Welder</Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> HVACR Technician  </Link>
+            <Link href="/course/hvacr-technician"> HVACR Technician  </Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> Lift Operator  </Link>
+            <Link href="/course/lift-operator"> Lift Operator  </Link>
             <hr className="my-2"/>
           </div>
           <div className="w-[30%]" onClick={() => setDropDown({ itCourses: false })}>
             <h5 className="text-black font-semibold">Sport And Fitness</h5>
-            <hr className="my-4"/>
-            <Link href="/course/grapic-design"> Arena Football </Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> Football </Link>
+            <Link href="/course/futsal"> Futsal </Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> Badminton </Link>
+            <Link href="/course/badminton-indoor"> Indoor Badminton </Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> Table Tennis </Link>
+            <Link href="/course/badminton-outdoor"> Outdoor Badminton </Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> Fitness Club </Link>
+            <Link href="/course/table-tennis"> Table Tennis </Link>
             <hr className="my-2"/>
-            <Link href="/course/uiux-design"> Cricket </Link>
+            <Link href="/course/fitness-club"> Fitness Club </Link>
+            <hr className="my-2"/>
+            <Link href="/course/cricket"> Cricket </Link>
             <hr className="my-2"/>
           </div>
         </div>

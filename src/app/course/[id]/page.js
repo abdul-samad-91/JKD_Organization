@@ -59,7 +59,7 @@ const Courses = () => {
           )}
 
         {/* certification */}
-          <h4 className='text-[20px] font-semibold pb-3  text-black'>CERTIFICATION</h4>
+          {currCourse?.certification && <h4 className='text-[20px] font-semibold pb-3  text-black'>CERTIFICATION</h4>}
           {currCourse?.certification?.map((course, index) => {
               const isListItem = course.includes("<b>");
               if (isListItem) {

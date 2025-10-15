@@ -140,6 +140,279 @@
       "Access to industry-standard software and tools for professional practice.",
       "Insights into freelancing, branding, and design business fundamentals."
     ]
+  },
+      {
+    "id": "welder",
+    "hours": 132,
+    "lectures": 36,
+    "title": "Welder Course",
+    "description": ["The Welder Course is an intensive 12-week training program designed to equip students with comprehensive welding knowledge and hands-on skills required for industrial applications. This program combines the strengths of both the General Welder and Multi Welder courses, ensuring learners develop versatility across a wide range of welding processes and techniques."],
+    "courseOverview": ["Students begin by understanding welding fundamentals, including safety procedures, equipment setup, and the properties of different metals. As the course progresses, they gain practical experience in multiple welding processes — MIG, TIG, and Stick welding — along with exposure to blueprint reading, metal fabrication, joint configuration, and troubleshooting.","Through real-world projects and supervised practice, learners build the confidence to perform high-quality welds in various industrial environments."],
+    "certification": ["The program emphasizes industry-standard techniques and prepares students for professional certification exams recognized within the welding industry. By completion, participants will have mastered multi-process welding, material identification, and welding in multiple positions. " , "Each student completes a final project to demonstrate their technical skill, precision, and understanding of best practices."],
+    "learningOutcomes": [
+      "Over 40 lectures and 60 hours of in-depth, hands-on training",
+      "Live welding projects simulating real industrial conditions",
+      "Master MIG, TIG, and Stick welding techniques",
+      "Understand blueprint reading and metal fabrication",
+      "Learn safety protocols, equipment handling, and quality control",
+      "Prepare for recognized welding certifications and industry roles"
+    ],
+    "whyChooseJKD":["At JKD Pakistan, we provide international-standard welding education aligned with global TVET (Technical and Vocational Education and Training) benchmarks.","Our training facilities feature modern equipment, expert instructors, and a practical, project-based approach — ensuring every learner graduates with the confidence and competence to excel in the welding industry, both locally and internationally."]
+  },
+  {
+    "id": "hvacr-technician",
+    "hours": 132,
+    "lectures": 36,
+    "title": "HVACR Technician Course",
+    "description": ["The HVACR Technician Course is a comprehensive 12-week training program designed to equip learners with the technical expertise and practical experience required in Heating, Ventilation, Air Conditioning, and Refrigeration (HVACR) systems. This program combines theory, hands-on practice, and real-world applications to prepare students for professional certification and successful careers in the HVACR industry."],
+    "courseOverview": ["The course begins with an introduction to HVACR fundamentals, system components, and safety protocols. Students learn the principles of thermal dynamics, air distribution, and refrigeration cycles while gaining proficiency in system installation, maintenance, and diagnostics.","As the course progresses, participants engage in practical workshops, troubleshooting exercises, and energy-efficiency training to develop essential problem-solving and technical skills."],
+    "certification": ["Throughout the program, students receive in-depth training in equipment servicing, refrigerant management, and compliance with industry standards and environmental regulations. The final phase includes advanced troubleshooting, system optimization, and customer service practices, culminating in a certification assessment that validates their competence and readiness for the workforce."],
+    "learningOutcomes": [
+      "Over 36 lectures and 60+ hours of hands-on training",
+      "Live projects involving real-world HVACR systems",
+      "Learn installation, maintenance, and repair of HVACR equipment",
+      "Master system diagnostics and energy efficiency techniques",
+      "Understand industry standards, refrigerant handling, and safety protocols",
+      "Gain the confidence and skills to pursue certified HVACR technician roles"
+    ],
+    "whyChooseJKD":["At JKD Pakistan, we deliver international-standard technical training aligned with TVET benchmarks. Our modern labs, industry-experienced instructors, and practical learning approach ensure students graduate with the confidence, competence, and credentials to excel in the global HVACR industry."]
+  },       
+  {
+    "id": "lift-operator",
+    "hours": 132,
+    "lectures": 36,
+    "title": "Lift Operator Course",
+    "description": ["The Lift Operator Course is a focused 6-week (or 8/12-week, depending on your program preference) training program designed to prepare learners for safe and efficient operation, inspection, and maintenance of lift and elevator systems. This comprehensive course blends theoretical knowledge with hands-on practice, ensuring participants gain the essential skills required to work confidently and responsibly in residential, commercial, and industrial environments."],
+    "courseOverview": ["The course begins with an introduction to lift systems, components, and safety protocols, emphasizing the importance of operational standards and preventive maintenance. Students learn the mechanical and electrical principles behind lift systems, including motors, control panels, braking mechanisms, and emergency operations.","As the training progresses, participants engage in practical workshops, learning lift operation procedures, passenger handling, emergency response, and troubleshooting techniques. The course also includes training on communication, safety signage, and workplace discipline to prepare students for professional employment."],
+    "certification": ["Throughout the program, trainees receive in-depth instruction on lift operation safety, daily inspection routines, and compliance with workplace and industry regulations. The final assessment evaluates technical competence, operational awareness, and adherence to safety practices. Upon successful completion, students earn a Lift Operator Certification, validating their readiness for the workforce."],
+    "learningOutcomes": [
+      "Comprehensive understanding of lift system components and functions",
+      "Hands-on training in lift operation and control panel use",
+      "Knowledge of safety standards, inspection checklists, and emergency procedures",
+      "Ability to identify and report faults or maintenance issues",
+      "Professional communication and customer service skills for lift operation environments",
+      " Certification qualifying graduates for employment as professional lift operators"
+    ],
+    "whyChooseJKD":["At JKD Pakistan, we deliver international-standard technical training aligned with TVET benchmarks. Our state-of-the-art training labs, experienced instructors, and practical learning methodology ensure every student gains the skills, confidence, and credentials to succeed. We prepare our graduates to operate lifts safely, efficiently, and professionally — ready for opportunities both locally and abroad."]
+  },
+  {
+    "id": "table-tennis",
+    "hours": 132,
+    "lectures": 36,
+    "title": "Table Tennis Traning Course",
+    "description": ["The Table Tennis Training Program at JKD Pakistan is an engaging and skill-building course designed to promote sportsmanship, coordination, and competitive spirit among students. This program provides learners with a complete understanding of table tennis techniques, rules, and gameplay strategies through a blend of professional coaching, practice sessions, and tournaments."],
+    "courseOverview": ["The program begins with an introduction to table tennis fundamentals, including grip styles, footwork, serving techniques, and stroke control. Students learn how to play both singles and doubles matches, understanding the rules, scoring system, and fair play principles","As training progresses, participants take part in regular practice drills and friendly matches that help develop agility, precision, and quick reflexes. Our experienced coaches guide students step-by-step, focusing on improving their speed, coordination, and tactical awareness on the table.","To encourage healthy competition, we organize intra-campus tournaments where students compete in a fun and supportive environment. The winners receive prizes and certificates of achievement, recognizing their talent, effort, and dedication to the sport."],
+    "learningOutcomes": [
+      "Understand the fundamentals of table tennis rules, techniques, and gameplay",
+      "Learn proper grip, serving, and rallying techniques",
+      "Develop agility, focus, and hand-eye coordination",
+      "Participate in practice matches and organized tournaments",
+      "Build teamwork, discipline, and sportsmanship",
+      "Earn certificates and prizes through outstanding performance"
+    ],
+    "whyChooseJKD":["At JKD Pakistan, we believe in developing both the skills and spirit of our students through sports and recreation. Our well-equipped sports facilities, qualified trainers, and interactive learning environment ensure that every participant enjoys the game while building confidence and physical fitness. Whether you are a beginner or an enthusiast, our Table Tennis Program helps you sharpen your skills, compete with passion, and celebrate success!."]
+  },
+  {
+    "id": "badminton-indoor",
+    "hours": 132,
+    "lectures": 36,
+    "title": "Badminton Indoor Traning Course",
+    "description": ["The Indoor Badminton Training Program at JKD Pakistan is a dynamic and exciting course designed to help students develop athletic ability, coordination, and a competitive mindset. This program combines professional coaching, guided practice sessions, and organized matches to provide a complete learning experience for players of all skill levels."],
+    "courseOverview": ["The program begins with an introduction to badminton basics, including court layout, racket handling, grip techniques, and shuttle control. Students learn the rules of the game, different types of shots (serve, drop, smash, clear, and net play), and the importance of positioning and footwork.","As the training advances, participants engage in drills, practice matches, and strategy sessions to enhance their accuracy, agility, and endurance. Our expert coaches focus on improving students’ techniques while teaching teamwork, discipline, and fair play.","To encourage healthy competition, inter-student matches and tournaments are organized regularly. Winners are awarded prizes and certificates, celebrating their skill, dedication, and sportsmanship."],
+    "learningOutcomes": [
+      "Understand the rules and techniques of indoor badminton",
+      "Learn proper grip, footwork, and shuttle control",
+      "Develop strength, speed, and coordination through regular practice",
+      "Participate in friendly matches and official tournaments",
+      "Enhance teamwork, focus, and confidence",
+      "Earn recognition through certificates and awards"
+    ],
+    "whyChooseJKD":["At JKD Pakistan, we provide international-standard sports training with a focus on fitness, discipline, and enjoyment. Our indoor badminton facilities, experienced instructors, and structured learning environment allow students to train effectively, compete confidently, and grow as athletes. Whether for recreation or competition, our Indoor Badminton Program helps every player unlock their full potential on the court."]
+  },
+  {
+    "id": "badminton-outdoor",
+    "hours": 132,
+    "lectures": 36,
+    "title": "Badminton Outdoor Traning Course",
+    "description": ["The Outdoor Badminton Training Program at JKD Pakistan is an energetic and engaging course designed to promote physical fitness, teamwork, and sportsmanship among students. This program blends technical instruction, practice sessions, and competitive matches to help learners build their skills and confidence while enjoying the fun of outdoor play."],
+    "courseOverview": ["The course begins with an introduction to badminton fundamentals, including racket grip, shuttle control, and basic footwork techniques suited for outdoor conditions. Students learn about court setup, game rules, and scoring methods, gaining a complete understanding of how to play effectively in open-air environments.","As the program progresses, participants engage in skill development exercises, team matches, and tournament-style games that encourage agility, precision, and endurance. Coaches provide personalized guidance to help students improve their strokes, movement, and game strategies, even in variable outdoor weather conditions such as wind or sunlight.","To inspire motivation and sportsmanship, friendly competitions and tournaments are organized regularly. The winners receive certificates and prizes, recognizing their effort, performance, and team spirit."],
+    "learningOutcomes": [
+      "Understand the fundamentals and rules of outdoor badminton",
+      "Learn proper racket handling, serving, and shot control techniques",
+      "Develop stamina, coordination, and adaptability for outdoor play",
+      "Participate in team matches and structured tournaments",
+      "Enhance communication, focus, and fair play values",
+      "Earn certificates and prizes for outstanding performance"
+    ],
+    "whyChooseJKD":["At JKD Pakistan, we combine fun, fitness, and skill development through well-organized outdoor sports programs. Our qualified coaches, open-air courts, and interactive training sessions ensure that every student enjoys the sport while building strength, confidence, and a healthy competitive spirit. The Outdoor Badminton Program helps players grow both physically and mentally — preparing them for active participation in sports and teamwork in everyday "]
+  },
+  {
+    "id": "futsal",
+    "hours": 132,
+    "lectures": 36,
+    "title": "Futsal Traning Course",
+    "description": ["The Futsal Training Program at JKD Pakistan is an action-packed sports course designed to develop students’ football skills, teamwork, and overall fitness. Played on an indoor or small outdoor court, futsal emphasizes speed, control, and strategy, making it a perfect sport for learners who want to sharpen their reflexes and ball-handling abilities in a fast-paced environment."],
+    "courseOverview": ["The program begins with an introduction to futsal fundamentals, including ball control, passing, dribbling, shooting, and defensive techniques. Students also learn about rules of the game, player positions, and match strategies specific to the futsal format.","As the training progresses, participants engage in practice drills, team-building sessions, and competitive matches to strengthen their coordination and decision-making under pressure. Our experienced coaches guide students in improving their agility, teamwork, and sports discipline — both on and off the court","To encourage healthy competition, friendly tournaments are organized regularly among students. Winners are awarded prizes and certificates, recognizing their skills, sportsmanship, and dedication to the game."],
+    "learningOutcomes": [
+      "Understand the rules, positions, and techniques of futsal",
+      "Learn passing, dribbling, defending, and goal-scoring strategies",
+      "Develop stamina, teamwork, and communication skills",
+      "Participate in practice matches and competitive tournaments",
+      "Improve agility, coordination, and quick decision-making",
+      "Earn recognition through certificates and performance awards"
+    ],
+    "whyChooseJKD":["At JKD Pakistan, we aim to build confidence, fitness, and teamwork through our structured sports programs. Our qualified coaches, modern futsal facilities, and interactive training sessions create a fun yet professional learning environment. Whether you’re new to football or aiming to refine your skills, the Futsal Training Program at JKD Pakistan helps you play smart, stay fit, and compete with passion."]
+  },
+  {
+    "id": "cricket",
+    "hours": 132,
+    "lectures": 36,
+    "title": "Cricket Traning Course",
+    "description": ["The Cricket Training Program at JKD Pakistan is a comprehensive and exciting course designed to train students in the fundamentals and advanced techniques of cricket. This program focuses on developing physical fitness, teamwork, and strategic thinking through a perfect balance of theory, practice sessions, and friendly competitions. Whether you are a beginner or an aspiring player, this course provides the foundation and confidence to perform effectively on the field."],
+    "courseOverview": ["The program begins with an introduction to cricket rules, field positions, and equipment handling. Students learn the essentials of batting, bowling, wicket-keeping, and fielding, along with warm-up routines and fitness exercises to improve agility and endurance.","As the training progresses, participants engage in net practice sessions, field drills, and match simulations to develop control, accuracy, and tactical awareness. Coaches emphasize discipline, sportsmanship, and teamwork — key values that define a true cricketer.","To encourage motivation and a spirit of competition, inter-student cricket matches and tournaments are organized regularly. Outstanding players are recognized with prizes and certificates, celebrating their skill, performance, and commitment to the sport."],
+    "learningOutcomes": ["Understand the rules, roles, and techniques of cricket","Learn proper batting, bowling, and fielding skills","Develop stamina, coordination, and team communication","Participate in practice sessions and competitive matches","Improve discipline, leadership, and decision-making on the field","Earn certificates and awards for exceptional performance"],
+    "whyChooseJKD":["At JKD Pakistan, we are committed to promoting sports excellence through structured and enjoyable training programs. Our qualified cricket coaches, modern practice facilities, and interactive learning environment ensure that every student receives professional-level guidance and motivation. The Cricket Training Program not only helps players refine their technical abilities but also instills confidence, teamwork, and a winning attitude — preparing them for both local and national-level competitions."]
+  },
+  {
+    "id": "fitness-club",
+    "hours": 132,
+    "lectures": 36,
+    "title": "Fitness Club",
+    "description": ["The Gym & Fitness Training Program at JKD Pakistan is a structured and motivating course designed to help students build strength, stamina, and a healthy lifestyle. This program provides comprehensive guidance on physical fitness, exercise techniques, and overall well-being under the supervision of qualified fitness instructors. It combines theory, practical workouts, and personalized fitness plans to help each participant achieve their individual health and fitness goals."],
+    "courseOverview": ["The program begins with an introduction to fitness fundamentals, including body mechanics, warm-up routines, stretching, and safe use of gym equipment. Students learn about cardio training, strength building, endurance exercises, and flexibility improvement.","As the course progresses, participants engage in daily workout sessions, group fitness activities, and nutritional awareness classes. Our trainers guide each student on correct posture, breathing techniques, and balanced fitness routines to ensure maximum results with minimal risk of injury.","To keep motivation high, JKD Pakistan organizes fitness challenges and strength competitions, where participants can test their progress and win certificates and prizes for outstanding performance and commitment."],
+    "learningOutcomes": ["Understand the principles of fitness, health, and body conditioning","Learn safe and effective use of gym equipment","Improve strength, flexibility, endurance, and cardiovascular health","Participate in guided workouts and group fitness activities" , "Develop discipline, motivation, and a balanced approach to wellness","Earn certificates and awards for excellence and consistency"],
+    "whyChooseJKD":["At JKD Pakistan, we believe that physical fitness is the foundation of a successful and confident life. Our modern gym facilities, certified trainers, and supportive training environment provide the ideal platform for personal growth and health improvement. Whether you are a beginner or an experienced fitness enthusiast, our Gym & Fitness Training Program helps you build strength, boost energy, and stay fit — both physically and mentally."]
+  },
+  {
+    "id": "front-office-manager",
+    "hours": 132,
+    "lectures": 36,
+    "title": "Front Office Manager Course",
+    "description": ["The Front Office Manager Course at JKD Pakistan is a professional 12-week training program designed to prepare students for leadership roles in the hospitality and hotel management industry. This course provides a complete understanding of front office operations, customer service excellence, and staff management, combining theoretical knowledge with hands-on practical experience"],
+    "courseOverview": ["The program begins with an introduction to front office fundamentals, including guest services, reservation systems, communication techniques, and standard check-in/check-out procedures. Students learn how to manage front desk operations efficiently, maintain professional decorum, and deliver high-quality guest experiences.","As the training progresses, participants gain in-depth knowledge of handling guest complaints, team supervision, and daily operational management. Through real-world case studies and interactive sessions, students develop the confidence and decision-making skills needed to handle any front office situation effectively."],
+    "certification": ["Throughout the course, trainees are introduced to front office software systems, conflict resolution strategies, and customer relationship management (CRM) tools. By the end of the program, students will have hands-on experience in managing front office operations, improving service quality, and ensuring guest satisfaction." , "The course concludes with a final evaluation and certification, validating each participant’s skills, professionalism, and readiness to work in hotels, resorts, and other hospitality establishments."],
+    "learningOutcomes": ["Over 36 lectures and 50+ hours of guided learning and practice","Hands-on training with real-world front office scenarios","Learn guest service management, reservations, and communication strategies","Develop leadership and problem-solving skills for hospitality operations","Gain practical knowledge of front office software and administrative systems","Earn a recognized certification to pursue a professional front office career"],
+    "whyChooseJKD":["At JKD Pakistan, we deliver industry-aligned hospitality training that meets international TVET standards. Our modern training labs, experienced instructors, and practical learning approach ensure every student is ready for success in the hospitality field. By completing the Front Office Manager Course, learners gain the competence, confidence, and credentials to build a rewarding career in the global hotel and tourism industry."]
+  },
+  {
+  "id":"professional-cook-course",
+  "hours": 132,
+  "lectures": 36,
+  "title":"Professional Cook Course",
+  "description": ["The Professional Cook Course at JKD Pakistan is an intensive 12-week culinary training program designed to turn passionate food enthusiasts into skilled professional chefs. This course offers a perfect blend of theory, hands-on practice, and kitchen management experience — preparing students to thrive in restaurants, hotels, catering businesses, or their own culinary ventures."],
+  "courseOverview": ["The program begins with an introduction to fundamental cooking techniques, kitchen safety, and ingredient selection. Students learn essential skills such as knife handling, basic cooking methods, and hygiene practices. As the course progresses, trainees advance to more complex topics, including international cuisines, menu planning, plating techniques, pastry creation, and food presentation.","In addition, participants gain exposure to nutrition principles, flavor pairing, and modern culinary techniques such as sous-vide cooking and fusion recipes. Practical sessions are held in fully equipped kitchens where students work under the guidance of experienced chefs to master their craft through real-world cooking scenarios and professional kitchen simulations."],
+  "certification": ["Throughout the course, students are trained in meal preparation, portion control, food cost management, and customer service — all essential for working in a professional culinary environment. They also gain insights into restaurant operations and kitchen leadership." , "Upon completion, students undergo a final assessment and certification, validating their technical expertise, creativity, and readiness for the hospitality industry. Graduates of this program are fully equipped to work as professional cooks, kitchen assistants, or even start their own food businesses."],
+  "learningOutcomes": ["Over 40 lectures and 60+ hours of hands-on culinary training", "Live cooking labs with real-time feedback from expert chefs", "Master knife handling, cooking methods, and food presentation", "Learn traditional and modern cuisines with professional guidance", "Understand food safety, nutrition, and kitchen management","Earn a professional certification to launch your culinary career"],
+  "whyChooseJKD":["At JKD Pakistan, we provide international-standard culinary training aligned with TVET benchmarks. Our state-of-the-art training kitchens, industry-experienced instructors, and practical learning approach ensure that every student develops the skill, creativity, and confidence to succeed in the culinary world.","Whether you dream of working in five-star hotels, running your own restaurant, or becoming a professional chef, the Professional Cook Course at JKD Pakistan is your gateway to a rewarding and flavorful career."]
+  },
+  {
+  "id":"fast-food",
+  "hours": 132,
+  "lectures": 36,
+  "title":"Fast Food Course",
+  "description": ["The Fast Food Expert Course at JKD Pakistan is a specialized 12-week training program designed to develop professional skills and in-depth knowledge of the fast food industry. This course blends classroom learning, hands-on practice, and real-world business applications to prepare students for successful careers in fast food management, operations, and entrepreneurship"],
+  "courseOverview": ["The program begins with an introduction to the fundamentals of fast food operations, including kitchen organization, food safety standards, hygiene practices, and ingredient selection. Students learn how to manage fast-paced kitchen environments while maintaining consistency, quality, and efficiency.","As the course advances, participants explore menu development, cost control, supply chain management, and marketing strategies specific to the fast food sector. Practical sessions allow students to experience order preparation, customer service, and team coordination in simulated fast food setups. The course also emphasizes innovation and creativity, encouraging students to design and promote their own menu concepts."],
+  "certification": ["Throughout the course, trainees gain valuable insights into quality assurance, cost management, and staff training techniques—key skills for running or supervising a fast food business. By the end of the program, students are equipped with knowledge of customer behavior, branding, and business growth strategies relevant to the modern food industry." , "The program concludes with a final assessment and certification, recognizing each participant’s practical and managerial abilities in fast food operations. Graduates are prepared to work in leading fast food chains, start their own ventures, or manage quick-service restaurants efficiently."],
+  "learningOutcomes": [" Over 40 lectures and 60+ hours of hands-on learning"," Practical training through live projects and case studies","Learn menu design, operations, and customer service strategies","Develop expertise in cost management and kitchen efficiency","Understand fast food branding, marketing, and team management","Earn a recognized certification for professional advancement"],
+  "whyChooseJKD":["AAt JKD Pakistan, we provide industry-relevant vocational training aligned with international TVET standards. Our modern kitchen facilities, experienced culinary instructors, and practical learning approach ensure students gain both confidence and competence to excel in the fast food industry.","Whether your goal is to work in established fast food brands or launch your own quick-service restaurant, the Fast Food Expert Course at JKD Pakistan gives you the essential skills, knowledge, and practical experience to succeed in today’s fast-moving food business."]
+  },
+  {
+  "id":"house-keeping",
+  "hours": 132,
+  "lectures": 36,
+  "title":"House Keeping Course",
+  "description": ["The Housekeeping course spans twelve weeks, offering a comprehensive introduction to essential housekeeping skills and principles. In the initial weeks, students cover the basics of effective cleaning techniques, understand safety protocols, and learn about the importance of hygiene and organization. The course also includes training on time management, customer service skills, and the use of various cleaning tools and products, ensuring a well-rounded approach to professional housekeeping."],
+  "courseOverview": ["The Housekeeping course is designed to provide a comprehensive understanding of housekeeping practices and management in various settings, including hotels, hospitals, and residential facilities. Spanning twelve weeks, the program includes lectures, hands-on training, assignments, and practical assessments. Students will explore fundamental topics such as cleaning techniques, inventory management, and safety protocols. The course emphasizes real-world applications through practical exercises and scenario-based learning."],
+  "certification": ["The program prepares students for certification by covering essential skills like room management, sanitation practices, and guest service excellence. Students will also gain insights into effective team management, budgeting, and the use of housekeeping technologies. The course culminates in a final exam that tests both theoretical knowledge and practical skills."],
+  "learningOutcomes": ["Over 40 lectures and 60 hours of content!","LIVE PROJECTs and hands-on training included.","Gain expertise in modern housekeeping techniques and management from experienced professionals"]
+  },
+  {
+  "id":"tour-operator",
+  "hours": 132,
+  "lectures": 36,
+  "title":"Tour Operator",
+  "description": ["The Tour Operator Course at JKD Pakistan is a professional 12-week training program designed to prepare students for successful careers in the travel and tourism industry. This course provides a comprehensive understanding of tour planning, customer service, and travel management — blending theoretical learning with hands-on practical experience to ensure students are ready for the real world of tour operations."],
+  "courseOverview": ["The program begins with an introduction to the fundamentals of tour operation, including industry terminology, destination knowledge, and customer service excellence. Students learn how to design and organize tours, plan travel itineraries, and manage bookings efficiently.","As the course advances, participants develop skills in group management, logistics coordination, and marketing strategies tailored to the tourism sector. Through workshops, role-plays, and case studies, students gain practical exposure to the challenges and best practices of operating tours and managing travel experiences for individuals and groups"],
+  "certification": ["Throughout the course, students receive training in creating travel packages, working with travel suppliers, and using digital tools for tour management. They also learn about tourism laws, customer handling, and risk management — ensuring they can deliver safe, enjoyable, and well-organized travel experiences." , "The program concludes with a final assessment and certification, validating each student’s ability to plan, manage, and execute tours professionally. Graduates are equipped to work in tour agencies, travel companies, airlines, or as independent tour operators."],
+  "learningOutcomes": [" Over 30 lectures and 50+ hours of interactive training","Practical experience in tour planning and itinerary design","Learn destination knowledge, booking systems, and customer service skills","Develop marketing, conflict resolution, and communication expertise","Understand travel regulations, supplier coordination, and digital tools","Earn a recognized certification for a professional career in tourism"],
+  "whyChooseJKD":["At JKD Pakistan, we offer international-standard tourism and hospitality training aligned with TVET benchmarks. Our experienced instructors, modern training methods, and hands-on learning approach ensure students gain the knowledge, confidence, and competence to excel in the global travel industry." , "Whether your goal is to work with a leading travel company or start your own tour business, the Tour Operator Course at JKD Pakistan provides the perfect foundation to turn your passion for travel into a rewarding career."]
+  },
+  {
+  "id":"plumber-and-pipe-fabricator",
+  "hours": 132,
+  "lectures": 36,
+  "title":"Plumber and Pipe Fabricator Course",
+  "description": ["The Plumber & Pipe Fabricator Course at JKD Pakistan is a specialized 12-week training program designed to equip students with the technical skills, practical experience, and industry knowledge required to excel in modern plumbing and pipe fabrication. This comprehensive program integrates theory, hands-on workshops, and real-world applications, preparing learners to meet the demands of the construction, maintenance, and engineering sectors."],
+  "courseOverview": ["The course begins with an introduction to plumbing tools, materials, and safety procedures, ensuring students develop a solid foundation for professional practice. Participants learn to interpret blueprints and schematics, allowing them to perform accurate installations and system layouts.","During the early weeks, trainees focus on basic plumbing techniques such as pipe cutting, threading, bending, joining, and fitting. They gain hands-on experience working with various pipe materials, including PVC, copper, and steel, while mastering the use of essential plumbing and fabrication equipment","As the program progresses, students advance to complex pipe layout and fabrication, pressure testing, and welding techniques. The curriculum also covers the installation of plumbing systems for residential, commercial, and industrial applications, including water supply, drainage, and sanitation systems.","Participants are trained in modern fabrication methods, including CNC machine use and MEP (Mechanical, Electrical, and Plumbing) integration, ensuring their skills align with current industry standards.","The course concludes with a capstone project, where students design, fabricate, and install a complete plumbing system — applying all techniques learned throughout the program in a practical, real-world setting."],
+  "certification": ["Throughout the 12-week course, students gain practical expertise and theoretical understanding of all key plumbing and fabrication principles. Upon successful completion, they receive a JKD Pakistan Certification in Plumbing & Pipe Fabrication, validating their technical competence and job readiness for roles in construction, maintenance, and MEP services."],
+  "learningOutcomes": [" Master fundamental plumbing and pipe fabrication techniques, including cutting, threading, and joining","Interpret technical blueprints and schematics for precise installations","Fabricate and install custom piping systems following industry standards","Develop proficiency in welding, pressure testing, and CNC-based fabrication","Learn to design and install plumbing systems for residential, commercial, and industrial projects","Gain hands-on experience through a final real-world plumbing and fabrication project"],
+  "whyChooseJKD":["At JKD Pakistan, we deliver international-standard technical training aligned with TVET benchmarks, ensuring every graduate is equipped with globally recognized skills. Our modern plumbing workshops, experienced instructors, and project-based learning environment provide students with the confidence and competence to work on real construction and industrial projects.","By completing the Plumber & Pipe Fabricator Course, students gain the professional skills needed to build rewarding careers in construction, plumbing services, pipe fabrication workshops, and MEP contracting companies — both locally and internationally."]
+  },
+  {
+  "id":"steel-fixer",
+  "hours": 132,
+  "lectures": 36,
+  "title":"Steel Fixer Course",
+  "description": ["The Steel Fixer Course at JKD Pakistan is a comprehensive 12-week technical training program designed to equip students with the essential skills and hands-on experience required for steel reinforcement and structural assembly in the construction industry. This course combines practical workshops, technical lessons, and real-world projects to prepare students for in-demand roles in building, infrastructure, and civil engineering projects."],
+  "courseOverview": ["The program begins with an introduction to steel fixing tools, materials, and safety protocols, ensuring trainees understand proper worksite practices and equipment handling. Students learn to read and interpret construction drawings, blueprints, and bar bending schedules (BBS) to ensure precise placement of steel reinforcement in concrete structures","During the early stages, participants gain hands-on experience in cutting, bending, tying, and positioning steel bars using both manual and mechanical tools. As the course progresses, they explore advanced techniques such as reinforcement layout for slabs, columns, beams, and foundations, as well as mesh installation and prefabrication methods.","Students also receive instruction on formwork integration, load-bearing calculations, and concrete reinforcement principles, learning how steel and concrete work together to ensure the structural integrity of buildings and infrastructure.","In the final phase, trainees undertake a capstone project, planning and installing a complete reinforcement system based on construction drawings — demonstrating their ability to execute professional steel fixing tasks with accuracy and efficiency."],
+  "certification": ["Throughout the 12-week program, students gain the technical knowledge and field experience needed to work effectively on construction projects. Upon successful completion, participants receive a JKD Pakistan Certification in Steel Fixing, validating their professional competence and readiness for employment in the construction and civil engineering sectors."],
+  "learningOutcomes": [" Master fundamental steel fixing techniques, including cutting, bending, and tying steel bars","Interpret construction drawings and bar bending schedules for accurate placement","Handle and install various reinforcement materials, including deformed bars and wire mesh","Integrate steel reinforcement with formwork for concrete structures","Understand structural load requirements and apply industry-standard fixing methods","Gain practical experience through real-world steel reinforcement installation projects"],
+  "whyChooseJKD":["At JKD Pakistan, we deliver international-standard vocational training aligned with TVET and industry benchmarks. Our modern construction labs, experienced instructors, and hands-on learning environment ensure that every student develops the technical precision and confidence needed to work safely and efficiently in the construction field.","By completing the Steel Fixer Course at JKD Pakistan, students gain the professional expertise to join construction teams, infrastructure projects, and steel fabrication companies — both locally and internationally — as skilled, certified steel fixers."]
+  },
+  {
+  "id":"mason",
+  "hours": 132,
+  "lectures": 36,
+  "title":"Mason Course",
+  "description": ["The Mason Course at JKD Pakistan is a professional 12-week hands-on training program designed to develop the skills and knowledge required to work as a qualified mason in the construction industry. This program focuses on both traditional and modern masonry techniques, enabling students to confidently build, repair, and finish structures that meet industry and safety standards."],
+  "courseOverview": ["The course begins with an introduction to basic masonry tools, materials, and safety procedures, ensuring students understand the proper use of equipment and adherence to site safety practices. Trainees learn bricklaying, blockwork, plastering, and tiling, along with the correct mixing ratios of cement, sand, and mortar.","As the program progresses, participants gain practical experience in constructing walls, foundations, arches, and floors, and are trained in reading and interpreting construction drawings and blueprints for precise work execution. The course also covers advanced masonry techniques, including stone masonry, decorative finishing, and repair work, ensuring students are equipped to handle diverse construction tasks.","Hands-on sessions allow trainees to apply their learning on real-world projects, developing accuracy, speed, and craftsmanship essential for professional masons."],
+  "certification": ["Throughout the 12-week course, students are guided by experienced instructors and assessed through practical and theoretical evaluations. Upon successful completion, participants receive a JKD Pakistan Certification in Masonry, validating their technical skills and job readiness for roles in the construction and infrastructure sectors."],
+  "learningOutcomes": [" Mastery of fundamental masonry techniques, including bricklaying, plastering, and tiling","Proficiency in interpreting blueprints and applying accurate measurements", "Knowledge of cement mixing, mortar preparation, and structural alignment", "Ability to construct and repair walls, floors, and decorative structures","Understanding of safety protocols and quality control standards", "Hands-on experience through practical masonry projects"
+],
+  "whyChooseJKD":["At JKD Pakistan, we offer industry-aligned vocational training that meets international TVET standards, ensuring every graduate gains globally recognized skills. Our state-of-the-art construction labs, expert instructors, and practical learning environment help students build the confidence and technical ability to excel in real construction projects.","The Mason Course at JKD Pakistan prepares students to take on professional roles in building construction, maintenance, and renovation—both locally and internationally—providing a solid foundation for a stable and rewarding career in the construction industry."]
+  },
+  {
+  "id":"carpenter",
+  "hours": 132,
+  "lectures": 36,
+  "title":"Carpenter (Wood) Course",
+  "description": ["The Carpenter (Wood) Course at JKD Pakistan is a professional 12-week training program designed to provide students with in-depth knowledge and hands-on experience in woodworking and carpentry. This course focuses on developing the technical and creative skills needed to design, build, and finish wood structures and furniture with precision and craftsmanship."],
+  "courseOverview": ["The program begins with an introduction to wood types, grain patterns, tools, and safety practices, giving students a strong foundation in woodworking fundamentals. Early sessions focus on measuring, cutting, shaping, and joining techniques, ensuring participants gain confidence in using both hand and power tools effectively.","As the course progresses, students advance to joinery, cabinetry, furniture making, and wood finishing techniques. They also learn how to read blueprints, plan projects, and manage materials for efficient and high-quality production. Through hands-on practice and instructor guidance, learners acquire the precision and problem-solving abilities required for professional carpentry work."],
+  "certification": ["Throughout the 12-week program, students participate in practical workshops and complete individual projects that reflect real-world carpentry tasks. The course concludes with a capstone project, where each student designs and constructs a complete wood-based item — such as a piece of furniture or structural component — showcasing their skills from concept to completion." , "Upon successful evaluation, participants receive a JKD Pakistan Certification in Carpentry (Wood), validating their expertise and preparing them for employment or entrepreneurial opportunities in the woodworking and construction industries."],
+  "learningOutcomes": ["Over 40 lectures and 60+ hours of hands-on practical training"," Mastery of essential woodworking techniques — cutting, shaping, joining, and finishing","Proficiency in reading blueprints and executing woodworking projects","Understanding of safe and efficient use of carpentry tools and materials","Ability to design and build furniture or structural wood pieces independently"," Capstone project demonstrating complete project planning and execution"],
+  "whyChooseJKD":["At JKD Pakistan, we deliver international-standard vocational training aligned with TVET benchmarks, ensuring our students gain globally recognized skills. Our modern woodworking labs, experienced instructors, and practical learning environment provide students with the confidence, competence, and creativity to excel in the carpentry trade.","Whether you aim to become a professional carpenter, start your own woodworking business, or work in the construction industry, the Carpenter (Wood) Course at JKD Pakistan equips you with the craftsmanship and professional skills to build a successful career."]
+  },
+  {
+  "id":"electrician",
+  "hours": 132,
+  "lectures": 36,
+  "title":"Electrician Course",
+  "description": ["The Electrician Course at JKD Pakistan is a professional 12-week training program designed to prepare students for a successful career in the electrical trade. This course provides a solid foundation in electrical theory, installation techniques, safety standards, and hands-on practical experience — equipping learners with the skills needed to work confidently in residential, commercial, and industrial electrical systems."],
+  "courseOverview": ["The course begins with an introduction to basic electrical concepts, including current, voltage, resistance, and circuit design. Students learn how to use essential tools and testing equipment, follow wiring diagrams, and adhere to electrical codes and safety regulations.","As the program progresses, participants gain practical experience in installing, maintaining, and repairing electrical systems. Topics include wiring methods, lighting systems, circuit breakers, earthing (grounding), and load balancing. Students also explore fault diagnosis and energy efficiency practices, ensuring they can identify and resolve issues effectively","By the final weeks, trainees engage in real-world electrical projects, applying their skills to design, install, and troubleshoot complete electrical systems under expert supervision."],
+  "certification": ["Throughout the 12-week program, students are guided by industry-experienced instructors and complete both theoretical and practical assessments. The course concludes with a final examination and practical evaluation, after which successful participants receive a JKD Pakistan Certification in Electrical Installation & Maintenance, validating their professional competence." , "Graduates of this program are well-prepared for employment as electricians, maintenance technicians, or electrical supervisors — both locally and internationally."],
+  "learningOutcomes": ["Over 40 lectures and 60+ hours of hands-on practical training","Comprehensive understanding of electrical circuits, systems, and components", "Proficiency in installing, maintaining, and troubleshooting electrical systems"," Knowledge of wiring standards, safety protocols, and electrical codes","Ability to read blueprints, schematics, and technical diagrams","Practical experience through real-world electrical installation projects"],
+  "whyChooseJKD":["At JKD Pakistan, we provide international-standard technical and vocational education aligned with TVET benchmarks. Our modern electrical labs, experienced instructors, and hands-on learning environment ensure students graduate with the skills, confidence, and credentials needed to succeed in the electrical industry.","Whether your goal is to work as a certified electrician, join the construction and maintenance sector, or start your own electrical business, the Electrician Course at JKD Pakistan equips you with the technical expertise and practical experience to power your career forward."]
+  },  
+  {
+  "id":"cctv-technician",
+  "hours": 132,
+  "lectures": 36,
+  "title":"CCTV Technician Course",
+  "description": ["The CCTV Technician Course at JKD Pakistan is a professional 12-week training program designed to equip students with the technical knowledge and hands-on skills required to install, maintain, and troubleshoot CCTV and security surveillance systems. This course blends theory with extensive practical training, preparing learners for real-world roles in the growing security and technology industry."],
+  "courseOverview": ["The program begins with an introduction to CCTV systems and components, covering camera types, lens selection, DVR/NVR configuration, and cabling techniques. Students learn how to install and configure analog, IP, and hybrid surveillance systems, gaining practical experience in equipment setup, alignment, and system testing.","As the course progresses, participants explore network connectivity, video storage solutions, and remote monitoring setups. They also study system integration, learning how CCTV networks connect with alarm systems, access control, and IoT devices. Practical workshops focus on real-world installation, diagnostics, and maintenance exercises to build troubleshooting confidence."],
+  "certification": ["Throughout the 12-week course, students work on live projects and participate in hands-on labs to reinforce their learning. The program concludes with a final assessment, testing both theoretical understanding and technical proficiency. Upon successful completion, students receive a JKD Pakistan Certification in CCTV Installation and Maintenance, recognized by industry employers." , "Graduates of this program are fully prepared to pursue careers as CCTV technicians, security system installers, or maintenance engineers in residential, commercial, and industrial sectors."],
+  "learningOutcomes": ["Over 40 lectures and 60+ hours of hands-on training","Proficiency in installing and maintaining analog and digital CCTV systems","Ability to configure DVR, NVR, and IP cameras for remote monitoring","Understanding of network setup, video storage, and power supply systems","Skills in diagnosing and troubleshooting CCTV faults efficiently","Hands-on experience through real-world installation projects"],
+  "whyChooseJKD":["At JKD Pakistan, we deliver industry-standard technical training aligned with TVET benchmarks and global security system standards. Our modern training labs, experienced instructors, and practical learning environment ensure students graduate with the confidence and competence to excel in the security technology field.","The CCTV Technician Course at JKD Pakistan prepares learners to take on professional roles in CCTV installation, maintenance, and surveillance system design, helping them build a rewarding career in today’s fast-growing electronic security industry."]
+  },
+    {
+  "id":"fiber-optics-technician",
+  "hours": 132,
+  "lectures": 36,
+  "title":"Fiber Optics Technician Course ",
+  "description": ["The Fiber Optics Technician Course at JKD Pakistan is a specialized 12-week training program designed to equip students with the technical knowledge and hands-on expertise required to work in the fast-growing field of fiber optics communication. This course combines theory with practical training, preparing participants to install, test, and maintain fiber optic systems used in modern telecommunication and data networks."],
+  "courseOverview": ["The program begins with an introduction to the principles of fiber optics, including light transmission, signal reflection, and attenuation. Students learn about different fiber types, connectors, and cable construction, as well as the tools and materials used in fiber optic installation.","AThrough hands-on workshops, students gain experience in cable splicing (mechanical and fusion), connectorization, and optical testing using industry-standard equipment such as OTDR (Optical Time-Domain Reflectometers) and power meters.","As the course progresses, participants explore system installation, design, and maintenance, focusing on troubleshooting network issues, ensuring signal quality, and adhering to industry safety and performance standards"],
+  "certification": ["Throughout the 12-week program, students participate in live projects and real-world simulations to build practical experience. The course concludes with a final assessment and certification, evaluating both theoretical understanding and hands-on competence. Upon completion, participants receive a JKD Pakistan Certification in Fiber Optics Installation & Maintenance, enabling them to pursue careers as Fiber Optic Technicians, Network Installers, or Maintenance Engineers in telecom, IT, and infrastructure industries."],
+  "learningOutcomes": ["Over 36 lectures and 50+ hours of hands-on training","Practical experience in fiber optic installation, splicing, and testing", "Mastery of fiber optic tools, materials, and safety procedures", "Ability to interpret schematics and perform network troubleshooting","Knowledge of OTDR testing, connectorization, and signal integrity principles","Hands-on live project involving real-world fiber optic systems"],
+  "whyChooseJKD":["At JKD Pakistan, we deliver international-standard technical training aligned with TVET benchmarks, ensuring students gain globally recognized, job-ready skills. Our modern fiber optics labs, experienced industry instructors, and project-based learning approach prepare students for both local and international employment opportunities.","The Fiber Optics Technician Course at JKD Pakistan provides the perfect pathway to a rewarding career in telecommunications, data networking, and high-speed internet infrastructure, empowering learners with the expertise to meet the demands of today’s digital world."]
   }
-
 ]
