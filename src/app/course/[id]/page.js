@@ -7,6 +7,7 @@ import Header from "@/component/Header";
 import Footer from "@/component/Footer";
 import {faClockFour ,  faArrowUp  ,  faBookOpen} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 const Courses = () => {
   const {id} = useParams();
@@ -36,7 +37,7 @@ const Courses = () => {
 
             {/* feture rihgt side */}
             <div className="bg-white w-[30%] fixed  top-28 right-20 mt-5 py-5 flex flex-col items-center border border-gray-200 rounded">
-              <button className="cursor-pointer rounded tex-semibold w-[90%] py-2 text-white   text-center bg-[#e98b28] ">Apply Now</button>
+              <Link href={'/apply'} className="cursor-pointer rounded tex-semibold w-[90%] py-2 text-white   text-center bg-[#e98b28] ">Apply Now</Link>
               <h4  className='w-full pl-5 text-[20px] font-semibold pt-5 pb-3 text-black'>FEATURES</h4>
               <div className="text-black w-full pl-5 pt-3"><FontAwesomeIcon icon={faBookOpen} /> <span>{currCourse?.lectures}</span></div>
               <div className="text-black w-full pl-5 pt-3"><FontAwesomeIcon icon={faClockFour} /> <span>Duration  {currCourse?.hours} hours</span></div>
@@ -94,6 +95,7 @@ const Courses = () => {
             )}
           </ul>
 
+          {/* carrier */}
           {
             currCourse?.carrer && 
             <>
@@ -105,6 +107,7 @@ const Courses = () => {
             </>
           }
 
+          {/* Program Benefits */}
           {
             currCourse?.programBinits && 
             <>
@@ -118,6 +121,23 @@ const Courses = () => {
                   </li>
                 )}
               </ul>
+            </>
+          }
+
+          {/* why Choose JKD */}
+          {
+            currCourse?.whyChooseJKD  && 
+            <>
+              <br/>
+              <h4 className='text-[20px] font-semibold pb-3  text-black'>why Choose JKD</h4>
+              {/* <ul className="w-[60%] list-disc ml-6 pt-3"> */}
+              {currCourse?.whyChooseJKD?.map((course , index)=>
+                <p key={index} className="text-gray-700  w-[60%]">
+                  {course}
+                  <br/>
+                </p>
+              )}
+              {/* </ul> */}
             </>
           }
 
