@@ -17,7 +17,7 @@ export default function Header() {
     {path:'/' , name:'Home'},
     {path:'#' , name:'TEVET' , hover:'tevet'},
     {path:'#' , name:'IT Courses' , hover:'itCourses'}, 
-    {path:'#' , name:'Services'},
+    {path:'/services' , name:'Services'},
     {path:'/contact-us', name:'Contact us'}
   ]
   // const {theme , setTheme} = useGlobal();
@@ -54,25 +54,45 @@ export default function Header() {
     >
       <div className= {`  overflow-x-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6  mx-auto`}>
         {/* Logo Section */}
-        <div onClick={()=> router.push('/')} className="flex items-center h-full md:ml-[-175px] lg:ml-[-165px] group curesor-pointer">
+        <div onClick={()=> router.push('/')} className="flex items-center h-full  ml-[-20px] group cursor-pointer">
           {/* TEXT (medium and large screen) */}
-          <div className=" hidden md:block relative transform transition-transform duration-700 lg:group-hover:translate-x-[150px] h-[70px] w-[150px]">
+          {/* <div className=" hidden md:block relative transform transition-transform duration-700 lg:group-hover:translate-x-[150px] h-[70px] w-[150px]">
             <Image 
               src={text} 
               alt="TEXT" 
               fill
               className="object-fill"
             />
-          </div>    
+          </div>     */}
 
           {/* LOGO */}
-          <div className="relative h-full transform transition-all duration-700 lg:group-hover:translate-x-[100px] lg:group-hover:translate-y-[-50px] lg:group-hover:opacity-0 w-[70px] lg:h-[80px] lg:w-[70px] z-10">            
+          {/* <div className="relative h-full transform transition-all duration-700 lg:group-hover:translate-x-[100px] lg:group-hover:translate-y-[-50px] lg:group-hover:opacity-0 w-[70px] lg:h-[80px] lg:w-[70px] z-10">            
+            <Image 
+              src={logo} 
+              alt="LOGO" 
+              fill
+            />        
+          </div> */}
+  
+          <div className="relative h-full  lg:h-[80px] lg:w-[70px] z-10">            
             <Image 
               src={logo} 
               alt="LOGO" 
               fill
             />        
           </div>
+
+          <div className=" hidden md:block relative transform ml-[-20px]  h-[70px] w-[150px]">
+            <Image 
+              src={text} 
+              alt="TEXT" 
+              fill
+              className="object-fill"
+            />
+          </div>
+
+
+
 
           {/* TEXT (mobile screen) */}
           <div className=" md:hidden relative transform transition-transform duration-700 lg:group-hover:translate-x-[150px] h-[70px] w-[150px] ml-[-20px]">

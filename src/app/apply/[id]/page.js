@@ -34,24 +34,30 @@ const Apply = () => {
     name:'',
     fatherName:'',
     gender:'',
+    email:'',   
     dateOfBirth:'',
-    email:'',
     whatsappNumber:'',
     phoneNumber:'',
     CNIC:'',
-    expiryDate:'',
-    passportNo:'',
+    parentsCNIC:'',
+    // expiryDate:'',
+    // passportNo:'',
     
     // Candidate Address
     province:'',
     district:'',
     tehsil:'',
+    
+    // preffered course
+    
 
     // address for traning
-    traningRegion:'',
-    traningDistrict:'',
-    traningInstitute:'',
-    chooseSector:'',
+    // traningRegion:'',
+    // traningDistrict:'',
+    // traningInstitute:'',
+    // chooseSector:'',
+
+    // choose course
     chooseCourse:'',
 
     qualification:'',
@@ -62,7 +68,7 @@ const Apply = () => {
     CNICPicture:'',
     qalificaion:'',
     passportSizePic:'',
-    Passport:'',
+    passport:'',
 
 
     program:'',
@@ -71,19 +77,31 @@ const Apply = () => {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
-    const {value , name } = event.target;
+    event.preventDefault()
+    const {value , name  , files } = event.target;
+    if(files){
+        return setApplyForm((preValue) => {
+            return {
+                ...preValue,
+                [name] : files[0]
+            }
+        })
+    } 
+    
     setApplyForm((preValue) => {
         return {
             ...preValue,
             [name] : value
         }
     })
+
   }
 
 
   
 const handleSubmit = async (e) => {
   e.preventDefault()
+  console.log(applyForm)
 //   const {firstName,lastName,email,dateOfBirth,phoneNumber,address,CNIC,parentCNIC,age,gender,program,subProgram} = applyForm;
 
 //   if (!email || !password) {
@@ -91,22 +109,22 @@ const handleSubmit = async (e) => {
 //     return;
 //   }
 
-    setLoading(true);
+//   setLoading(true);
 
-  try {
-    const response = await axiosInstance.post("/api/apply", applyForm);
-    console.log(response);
-    const data = response.data;
+//   try {
+//     const response = await axiosInstance.post("/api/apply", applyForm);
+//     console.log(response);
+//     const data = response.data;
 
-    toast.success(data.message || "Login successful");
+//     toast.success(data.message || "Login successful");
 
-    router.push("/admin"  );
-  } catch (err) {
-    const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
-    toast.error(errorMessage);
-  } finally {
-    setLoading(false);
-  }
+//     router.push("/admin"  );
+//   } catch (err) {
+//     const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
+//     toast.error(errorMessage);
+//   } finally {
+//     setLoading(false);
+//   }
 };
 
 //   return (
@@ -238,7 +256,7 @@ const handleSubmit = async (e) => {
                 </div>
                 <div className='flex flex-col gap-3 ] w-[50%]'>
                     <label htmlFor='fName' className='text-sm md:text-base font-semibold'>Father Name</label>
-                    <input id='fName' type='text' name='fatherName' onChange={handleChange} value={applyForm.lastName} placeholder='last name' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <input id='fName' type='text' name='fatherName' onChange={handleChange} value={applyForm.fatherName} placeholder='last name' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
             {/* gender */}
@@ -273,7 +291,7 @@ const handleSubmit = async (e) => {
                     <input type='number' name='phoneNumber' onChange={handleChange} value={applyForm.phoneNumber} placeholder='address' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* CNIC and expiryDate */}
+            {/* CNIC and father/mother CNIC */}
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>CNIC</label>
@@ -281,7 +299,7 @@ const handleSubmit = async (e) => {
                 </div>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Father / Mother CNIC</label>
-                    <input type='date' name='expiryDate' onChange={handleChange} value={applyForm.expiryDate} placeholder='without dashes' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <input type='number' name='parentsCNIC' onChange={handleChange} value={applyForm.parentsCNIC} placeholder='without dashes' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
             {/* Applicant Address */}
@@ -316,7 +334,7 @@ const handleSubmit = async (e) => {
             {/* sector / course */}
             <div className='flex flex-col w-full gap-5 pt-5'>
                 <label className='text-sm md:text-base font-semibold'>Choose Sector</label>
-                <select name='chooseSector' onChange={handleChange} value={applyForm.chooseSector} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                <select name='chooseCourse' onChange={handleChange} value={applyForm.chooseCourse} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
                     <option value="">-Select-</option>
                     {
                     id === 'it-program'?
@@ -343,11 +361,11 @@ const handleSubmit = async (e) => {
             <div className='flex w-full gap-5 pt-8'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>CNIC Picture (Front & Back)</label>
-                    <input type='file' name='CNICPicture' className={`w-[95px] text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`}  required/>
+                    <input type='file' name='CNICPicture' onChange={handleChange} className={`w-[95px] text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`}  required/>
                 </div>
                 <div className='flex flex-col gap-3 ] w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Latest Qualification Picture</label>
-                    <input type='file' name='qalificaion'  className={`w-[95px]  text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <input type='file' name='qalificaion' onChange={handleChange}  className={`w-[95px]  text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
 
@@ -355,11 +373,11 @@ const handleSubmit = async (e) => {
             <div className='flex w-full gap-5 pt-8'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Passport Size Photograph</label>
-                    <input type='file' name='passportSizePic' placeholder='first name' className={`w-[95px] text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`}  required/>
+                    <input type='file' name='passportSizePic' onChange={handleChange}placeholder='first name' className={`w-[95px] text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`}  required/>
                 </div>
                 <div className='flex flex-col gap-3 ] w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Passport (optional)</label>
-                    <input type='file' name='Passport   '  className={`w-[95px]  text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <input type='file' name='passport' onChange={handleChange}  className={`w-[95px]  text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>    
 
