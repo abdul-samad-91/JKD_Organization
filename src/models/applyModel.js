@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 
 const applySchema = new mongoose.Schema(
   {
-    firstName: {
+    name: {
       type: String,
       trim: true,
       minlength: 2,
       maxlength: 50,
     },
-    lastName: {
+    fatherName: {
       type: String,
       trim: true,
       minlength: 2,
@@ -16,7 +16,7 @@ const applySchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      unique: true,
+      // unique: true,
       lowercase: true,
       trim: true,
       match: [/^\S+@\S+\.\S+$/, "Please enter a valid email address"],
@@ -24,45 +24,74 @@ const applySchema = new mongoose.Schema(
     dateOfBirth: {
       type: Date,
     },
+    whatsappNumber: {
+      type: String,
+      trim: true,
+      match: [/^\d{10,15}$/, "Phone number must be between 10–15 digits"],
+    },
     phoneNumber: {
       type: String,
       trim: true,
       match: [/^\d{10,15}$/, "Phone number must be between 10–15 digits"],
     },
-    address: {
-      type: String,
-      trim: true,
-      maxlength: 255,
-    },
+    // address: {
+    //   type: String,
+    //   trim: true,
+    //   maxlength: 255,
+    // },
     CNIC: {
       type: String,
-      unique: true,
+      // unique: true,
     //   match: [/^\d{13}$/, "CNIC must be a 13-digit number"],
     },
     parentCNIC: {
       type: String,
     //   match: [/^\d{13}$/, "Parent CNIC must be a 13-digit number"],
     },
-    age: {
-      type: Number,
-    },
+    // age: {
+    //   type: Number,
+    // },
     gender: {
       type: String,
       enum: ["Male", "Female", "Other"],
     },
-    program: {
+    porvince: {
       type: String,
       trim: true,
     },
-    subProgram: {
+    district: {
       type: String,
       trim: true,
     },
-    createdBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // assumes you have a User model
-      required: true,
+    tehsil: {
+      type: String,
+      trim: true,
     },
+    chooseCourse: {
+      type: String,
+      trim: true,
+    },
+    CNICPictureUrl: {
+      type: String,
+      trim: true,
+    },
+    qualificationUrl: {
+      type: String,
+      trim: true,
+    },
+    passportSizePicUrl: {
+      type: String,
+      trim: true,
+    },
+    passportUrl: {
+      type: String,
+      trim: true,
+    },
+    // createdBy: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "User", // assumes you have a User model
+    //   required: true,
+    // },
   },
   { timestamps: true }
 );

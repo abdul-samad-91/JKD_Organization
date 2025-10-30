@@ -25,7 +25,7 @@ const Apply = () => {
     {
         name:"Uplift Events",
         image:image1,
-        path:"/apply/events"
+        path:"/apply/events/upleft-events"
     },
 ]
   return (

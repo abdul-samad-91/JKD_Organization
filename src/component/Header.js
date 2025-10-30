@@ -24,7 +24,7 @@ export default function Header() {
   const theme = "dark";
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname)
+  // console.log(pathname)
 
   // const themeChange = ()=>{
   //   theme === 'light' ? setTheme('dark') : setTheme('light')
