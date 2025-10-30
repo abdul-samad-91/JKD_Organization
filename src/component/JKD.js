@@ -4,12 +4,6 @@ import { useGlobal } from '@/context/GlobleContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faLeaf, faUsers, faBalanceScale, faFlask, faHandshake, faLandmark, faArrowCircleDown ,faArrowCircleUp ,faArrowDown , faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
-
-
-
-
-
-
 const JKD = () => {
     // const {theme} = useGlobal()
     const theme = "dark";
@@ -35,13 +29,13 @@ const JKD = () => {
                 {/* left side */}
                 <div className='flex flex-col gap-2 w-[50%]'>
                     <h3 className='text-[30px] font-semibold   text-black'>WORLD CLASS <span className={`text-[#177faa]`}>FACILITIES </span></h3>
-                    <p className={` text-start text-black  pt-2 `} >JKD Pakistan is dedicated to excellence in training, education, and development creating skilled professionals who can lead with confidence and make a difference across the globe.</p>
+                    <p className={` text-start text-black  pt-2 `} >JKD Pakistan empowers individuals through quality training and education, developing skilled professionals ready to lead and create global impact.</p>
                     <ul className='text-black list-disc  ml-6 py-4'>
-                        <li>International Standard Training Our programs are designed according to global benchmarks, ensuring every learner gains practical, real-world expertise.</li>
-                        <li>Modern Learning Environment Equipped with advanced tools, labs, and digital resources to support effective hands-on training.</li>
-                        <li>Professional Instructors Learn under the guidance of certified and experienced trainers committed to your success.</li>
+                        <li>Our programs follow global standards, providing learners with practical, real-world skills.</li>
+                        <li>A modern setup with advanced tools and digital resources for hands-on learning.</li>
+                        <li>Learn from certified, experienced instructors dedicated to your success.</li>
                     </ul>
-                    <p className={` text-start text-black  `} >At JKD Pakistan, we don’t just teach skills we build futures.</p>
+                    {/* <p className={` text-start text-black  `} >At JKD Pakistan, we don’t just teach skills we build futures.</p> */}
                 </div>
                 {/* right side */}
                 <div className='w-[50%] flex flex-col gap-5'>
