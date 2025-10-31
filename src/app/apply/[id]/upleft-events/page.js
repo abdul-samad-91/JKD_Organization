@@ -63,29 +63,31 @@ const UpleftEvents = () => {
   
 const handleSubmit = async (e) => {
   e.preventDefault()
-  let formData = new FormData();
+  console.log(applyForm)
+
+    let formData = new FormData();
   for(let field in applyForm){
     formData.append(field , applyForm[field]);
   }
 
-//   setLoading(true);
-//   try {
-//     const response = await axiosInstance.post("/api/apply", formData , {
-//       headers: { "Content-Type": "multipart/form-data" }
-//     });
-//     console.log(response);
-//     const data = response.data;
+  setLoading(true);
+  try {
+    const response = await axiosInstance.post("/api/booking", formData , {
+      headers: { "Content-Type": "multipart/form-data" }
+    });
+    console.log(response);
+    const data = response.data;
 
-//     toast.success(data.message || "Login successful");
+    toast.success(data.message || "Login successful");
 
-//     // router.push("/admin"  );
-//   } catch (err) {
-//     console.log("catch block", err)
-//     const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
-//     toast.error(errorMessage);
-//   } finally {
-//     setLoading(false);
-//   }
+    // router.push("/admin"  );
+  } catch (err) {
+    console.log("catch block", err)
+    const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
+    toast.error(errorMessage);
+  } finally {
+    setLoading(false);
+  }
 };
   return (
     <div className={`${theme === 'light' ? 'bg-[#eefbff] text-black':'bg-[#080808] text-white'} flex  flex-col   w-full `}>
@@ -111,7 +113,7 @@ const handleSubmit = async (e) => {
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Phone Number</label>
-                    <input type='text' name='phoneNumber' onChange={handleChange} value={applyForm.phoneNumber}  placeholder='phone number' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <input type='number' name='phoneNumber' onChange={handleChange} value={applyForm.phoneNumber}  placeholder='phone number' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Organization</label>
@@ -119,7 +121,7 @@ const handleSubmit = async (e) => {
                 </div>
                     <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Emergency Contact Number</label>
-                    <input type='text' name='emergencyContact' onChange={handleChange} value={applyForm.emergencyContact}  placeholder='emergency contact' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <input type='number' name='emergencyContact' onChange={handleChange} value={applyForm.emergencyContact}  placeholder='emergency contact' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
             {/* preffered date or time*/}
@@ -206,7 +208,7 @@ const handleSubmit = async (e) => {
                 </div>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Upload ID Proof / Company ID / Student Card</label>
-                    <input type='file' name='idImage' onChange={handleChange} value={applyForm.idImage}  className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <input type='file' name='idImage' onChange={handleChange}  className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
             {/* signatur name and event fee */}
@@ -217,7 +219,7 @@ const handleSubmit = async (e) => {
                 </div>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Event Fee / Ticket Price</label>
-                    <select name='eventFee' onChange={handleChange} value={applyForm.province} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                    <select name='eventFee' onChange={handleChange} value={applyForm.eventFee} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
                         <option value="">Event Fee / Ticket Price</option>
                         <option value="football">Indoor Football : 1000 pkr</option>
                         <option value="badminton">Indoor badminton : 1000 pkr</option>    
@@ -232,8 +234,11 @@ const handleSubmit = async (e) => {
             </h3>
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[32%]'>
-                    <label className='text-sm md:text-base font-semibold'>Phone Number</label>
-                    <input type='text' name='phoneNumber' onChange={handleChange} value={applyForm.phoneNumber}  placeholder='phone number' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <label className='text-sm md:text-base font-semibold'>Payment</label>
+                    <select name='paymentMethod' onChange={handleChange} value={applyForm.paymentMethod} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
+                        <option value="">Select Method</option>
+                        <option value="football">Cash on Delevory</option>    
+                    </select>
                 </div>
                 {/* <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Organization</label>

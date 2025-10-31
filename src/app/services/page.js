@@ -4,7 +4,7 @@ import Footer from "@/component/Footer"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleDown ,faArrowCircleUp} from '@fortawesome/free-solid-svg-icons'
 import { useState } from "react"
-import WhatWeValue from "../about-us/WhatWeValue"
+import WhatWeValue from "./WhatWeValue"
 
 
 const technicalCards = ["Masons – Skilled in block work, plastering, tiling, and finishing jobs.Our masons are experienced in handling both residential and commercial projects with precision and quality workmanship.",

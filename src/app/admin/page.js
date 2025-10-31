@@ -5,6 +5,7 @@ import React from 'react'
 
 const Adimn = () => {
     const {theme} = useGlobal();
+    
   return (
     <div className='flex h-screen  w-full'>
       <AdminLeftSidebar className="w-[20%]" />

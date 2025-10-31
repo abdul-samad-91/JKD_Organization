@@ -7,6 +7,9 @@ import React, { useState } from 'react'
 import icon1 from '../../../public/contact-icon1.png';
 import icon2 from '../../../public/contact-icon2.png';
 import icon3 from '../../../public/contact-icon3.png';
+import { toast } from 'react-toastify'
+import axiosInstance from '@/lib/axios'
+
 // import Details from '../programs/details/[id]/page';
 // import Image from 'next/image'
 
@@ -59,14 +62,15 @@ const handleSubmit = async (e) => {
     setLoading(true);
 
   try {
-    const response = await axiosInstance.post("/api/contact", applyForm);
+    const response = await axiosInstance.post("/api/contact", contactForm);
     console.log(response);
     const data = response.data;
 
     toast.success(data.message || "Email Send Successfully");
 
-    router.push("/admin"  );
+    // router.push("/admin"  );
   } catch (err) {
+    console.error(err);
     const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
     toast.error(errorMessage);
   } finally {
