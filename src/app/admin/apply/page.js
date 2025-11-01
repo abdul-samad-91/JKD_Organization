@@ -2,10 +2,12 @@
 
 import AdminLeftSidebar from '@/component/AdminLeftSidebar'
 import Footer from '@/component/Footer'
+import GenericTable from '@/component/genericTable'
 import Header from '@/component/Header'
 import { useGlobal } from '@/context/GlobleContext'
+import axiosInstance from '@/lib/axios'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 const SubProgram = {
@@ -63,7 +65,7 @@ const Apply = () => {
     program:'',
     subProgram:''
   })
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleChange = (event) => {
     const {value , name } = event.target;
@@ -216,12 +218,53 @@ const handleSubmit = async (e) => {
 //     </div>
 //   )
 
+    const [data , setData] = useState([]);
+    // const [loading , setLoading] = useState(false);
+
+    async function apiCall () {
+        try {
+            const response = await axiosInstance.get('api/apply');
+            setLoading(false);
+            setData(response.data);
+            console.log(response.data);
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message);
+        }
+    }
+
+
+    useEffect(() => {
+        apiCall();
+    }, []);
+    if(loading) {
+        return <div>Loading</div>;
+    }
   return (
-    <div className={`${theme === 'light' ? 'bg-[#eefbff] text-black':'bg-[#080808] text-white'} flex  h-screen  w-full `}>
-        {/* <AdminLeftSidebar className="w-[20%]" /> */}
-        <form onSubmit={handleSubmit} className={` w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
+    <div className='flex   w-full h-screen'>
+      <AdminLeftSidebar className="w-[20%]" />
+      <div className={`w-[80%] ${theme === 'light' ? 'bg-white':'bg-[#080808]'} `}>
+        <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full px-10 pt-[18px] lg:text-[35px] lg:font-extrabold font-bold  `}>Apply Forms</h1>
+        <div className='overflow-auto h-[500px] mt-10 mx-5 '>
+            <GenericTable data={data} headers={["name", "fatherName", "email", "dateOfBirth", "gender", "whatsappNumber", "phoneNumber", "CNIC", "province", "district", "tehsil", "chooseCourse", "CNICPictureUrl", "qualificationUrl", "passportSizePicUrl", "passportUrl"]} />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Apply
+
+
+
+
+
+
+    {/*<div className={`${theme === 'light' ? 'bg-[#eefbff] text-black':'bg-[#080808] text-white'} flex  h-screen  w-full `}>
+        {/* <AdminLeftSidebar className="w-[20%]" /> 
+        {/* <form onSubmit={handleSubmit} className={` w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
             <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full pt-[18px] lg:text-[39px] lg:font-extrabold font-bold  `}>Regester</h1>
-            {/* name and fatername */}
+             name and fatername 
             <div className='flex w-full gap-5 pt-8'>
                 <div  className='flex flex-col gap-3  w-[50%]'>
                     <label htmlFor="name" className='font-semibold text-sm md:text-base '>Name</label>
@@ -232,7 +275,7 @@ const handleSubmit = async (e) => {
                     <input id='fName' type='text' name='fatherName' onChange={handleChange} value={applyForm.lastName} placeholder='last name' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* gender */}
+            {/* gender 
             <div className='flex flex-col gap-3  w-full pt-5'>
                 <label className='text-sm md:text-base font-semibold'>Gender</label>
                 <select name='gender' onChange={handleChange} value={applyForm.gender} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
@@ -242,7 +285,7 @@ const handleSubmit = async (e) => {
                     <option value="Other">Other</option>
                 </select>                    
             </div>
-            {/* email and DOB */}
+            {/* email and DOB 
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Email</label>
@@ -253,7 +296,7 @@ const handleSubmit = async (e) => {
                     <input type='date' name='dateOfBirth' onChange={handleChange} value={applyForm.dateOfBirth} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* whatsapp and Phone  number*/}
+            {/* whatsapp and Phone  number
             <div className='flex w-full gap-3 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Whatsapp Number</label>
@@ -264,7 +307,7 @@ const handleSubmit = async (e) => {
                     <input type='number' name='phoneNumber' onChange={handleChange} value={applyForm.phoneNumber} placeholder='address' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* CNIC and expiryDate */}
+            {/* CNIC and expiryDate 
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>CNIC</label>
@@ -275,11 +318,11 @@ const handleSubmit = async (e) => {
                     <input type='date' name='expiryDate' onChange={handleChange} value={applyForm.expiryDate} placeholder='without dashes' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* Applicant Address */}
+            {/* Applicant Address 
             <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  pt-10'>
                 Applicant Address
             </h3>
-            {/* provience / district / tehsil */}
+            {/* provience / district / tehsil 
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[33%]'>
                     <label className='text-sm md:text-base font-semibold'>Province</label>
@@ -300,11 +343,11 @@ const handleSubmit = async (e) => {
                     </select>                    
                 </div>
             </div>
-            {/* Training Address*/}
+            {/* Training Address
             <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  pt-10'>
                 Training Address
             </h3>
-            {/* region / district */}
+            {/* region / district 
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Region</label>
@@ -319,7 +362,7 @@ const handleSubmit = async (e) => {
                     </select>                    
                 </div>
             </div>
-            {/* institute */}
+            {/* institute 
             <div className='flex flex-col gap-3 pt-5 w-full'>
                 <label className='text-sm md:text-base font-semibold'>District</label>
                 <select name='traningDistrict' onChange={handleChange} value={applyForm.traningDistrict} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
@@ -327,7 +370,7 @@ const handleSubmit = async (e) => {
                 </select>                    
             </div> 
 
-            {/* sector / course */}
+            {/* sector / course 
             <div className='flex w-full gap-5 pt-10'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Choose Sector</label>
@@ -343,7 +386,7 @@ const handleSubmit = async (e) => {
                 </div>
             </div> 
 
-            {/* qualification / certificates */}
+            {/* qualification / certificates 
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Qualification</label>
@@ -359,21 +402,21 @@ const handleSubmit = async (e) => {
                 </div>
             </div> 
 
-            {/* Experience */}
+            {/* Experience 
             <div className='flex flex-col gap-3  w-full pt-5'>
                 <label className='text-sm md:text-base font-semibold'>Experience</label>
                 <select name='experience' onChange={handleChange} value={applyForm.experience} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
                     <option value="">-Select-</option>
                 </select>                    
             </div>
-            {/* Documents */}
+            {/* Documents 
             <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  pt-10'>
                 Documents
             </h3>
             <p className=' text-sm md:text-base w-full  '>
                 Please upload the following documents
             </p>
-            {/* CNIC and qualification pic */}
+            {/* CNIC and qualification pic 
             <div className='flex w-full gap-5 pt-8'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>CNIC Picture (Front & Back)</label>
@@ -385,7 +428,7 @@ const handleSubmit = async (e) => {
                 </div>
             </div>
 
-            {/* CNIC and qualification pic */}
+            {/* CNIC and qualification pic 
             <div className='flex w-full gap-5 pt-8'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Passport Size Photograph</label>
@@ -397,7 +440,7 @@ const handleSubmit = async (e) => {
                 </div>
             </div>    
 
-            {/* Program and sub Program */}
+            {/* Program and sub Program 
             {/* <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Program</label>
@@ -421,7 +464,7 @@ const handleSubmit = async (e) => {
                         }
                     </select>                     
                 </div>
-            </div> */}
+            </div> 
 
 
             <div className='self-start  pt-5'>
@@ -429,9 +472,5 @@ const handleSubmit = async (e) => {
                     {loading ? "Submiting..." : "Submit"}
                 </button>
             </div>
-        </form>
-    </div>
-  )
-}
-
-export default Apply
+        </form> 
+    </div>*/}

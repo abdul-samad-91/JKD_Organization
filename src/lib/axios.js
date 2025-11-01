@@ -22,12 +22,12 @@ axiosInstance.interceptors.response.use(
   (error) => {
     if (error.response) {
       if (error.response.status === 401) {
-        console.error("client error")
+        console.log("client error")
       } else if (error.response.status === 500) {
-        console.error("Server Error (500)");
+        console.log("Server Error (500)");
       }
     } else if (error.code === "ECONNABORTED") {
-      console.error("Request Timed Out");
+      console.log("Request Timed Out");
     }
     return Promise.reject(error);
   }

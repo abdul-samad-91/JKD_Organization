@@ -76,13 +76,21 @@ const AdminLeftSidebar = () => {
   }
 // bg-[#177eaa94] bg-[#00874f85]
   return (
-    <div className={`w-[20%] h-full ${theme === "dark" ? " bg-black text-white " : "bg-white text-black"} flex flex-col justify-between`}>
+    <div className={`w-[20%] h-full ${theme === "dark" ? " bg-black text-white " : "bg-[#eefbff] text-black"} flex flex-col justify-between`}>
       <div>
         <div className="flex justify-between">
         {/* Logo Section */}
-        <div className="flex items-center h-[100px]  md:ml-[-175px] lg:ml-[-145px] group">
+        <div className="flex items-center h-[100px]   group">
             {/* TEXT (medium and large screen) */}
-            <div className=" hidden md:block relative transform transition-transform duration-700 lg:group-hover:translate-x-[150px] h-[70px] w-[150px]">
+              {/* LOGO */}
+            <div className="relative h-full lg:h-[80px] lg:w-[70px] z-10">            
+            <Image 
+                src={logo} 
+                alt="LOGO" 
+                fill
+            />        
+            </div>            
+            <div className=" hidden md:block relative  h-[70px] w-[150px]">
             <Image 
                 src={text} 
                 alt="TEXT" 
@@ -90,14 +98,6 @@ const AdminLeftSidebar = () => {
                 className="object-fill"
             />
             </div>    
-              {/* LOGO */}
-              <div className="relative h-full transform transition-all duration-700 lg:group-hover:translate-x-[100px] lg:group-hover:translate-y-[-50px] lg:group-hover:opacity-0 w-[70px] lg:h-[80px] lg:w-[70px] z-10">            
-              <Image 
-                  src={logo} 
-                  alt="LOGO" 
-                  fill
-              />        
-              </div>
               {/* TEXT (mobile screen) */}
               <div className=" md:hidden relative transform transition-transform duration-700 lg:group-hover:translate-x-[150px] h-[70px] w-[150px] ml-[-20px]">
               <Image 
@@ -109,7 +109,7 @@ const AdminLeftSidebar = () => {
               </div>    
           </div>
           {/* Toggle Button */}
-          <label className="relative inline-flex items-center cursor-pointer pr-2">
+          {/* <label className="relative inline-flex items-center cursor-pointer pr-2">
             <div className="w-[50px] h-[25px] md:h-[30px] lg:h-[35px]  self-center " style={{
                 WebkitMaskImage: `url(${theme === "dark" ? light.src : dark.src})`,
                 WebkitMaskRepeat: "no-repeat",
@@ -128,7 +128,7 @@ const AdminLeftSidebar = () => {
               checked={theme === "dark"}   
               onChange={themeChange}
             />
-          </label>
+          </label> */}
         </div>
 
         <nav className="flex flex-col space-y-2 px-4">
@@ -138,8 +138,8 @@ const AdminLeftSidebar = () => {
                 flex items-center gap-2 p-2 rounded-md transition-all ${
                     pathname === item.path
                         ? theme === "light"
-                            ? "bg-[#00874F] "
-                            : "bg-[#177faa]"
+                          ? "bg-[#177faa] text-white"
+                          : "bg-[#00874F] "
                         : " "
                     } ${theme === "light" ?"hover:text-white hover:bg-black":"hover:text-black hover:bg-white "}
                 `}

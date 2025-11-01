@@ -6,12 +6,7 @@ import { uploadImageToCloudinary } from "@/lib/cloudinary";
 export async function POST(request) {
   try {
     await connectDB();
-
     // const form = await request.json();
-
-
-      
-
       const formData = await request.formData();
 
       const name = formData.get("name");  
@@ -169,3 +164,19 @@ console.log(CNICPictureUrl , qualificationUrl , passportSizePicUrl , passportUrl
     );
   }
 }
+
+
+
+export async function GET(request) {
+  try {
+    await connectDB();
+    const applications = await Apply.find();
+    return NextResponse.json(applications, { status: 200 });
+  } catch (err) {
+    console.error("GET /api/apply error:", err);
+    return NextResponse.json(
+      {error: "Server error", detail: err.message},
+      {status: 500}
+    );
+  }
+  }

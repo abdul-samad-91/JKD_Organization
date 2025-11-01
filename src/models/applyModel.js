@@ -55,7 +55,7 @@ const applySchema = new mongoose.Schema(
       type: String,
       enum: ["Male", "Female", "Other"],
     },
-    porvince: {
+    province: {
       type: String,
       trim: true,
     },
