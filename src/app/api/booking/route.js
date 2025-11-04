@@ -55,18 +55,18 @@ console.log("FormData received:", data);
 
 export async function GET() {
   try {
-    await connectDB();
-    const bookings = await Booking.find().sort({ createdAt: -1 });
 
-    return new Response(
-      JSON.stringify({ success: true, data: bookings }),
-      { status: 200 }
-    );
+    await connectDB();
+    const applications = await Booking.find();
+    return NextResponse.json(applications, { status: 200 });
+
   } catch (error) {
-    console.error("Fetching bookings error:", error);
-    return new Response(
-      JSON.stringify({ success: false, error: error.message }),
-      { status: 500 }
+
+    console.error("GET /api/booking error:", error);
+    return NextResponse.json(
+      {error: "Server error", detail: err.message},
+      {status: 500}
     );
+    
   }
 }

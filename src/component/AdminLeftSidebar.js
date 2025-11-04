@@ -15,7 +15,7 @@ import light from '../../public/light.png'
 // import { useAuth } from "@/context/AuthContext";
 
 const AdminLeftSidebar = () => {
-  const {theme , setTheme} = useGlobal();
+  const theme = 'light';
   const router = useRouter();
   const pathname = usePathname();
 //   const {setUser} = useAuth();

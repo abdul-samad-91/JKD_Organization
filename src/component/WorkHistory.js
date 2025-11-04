@@ -4,7 +4,8 @@ import WorkDetailItem from ".//WorkDetailItem";
 import { useGlobal } from '@/context/GlobleContext';
 
 const WorkHistory = () => {
-    const {theme} = useGlobal();
+    const {state} = useGlobal();
+    const {theme} = state;
     const workDetails=[
     {
         icon:FaHandshake , 

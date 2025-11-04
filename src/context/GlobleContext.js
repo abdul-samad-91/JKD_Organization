@@ -1,13 +1,34 @@
 "use client";
-import { createContext, useContext,  useState } from "react";
+import { createContext, useContext,  useReducer,  useState } from "react";
 
 const GlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
-    const [theme , setTheme] = useState('light')
+    // const [theme , setTheme] = useState('light')
+    const initialState = {
+      theme:'light',
+      email:'',
+      role:'',
+    }
+
+    const reducer = (state, action) => {
+      switch (action.type) {
+        // case 'TOGGLE_THEME':
+        //   return { ...state, theme: state.theme === 'light' ? 'dark' : 'light' };
+        case 'SET_EMAIL':
+          return { ...state, email: action.payload };
+        case 'SET_ROLE':
+          return { ...state, role: action.payload };
+        default:
+          return state;
+      }
+    };
+
+    const [state , dispatch] = useReducer(reducer,initialState);
+
 
   return (
-    <GlobalContext.Provider value={{ theme , setTheme}}>
+    <GlobalContext.Provider value={{ state, dispatch }}>
       {children}
     </GlobalContext.Provider>
   );

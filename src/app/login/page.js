@@ -56,8 +56,8 @@ const handleSubmit = async (e) => {
   return (
     <>
     <Header />
-    <div className="w-full min-h-[500px] flex items-center justify-center px-4  bg-[#eefbff] mt-20">
-        <form onSubmit={handleSubmit} className="w-[350px] max-w-md rounded gap-5 bg-white p-6 sm:p-8 lg:p-10  backdrop-blur-md flex flex-col items-center justify-center ">
+    <div className="w-full min-h-[500px] flex items-center justify-center px-4  bg- mt-20">
+        <form onSubmit={handleSubmit} className="w-[350px] max-w-md rounded gap-5 bg-[#eefbff] p-6 sm:p-8 lg:p-10  backdrop-blur-md flex flex-col items-center justify-center ">
         <h2 className='text-[35px] font-semibold'>LOGIN </h2>
         {/* Email */}
         <div className="w-full ">
@@ -71,7 +71,7 @@ const handleSubmit = async (e) => {
                 onChange={handleChange}
                 placeholder="Email"
                 autoComplete='new-email'
-                className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded w-full outline-none pr-9`}              
+                className={`${theme === 'dark' ? 'border-[#177eaa94]' : 'border-[#00874f85] bg-white'} border p-2 rounded w-full outline-none pr-9`}              
                 required
                 />
             </div>
@@ -92,7 +92,7 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
             autoComplete='new-password'
             placeholder="Password"
-            className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded w-full outline-none pr-9`}              
+            className={`${theme === 'dark' ? 'border-[#177eaa94]' : 'border-[#00874f85] bg-white'} border p-2 rounded w-full outline-none pr-9`}              
             required
             />
             </div>
@@ -101,14 +101,14 @@ const handleSubmit = async (e) => {
         <button
             type="submit"
             disabled={loading}
-            className={`hidden md:block px-4 py-2 w-full rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}
+            className={`hidden md:block px-4 py-2 w-full rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-white hover:bg-black bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}
         >
             {loading ? "Logging in..." : "Login"}
         </button>
         {/* creat and update links */}
         <ul className="w-full flex flex-col sm:flex-row  justify-between items-center  text-sm sm:text-base text-[#070E2A] gap-2 sm:gap-0">
             <li  className="cursor-pointer hover:underline text-sm ">Create an account</li>
-            <li  className="cursor-pointer hover:underlinev text-sm">Forgot password?</li>
+            <li  className="cursor-pointer hover:underline text-sm">Forgot password?</li>
         </ul>
         </form>
       </div>

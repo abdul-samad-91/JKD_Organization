@@ -36,7 +36,8 @@ const info = [
 
 const ContactUs = () => {
 
-    const {theme} = useGlobal();
+    const {state} = useGlobal();
+    const {theme} = state;
     const [contactForm , setContactForm] = useState({
         userName:'',
         email:'',
@@ -82,13 +83,13 @@ const handleSubmit = async (e) => {
     <div className={` h-screen w-full  flex flex-col justify-between `}>
         <Header />
         <div className={`${theme === 'light' ? 'bg-white text-black':'bg-black text-white'} flex flex-col items-center mt-16 sm:mt-20`}>
-            <div className=' max-w-[1200px] w-full px-4'> 
+            {/* <div className=' max-w-[1200px] w-full px-4'> 
                 <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full text-[30px] md:text-[35px] lg:text-[39px] font-extrabold   `}>Contact Us</h1>
                 <div className='text-sm'>
                     <span className={`${theme === 'light' ? 'text-gray': 'text-white'}} cursor-pointer`} onClick={()=> router.push('/')}>Home - </span>
                     <span className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa] '} cursor-pointer`} >Contact Us</span>
                 </div>
-            </div>
+            </div> */}
             <section className={`${theme === "light" ? "bg-[#eefbff]" : "bg-[#080808]"} w-full flex flex-col items-center my-10 py-10`}>                
                 <div className='flex flex-col md:flex-row justify-between gap-5 w-full lg:max-w-[1200px] px-4'>
                     {

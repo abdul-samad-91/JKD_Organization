@@ -169,7 +169,13 @@ console.log(CNICPictureUrl , qualificationUrl , passportSizePicUrl , passportUrl
 
 export async function GET(request) {
   try {
-    await connectDB();
+    await connectDB(); 
+    const token = req.headers.get("x-user-token");
+    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+    console.log(decoded);
+    if (!decoded.id || !decoded.email) {
+    return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
     const applications = await Apply.find();
     return NextResponse.json(applications, { status: 200 });
   } catch (err) {

@@ -12,8 +12,8 @@ import JKD from "../component/JKD";
 import KickstartCarrer from "@/component/KickstartCarrer";
 
 export default function Home() {
-  const {theme} = useGlobal();
-  
+  const {state} = useGlobal();
+  const {theme} = state;
   return (
     < div className={` h-screen w-full  flex flex-col justify-between `}>
       <Header />
