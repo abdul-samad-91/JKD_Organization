@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/dbConnect";
 import Apply from "@/models/applyModel";
 import { uploadImageToCloudinary } from "@/lib/cloudinary";
-
+import jwt from 'jsonwebtoken'
 export async function POST(request) {
   try {
     await connectDB();
@@ -170,10 +170,10 @@ console.log(CNICPictureUrl , qualificationUrl , passportSizePicUrl , passportUrl
 export async function GET(request) {
   try {
     await connectDB(); 
-    const token = req.headers.get("x-user-token");
+    const token = request.headers.get("x-user-token");
     const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
     console.log(decoded);
-    if (!decoded.id || !decoded.email) {
+    if (!decoded.sub || !decoded.email) {
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
     const applications = await Apply.find();

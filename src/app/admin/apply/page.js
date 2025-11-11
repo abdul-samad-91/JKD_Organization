@@ -26,87 +26,87 @@ import { toast } from 'react-toastify'
 const Apply = () => {
   const {state} = useGlobal();
   const {email , role} = state;
-const theme = 'light';  
+  const theme = 'light';  
 //   const [progm , setProgm] = useState(null);
   const router = useRouter();
-  const [applyForm , setApplyForm] = useState({
-    name:'',
-    fatherName:'',
-    gender:'',
-    dateOfBirth:'',
-    email:'',
-    whatsappNumber:'',
-    phoneNumber:'',
-    CNIC:'',
-    expiryDate:'',
-    passportNo:'',
-    
-    // Candidate Address
-    province:'',
-    district:'',
-    tehsil:'',
-
-    // address for traning
-    traningRegion:'',
-    traningDistrict:'',
-    traningInstitute:'',
-    chooseSector:'',
-    chooseCourse:'',
-
-    qualification:'',
-    priorCertificate:'',
-    experience:'',
-
-    // Documents
-    CNICPicture:'',
-    qalificaion:'',
-    passportSizePic:'',
-    Passport:'',
-
-
-    program:'',
-    subProgram:''
-  })
   const [loading, setLoading] = useState(true);
+//   const [applyForm , setApplyForm] = useState({
+//     name:'',
+//     fatherName:'',
+//     gender:'',
+//     dateOfBirth:'',
+//     email:'',
+//     whatsappNumber:'',
+//     phoneNumber:'',
+//     CNIC:'',
+//     expiryDate:'',
+//     passportNo:'',
+    
+//     // Candidate Address
+//     province:'',
+//     district:'',
+//     tehsil:'',
 
-  const handleChange = (event) => {
-    const {value , name } = event.target;
-    setApplyForm((preValue) => {
-        return {
-            ...preValue,
-            [name] : value
-        }
-    })
-  }
+//     // address for traning
+//     traningRegion:'',
+//     traningDistrict:'',
+//     traningInstitute:'',
+//     chooseSector:'',
+//     chooseCourse:'',
+
+//     qualification:'',
+//     priorCertificate:'',
+//     experience:'',
+
+//     // Documents
+//     CNICPicture:'',
+//     qalificaion:'',
+//     passportSizePic:'',
+//     Passport:'',
+
+
+//     program:'',
+//     subProgram:''
+//   })
+
+//   const handleChange = (event) => {
+//     const {value , name } = event.target;
+//     setApplyForm((preValue) => {
+//         return {
+//             ...preValue,
+//             [name] : value
+//         }
+//     })
+//   }
 
 
   
-const handleSubmit = async (e) => {
-  e.preventDefault()
-//   const {firstName,lastName,email,dateOfBirth,phoneNumber,address,CNIC,parentCNIC,age,gender,program,subProgram} = applyForm;
+// const handleSubmit = async (e) => {
+//   e.preventDefault()
+// //   const {firstName,lastName,email,dateOfBirth,phoneNumber,address,CNIC,parentCNIC,age,gender,program,subProgram} = applyForm;
 
-//   if (!email || !password) {
-//     toast.error("Email and password are required.");
-//     return;
+// //   if (!email || !password) {
+// //     toast.error("Email and password are required.");
+// //     return;
+// //   }
+
+//     setLoading(true);
+
+//   try {
+//     const response = await axiosInstance.post("/api/apply", applyForm);
+//     console.log(response);
+//     const data = response.data;
+
+//     toast.success(data.message || "Login successful");
+
+//     router.push("/admin"  );
+//   } catch (err) {
+//     const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
+//     toast.error(errorMessage);
+//   } finally {
+//     setLoading(false);
 //   }
-
-    setLoading(true);
-
-  try {
-    const response = await axiosInstance.post("/api/apply", applyForm);
-    console.log(response);
-    const data = response.data;
-
-    toast.success(data.message || "Login successful");
-
-    router.push("/admin"  );
-  } catch (err) {
-    const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
-    toast.error(errorMessage);
-  } finally {
-    setLoading(false);
-  }
-};
+// };
 
 //   return (
 //     <div className={` h-screen w-full  flex flex-col justify-between `}>
@@ -220,21 +220,22 @@ const handleSubmit = async (e) => {
 //     </div>
 //   )
 
-    const [data , setData] = useState([]);
-    // const [loading , setLoading] = useState(false);
+const [data , setData] = useState([]);
+// const [loading , setLoading] = useState(false);
 
-    async function applyApiCall () {
-        try {
-            const response = await axiosInstance.get('api/apply');
-            setLoading(false);
-            setData(response.data);
-            console.log(response.data);
-        } catch (error) {
-            console.log(error);
-            toast.error(error.message);
+async function applyApiCall () {
+    try {
+        const response = await axiosInstance.get('api/apply');
+        setLoading(false);
+        setData(response.data);
+    } catch (error) {
+        console.log(error);
+        if(error.status === 401){
+            router.push('/login');
+            toast.error('Unauthorized login again');
         }
     }
-
+}
 
     useEffect(() => {
         applyApiCall();
@@ -243,12 +244,14 @@ const handleSubmit = async (e) => {
         return <div>Loading</div>;
     }
   return (
-    <div className='flex   w-full h-screen'>
+    <div className='flex   w-full h-screen '>
       <AdminLeftSidebar className="w-[20%]" />
-      <div className={`w-[80%] ${theme === 'light' ? 'bg-white':'bg-[#080808]'} `}>        
-        <div className=' flex justify-between items-center px-10 pt-[18px]' >
-          <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start   lg:text-[39px] lg:font-extrabold font-bold  `}>Students Forms</h1>
-          <div className='text-sm'>
+      <div className={`w-[80%] ${theme === 'light' ? 'bg-gray-50':'bg-[#080808]'} `}>        
+        <div className=' flex justify-between items-center px-10 h-[100px] ' >
+            <h1 className="text-4xl font-extrabold text-gray-800">Students Forms</h1>
+
+          {/* <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start   lg:text-[39px] lg:font-extrabold font-bold  `}>Students Forms</h1> */}
+          {/* <div className='text-sm'>
             <p className='flex gap-1 items-center'>
               <span className=' font-semibold'>Email - </span>
               <span>{email}</span>
@@ -257,10 +260,14 @@ const handleSubmit = async (e) => {
               <span className='font-semibold'>Role -</span>
               <span>{role}</span>
             </p>
-          </div>
+          </div> */}
         </div>
-        <div className='overflow-auto h-[500px] mt-10 mx-5 '>
-            <GenericTable data={data} headers={["name", "fatherName", "email", "dateOfBirth", "gender", "whatsappNumber", "phoneNumber", "CNIC", "province", "district", "tehsil", "chooseCourse", "CNICPictureUrl", "qualificationUrl", "passportSizePicUrl", "passportUrl"]} />
+        <div className='overflow-auto h-[500px] mx-5 '>
+            <div className=' p-5 bg-white rounded w-full'>
+            <h2 className="text-xl font-semibold text-gray-800 pb-5">All Registrations</h2>
+            <GenericTable data={data} headers={["#", "Name (Father)", "Contact & Email", "CNIC & DOB", "Course", "Location (Tehsil)", "Documents"]} />
+                {/* <GenericTable data={data} headers={["sNo", "name", "fatherName", "email", "dateOfBirth", "gender", "whatsappNumber", "phoneNumber", "CNIC", "province", "district", "tehsil", "chooseCourse", "CNICPictureUrl", "qualificationUrl", "passportSizePicUrl", "passportUrl"]} /> */}
+            </div>
         </div>
       </div>
     </div>

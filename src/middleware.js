@@ -5,9 +5,9 @@ export async function middleware(req) {
   if (req.method !== "GET") {
     return NextResponse.next(); // skip for POST, PUT, etc.
   }
-  console.log("middleware called")
   // Get token from cookies
   const token = req.cookies.get("token")?.value;
+  console.log("inside middleware " , token)
   if (!token) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -20,7 +20,7 @@ export async function middleware(req) {
     // requestHeaders.set("x-user-id", decoded.sub || decoded.id || "");
     // requestHeaders.set("x-user-email", decoded.email || "");
     // requestHeaders.set("x-user-role", decoded.role || "user");
-
+    
     requestHeaders.set("x-user-token", token)
     return NextResponse.next({
       request: {
@@ -38,6 +38,7 @@ export async function middleware(req) {
 export const config = {
     // i have to add more route to this
   matcher: [
-    "/api/apply"
+    "/api/apply",
+    "/api/booking"
   ], 
 };

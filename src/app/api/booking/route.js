@@ -1,7 +1,8 @@
 import { connectDB } from "@/lib/dbConnect";
 import Booking from "@/models/bookModel";
 import { uploadImageToCloudinary } from "@/lib/cloudinary";
-
+import { NextResponse } from "next/server";
+import jwt from 'jsonwebtoken'
 export async function POST(req) {
   try {
     await connectDB();
@@ -33,30 +34,35 @@ console.log("FormData received:", data);
     await booking.save();
     console.log(booking);
 
-    return new Response(
-      JSON.stringify({
+    return NextResponse.json({
         success: true,
         message: "Booking created successfully",
         data: booking,
-      }),
+      },
       { status: 201 }
     );
   } catch (error) {
     console.error("Booking creation error:", error);
-    return new Response(
-      JSON.stringify({
+    return NextResponse.json({
         success: false,
         error: error.message || "Something went wrong while creating booking",
-      }),
+      },
       { status: 500 }
     );
   }
 }
 
-export async function GET() {
+export async function GET(request) {
   try {
 
-    await connectDB();
+    await connectDB();    
+    const token = request.headers.get("x-user-token");
+    const decoded =token && jwt.verify(token, process.env.TOKEN_SECRET);
+    console.log(decoded);
+    if (!decoded?.sub || !decoded?.email) {
+    return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
+
     const applications = await Booking.find();
     return NextResponse.json(applications, { status: 200 });
 
@@ -64,7 +70,7 @@ export async function GET() {
 
     console.error("GET /api/booking error:", error);
     return NextResponse.json(
-      {error: "Server error", detail: err.message},
+      {error: "Server error", detail: error.message},
       {status: 500}
     );
     
