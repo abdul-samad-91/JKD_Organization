@@ -12,6 +12,7 @@ import Image from "next/image";
 import { useGlobal } from "@/context/GlobleContext";
 import dark from '../../public/dark.png'
 import light from '../../public/light.png'
+import axiosInstance from "@/lib/axios";
 // import { useAuth } from "@/context/AuthContext";
 
 const AdminLeftSidebar = () => {
@@ -32,44 +33,34 @@ const AdminLeftSidebar = () => {
     // { path: "/history", label: "History", icon: <FaHistory /> },
   ];
 
-// const logout = async () => {
-//   try {
-//     const response = await fetch("/api/auth/logout", {
-//       method: "POST",
-//     });
+const logout = async () => {
+  try {
+    const response = await axiosInstance.post("/api/auth/logout");
+    console.log(response)
 
-//     let data;
-//     try {
-//       data = await response.json();
-//     } catch {
-//       // fallback if server didn't send JSON
-//       toast.error("Invalid server response");
-//       return;
-//     }
+    if (response.status != 200) {
+      toast.error(response.data.message || "Please Try Again");
+      return;
+    }
 
-//     if (!response.ok) {
-//       toast.error(data.message || "Please Try Again");
-//       return;
-//     }
-
-//     toast.success(data.message || "Logout Successfully");
-//     // setUser(null);
-//     router.push("/dashboard-login");
-//   } catch (error) {
-//     console.error("Logout error:", error);
-//     toast.error("Something went wrong with logout");
-//   }
-// };
+    router.push("/");
+    toast.success(response.data.message || "Logout Successfully");
+    // setUser(null);
+  } catch (error) {
+    console.error("Logout error:", error);
+    toast.error("Something went wrong with logout");
+  }
+};
 
 
-//   const linkClasses = (path) =>
-//     `flex items-center gap-2 p-2 rounded-md transition-all ${
-//       pathname === path
-//         ? theme === "light"
-//             ? "bg-[#00874F] hover:text-white hover:bg-black"
-//             : "hover:text-black hover:bg-white bg-[#177faa]"
-//         : " "
-//     }`;
+  const linkClasses = (path) =>
+    `flex items-center gap-2 p-2 rounded-md transition-all ${
+      pathname === path
+        ? theme === "light"
+            ? "bg-[#00874F] hover:text-white hover:bg-black"
+            : "hover:text-black hover:bg-white bg-[#177faa]"
+        : " "
+    }`;
 
   const themeChange = ()=>{
     theme === 'light' ? setTheme('dark') : setTheme('light')
@@ -155,8 +146,8 @@ const AdminLeftSidebar = () => {
 
       <div className="px-4 pb-6 flex flex-col space-y-2">
         <button
-          className="flex gap-3 items-center p-2 "
-        //   onClick={logout}   
+          className="flex gap-3 items-center p-2 cursor-pointer "
+          onClick={logout}   
         >
           <MdLogout />
           <span>Logout</span>

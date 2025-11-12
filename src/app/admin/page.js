@@ -55,6 +55,8 @@ import axiosInstance from "@/lib/axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import LoadingScreen from "@/component/LoadingScreen";
+
 
 // Sample data for demonstration purposes
 const recentApplications = [
@@ -133,7 +135,8 @@ const App = () => {
     },[]);
 
 
-    if(!view) return <div>loading... </div>; 
+    // if(!view) return <div>loading... </div>;
+    if(!view) return <LoadingScreen />; 
     return (
       <div className='flex h-screen  w-full'>
        <AdminLeftSidebar className="w-[20%]" />

@@ -3,6 +3,7 @@ import AdminLeftSidebar from '@/component/AdminLeftSidebar';
 import Footer from '@/component/Footer';
 import GenericTable from '@/component/genericTable';
 import Header from '@/component/Header';
+import LoadingScreen from '@/component/LoadingScreen';
 import { useGlobal } from '@/context/GlobleContext';
 import axiosInstance from '@/lib/axios';
 import { useRouter } from 'next/navigation';
@@ -85,8 +86,11 @@ const Booking = () => {
   useEffect(() => {
     applyApiCall();
   }, []);
+  // if(loading) {
+  //   return <div>Loading</div>;
+  // }
   if(loading) {
-    return <div>Loading</div>;
+    return <LoadingScreen />;
   }
   return(
     // <div className={`${theme === 'light' ? 'bg-[#eefbff]':'bg-[#080808]'} flex  h-screen  w-full `}>
