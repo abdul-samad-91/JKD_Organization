@@ -2,13 +2,15 @@
 import Footer from '@/component/Footer'
 import Header from '@/component/Header'
 import { useGlobal } from '@/context/GlobleContext'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import icon1 from '../../../public/contact-icon1.png';
 import icon2 from '../../../public/contact-icon2.png';
 import icon3 from '../../../public/contact-icon3.png';
 import { toast } from 'react-toastify'
 import axiosInstance from '@/lib/axios'
+import { set } from 'mongoose'
+import LoadingScreen from '@/component/LoadingScreen'
 
 // import Details from '../programs/details/[id]/page';
 // import Image from 'next/image'
@@ -78,7 +80,17 @@ const handleSubmit = async (e) => {
     setLoading(false);
   }
 };
+  const [screenLoading, setScreenLoading] = useState(true);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setScreenLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (screenLoading) return <LoadingScreen />;
   return (
     <div className={` h-screen w-full  flex flex-col justify-between `}>
         <Header />

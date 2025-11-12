@@ -5,9 +5,10 @@ import Footer from '@/component/Footer'
 import Header from '@/component/Header'
 import { useGlobal } from '@/context/GlobleContext'
 import { useParams, useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import axiosInstance from '@/lib/axios'
+import LoadingScreen from '@/component/LoadingScreen'
 
 
 const SubProgram = {
@@ -111,6 +112,18 @@ const handleSubmit = async (e) => {
     setLoading(false);
   }
 };
+
+  const [screenLoading, setScreenLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setScreenLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (screenLoading) return <LoadingScreen />;
 
 //   return (
 //     <div className={` h-screen w-full  flex flex-col justify-between `}>

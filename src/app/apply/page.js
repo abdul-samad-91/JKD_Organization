@@ -6,6 +6,8 @@ import image1 from '../../../public/image1.jpg'
 import image2 from '../../../public/image2.jpg'
 import image3 from '../../../public/image3.jpg'
 import Link from "next/link"
+import { useEffect, useState } from "react"
+import LoadingScreen from "@/component/LoadingScreen"
 
 
 
@@ -27,7 +29,18 @@ const Apply = () => {
         image:image1,
         path:"/apply/events/upleft-events"
     },
-]
+];
+  const [screenLoading, setScreenLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setScreenLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (screenLoading) return <LoadingScreen />;
   return (
       <div className={` h-screen w-full flex flex-col  justify-between `}>
         <Header />

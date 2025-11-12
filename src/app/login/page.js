@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { FaLock, FaEnvelope , FaUnlock } from 'react-icons/fa';
@@ -10,6 +10,7 @@ import Footer from '@/component/Footer';
 import axiosInstance from '@/lib/axios';
 // import Loginimage from '../../../public/Image123.jpg';
 import { toast } from 'react-toastify';
+import LoadingScreen from '@/component/LoadingScreen';
 
 const Login = () => {
   const {theme} = useGlobal();
@@ -52,6 +53,18 @@ const handleSubmit = async (e) => {
     setLoading(false);
   }
 };
+
+  const [screenLoading, setScreenLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setScreenLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (screenLoading) return <LoadingScreen />;
 
   return (
     <>

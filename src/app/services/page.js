@@ -3,8 +3,9 @@ import Header from "@/component/Header"
 import Footer from "@/component/Footer"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleDown ,faArrowCircleUp} from '@fortawesome/free-solid-svg-icons'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import WhatWeValue from "./WhatWeValue"
+import LoadingScreen from "@/component/LoadingScreen"
 
 
 const technicalCards = ["Masons – Skilled in block work, plastering, tiling, and finishing jobs.Our masons are experienced in handling both residential and commercial projects with precision and quality workmanship.",
@@ -62,6 +63,18 @@ const Apply = () => {
                 }
             })
         }
+
+          const [screenLoading, setScreenLoading] = useState(true);
+        
+          useEffect(() => {
+            const timer = setTimeout(() => {
+              setScreenLoading(false);
+            }, 500);
+        
+            return () => clearTimeout(timer);
+          }, []);
+        
+          if (screenLoading) return <LoadingScreen />;
   return (
       <div className={` h-screen w-full flex flex-col  justify-between `}>
         <Header />

@@ -2,7 +2,7 @@
 import Footer from "@/component/Footer";
 import Header from "@/component/Header";
 import { useGlobal } from "@/context/GlobleContext";
-import React from "react";
+import { useEffect, useState } from "react";
 import HeroSection from "@/component/HeroSection";
 import Programs from "@/component/Programs";
 import Partners from "@/component/Partners";
@@ -10,10 +10,22 @@ import WorkHistory from "@/component/WorkHistory";
 import Testimonel from "@/component/Testimonel";
 import JKD from "../component/JKD";
 import KickstartCarrer from "@/component/KickstartCarrer";
+import LoadingScreen from "@/component/LoadingScreen";
 
 export default function Home() {
   const {state} = useGlobal();
   const {theme} = state;
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <LoadingScreen />;
   return (
     < div className={` h-screen w-full  flex flex-col justify-between `}>
       <Header />

@@ -8,6 +8,7 @@ import Footer from "@/component/Footer";
 import {faClockFour ,  faArrowUp  ,  faBookOpen} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import LoadingScreen from "@/component/LoadingScreen";
 
 const Courses = () => {
   const {id} = useParams();
@@ -17,6 +18,18 @@ const Courses = () => {
     setCurrCourse(currCourse);
     console.log(currCourse);
   },[id])
+
+    const [screenLoading, setScreenLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setScreenLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (screenLoading) return <LoadingScreen />;
   return (    
     <div className={` h-screen w-full flex flex-col  justify-between `}>
       <Header />
