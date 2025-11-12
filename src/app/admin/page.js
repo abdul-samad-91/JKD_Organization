@@ -149,7 +149,7 @@ const App = () => {
             <div className=' flex justify-between items-center px-10  ' >
                 <div>
                     <h1 className="text-4xl font-extrabold text-gray-800">Admin Dashboard</h1>
-                    <p className="text-gray-500 mt-1">Welcome back, Administrator. Here is an overview of the JKD Organization's activity.</p>
+                    <p className="text-gray-500 mt-1">Welcome back, Administrator. Here is an overview of the JKD Organization&apos;s activity.</p>
                 </div>
                 <div className='text-sm'>
                     <p className='flex gap-1 items-center'>
