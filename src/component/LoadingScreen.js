@@ -3,7 +3,7 @@ import Image from "next/image";
 
  const LoadingScreen = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-50 p-4">
+    <div className="flex flex-col items-center justify-center h-screen  p-4">
       {/* Define the spinning keyframe animation directly in a style block 
         since we are using Tailwind via the CDN import in the main App component.
       */}
