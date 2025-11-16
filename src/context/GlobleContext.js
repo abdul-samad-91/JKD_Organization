@@ -9,6 +9,7 @@ export function GlobalProvider({ children }) {
       theme:'light',
       email:'',
       role:'',
+      job:true
     }
 
     const reducer = (state, action) => {
@@ -19,6 +20,8 @@ export function GlobalProvider({ children }) {
           return { ...state, email: action.payload };
         case 'SET_ROLE':
           return { ...state, role: action.payload };
+        case 'JOB':
+          return { ...state, job: action.payload };
         default:
           return state;
       }

@@ -30,15 +30,16 @@ const Apply = () => {
         path:"/apply/events/upleft-events"
     },
 ];
-  const [screenLoading, setScreenLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setScreenLoading(false);
-    }, 500);
+const [screenLoading, setScreenLoading] = useState(true);
 
-    return () => clearTimeout(timer);
-  }, []);
+useEffect(() => {
+const timer = setTimeout(() => {
+    setScreenLoading(false);
+}, 500);
+
+return () => clearTimeout(timer);
+}, []);
 
   if (screenLoading) return <LoadingScreen />;
   return (

@@ -13,10 +13,11 @@ import KickstartCarrer from "@/component/KickstartCarrer";
 import LoadingScreen from "@/component/LoadingScreen";
 
 export default function Home() {
-  const {state} = useGlobal();
-  const {theme} = state;
+  const {state ,dispatch} = useGlobal();
+  const {theme , job} = state;
   const [loading, setLoading] = useState(true);
-
+  // const [job , setJob] = useState(true)
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -27,8 +28,38 @@ export default function Home() {
 
   if (loading) return <LoadingScreen />;
   return (
-    < div className={` h-screen w-full  flex flex-col justify-between `}>
+    < div className={` h-screen w-full  flex flex-col ${job && 'overflow-hidden'}  `}>
       <Header />
+      {
+        job &&
+        <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
+          <div className="bg-white rounded-xl shadow-lg  p-8 w-[90%] py-5 max-w-[600px] relative flex flex-col justify-center">
+            <button onClick={() => dispatch({type : 'JOB' , payload : false})} className="cursor-pointer absolute top-4 right-6 text-xl text-[red]">
+              ✕
+            </button>
+            <h2 className="text-[1.75rem] text-center font-bold mb-4 text-gray-900">
+              Ready to Apply?           
+              </h2>
+            <h3 className="text-[18px] text-center  mb-4 text-gray-500">
+              Find Your Next Career Move Today!           
+            </h3>
+            <p className="text-center text-md text-gray-800 mb-6">
+              join the Future Career Network , your gateway to innovative companies and thousands of open position and submit your  application in just minutes.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button className="bg-[#177faa] text-white px-5 py-2 rounded-lg cursor-pointer ">
+                See All Open Jobs Now
+              </button>
+              {/* <button className="border border-blue-600 text-blue-600 px-5 py-2 rounded-lg hover:bg-blue-50">
+                Create Profile
+              </button> */}
+            </div>
+            <p className="text-sm text-center py-3 text-gray-500">
+              Future Carrer Network
+            </p>
+          </div>
+        </div>
+      }
       <div className={`${theme === 'light' ? 'bg-white text-black':'bg-black text-white'} flex flex-col items-center mt-10 w-full`}>
         <HeroSection />
         <WorkHistory />
@@ -37,7 +68,7 @@ export default function Home() {
         <div className={`${theme === 'light' ? 'bg-white':'bg-[#0b0b0b]'} w-full flex flex-col items-center mt-10 py-10`}>
           <div className='max-w-[950px] px-4'>
             <h2 className='text-[35px] text-center font-semibold '>Welcome To <span className={` ${theme === 'dark' ? 'text-[#177faa]' : 'text-[#00874F]'}`}>JKD Pakistan</span></h2>
-            <p className={` text-center  ${theme === 'dark' ? '' : 'text-gray-700'} pt-4`} >JKD Pakistan is a social development and welfare organization working for a brighter and prosperous future of our nation. Our mission is to bring positive change through education, healthcare, youth empowerment, and community development. We strive to create equal opportunities for every individual — whether it’s access to quality education, better healthcare facilities, or employment opportunities. JKD Pakistan is committed to building a stronger, progressive, and united society.</p>
+            <p className={` text-center  ${theme === 'dark' ? '' : 'text-gray-800'} pt-4`} >JKD Pakistan is a social development and welfare organization working for a brighter and prosperous future of our nation. Our mission is to bring positive change through education, healthcare, youth empowerment, and community development. We strive to create equal opportunities for every individual — whether it’s access to quality education, better healthcare facilities, or employment opportunities. JKD Pakistan is committed to building a stronger, progressive, and united society.</p>
           </div>
         </div>
         <JKD />
