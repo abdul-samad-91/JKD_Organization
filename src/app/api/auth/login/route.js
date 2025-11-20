@@ -40,7 +40,7 @@ export async function POST(req) {
         message: "Login Successful!",
         user: {
           id: user._id.toString(),
-          name: user.username || user.name || "",
+          name: user.userName ||  "",
           email: user.email,
         },
       },

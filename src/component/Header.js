@@ -126,7 +126,7 @@ export default function Header() {
 
         <div className="flex gap-5">  
           {/* Contact Button (desktop only) */}
-          <Link href={'/apply'}  className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+          <Link href={'/apply/course'}  className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
             Apply Now
             {/* Register */}
           </Link>

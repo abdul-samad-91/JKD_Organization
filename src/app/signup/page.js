@@ -13,7 +13,8 @@ import axiosInstance from '@/lib/axios';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-  const {theme} = useGlobal();
+  const {state} = useGlobal();
+  const {theme} = state;
   const router = useRouter();
   const [form, setForm] = useState({userName:"", email: "", password: "" , confirmPassword:""});
   const [loading, setLoading] = useState(false);
@@ -42,18 +43,18 @@ const handleSubmit = async (e) => {
       password,
       confirmPassword,
     });
-    console.log(response)
+    // console.log(46,response)
     const data = response.data;
-    if (response.status !== 201) {
-      toast.error(data.error || "Login failed");
-      return;
-    }
+    // if (response.status !== 201) {
+    //   toast.error(data.message || "Login failed");
+    //   return;
+    // }
 
     toast.success(data.message || "Login successful");
-    router.push("/login");
+    router.push("/admin");
   } catch (err) {
-    console.error(err);
-    toast.error("Something went wrong. Please try again later.");
+    // console.error(56,err.response.data.message);
+    toast.error(err.response.data.message || "Something went wrong. Please try again later.");
   } finally {
     setLoading(false);
   }
@@ -79,7 +80,7 @@ const handleSubmit = async (e) => {
                 onChange={handleChange}
                 placeholder="username"  
                 autoComplete="off"
-                className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded w-full outline-none pr-9`}              
+                className={`${theme === 'dark' ? 'border-[#177eaa94]' : 'border-[#00874f85]'} border p-2 rounded w-full outline-none pr-9`}              
                 required
                 />                
             </div>
@@ -96,7 +97,7 @@ const handleSubmit = async (e) => {
                 onChange={handleChange}
                 autoComplete="off" 
                 placeholder="Email"
-                className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded w-full outline-none pr-9`}              
+                className={`${theme === 'dark' ? 'border-[#177eaa94]' : 'border-[#00874f85]'} border p-2 rounded w-full outline-none pr-9`}              
                 required
                 />
             </div>
@@ -120,8 +121,8 @@ const handleSubmit = async (e) => {
                 onChange={handleChange}
                 autoComplete="new-password"
                 placeholder="Password"
-                className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded w-full outline-none pr-9`}              
-                required
+                className={`border ${theme === 'dark' ? 'border-[#177eaa94]' : 'border-[#00874f85]'} p-2 rounded w-full outline-none pr-9`}              
+                required 
                 />
             </div>
         </div>
@@ -142,7 +143,7 @@ const handleSubmit = async (e) => {
                 onChange={handleChange}
                 autoComplete="new-password"
                 placeholder="confirm password"
-                className={`${theme === 'dark' ? 'bg-[#177eaa94]' : 'bg-[#00874f85]'} p-2 rounded w-full outline-none pr-9`}              
+                className={`${theme === 'dark' ? 'border-[#177eaa94]' : 'border-[#00874f85]'} border p-2 rounded w-full outline-none pr-9`}              
                 required
                 />
             </div>
@@ -152,7 +153,7 @@ const handleSubmit = async (e) => {
         <button
             type="submit"
             disabled={loading}
-            className={`hidden md:block px-4 py-2 w-[40%] self-start rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}
+            className={`hidden md:block px-4 py-2 w-[40%] self-start rounded ${theme !== 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}
         >
             {loading ? "Logging in..." : "Login"}
         </button>

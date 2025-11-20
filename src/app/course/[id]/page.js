@@ -50,7 +50,7 @@ const Courses = () => {
 
             {/* feture rihgt side */}
             <div className="bg-white w-[30%] fixed  top-28 right-20 mt-5 py-5 flex flex-col items-center border border-gray-200 rounded">
-              <Link href={'/apply'} className="cursor-pointer rounded tex-semibold w-[90%] py-2 text-white   text-center bg-[#e98b28] ">Apply Now</Link>
+              <Link href={'/apply/course'} className="cursor-pointer rounded tex-semibold w-[90%] py-2 text-white   text-center bg-[#e98b28] ">Apply Now</Link>
               <h4  className='w-full pl-5 text-[20px] font-semibold pt-5 pb-3 text-black'>FEATURES</h4>
               <div className="text-black w-full pl-5 pt-3"><FontAwesomeIcon icon={faBookOpen} /> <span>{currCourse?.lectures}</span></div>
               <div className="text-black w-full pl-5 pt-3"><FontAwesomeIcon icon={faClockFour} /> <span>Duration  {currCourse?.hours} hours</span></div>

@@ -11,6 +11,7 @@ import Testimonel from "@/component/Testimonel";
 import JKD from "../component/JKD";
 import KickstartCarrer from "@/component/KickstartCarrer";
 import LoadingScreen from "@/component/LoadingScreen";
+import Link from "next/link";
 
 export default function Home() {
   const {state ,dispatch} = useGlobal();
@@ -47,9 +48,9 @@ export default function Home() {
               join the Future Career Network , your gateway to innovative companies and thousands of open position and submit your  application in just minutes.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button className="bg-[#177faa] text-white px-5 py-2 rounded-lg cursor-pointer ">
+              <Link href={'apply/job'} className="bg-[#177faa] text-white px-5 py-2 rounded-lg cursor-pointer ">
                 See All Open Jobs Now
-              </button>
+              </Link>
               {/* <button className="border border-blue-600 text-blue-600 px-5 py-2 rounded-lg hover:bg-blue-50">
                 Create Profile
               </button> */}

@@ -8,24 +8,42 @@ export async function POST(request) {
     await connectDB();
     // const form = await request.json();
       const formData = await request.formData();
-
-      const name = formData.get("name");  
-      const fatherName = formData.get("fatherName");
-      const gender = formData.get("gender");
-      const email = formData.get("email");
-      const dateOfBirth = formData.get("dateOfBirth");
-      const whatsappNumber = formData.get("whatsappNumber");
-      const phoneNumber = formData.get("phoneNumber");
-      const CNIC = formData.get("CNIC");
-      const parentsCNIC = formData.get("parentsCNIC");
-      const province = formData.get("province"); 
-      const district = formData.get("district");
-      const tehsil = formData.get("tehsil");
-      const chooseCourse = formData.get("chooseCourse");
-      const passport = formData.get("passport");
-      const CNICPicture = formData.get("CNICPicture");
-      const qualification = formData.get("qualification");
-      const passportSizePic = formData.get("passportSizePic");
+      const {
+      name,
+      fatherName,
+      gender,
+      email,
+      dateOfBirth,
+      whatsappNumber,
+      phoneNumber,
+      CNIC,
+      parentsCNIC,
+      province,
+      district,
+      tehsil,
+      chooseCourse,
+      passport,
+      CNICPicture,
+      qualification,
+      passportSizePic,
+      } = Object.fromEntries(formData);
+      // const name = formData.get("name");  
+      // const fatherName = formData.get("fatherName");
+      // const gender = formData.get("gender");
+      // const email = formData.get("email");
+      // const dateOfBirth = formData.get("dateOfBirth");
+      // const whatsappNumber = formData.get("whatsappNumber");
+      // const phoneNumber = formData.get("phoneNumber");
+      // const CNIC = formData.get("CNIC");
+      // const parentsCNIC = formData.get("parentsCNIC");
+      // const province = formData.get("province"); 
+      // const district = formData.get("district");
+      // const tehsil = formData.get("tehsil");
+      // const chooseCourse = formData.get("chooseCourse");
+      // const passport = formData.get("passport");
+      // const CNICPicture = formData.get("CNICPicture");
+      // const qualification = formData.get("qualification");
+      // const passportSizePic = formData.get("passportSizePic");
 
 
     // console.log( name , gender , email , dateOfBirth , whatsappNumber , phoneNumber , CNIC , parentsCNIC , province , district , tehsil , chooseCourse ,CNICPicture , qualification , passportSizePic);

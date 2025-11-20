@@ -2,9 +2,9 @@
 import Header from "@/component/Header"
 import Footer from "@/component/Footer"
 import Image from "next/image"
-import image1 from '../../../public/image1.jpg'
-import image2 from '../../../public/image2.jpg'
-import image3 from '../../../public/image3.jpg'
+import image1 from '../../../../public/image1.jpg'
+import image2 from '../../../../public/image2.jpg'
+import image3 from '../../../../public/image3.jpg'
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import LoadingScreen from "@/component/LoadingScreen"
@@ -15,19 +15,19 @@ import LoadingScreen from "@/component/LoadingScreen"
 const Apply = () => {
     const cards = [
     {
-        name:"TEVET",
+        name:"English Teacher",
         image:image2,
-        path:"/apply/tevet"
+        path:"/apply/job/english-teacher"
     },
     {
-        name:"IT Program",
+        name:"IT Mentor",
         image:image3,
-        path:"/apply/it-program"
+        path:"/apply/job/it-mentor"
     },
     {
-        name:"Uplift Events",
+        name:"Video Editor",
         image:image1,
-        path:"/apply/events/upleft-events"
+        path:"/apply/job/video-editor"
     },
 ];
 
