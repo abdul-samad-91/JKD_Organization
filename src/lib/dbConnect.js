@@ -8,6 +8,7 @@ export const connectDB = async () => {
     return;
   }
 
+  
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI, {
     });
