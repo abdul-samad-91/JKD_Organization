@@ -18,14 +18,9 @@ export function GlobalProvider({ children }) {
         // case 'TOGGLE_THEME':
         //   return { ...state, theme: state.theme === 'light' ? 'dark' : 'light' };
         case'LOGIN':
-        // return console.log("payload" , action.payload);
           return {...state, user:action.payload};
         case 'LOGOUT':
           return { ...initialState };
-        // case 'SET_EMAIL':
-        //   return { ...state, email: action.payload };
-        // case 'SET_ROLE':
-        //   return { ...state, role: action.payload };
         case 'JOB':
           return { ...state, job: action.payload };
         default:

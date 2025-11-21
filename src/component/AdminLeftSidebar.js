@@ -20,7 +20,7 @@ const AdminLeftSidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
 //   const {setUser} = useAuth();
-
+  const {state, dispatch} = useGlobal();
   const menu = [
     { path: "/admin", label: "Profile", icon: <MdDashboard /> },
     // { path: "/transfers", label: "Transfers", icon: <FaExchangeAlt /> },
@@ -42,8 +42,7 @@ const logout = async () => {
       toast.error(response.data.message || "Please Try Again");
       return;
     }
-    localStorage.clear();
-
+    dispatch({ type: "LOGOUT" });
     router.push("/");
     toast.success(response.data.message || "Logout Successfully");
     // setUser(null);
