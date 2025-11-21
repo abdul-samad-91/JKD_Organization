@@ -42,6 +42,7 @@ const logout = async () => {
       toast.error(response.data.message || "Please Try Again");
       return;
     }
+    localStorage.clear();
 
     router.push("/");
     toast.success(response.data.message || "Logout Successfully");

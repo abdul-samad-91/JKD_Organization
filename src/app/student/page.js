@@ -32,25 +32,25 @@ const Apply = () => {
                 <h1 className="text-4xl font-extrabold text-gray-800">Student Profile</h1>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-md mb-8">
-                <h3 className="text-2xl font-semibold text-gray-700 mb-4 border-gray-200 border-b pb-2">Personal Details</h3>
-                <div id="general-info" className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700 ">
-                    <p className="">Student Name: <span className="font-normal text-gray-600 "> {user?.name}</span></p>
-                    <p className="">Email: <span className="font-normal text-gray-600 "> {user?.email}</span></p>
-                    <p className="">Student ID: <span className="font-normal text-gray-600 "> {user?.studentId}</span></p>
-                    <p className="">Enrollment Date : <span className="font-normal text-gray-600 "> {user?.createdAt}</span></p>
+            <div className="bg-[#207845] p-6 rounded-xl mb-8">
+                <h3 className="text-2xl font-semibold text-white mb-4 border-gray-200 border-b pb-2">Personal Details</h3>
+                <div id="general-info" className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white ">
+                    <p className="font-semibold">Student Name: <span className="font-light  "> {user?.name}</span></p>
+                    <p className="font-semibold">Email: <span className="font-light "> {user?.email}</span></p>
+                    <p className="font-semibold">Student ID: <span className="font-light "> {user?.studentId}</span></p>
+                    <p className="font-semibold">Enrollment Date : <span className="font-light"> {user?.createdAt}</span></p>
                 </div>
             </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* <!-- Course Applications Card --> */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-2xl font-semibold text-gray-700 mb-4 border-gray-200 border-b pb-2">Course Applications</h3>
+            <div className="bg-white p-6 rounded-xl border border-gray-400 ">
+                <h3 className="text-2xl font-semibold  mb-4 border-gray-300 border-b pb-2">Course Applications</h3>
                 <div id="course-applications">
                     {
                         appliedCourses.length === 0 ? (
-                            <div className="text-center py-10">
-                                <h3 className="text-2xl font-semibold">Not applied for any courses yet</h3>
-                                <p className="text-gray-600">Explore the &quot;Courses&quot; section to apply for a program.</p>
+                            <div className="text-center py-10 border-dashed border-2 bg-gray-50 border-gray-300 rounded-lg">
+                                <h3 className="text-lg text-gray-700 font-semibold">Not applied for any courses yet</h3>
+                                <p className="text-gray-600 text-sm">Explore the &quot;Courses&quot; section to apply for a program.</p>
                             </div>
                         ) : (
                             <div>hello</div>
@@ -60,14 +60,14 @@ const Apply = () => {
             </div>
 
             {/* <!-- Booking Applications Card --> */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-2xl font-semibold text-indigo-600 mb-4 border-gray-200 border-b pb-2">Booking Applications</h3>
+            <div className="bg-white p-6 rounded-xl border border-gray-400 ">
+                <h3 className="text-2xl font-semibold text-grey-700 mb-4 border-gray-300 border-b pb-2">Booking Applications</h3>
                 <div id="booking-applications">
                     {
                         appliedCourses.length === 0 ? (
-                            <div className="text-center py-10">
-                                <h3 className="text-2xl font-semibold">Not applied for any bookings yet.</h3>
-                                <p className="text-gray-600">Visit the &quot;Bookings&quot; section to reserve a resource.</p>
+                            <div className="text-center py-10 border-dashed border-2 bg-gray-50 border-gray-300 rounded-lg">
+                                <h3 className="text-lg text-gray-700 font-semibold">Not applied for any bookings yet.</h3>
+                                <p className="text-gray-600 text-sm">Visit the &quot;Bookings&quot; section to reserve a resource.</p>
                             </div>
                         ) : (
                             <div>hello</div>
