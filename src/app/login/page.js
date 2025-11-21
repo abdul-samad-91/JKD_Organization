@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 import LoadingScreen from '@/component/LoadingScreen';
 
 const Login = () => {
-  const {theme} = useGlobal();
+  const {theme , dispatch} = useGlobal();
   const router = useRouter();
   const [form, setForm] = useState({ email: "", password: ""});
   const [loading, setLoading] = useState(false);
@@ -42,11 +42,14 @@ const handleSubmit = async (e) => {
     });
 
     const data = response.data;
-
+    dispatch({ type: "LOGIN", payload: data.user });
     toast.success(data.message || "Login successful");
-
-    router.push("/admin"  );
-  } catch (err) {
+    if(data.user.role === 'admin' ){
+      router.push("/admin"  );
+    }else{
+      router.push("/student");
+    }
+    } catch (err) {
     const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
     toast.error(errorMessage);
   } finally {

@@ -6,12 +6,10 @@ import jwt from 'jsonwebtoken'
 export async function POST(req) {
   try {
     await connectDB();
-
-    
     const formData = await req.formData();
     const data = Object.fromEntries(formData.entries());
     const fileFields = ["idImage", "paymentScreenshot"];
-console.log("FormData received:", data);
+    console.log("FormData received:", data);
 
     let idImageUrl = null;
     let paymentScreenshotUrl = null;
@@ -26,7 +24,7 @@ console.log("FormData received:", data);
         field === "idImage" ? idImageUrl = result.secure_url: paymentScreenshotUrl = result.secure_url;
       }
     }
-    const { fullName, email, phoneNumber, province, district, tehsil, organization, prefferedDate, prefferedTime, emergencyContact, medical , signatureName, eventFee, paymentMethod}= data;
+    const { fullName, email, phoneNumber, province, district, tehsil, organization, prefferedDate, prefferedTime, emergencyContact, medical , signatureName, eventFee, paymentMethod , userId}= data;
     console.log(fullName, email, phoneNumber, province, district, tehsil, organization, prefferedDate, prefferedTime, emergencyContact, medical , signatureName, eventFee, paymentMethod , idImageUrl , paymentScreenshotUrl)
     const booking = new Booking({
       fullName, email, phoneNumber, province, district, tehsil, organization, prefferedDate, prefferedTime, emergencyContact, medical , signatureName, eventFee, paymentMethod , idImageUrl , paymentScreenshotUrl

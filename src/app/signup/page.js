@@ -13,17 +13,17 @@ import axiosInstance from '@/lib/axios';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-  const {state} = useGlobal();
+  const {state , dispatch} = useGlobal();
   const {theme} = state;
   const router = useRouter();
   const [form, setForm] = useState({userName:"", email: "", password: "" , confirmPassword:""});
   const [loading, setLoading] = useState(false);
   const [view , setView] = useState(false)
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
+const handleChange = (e) => {
+  const { name, value } = e.target;
+  setForm((prev) => ({ ...prev, [name]: value }));
+};
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -49,9 +49,13 @@ const handleSubmit = async (e) => {
     //   toast.error(data.message || "Login failed");
     //   return;
     // }
-
+    dispatch({ type: "LOGIN", payload: data.user });
     toast.success(data.message || "Login successful");
-    router.push("/admin");
+        if(data.user.role === 'admin' ){
+      router.push("/admin"  );
+    }else{
+      router.push("/student");
+    }
   } catch (err) {
     // console.error(56,err.response.data.message);
     toast.error(err.response.data.message || "Something went wrong. Please try again later.");

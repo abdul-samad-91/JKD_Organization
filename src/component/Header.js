@@ -7,6 +7,7 @@ import { useRouter  , usePathname } from "next/navigation"
 import Link from "next/link"
 import upArrow from "../../public/arrowUp.png"
 import downArrow from "../../public/arrowDown.png"
+import { useGlobal } from "@/context/GlobleContext"
 
 export default function Header() {
   const [dropDown,setDropDown] = useState({
@@ -22,6 +23,7 @@ export default function Header() {
   ]
   // const {theme , setTheme} = useGlobal();
   const theme = "dark";
+  const {user} = useGlobal().state;
   const router = useRouter();
   const pathname = usePathname();
   // console.log(pathname)
@@ -126,11 +128,32 @@ export default function Header() {
 
         <div className="flex gap-5">  
           {/* Contact Button (desktop only) */}
-          <Link href={'/apply/course'}  className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+          {/* <Link href={'/apply/course'}  className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
             Apply Now
-            {/* Register */}
-          </Link>
-
+            {/* Register 
+          </Link> */}
+          {
+            user?.id ? (
+              <button onClick={()=> {
+                user?.role === 'student' ? router.push('/student')
+                : user?.role === 'admin' ? router.push('/admin')
+                : router.push('/')
+              }} className={` hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+                Profile
+              </button>
+            ) : (
+              <>
+                <Link href={'/signup'}  className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+                  Sign Up
+                  {/* Register */}
+                </Link>          
+                <Link href={'/login'}  className={`hidden md:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+                  Login
+                  {/* Register */}
+                </Link>
+              </>
+            )
+          }
           {/* {
             view && 
             <div className={`hidden md:flex absolute bg-black text-white flex-col p-4 gap-5 top-16 right-20 rounded z-50`}>

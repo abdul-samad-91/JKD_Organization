@@ -65,6 +65,8 @@ export async function POST(request) {
               id: newUser._id.toString(),
               name: newUser.userName ,
               email: newUser.email,
+              role: newUser.role || "user",
+              createdAt: newUser.createdAt,
             },
           },
           { status: 201, headers: { "Cache-Control": "no-store" } }
