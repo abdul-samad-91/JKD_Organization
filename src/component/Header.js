@@ -16,7 +16,8 @@ export default function Header() {
   })
   const  pages = [
     {path:'/' , name:'Home'},
-    {path:'#' , name:'TEVET' , hover:'tevet'},
+    {path:'/about-us' , name:'About us'},
+    {path:'#' , name:'Trainings' , hover:'trainings'},
     {path:'#' , name:'IT Courses' , hover:'itCourses'}, 
     {path:'/services' , name:'Services'},
     {path:'/contact-us', name:'Contact us'}
@@ -116,7 +117,7 @@ export default function Header() {
                 {page.name}
                 {
                   
-                  page.hover === 'itCourses' || page.hover === "tevet" ? dropDown[page.hover] ?
+                  page.hover === 'itCourses' || page.hover === "trainings" ? dropDown[page.hover] ?
                   <Image src={upArrow} className="w-[10px] h-[10px]" alt="icon" />
                   :
                   <Image src={downArrow} className="w-[10px] h-[10px]" alt="icon" />:null
@@ -309,8 +310,7 @@ export default function Header() {
         )
       }
     </header>
-    
-
   </> 
   );
 }
+
