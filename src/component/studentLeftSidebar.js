@@ -15,17 +15,17 @@ import light from '../../public/light.png'
 import axiosInstance from "@/lib/axios";
 // import { useAuth } from "@/context/AuthContext";
 
-const AdminLeftSidebar = () => {
+const StudentLeftSidebar = () => {
   const theme = 'light';
   const router = useRouter();
   const pathname = usePathname();
 //   const {setUser} = useAuth();
 
   const menu = [
-    { path: "/admin", label: "Profile", icon: <MdDashboard /> },
+    { path: "/student", label: "Student Profile", icon:null },
     // { path: "/transfers", label: "Transfers", icon: <FaExchangeAlt /> },
-    { path: "/admin/apply", label: "Apply", icon: <FaPlus /> },
-    { path: "/admin/booking", label: "Booking", icon: <FaUser /> },
+    { path: "/student/apply", label: "Courses", icon: null },
+    { path: "/student/apply/events/upleft-events", label: "Bookings", icon: null },
     // { path: "/profile", label: "Profile", icon: <FaUserAlt /> },
     // { path: "/analytics", label: "Analytics", icon: <FaChartBar /> },
     // { path: "/savings", label: "Savings", icon: <FaPiggyBank /> },
@@ -42,7 +42,6 @@ const logout = async () => {
       toast.error(response.data.message || "Please Try Again");
       return;
     }
-    localStorage.clear();
 
     router.push("/");
     toast.success(response.data.message || "Logout Successfully");
@@ -158,4 +157,4 @@ const logout = async () => {
   );
 };
 
-export default AdminLeftSidebar;
+export default StudentLeftSidebar;

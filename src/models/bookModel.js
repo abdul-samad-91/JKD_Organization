@@ -3,39 +3,86 @@ import mongoose from "mongoose";
 
 const bookingSchema = new mongoose.Schema(
   {
+    userId:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     fullName: {
       type: String,
       trim: true,
       minlength: 2,
       maxlength: 50,
     },
-    contactNumber: {
+    phoneNumber: {
       type: String,
       trim: true,
     },
-    emailAddress: {
+    email: {
       type: String,
       trim: true,
       maxlength: 255,
     },
-    bookingDate: {
-      type: Date,
-    },
-    timeSlot: {
-      type: String, // e.g. "10:30 AM - 11:30 AM"
-      trim: true,
-    },
-    selectService: {
+    province: {
       type: String,
       trim: true,
     },
-    persons: {
-      type: Number,
-      min: 1,
+    district: {
+      type: String,
+      trim: true,
+    },
+    tehsil: {
+      type: String,
+      trim: true,
+    },
+    organization: {
+      type: String,
+      trim: true,
+    },
+    prefferedDate: {  
+      type: Date,
+    },
+    prefferedTime: {
+      type: String, // e.g. "10:30 AM - 11:30 AM"
+      trim: true,
+    },
+    emergencyContact: {
+      type: String,
+      trim: true,
+    },
+    medical: {
+      type: String,
+      trim: true,
+    },
+    idImageUrl: {
+      type: String,
+      trim: true,
+    },
+    signatureName: {
+      type: String,
+      trim: true,
+    },
+    eventFee: {
+      type: String,
+      trim: true,
+    },
+    paymentMethod: {  
+      type: String,
+      trim: true,
+    },
+    paymentReferenceNumber: {
+      type: String,
+      trim: true,
+    },
+    paymentScreenshotUrl: {  
+      type: String,
+      trim: true,
     },
   },
   { timestamps: true }
 );
 
-export default mongoose.models.Booking ||
-  mongoose.model("Booking", bookingSchema);
+ const Booking = mongoose.models.Booking || mongoose.model("Booking", bookingSchema);
+
+ export default Booking;
+

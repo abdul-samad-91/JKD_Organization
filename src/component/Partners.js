@@ -15,7 +15,8 @@ import partner12 from '../../public/partner-12.png';
 import { useGlobal } from '@/context/GlobleContext';
 
 const Partners = () => {
-    const {theme} = useGlobal()
+    const {state} = useGlobal();
+    const {theme} = state;
     const partners = [partner1 ,partner2 ,partner3 ,partner4 ,partner5 ,partner6 ,partner7 ,partner8 ,partner9 ,partner10 ,partner11 ,partner12];
 
   return (        

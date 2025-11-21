@@ -15,6 +15,7 @@ export async function POST(req) {
     }
 
     const user = await User.findOne({ email }).select("+password");
+    console.log(user)
     if (!user) {
       return NextResponse.json({ error: "Invalid email" }, { status: 401 });
     }
@@ -40,8 +41,10 @@ export async function POST(req) {
         message: "Login Successful!",
         user: {
           id: user._id.toString(),
-          name: user.username || user.name || "",
+          name: user.userName ||  "",
           email: user.email,
+          role: user.role || "user",
+          createdAt: user.createdAt,
         },
       },
       { status: 200, headers: { "Cache-Control": "no-store" } }

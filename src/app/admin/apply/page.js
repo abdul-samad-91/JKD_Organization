@@ -2,107 +2,112 @@
 
 import AdminLeftSidebar from '@/component/AdminLeftSidebar'
 import Footer from '@/component/Footer'
+import GenericTable from '@/component/genericTable'
 import Header from '@/component/Header'
+import LoadingScreen from '@/component/LoadingScreen'
 import { useGlobal } from '@/context/GlobleContext'
+import axiosInstance from '@/lib/axios'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
-const SubProgram = {
-TVET : ["Mason – Carpenter","Welder – Plumber", "Steel Fixer – Shuttering Carpenter"," Tiles Fitter – Plaster Finisher"," Marble Fixer – Safety Supervisor"," Land Surveyor – Civil Draftsman","Building Painter – Interior Designer", "Scaffolder – Construction Labors","Electrician - Auto-mechanic","Cable Technician - HVAC Technician","CCTV Technician - Lift Operator","Loader - Auto-electrician","Refrigerator Technician","Fiber Technician - Machine Operator","Solar System Technician","Bike Mechanic - Bike Riders" ,"Housekeepers - Janitors/Cleaners","Super Store Workers/Helpers","HTV Drivers - LTV Drivers - Tyreman","Gardeners - Factory Workers", "General Farming - Dairy Farming","Poultry Farming - Aquaculture","Fruit Picker - Fruit Packaging","Construction     Workers"],
-IT_and_Digital_Skills:["Graphic Designing","Web Development", "Software Development", "Digital Marketing", "Professional Photography","Documentary Ad Making 3D", "Animation VR Diploma in DIT", "Technical Drawing", "AutoCAD Civil 3D","eCommerce", "Artificial Intelligence", "Search Engine Optimization (SEO)","Cyber Security"," AI for Banking", "Investing/Trading in Stock/Forex Markets", "AI for Financial Institutes", "Anti-Money Laundering"," Diploma in Financial Market"," 3D CAD Interior Design"],
-Sports_and_Fitness:[ "Indoor Futsal","Indoor Cricket","Karate","Badminton","Yoga", "Table Tennis"," Volley Ball"," Gym & Fitness","Boxing"],
-Overseas_Recruitment:["Bodyweight Exercises","High-Intensity Interval Training","Spiritual & Meditative Practice","Yoga or Pilates","Exercise through Sports","Walking or Jogging","Outdoor Activities","Meal Planning & Mindful Eating","Sustainable weight loss","Increased energy and confidence","Enhanced mental well-being","Certified trainers and weightloss specialist","Personalized coaching and support","Customized fitness and training plans"],
-Travels_and_Tours:["Eco-Friendly Lodges Booking","Sustainable Air Travel Reservation","Green Transportation Facility","Eco-Friendly Events","Environmental Tour Guides","Eco-Focus Photography","Eco-Fresh Meals Experience","Sustainable Tourism Certifications","Tourism Management Courses","Airline Operations – Cargo and Logistics Courses","IATA Certified – Air Ticketing Courses","Religious Tourism","Cultural Tourism – Sports Tourism","Adventure Tourism","Educational Tourism","Health Tourism – Culinary Tourism","Trade Tourism","Industrial Tourism","Corporate/Business Tourism","Backpackers Tourism","Eco-Tourism – Agriculture Tourism","Rural Tourism – Urban Tourism"],
-Parlour:["Skin care","styling coloring treatment","beauty treatment","facial manicures pedicures","waxing","nail care nail art","nail shaping gel extensions","wedding makeup","Beauty therapy certifications","makeup artistry courses","skincare and product knowledge","nail technology courses","hair cutting and styling courses","bridal makeup","hair styling workshops","empowering Parlour professionals"],
-Boutique:["Dress making","Tailoring & Fitting","Alterations","Fashion design","Bridal wears","Personalized styling","Wardrobe management","Fabric selection","Boutique certifications","Fashion design courses","Garment making training","Fashion illustrations","Fashion business","Alteration workshops","Bridal wear designing","Entrepreneurship training"],
-Uplift_Events:["Sports Tourism & Exposures","Family/Friendly Sports Matches","Corporate/NGOs Sports Events","Sports & Cultural Festivals","Sports Championships","Arts & Literature Festivals","Meetings & Trainings","Hunar Rozgar Mela","Environmental workshops and seminars","Corporate / Business / NGOs Events","Trade Fair Exhibitions","Sustainable Food Festivals","Tourism Expos","Environmental fairs and expos","Workshops & Seminars","Job Recruitment Fair"],
-Foudium:["Brunch & Breakfast","Lunch & Dinner","Pakistani Cuisine","Tandoori Chicken or Fish","Biryani – Karahi","Fast Food & Chinese Food","Burgers – Pizza – Pasta","Chai (Tea) & Coffee","Sandwiches – French Toast – Omelets","Fresh Juices & Soft Drinks","Milkshakes & Ice creams","Mineral Water – Fresh Lemonade","Certified Hospitality Management","Hospitality Accounting","Hotel Management Courses","Resort Management","Event Management","Front Desk Operations","Reception Management","Waiter/Waitress Training","Certified Chef Course (CCC)","Catering Management","Laundry Operations","Menu Planning & Kitchen Management"],
+// const SubProgram = {
+// TVET : ["Mason – Carpenter","Welder – Plumber", "Steel Fixer – Shuttering Carpenter"," Tiles Fitter – Plaster Finisher"," Marble Fixer – Safety Supervisor"," Land Surveyor – Civil Draftsman","Building Painter – Interior Designer", "Scaffolder – Construction Labors","Electrician - Auto-mechanic","Cable Technician - HVAC Technician","CCTV Technician - Lift Operator","Loader - Auto-electrician","Refrigerator Technician","Fiber Technician - Machine Operator","Solar System Technician","Bike Mechanic - Bike Riders" ,"Housekeepers - Janitors/Cleaners","Super Store Workers/Helpers","HTV Drivers - LTV Drivers - Tyreman","Gardeners - Factory Workers", "General Farming - Dairy Farming","Poultry Farming - Aquaculture","Fruit Picker - Fruit Packaging","Construction     Workers"],
+// IT_and_Digital_Skills:["Graphic Designing","Web Development", "Software Development", "Digital Marketing", "Professional Photography","Documentary Ad Making 3D", "Animation VR Diploma in DIT", "Technical Drawing", "AutoCAD Civil 3D","eCommerce", "Artificial Intelligence", "Search Engine Optimization (SEO)","Cyber Security"," AI for Banking", "Investing/Trading in Stock/Forex Markets", "AI for Financial Institutes", "Anti-Money Laundering"," Diploma in Financial Market"," 3D CAD Interior Design"],
+// Sports_and_Fitness:[ "Indoor Futsal","Indoor Cricket","Karate","Badminton","Yoga", "Table Tennis"," Volley Ball"," Gym & Fitness","Boxing"],
+// Overseas_Recruitment:["Bodyweight Exercises","High-Intensity Interval Training","Spiritual & Meditative Practice","Yoga or Pilates","Exercise through Sports","Walking or Jogging","Outdoor Activities","Meal Planning & Mindful Eating","Sustainable weight loss","Increased energy and confidence","Enhanced mental well-being","Certified trainers and weightloss specialist","Personalized coaching and support","Customized fitness and training plans"],
+// Travels_and_Tours:["Eco-Friendly Lodges Booking","Sustainable Air Travel Reservation","Green Transportation Facility","Eco-Friendly Events","Environmental Tour Guides","Eco-Focus Photography","Eco-Fresh Meals Experience","Sustainable Tourism Certifications","Tourism Management Courses","Airline Operations – Cargo and Logistics Courses","IATA Certified – Air Ticketing Courses","Religious Tourism","Cultural Tourism – Sports Tourism","Adventure Tourism","Educational Tourism","Health Tourism – Culinary Tourism","Trade Tourism","Industrial Tourism","Corporate/Business Tourism","Backpackers Tourism","Eco-Tourism – Agriculture Tourism","Rural Tourism – Urban Tourism"],
+// Parlour:["Skin care","styling coloring treatment","beauty treatment","facial manicures pedicures","waxing","nail care nail art","nail shaping gel extensions","wedding makeup","Beauty therapy certifications","makeup artistry courses","skincare and product knowledge","nail technology courses","hair cutting and styling courses","bridal makeup","hair styling workshops","empowering Parlour professionals"],
+// Boutique:["Dress making","Tailoring & Fitting","Alterations","Fashion design","Bridal wears","Personalized styling","Wardrobe management","Fabric selection","Boutique certifications","Fashion design courses","Garment making training","Fashion illustrations","Fashion business","Alteration workshops","Bridal wear designing","Entrepreneurship training"],
+// Uplift_Events:["Sports Tourism & Exposures","Family/Friendly Sports Matches","Corporate/NGOs Sports Events","Sports & Cultural Festivals","Sports Championships","Arts & Literature Festivals","Meetings & Trainings","Hunar Rozgar Mela","Environmental workshops and seminars","Corporate / Business / NGOs Events","Trade Fair Exhibitions","Sustainable Food Festivals","Tourism Expos","Environmental fairs and expos","Workshops & Seminars","Job Recruitment Fair"],
+// Foudium:["Brunch & Breakfast","Lunch & Dinner","Pakistani Cuisine","Tandoori Chicken or Fish","Biryani – Karahi","Fast Food & Chinese Food","Burgers – Pizza – Pasta","Chai (Tea) & Coffee","Sandwiches – French Toast – Omelets","Fresh Juices & Soft Drinks","Milkshakes & Ice creams","Mineral Water – Fresh Lemonade","Certified Hospitality Management","Hospitality Accounting","Hotel Management Courses","Resort Management","Event Management","Front Desk Operations","Reception Management","Waiter/Waitress Training","Certified Chef Course (CCC)","Catering Management","Laundry Operations","Menu Planning & Kitchen Management"],
 
-};
+// };
 
 const Apply = () => {
-  const {theme} = useGlobal();
-  const [progm , setProgm] = useState(null);
+  const {state} = useGlobal();
+  const {email , role} = state;
+  const theme = 'light';  
+//   const [progm , setProgm] = useState(null);
   const router = useRouter();
-  const [applyForm , setApplyForm] = useState({
-    name:'',
-    fatherName:'',
-    gender:'',
-    dateOfBirth:'',
-    email:'',
-    whatsappNumber:'',
-    phoneNumber:'',
-    CNIC:'',
-    expiryDate:'',
-    passportNo:'',
+  const [loading, setLoading] = useState(true);
+//   const [applyForm , setApplyForm] = useState({
+//     name:'',
+//     fatherName:'',
+//     gender:'',
+//     dateOfBirth:'',
+//     email:'',
+//     whatsappNumber:'',
+//     phoneNumber:'',
+//     CNIC:'',
+//     expiryDate:'',
+//     passportNo:'',
     
-    // Candidate Address
-    province:'',
-    district:'',
-    tehsil:'',
+//     // Candidate Address
+//     province:'',
+//     district:'',
+//     tehsil:'',
 
-    // address for traning
-    traningRegion:'',
-    traningDistrict:'',
-    traningInstitute:'',
-    chooseSector:'',
-    chooseCourse:'',
+//     // address for traning
+//     traningRegion:'',
+//     traningDistrict:'',
+//     traningInstitute:'',
+//     chooseSector:'',
+//     chooseCourse:'',
 
-    qualification:'',
-    priorCertificate:'',
-    experience:'',
+//     qualification:'',
+//     priorCertificate:'',
+//     experience:'',
 
-    // Documents
-    CNICPicture:'',
-    qalificaion:'',
-    passportSizePic:'',
-    Passport:'',
+//     // Documents
+//     CNICPicture:'',
+//     qalificaion:'',
+//     passportSizePic:'',
+//     Passport:'',
 
 
-    program:'',
-    subProgram:''
-  })
-  const [loading, setLoading] = useState(false);
+//     program:'',
+//     subProgram:''
+//   })
 
-  const handleChange = (event) => {
-    const {value , name } = event.target;
-    setApplyForm((preValue) => {
-        return {
-            ...preValue,
-            [name] : value
-        }
-    })
-  }
+//   const handleChange = (event) => {
+//     const {value , name } = event.target;
+//     setApplyForm((preValue) => {
+//         return {
+//             ...preValue,
+//             [name] : value
+//         }
+//     })
+//   }
 
 
   
-const handleSubmit = async (e) => {
-  e.preventDefault()
-//   const {firstName,lastName,email,dateOfBirth,phoneNumber,address,CNIC,parentCNIC,age,gender,program,subProgram} = applyForm;
+// const handleSubmit = async (e) => {
+//   e.preventDefault()
+// //   const {firstName,lastName,email,dateOfBirth,phoneNumber,address,CNIC,parentCNIC,age,gender,program,subProgram} = applyForm;
 
-//   if (!email || !password) {
-//     toast.error("Email and password are required.");
-//     return;
+// //   if (!email || !password) {
+// //     toast.error("Email and password are required.");
+// //     return;
+// //   }
+
+//     setLoading(true);
+
+//   try {
+//     const response = await axiosInstance.post("/api/apply", applyForm);
+//     console.log(response);
+//     const data = response.data;
+
+//     toast.success(data.message || "Login successful");
+
+//     router.push("/admin"  );
+//   } catch (err) {
+//     const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
+//     toast.error(errorMessage);
+//   } finally {
+//     setLoading(false);
 //   }
-
-    setLoading(true);
-
-  try {
-    const response = await axiosInstance.post("/api/apply", applyForm);
-    console.log(response);
-    const data = response.data;
-
-    toast.success(data.message || "Login successful");
-
-    router.push("/admin"  );
-  } catch (err) {
-    const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
-    toast.error(errorMessage);
-  } finally {
-    setLoading(false);
-  }
-};
+// };
 
 //   return (
 //     <div className={` h-screen w-full  flex flex-col justify-between `}>
@@ -216,12 +221,75 @@ const handleSubmit = async (e) => {
 //     </div>
 //   )
 
+const [data , setData] = useState([]);
+// const [loading , setLoading] = useState(false);
+
+async function applyApiCall () {
+    try {
+        const response = await axiosInstance.get('api/apply');
+        setLoading(false);
+        setData(response.data);
+    } catch (error) {
+        console.log(error);
+        if(error.status === 401){
+            router.push('/login');
+            toast.error('Unauthorized login again');
+        }
+    }
+}
+
+    useEffect(() => {
+        applyApiCall();
+    }, []);
+    // if(loading) {
+    //     return <div>Loading</div>;
+    // }
+    if(loading) {
+        return <LoadingScreen />;
+    }
   return (
-    <div className={`${theme === 'light' ? 'bg-[#eefbff] text-black':'bg-[#080808] text-white'} flex  h-screen  w-full `}>
-        {/* <AdminLeftSidebar className="w-[20%]" /> */}
-        <form onSubmit={handleSubmit} className={` w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
+    <div className='flex   w-full h-screen '>
+      <AdminLeftSidebar className="w-[20%]" />
+      <div className={`w-[80%] ${theme === 'light' ? 'bg-gray-50':'bg-[#080808]'} `}>        
+        <div className=' flex justify-between items-center px-10 h-[100px] ' >
+            <h1 className="text-4xl font-extrabold text-gray-800">Students Forms</h1>
+
+          {/* <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start   lg:text-[39px] lg:font-extrabold font-bold  `}>Students Forms</h1> */}
+          {/* <div className='text-sm'>
+            <p className='flex gap-1 items-center'>
+              <span className=' font-semibold'>Email - </span>
+              <span>{email}</span>
+            </p>
+            <p className='flex gap-1 items-center'>
+              <span className='font-semibold'>Role -</span>
+              <span>{role}</span>
+            </p>
+          </div> */}
+        </div>
+        <div className='overflow-auto h-[500px] mx-5 '>
+            <div className=' p-5 bg-white rounded w-full'>
+            <h2 className="text-xl font-semibold text-gray-800 pb-5">All Registrations</h2>
+            <GenericTable data={data} headers={["#", "Name (Father)", "Contact & Email", "CNIC & DOB", "Course", "Location (Tehsil)", "Documents"]} />
+                {/* <GenericTable data={data} headers={["sNo", "name", "fatherName", "email", "dateOfBirth", "gender", "whatsappNumber", "phoneNumber", "CNIC", "province", "district", "tehsil", "chooseCourse", "CNICPictureUrl", "qualificationUrl", "passportSizePicUrl", "passportUrl"]} /> */}
+            </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Apply
+
+
+
+
+
+
+    {/*<div className={`${theme === 'light' ? 'bg-[#eefbff] text-black':'bg-[#080808] text-white'} flex  h-screen  w-full `}>
+        {/* <AdminLeftSidebar className="w-[20%]" /> 
+        {/* <form onSubmit={handleSubmit} className={` w-[80%] flex flex-col items-center overflow-y-scroll px-10 `}>
             <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full pt-[18px] lg:text-[39px] lg:font-extrabold font-bold  `}>Regester</h1>
-            {/* name and fatername */}
+             name and fatername 
             <div className='flex w-full gap-5 pt-8'>
                 <div  className='flex flex-col gap-3  w-[50%]'>
                     <label htmlFor="name" className='font-semibold text-sm md:text-base '>Name</label>
@@ -232,7 +300,7 @@ const handleSubmit = async (e) => {
                     <input id='fName' type='text' name='fatherName' onChange={handleChange} value={applyForm.lastName} placeholder='last name' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* gender */}
+            {/* gender 
             <div className='flex flex-col gap-3  w-full pt-5'>
                 <label className='text-sm md:text-base font-semibold'>Gender</label>
                 <select name='gender' onChange={handleChange} value={applyForm.gender} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
@@ -242,7 +310,7 @@ const handleSubmit = async (e) => {
                     <option value="Other">Other</option>
                 </select>                    
             </div>
-            {/* email and DOB */}
+            {/* email and DOB 
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Email</label>
@@ -253,7 +321,7 @@ const handleSubmit = async (e) => {
                     <input type='date' name='dateOfBirth' onChange={handleChange} value={applyForm.dateOfBirth} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* whatsapp and Phone  number*/}
+            {/* whatsapp and Phone  number
             <div className='flex w-full gap-3 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Whatsapp Number</label>
@@ -264,7 +332,7 @@ const handleSubmit = async (e) => {
                     <input type='number' name='phoneNumber' onChange={handleChange} value={applyForm.phoneNumber} placeholder='address' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* CNIC and expiryDate */}
+            {/* CNIC and expiryDate 
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>CNIC</label>
@@ -275,11 +343,11 @@ const handleSubmit = async (e) => {
                     <input type='date' name='expiryDate' onChange={handleChange} value={applyForm.expiryDate} placeholder='without dashes' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                 </div>
             </div>
-            {/* Applicant Address */}
+            {/* Applicant Address 
             <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  pt-10'>
                 Applicant Address
             </h3>
-            {/* provience / district / tehsil */}
+            {/* provience / district / tehsil 
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[33%]'>
                     <label className='text-sm md:text-base font-semibold'>Province</label>
@@ -300,11 +368,11 @@ const handleSubmit = async (e) => {
                     </select>                    
                 </div>
             </div>
-            {/* Training Address*/}
+            {/* Training Address
             <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  pt-10'>
                 Training Address
             </h3>
-            {/* region / district */}
+            {/* region / district 
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Region</label>
@@ -319,7 +387,7 @@ const handleSubmit = async (e) => {
                     </select>                    
                 </div>
             </div>
-            {/* institute */}
+            {/* institute 
             <div className='flex flex-col gap-3 pt-5 w-full'>
                 <label className='text-sm md:text-base font-semibold'>District</label>
                 <select name='traningDistrict' onChange={handleChange} value={applyForm.traningDistrict} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
@@ -327,7 +395,7 @@ const handleSubmit = async (e) => {
                 </select>                    
             </div> 
 
-            {/* sector / course */}
+            {/* sector / course 
             <div className='flex w-full gap-5 pt-10'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Choose Sector</label>
@@ -343,7 +411,7 @@ const handleSubmit = async (e) => {
                 </div>
             </div> 
 
-            {/* qualification / certificates */}
+            {/* qualification / certificates 
             <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Qualification</label>
@@ -359,21 +427,21 @@ const handleSubmit = async (e) => {
                 </div>
             </div> 
 
-            {/* Experience */}
+            {/* Experience 
             <div className='flex flex-col gap-3  w-full pt-5'>
                 <label className='text-sm md:text-base font-semibold'>Experience</label>
                 <select name='experience' onChange={handleChange} value={applyForm.experience} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
                     <option value="">-Select-</option>
                 </select>                    
             </div>
-            {/* Documents */}
+            {/* Documents 
             <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  pt-10'>
                 Documents
             </h3>
             <p className=' text-sm md:text-base w-full  '>
                 Please upload the following documents
             </p>
-            {/* CNIC and qualification pic */}
+            {/* CNIC and qualification pic 
             <div className='flex w-full gap-5 pt-8'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>CNIC Picture (Front & Back)</label>
@@ -385,7 +453,7 @@ const handleSubmit = async (e) => {
                 </div>
             </div>
 
-            {/* CNIC and qualification pic */}
+            {/* CNIC and qualification pic 
             <div className='flex w-full gap-5 pt-8'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Passport Size Photograph</label>
@@ -397,7 +465,7 @@ const handleSubmit = async (e) => {
                 </div>
             </div>    
 
-            {/* Program and sub Program */}
+            {/* Program and sub Program 
             {/* <div className='flex w-full gap-5 pt-5'>
                 <div className='flex flex-col gap-3  w-[50%]'>
                     <label className='font-semibold'>Program</label>
@@ -421,7 +489,7 @@ const handleSubmit = async (e) => {
                         }
                     </select>                     
                 </div>
-            </div> */}
+            </div> 
 
 
             <div className='self-start  pt-5'>
@@ -429,9 +497,5 @@ const handleSubmit = async (e) => {
                     {loading ? "Submiting..." : "Submit"}
                 </button>
             </div>
-        </form>
-    </div>
-  )
-}
-
-export default Apply
+        </form> 
+    </div>*/}

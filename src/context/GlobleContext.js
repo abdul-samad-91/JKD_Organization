@@ -1,13 +1,56 @@
 "use client";
-import { createContext, useContext,  useState } from "react";
+import { createContext, useContext,  useEffect,  useReducer,  useState } from "react";
 
 const GlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
-    const [theme , setTheme] = useState('light')
+    // const [theme , setTheme] = useState('light')
+    const initialState = {
+      theme:'light',
+      // email:'',
+      // role:'',
+      user:null,
+      job:true
+    }
+
+    const reducer = (state, action) => {
+      switch (action.type) {
+        // case 'TOGGLE_THEME':
+        //   return { ...state, theme: state.theme === 'light' ? 'dark' : 'light' };
+        case'LOGIN':
+        // return console.log("payload" , action.payload);
+          return {...state, user:action.payload};
+        case 'LOGOUT':
+          return { ...initialState };
+        // case 'SET_EMAIL':
+        //   return { ...state, email: action.payload };
+        // case 'SET_ROLE':
+        //   return { ...state, role: action.payload };
+        case 'JOB':
+          return { ...state, job: action.payload };
+        default:
+          return state;
+      }
+    };
+    
+
+  const loadState = () => {
+    if (typeof window === "undefined") return initialState;
+
+    const savedState = localStorage.getItem("globalState");
+    return savedState ? JSON.parse(savedState) : initialState;
+  };
+
+  const [state, dispatch] = useReducer(reducer, {}, loadState);
+
+  useEffect(() => {
+    localStorage.setItem("globalState", JSON.stringify(state));
+  }, [state]);
+
+
 
   return (
-    <GlobalContext.Provider value={{ theme , setTheme}}>
+    <GlobalContext.Provider value={{ state, dispatch }}>
       {children}
     </GlobalContext.Provider>
   );

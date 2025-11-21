@@ -5,8 +5,11 @@ import Footer from '@/component/Footer'
 import Header from '@/component/Header'
 import { useGlobal } from '@/context/GlobleContext'
 import { useParams, useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
+import axiosInstance from '@/lib/axios'
+import LoadingScreen from '@/component/LoadingScreen'
+
 
 const SubProgram = {
 TVET : ["Mason – Carpenter","Welder – Plumber", "Steel Fixer – Shuttering Carpenter"," Tiles Fitter – Plaster Finisher"," Marble Fixer – Safety Supervisor"," Land Surveyor – Civil Draftsman","Building Painter – Interior Designer", "Scaffolder – Construction Labors","Electrician - Auto-mechanic","Cable Technician - HVAC Technician","CCTV Technician - Lift Operator","Loader - Auto-electrician","Refrigerator Technician","Fiber Technician - Machine Operator","Solar System Technician","Bike Mechanic - Bike Riders" ,"Housekeepers - Janitors/Cleaners","Super Store Workers/Helpers","HTV Drivers - LTV Drivers - Tyreman","Gardeners - Factory Workers", "General Farming - Dairy Farming","Poultry Farming - Aquaculture","Fruit Picker - Fruit Packaging","Construction     Workers"],
@@ -40,39 +43,21 @@ const Apply = () => {
     phoneNumber:'',
     CNIC:'',
     parentsCNIC:'',
-    // expiryDate:'',
-    // passportNo:'',
-    
     // Candidate Address
     province:'',
     district:'',
     tehsil:'',
-    
-    // preffered course
-    
-
-    // address for traning
-    // traningRegion:'',
-    // traningDistrict:'',
-    // traningInstitute:'',
-    // chooseSector:'',
-
     // choose course
     chooseCourse:'',
-
-    qualification:'',
-    priorCertificate:'',
-    experience:'',
-
+    // priorCertificate:'',
     // Documents
     CNICPicture:'',
-    qalificaion:'',
+    qualification:'',
     passportSizePic:'',
     passport:'',
 
 
-    program:'',
-    subProgram:''
+    // program:'',
   })
   const [loading, setLoading] = useState(false);
 
@@ -101,31 +86,44 @@ const Apply = () => {
   
 const handleSubmit = async (e) => {
   e.preventDefault()
+  let formData = new FormData();
+  for(let field in applyForm){
+    formData.append(field , applyForm[field]);
+  }
   console.log(applyForm)
 //   const {firstName,lastName,email,dateOfBirth,phoneNumber,address,CNIC,parentCNIC,age,gender,program,subProgram} = applyForm;
+  
+  setLoading(true);
+  try {
+    const response = await axiosInstance.post("/api/apply", formData , {
+      headers: { "Content-Type": "multipart/form-data" }
+    });
+    console.log(response);
+    const data = response.data;
 
-//   if (!email || !password) {
-//     toast.error("Email and password are required.");
-//     return;
-//   }
+    toast.success(data.message || "Login successful");
 
-//   setLoading(true);
-
-//   try {
-//     const response = await axiosInstance.post("/api/apply", applyForm);
-//     console.log(response);
-//     const data = response.data;
-
-//     toast.success(data.message || "Login successful");
-
-//     router.push("/admin"  );
-//   } catch (err) {
-//     const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
-//     toast.error(errorMessage);
-//   } finally {
-//     setLoading(false);
-//   }
+    // router.push("/admin"  );
+  } catch (err) {
+    console.log("catch block", err)
+    const errorMessage = err.response?.data?.error || "Something went wrong. Please try again.";
+    toast.error(errorMessage);
+  } finally {
+    setLoading(false);
+  }
 };
+
+  const [screenLoading, setScreenLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setScreenLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (screenLoading) return <LoadingScreen />;
 
 //   return (
 //     <div className={` h-screen w-full  flex flex-col justify-between `}>
@@ -243,7 +241,7 @@ const handleSubmit = async (e) => {
     <div className={`${theme === 'light' ? 'bg-[#eefbff] text-black':'bg-[#080808] text-white'} flex  flex-col   w-full `}>
         <Header />
         {/* <AdminLeftSidebar className="w-[20%]" /> */}
-        <form onSubmit={handleSubmit} className={` w-full  flex flex-col items-center overflow-y-scroll p-10 mt-20 `}>
+        <form onSubmit={handleSubmit} className={` w-full  flex flex-col items-center p-10 mt-20 `}>
             {/* <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full  lg:text-[39px] lg:font-extrabold font-bold  `}>Regester</h1> */}
             <h3 className=' text-[17px] md:text-[21px] lg:text-[25px] font-semibold w-full  '>
                Perosnal Details
@@ -312,18 +310,52 @@ const handleSubmit = async (e) => {
                     <label className='text-sm md:text-base font-semibold'>Province</label>
                     <select name='province' onChange={handleChange} value={applyForm.province} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
                         <option value="">Province</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Sindh">Sindh</option>
+                        <option value="Balochistan">Balochistan</option>
+                        <option value="Khyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
                     </select>                    
                 </div>                
                 <div className='flex flex-col gap-3  w-[33%]'>
                     <label className='text-sm md:text-base font-semibold'>District</label>
                     <select name='district' onChange={handleChange} value={applyForm.district} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
                         <option value="">District</option>
+                        {
+                            applyForm?.province === "Punjab" ?
+                            <option value="Lahore">Lahore</option>
+                            :
+                            applyForm?.province === "Sindh" ?
+                            <option value="Karachi">Karachi</option>
+                            :
+                            applyForm?.province === "Balochistan" ?
+                            <option value="Quetta">Quetta</option>
+                            :
+                            applyForm?.province === "Khyber Pakhtunkhwa" ?
+                            <option value="Peshawar">Peshawar</option>
+                            :
+                            null
+                        }
                     </select>                    
                 </div>
                 <div className='flex flex-col gap-3  w-[33%]'>
                     <label className='text-sm md:text-base font-semibold'>Tehsil</label>
                     <select name='tehsil' onChange={handleChange} value={applyForm.tehsil} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
                         <option value="">Tehsil</option>
+                        {
+                            applyForm?.province === "Punjab" && applyForm?.district === "Lahore" ?
+                            <option value="Lahore">Lahore</option>
+                            :
+                            applyForm?.province === "Sindh" && applyForm?.district === "Karachi" ?
+                            <option value="Karachi">Karachi</option>
+                            :
+                            applyForm?.province === "Balochistan" && applyForm?.district === "Quetta" ?
+                            <option value="Quetta">Quetta</option>
+                            :
+                            applyForm?.province === "Khyber Pakhtunkhwa" && applyForm?.district === "Peshawar" ?
+                            <option value="Peshawar">Peshawar</option>
+                            :
+                            null 
+                        }
                     </select>                    
                 </div>
             </div>
@@ -365,7 +397,7 @@ const handleSubmit = async (e) => {
                 </div>
                 <div className='flex flex-col gap-3 ] w-[50%]'>
                     <label className='text-sm md:text-base font-semibold'>Latest Qualification Picture</label>
-                    <input type='file' name='qalificaion' onChange={handleChange}  className={`w-[95px]  text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
+                    <input type='file' name='qualification' onChange={handleChange}  className={`w-[95px]  text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`}  />
                 </div>
             </div>
 

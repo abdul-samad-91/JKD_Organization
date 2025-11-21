@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     },
     email:{
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     password: {
@@ -31,7 +31,9 @@ const userSchema = new mongoose.Schema({
     forgotPasswordTokenExpiry: Date,
     // verifyToken: String,
     // verifyTokenExpiry: Date
-})
+},
+{imestamps: true}
+)
 
 const User =mongoose.models.User || mongoose.model("User" , userSchema);
 
