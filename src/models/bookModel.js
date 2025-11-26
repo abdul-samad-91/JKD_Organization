@@ -2,7 +2,12 @@
 import mongoose from "mongoose";
 
 const bookingSchema = new mongoose.Schema(
-  {
+  {    
+    status: {
+      type: String,
+      enum: ["Pending", "Approved", "Rejected"],
+      default: "Pending",
+    },
     userId:{
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

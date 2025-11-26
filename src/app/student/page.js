@@ -4,20 +4,62 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import LoadingScreen from "@/component/LoadingScreen";
 import StudentLeftSidebar from "@/component/studentLeftSidebar";
+import axiosInstance from "@/lib/axios";
 
 const Apply = () => {
     const {state , dispatch} = useGlobal();
+    const [loading, setLoading] = useState(false);
     const {theme , user} = state;
     const router = useRouter();
     const [ view , setView ] = useState(false);
     const [appliedCourses, setAppliedCourses] = useState([]);
     const [booking , setBooking] = useState(null);
-    console.log(user)
-    useEffect(() => {
-        // if (!user) return;
+    const formatDate = (date) => {
+        return new Date(date).toISOString().split("T")[0];
+    };
+    const getstudentApplications = async () => {
+    try {
+        // if (!user?._id) {
+        // console.log("User not loaded yet");
+        // return;
+        // }
+        setLoading(true);
+        const [res, res1] = await Promise.all([
+        axiosInstance.get("/api/apply"),
+        axiosInstance.get("/api/booking"),
+        ]);
 
+        const filteredCourses = res.data.filter(
+        (application) => application?.userId?._id === user?.id
+        );
+
+        const filteredBookings = res1.data.filter(
+        (booking) => booking?.userId?._id === user?.id
+        );
+
+        setAppliedCourses(filteredCourses);
+        setBooking(filteredBookings);
+        // setLoading(true);
+
+        // Debug after state is updated
+        console.log("Filtered Courses:", filteredCourses);
+        console.log("Filtered Bookings:", filteredBookings);
+
+    } catch (error) {
+        console.error("Error fetching student applications:", error);
+    }
+    finally {
+    setLoading(false);
+  }};
+
+
+    useEffect(() => {
+        getstudentApplications();
+    }, []);
+
+    useEffect(() => {
         if (!user && user?.role !== "student") {
-            router.push("/unauthorized");
+            router.push("/login");
         } else {
             setView(true);
         }
@@ -45,15 +87,28 @@ const Apply = () => {
             {/* <!-- Course Applications Card --> */}
             <div className="bg-white p-6 rounded-xl border border-gray-400 ">
                 <h3 className="text-2xl font-semibold  mb-4 border-gray-300 border-b pb-2">Course Applications</h3>
-                <div id="course-applications">
+                <div id="">
                     {
-                        appliedCourses.length === 0 ? (
+                        loading?
+                        <div>loading...</div>:
+                        appliedCourses.length < 1 ? (
                             <div className="text-center py-10 border-dashed border-2 bg-gray-50 border-gray-300 rounded-lg">
                                 <h3 className="text-lg text-gray-700 font-semibold">Not applied for any courses yet</h3>
                                 <p className="text-gray-600 text-sm">Explore the &quot;Courses&quot; section to apply for a program.</p>
                             </div>
                         ) : (
-                            <div>hello</div>
+                            appliedCourses.map((application, index) => (
+                                <ul className="space-y-4" key={index}>
+                                    <li className="p-4 border border-gray-100 rounded-lg flex justify-between items-center transition duration-200 hover:bg-gray-50">
+                                        <div>
+                                            <p className="text-base font-medium text-gray-800">{application.chooseCourse}</p>
+                                            <p className="text-xs text-gray-500">Application ID: {application.applicationId}</p>
+                                        </div>
+                                        <span className={`px-2 rounded-full ${application.status === 'Pending'?'bg-orange-100  text-orange-500' :application.status === 'Rejected' ? 'bg-red-100 text-red-500' : 'bg-green-100 text-green-500'}`}>{application.status}</span>
+                                    </li>
+                                </ul>
+                                )
+                            )
                         )
                     }
                 </div>
@@ -64,13 +119,26 @@ const Apply = () => {
                 <h3 className="text-2xl font-semibold text-grey-700 mb-4 border-gray-300 border-b pb-2">Booking Applications</h3>
                 <div id="booking-applications">
                     {
+                        loading?
+                        <div>loading...</div>:
                         appliedCourses.length === 0 ? (
                             <div className="text-center py-10 border-dashed border-2 bg-gray-50 border-gray-300 rounded-lg">
                                 <h3 className="text-lg text-gray-700 font-semibold">Not applied for any bookings yet.</h3>
                                 <p className="text-gray-600 text-sm">Visit the &quot;Bookings&quot; section to reserve a resource.</p>
                             </div>
                         ) : (
-                            <div>hello</div>
+                            booking.map((reservation, index) => (
+                                <ul className="space-y-4" key={index}>
+                                    <li className="p-4 border border-gray-100 rounded-lg flex justify-between items-center transition duration-200 hover:bg-gray-50">
+                                        <div>
+                                            <p className="text-base font-medium text-gray-800">{reservation.eventFee.split(" ")[0,1]}</p>
+                                            <p className="text-xs text-gray-500">Date: {formatDate(reservation.createdAt)} | ID: ${reservation.id}</p>
+                                        </div>
+                                        <span className={`px-2 rounded-full ${reservation.status === 'Pending'?'bg-orange-100  text-orange-500' :reservation.status === 'Rejected' ? 'bg-red-100 text-red-500' : 'bg-green-100 text-green-500'}`}>{reservation.status}</span>
+                                    </li>
+                                </ul>
+                                )
+                            )
                         )
                     }
                 </div>

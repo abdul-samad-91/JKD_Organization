@@ -36,16 +36,17 @@ const AdminLeftSidebar = () => {
 const logout = async () => {
   try {
     const response = await axiosInstance.post("/api/auth/logout");
-    console.log(response)
 
     if (response.status != 200) {
       toast.error(response.data.message || "Please Try Again");
       return;
     }
+    // Clear context state and local storage
+    localStorage.removeItem("globalState");
     dispatch({ type: "LOGOUT" });
     router.push("/");
     toast.success(response.data.message || "Logout Successfully");
-    // setUser(null);
+    setUser(null);
   } catch (error) {
     console.error("Logout error:", error);
     toast.error("Something went wrong with logout");
@@ -53,18 +54,15 @@ const logout = async () => {
 };
 
 
-  const linkClasses = (path) =>
-    `flex items-center gap-2 p-2 rounded-md transition-all ${
-      pathname === path
-        ? theme === "light"
-            ? "bg-[#00874F] hover:text-white hover:bg-black"
-            : "hover:text-black hover:bg-white bg-[#177faa]"
-        : " "
-    }`;
+  // const linkClasses = (path) =>
+  //   `flex items-center gap-2 p-2 rounded-md transition-all ${
+  //     pathname === path
+  //       ? theme === "light"
+  //           ? "bg-[#00874F] hover:text-white hover:bg-black"
+  //           : "hover:text-black hover:bg-white bg-[#177faa]"
+  //       : " "
+  //   }`;
 
-  const themeChange = ()=>{
-    theme === 'light' ? setTheme('dark') : setTheme('light')
-  }
 // bg-[#177eaa94] bg-[#00874f85]
   return (
     <div className={`w-[20%] h-full ${theme === "dark" ? " bg-black text-white " : "bg-[#eefbff] text-black"} flex flex-col justify-between`}>

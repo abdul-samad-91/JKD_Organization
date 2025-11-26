@@ -194,7 +194,7 @@ export async function GET(request) {
     if (!decoded.sub || !decoded.email) {
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
-    const applications = await Apply.find();
+    const applications = await Apply.find().populate('userId');
     return NextResponse.json(applications, { status: 200 });
   } catch (err) {
     console.error("GET /api/apply error:", err);

@@ -2,7 +2,8 @@ import { connectDB } from "@/lib/dbConnect";
 import Booking from "@/models/bookModel";
 import { uploadImageToCloudinary } from "@/lib/cloudinary";
 import { NextResponse } from "next/server";
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
+
 export async function POST(req) {
   try {
     await connectDB();
@@ -61,7 +62,7 @@ export async function GET(request) {
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
-    const applications = await Booking.find();
+    const applications = await Booking.find().populate('userId');
     return NextResponse.json(applications, { status: 200 });
 
   } catch (error) {

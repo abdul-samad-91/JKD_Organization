@@ -15,8 +15,9 @@ import light from '../../public/light.png'
 import axiosInstance from "@/lib/axios";
 // import { useAuth } from "@/context/AuthContext";
 
-const StudentLeftSidebar = () => {
+const   StudentLeftSidebar = () => {
   const theme = 'light';
+  const {state, dispatch} = useGlobal();
   const router = useRouter();
   const pathname = usePathname();
 //   const {setUser} = useAuth();
@@ -43,8 +44,13 @@ const logout = async () => {
       return;
     }
 
-    router.push("/");
-    toast.success(response.data.message || "Logout Successfully");
+    // Clear context state and local storage
+    localStorage.removeItem("globalState");
+    dispatch({ type: "LOGOUT" });
+    setTimeout(() => {
+      router.push("/");
+      toast.success(response.data.message || "Logout Successfully");
+    }, 10);
     // setUser(null);
   } catch (error) {
     console.error("Logout error:", error);

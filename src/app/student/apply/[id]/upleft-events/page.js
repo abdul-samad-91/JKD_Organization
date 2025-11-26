@@ -237,8 +237,8 @@ const handleSubmit = async (e) => {
                     <label className='text-sm md:text-base font-semibold'>Event Fee / Ticket Price</label>
                     <select name='eventFee' onChange={handleChange} value={applyForm.eventFee} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
                         <option value="">Event Fee / Ticket Price</option>
-                        <option value="football">Indoor Football : 1000 pkr</option>
-                        <option value="badminton">Indoor badminton : 1000 pkr</option>    
+                        <option value="Indoor Football : 1000 pkr">Indoor Football : 1000 pkr</option>
+                        <option value="Indoor badminton : 1000 pkr">Indoor badminton : 1000 pkr</option>    
                     </select>
                 </div>
             </div>
@@ -253,7 +253,7 @@ const handleSubmit = async (e) => {
                     <label className='text-sm md:text-base font-semibold'>Payment</label>
                     <select name='paymentMethod' onChange={handleChange} value={applyForm.paymentMethod} className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required >
                         <option value="">Select Method</option>
-                        <option value="football">Cash on Delevory</option>    
+                        <option value="On Campus">On Campus</option>
                     </select>
                 </div>
                 {/* <div className='flex flex-col gap-3  w-[50%]'>

@@ -28,7 +28,6 @@ export function GlobalProvider({ children }) {
       }
     };
     
-
   const loadState = () => {
     if (typeof window === "undefined") return initialState;
 
@@ -44,6 +43,7 @@ export function GlobalProvider({ children }) {
 
 
 
+    console.log("state" ,state);
   return (
     <GlobalContext.Provider value={{ state, dispatch }}>
       {children}
