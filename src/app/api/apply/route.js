@@ -190,7 +190,7 @@ export async function GET(request) {
     await connectDB(); 
     const token = request.headers.get("x-user-token");
     const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-    console.log(decoded);
+    // console.log(decoded);
     if (!decoded.sub || !decoded.email) {
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }

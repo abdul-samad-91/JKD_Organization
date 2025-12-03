@@ -82,6 +82,43 @@ const Booking = () => {
     }
   }
 
+      
+  const onEdit = async(item , updateStatus) => {
+      try {   
+          const response = await axiosInstance.put(`/api/booking/${item._id}` , {status : updateStatus});
+          const data = response.data;
+          toast.success(data.message || "Status updated successfully");
+          setData((prevData) => {
+              return prevData.map((application) => {
+                  if(application._id === item._id) {
+                      return {
+                          ...application,
+                          status: updateStatus
+                      }
+                  }
+                  return application;
+              })
+          })
+      }catch (error) {
+          console.log(error);
+      }
+  }
+
+  const onDelete = async (item) => {
+  try {
+      const response = await axiosInstance.delete(`/api/booking/${item._id}`);
+      const data = response.data;
+
+      toast.success(data.message || "Deleted successfully");
+
+      // ❗ Remove the deleted item from UI
+      setData((prevData) => prevData.filter((app) => app._id !== item._id));
+
+  } catch (error) {
+      console.log(error);
+      toast.error("Failed to delete");
+  }
+  };
 
   useEffect(() => {
     applyApiCall();
@@ -177,7 +214,7 @@ const Booking = () => {
             <div className='overflow-auto h-[500px] mx-5 '>
                 <div className=' p-5 bg-white rounded w-full'>
                 <h2 className="text-xl font-semibold text-gray-800 pb-5">All Booking Requests</h2>
-                <GenericTable data={data} headers={["#", "Full Name (Signature)",	"Contact & Email",	"Date & Time",	"Location (Organization)",	"Fee (Method)",	"Status",	"Actions & Documents"]} />
+                <GenericTable onEdit={onEdit} onDelete={onDelete} data={data} headers={["#", "Full Name (Signature)",	"Contact & Email",	"Date & Time",	"Location (Organization)",	"Fee (Method)", "Actions"	, "Status",	"Actions & Documents"]} />
                 </div>
             </div>
           </div>

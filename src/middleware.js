@@ -2,12 +2,14 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 
 export async function middleware(req) {
+  console.log("Middleware triggered for:", req.nextUrl.pathname);
+  console.log("Request method:", req.method);
   if (req.method !== "GET") {
     return NextResponse.next(); // skip for POST, PUT, etc.
   }
   // Get token from cookies
   const token = req.cookies.get("token")?.value;
-  console.log("inside middleware " , token)
+  // console.log("inside middleware " , token)
   if (!token) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -39,6 +41,7 @@ export const config = {
     // i have to add more route to this
   matcher: [
     "/api/apply",
-    "/api/booking"
+    "/api/booking",
+    "/api/users",
   ], 
 };

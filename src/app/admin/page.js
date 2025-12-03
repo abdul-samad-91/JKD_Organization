@@ -47,7 +47,6 @@
 
 
 "use client"
-
 import AdminLeftSidebar from "@/component/AdminLeftSidebar";
 import { useGlobal } from "@/context/GlobleContext";
 import { apiCall } from "@/helper/authenticateApiCall";
@@ -56,6 +55,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import LoadingScreen from "@/component/LoadingScreen";
+import axios from "axios";
+import Link from "next/link";
 
 
 // Sample data for demonstration purposes
@@ -125,12 +126,57 @@ const App = () => {
     // };
     
     const {state , dispatch} = useGlobal();
-    const {theme , email , role} = state;
+    const {user , filteredApplications , filteredBookings , filteredUsers} = state;
     const router = useRouter();
     const [ view , setView ] = useState(false);
 
+    const data = async () => {
+        try {
+        console.log("Fetching data...");
+        const now = new Date();
+        const currentMonth = now.getMonth();
+        const currentYear = now.getFullYear();
+
+        const [users, applications, bookings] = await Promise.all([
+            axiosInstance.get("/api/users"),
+            axiosInstance.get("/api/apply"),
+            axiosInstance.get("/api/booking"),
+        ]);
+        console.log("application" , applications.data);
+        console.log("bookings" , bookings.data);
+
+        // Filter users (remove admins)
+        const fileteredUsers = users.data.filter(u => u.role !== 'admin');
+
+        // Filter applications (Pending + created this month)
+        const filteredApplications = applications.data.filter(app => {
+            const created = new Date(app.createdAt);
+            return (
+                app.status === "Pending" &&
+                created.getMonth() === currentMonth &&
+                created.getFullYear() === currentYear
+            );
+        });
+
+        // Filter bookings (created this month)
+        const filteredBookings = bookings.data.filter(book => {
+            const created = new Date(book.createdAt);
+            return (
+                created.getMonth() === currentMonth &&
+                created.getFullYear() === currentYear
+            );
+        });
+        dispatch({ type: "SET_FILTERED_USERS", payload: fileteredUsers });
+        dispatch({ type: "SET_FILTERED_APPLICATIONS", payload: filteredApplications });
+        dispatch({ type: "SET_FILTERED_BOOKINGS", payload: filteredBookings });
+
+        } catch (error) {
+            console.log("Error fetching data:", error);
+        }
+    };
 
     useEffect(()=>{
+      data();
       apiCall(axiosInstance, dispatch,router,toast , setView)
     },[]);
 
@@ -154,11 +200,11 @@ const App = () => {
                 <div className='text-sm'>
                     <p className='flex gap-1 items-center'>
                         <span className=' font-semibold'>Email - </span>
-                        <span>{email}</span>
+                        <span>{user?.email}</span>
                     </p>
                     <p className='flex gap-1 items-center'>
                         <span className='font-semibold'>Role -</span>
-                        <span>{role}</span>
+                        <span>{user?.role}</span>
                     </p>
                 </div>
         </div>
@@ -168,32 +214,32 @@ const App = () => {
             <div className="pt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
                 <KPICard
                     title="Total Users"
-                    value="4,281"
+                    value={filteredUsers?.length}
                     icon={UserIcon}
                     bgColor="bg-blue-100"
                     iconColor="text-blue-600"
                 />
                 <KPICard
                     title="New Applications (Month)"
-                    value="104"
+                    value={filteredApplications?.length}
                     icon={FileIcon}
                     bgColor="bg-green-100"
                     iconColor="text-green-600"
                 />
                 <KPICard
                     title="New Bookings (Month)"
-                    value="45"
+                    value={filteredBookings?.length}
                     icon={CalendarIcon}
                     bgColor="bg-yellow-100"
                     iconColor="text-yellow-600"
                 />
-                <KPICard
+                {/* <KPICard
                     title="Messages (Unread)"
                     value="18"
                     icon={MailIcon}
                     bgColor="bg-red-100"
                     iconColor="text-red-600"
-                />
+                /> */}
             </div>
 
             {/* --- 2. Main Content: Applications, Bookings, and Actions --- */}
@@ -206,9 +252,9 @@ const App = () => {
                     <div className="bg-white p-6 rounded-xl shadow-lg">
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-xl font-semibold text-gray-800">Recent Applications</h2>
-                            <button className="text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-150">
+                            <Link href="/admin/apply" className="text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-150">
                                 View All &rarr;
-                            </button>
+                            </Link>
                         </div>
                         <div className="overflow-x-auto">
                             <table className="min-w-full divide-y divide-gray-200">
@@ -221,18 +267,23 @@ const App = () => {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
-                                    {recentApplications.map((app) => (
+                                    {filteredApplications.length>0 ? filteredApplications.map((app) => (
                                         <tr key={app.id}>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{app.name}</td>
-                                            <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-600">{app.course}</td>
-                                            <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{app.date}</td>
+                                            <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-600">{app.chooseCourse}</td>
+                                            <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{app.createdAt?.split('T')[0]}</td>
                                             <td className="px-4 py-4 whitespace-nowrap">
                                                 <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusClasses(app.status)}`}>
                                                     {app.status}
                                                 </span>
                                             </td>
                                         </tr>
-                                    ))}
+                                    )) 
+                                    :
+                                    <tr>
+                                        <td colSpan="4" className="px-4 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No recent applications found.</td>
+                                    </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -242,28 +293,33 @@ const App = () => {
                     <div className="bg-white p-6 rounded-xl shadow-lg">
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-xl font-semibold text-gray-800">Recent Bookings</h2>
-                            <button className="text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-150">
+                            <Link href={'/admin/booking'} className="cursor-pointer text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-150">
                                 View All &rarr;
-                            </button>
+                            </Link>
                         </div>
                         <div className="space-y-3">
-                            {recentBookings.map((booking) => (
+                            {filteredBookings.length>0 ? filteredBookings.map((booking) => (
                                 <div key={booking.id} className="flex justify-between items-center p-3 border-b last:border-b-0">
                                     <div className="flex flex-col">
-                                        <p className="text-sm font-medium text-gray-900">{booking.service}</p>
-                                        <p className="text-xs text-gray-500">Booked by: {booking.user}</p>
+                                        <p className="text-sm font-medium text-gray-900">{booking.event?.split(':')[0]}</p>
+                                        <p className="text-xs text-gray-500">Booked by: {booking.fullname}</p>
                                     </div>
-                                    <p className="text-sm text-gray-500">{booking.date}</p>
+                                    <p className="text-sm text-gray-500">{booking.createdAt?.split('T')[0]}</p>
                                 </div>
-                            ))}
+                            ))
+                                :
+                                <div>
+                                    <p className="px-4 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No recent Bookings found.</p>
+                                </div>
+                            }
                         </div>
                     </div>
 
                 </div> {/* End Left Column */}
 
                 {/* Right Column (1/3 width on large screens) */}
-                <div className="lg:col-span-1">
-                    {/* Quick Actions */}
+                {/* <div className="lg:col-span-1">
+                    {/* Quick Actions 
                     <div className="bg-white p-6 rounded-xl shadow-lg sticky top-8">
                         <h2 className="text-xl font-semibold text-gray-800 mb-4">Quick Actions</h2>
                         <div className="space-y-4">
@@ -281,8 +337,8 @@ const App = () => {
                             </button>
                         </div>
                     </div>
-                </div> {/* End Right Column */}
-
+                </div>  */}
+                {/* End Right Column */}
             </div>
         </div>
       </div>

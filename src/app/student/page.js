@@ -10,6 +10,7 @@ const Apply = () => {
     const {state , dispatch} = useGlobal();
     const [loading, setLoading] = useState(false);
     const {theme , user} = state;
+    console.log("user" ,user);
     const router = useRouter();
     const [ view , setView ] = useState(false);
     const [appliedCourses, setAppliedCourses] = useState([]);
@@ -25,8 +26,8 @@ const Apply = () => {
         // }
         setLoading(true);
         const [res, res1] = await Promise.all([
-        axiosInstance.get("/api/apply"),
-        axiosInstance.get("/api/booking"),
+            axiosInstance.get("/api/apply"),
+            axiosInstance.get("/api/booking"),
         ]);
 
         const filteredCourses = res.data.filter(

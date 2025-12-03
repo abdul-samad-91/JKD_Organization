@@ -15,7 +15,7 @@ export async function POST(req) {
     }
 
     const user = await User.findOne({ email }).select("+password");
-    console.log(user)
+    // console.log(user)
     if (!user) {
       return NextResponse.json({ error: "Invalid email" }, { status: 401 });
     }

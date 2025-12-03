@@ -10,7 +10,10 @@ export function GlobalProvider({ children }) {
       // email:'',
       // role:'',
       user:null,
-      job:true
+      job:true,
+      filteredUsers: [],
+      filteredApplications: [],
+      filteredBookings: []
     }
 
     const reducer = (state, action) => {
@@ -23,6 +26,12 @@ export function GlobalProvider({ children }) {
           return { ...initialState };
         case 'JOB':
           return { ...state, job: action.payload };
+        case "SET_FILTERED_USERS":
+          return { ...state, filteredUsers: action.payload };
+        case "SET_FILTERED_APPLICATIONS":
+          return { ...state, filteredApplications: action.payload };
+        case "SET_FILTERED_BOOKINGS":
+          return { ...state, filteredBookings: action.payload };
         default:
           return state;
       }
@@ -41,9 +50,6 @@ export function GlobalProvider({ children }) {
     localStorage.setItem("globalState", JSON.stringify(state));
   }, [state]);
 
-
-
-    console.log("state" ,state);
   return (
     <GlobalContext.Provider value={{ state, dispatch }}>
       {children}

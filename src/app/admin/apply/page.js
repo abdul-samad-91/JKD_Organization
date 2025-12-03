@@ -25,8 +25,8 @@ import { toast } from 'react-toastify'
 // };
 
 const Apply = () => {
-  const {state} = useGlobal();
-  const {email , role} = state;
+//   const {state} = useGlobal();
+//   const {} = state;
   const theme = 'light';  
 //   const [progm , setProgm] = useState(null);
   const router = useRouter();
@@ -224,19 +224,19 @@ const Apply = () => {
 const [data , setData] = useState([]);
 // const [loading , setLoading] = useState(false);
 
-async function applyApiCall () {
-    try {
-        const response = await axiosInstance.get('api/apply');
-        setLoading(false);
-        setData(response.data);
-    } catch (error) {
-        console.log(error);
-        if(error.status === 401){
-            router.push('/login');
-            toast.error('Unauthorized login again');
+    async function applyApiCall () {
+        try {
+            const response = await axiosInstance.get('api/apply');
+            setLoading(false);
+            setData(response.data);
+        } catch (error) {
+            console.log(error);
+            if(error.status === 401){
+                router.push('/login');
+                toast.error('Unauthorized login again');
+            }
         }
     }
-}
 
     useEffect(() => {
         applyApiCall();
@@ -247,13 +247,50 @@ async function applyApiCall () {
     if(loading) {
         return <LoadingScreen />;
     }
+    
+    const onEdit = async(item , updateStatus) => {
+        try {   
+            const response = await axiosInstance.put(`/api/apply/${item._id}` , {status : updateStatus});
+            const data = response.data;
+            toast.success(data.message || "Status updated successfully");
+            setData((prevData) => {
+                return prevData.map((application) => {
+                    if(application._id === item._id) {
+                        return {
+                            ...application,
+                            status: updateStatus
+                        }
+                    }
+                    return application;
+                })
+            })
+        }catch (error) {
+            console.log(error);
+        }
+    }
+
+    const onDelete = async (item) => {
+    try {
+        const response = await axiosInstance.delete(`/api/apply/${item._id}`);
+        const data = response.data;
+
+        toast.success(data.message || "Deleted successfully");
+
+        // ❗ Remove the deleted item from UI
+        setData((prevData) => prevData.filter((app) => app._id !== item._id));
+
+    } catch (error) {
+        console.log(error);
+        toast.error("Failed to delete");
+    }
+    };
+
   return (
     <div className='flex   w-full h-screen '>
       <AdminLeftSidebar className="w-[20%]" />
       <div className={`w-[80%] ${theme === 'light' ? 'bg-gray-50':'bg-[#080808]'} `}>        
         <div className=' flex justify-between items-center px-10 h-[100px] ' >
             <h1 className="text-4xl font-extrabold text-gray-800">Students Forms</h1>
-
           {/* <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start   lg:text-[39px] lg:font-extrabold font-bold  `}>Students Forms</h1> */}
           {/* <div className='text-sm'>
             <p className='flex gap-1 items-center'>
@@ -269,7 +306,7 @@ async function applyApiCall () {
         <div className='overflow-auto h-[500px] mx-5 '>
             <div className=' p-5 bg-white rounded w-full'>
             <h2 className="text-xl font-semibold text-gray-800 pb-5">All Registrations</h2>
-            <GenericTable data={data} headers={["#", "Name (Father)", "Contact & Email", "CNIC & DOB", "Course", "Location (Tehsil)", "Documents"]} />
+            <GenericTable data={data} onEdit={onEdit} onDelete={onDelete} headers={["#", "Name (Father)", "Contact & Email", "CNIC & DOB", "Course", "Location (Tehsil)", "Actions", "Status" , "Documents"]} />
                 {/* <GenericTable data={data} headers={["sNo", "name", "fatherName", "email", "dateOfBirth", "gender", "whatsappNumber", "phoneNumber", "CNIC", "province", "district", "tehsil", "chooseCourse", "CNICPictureUrl", "qualificationUrl", "passportSizePicUrl", "passportUrl"]} /> */}
             </div>
         </div>

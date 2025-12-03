@@ -24,8 +24,8 @@ const AdminLeftSidebar = () => {
   const menu = [
     { path: "/admin", label: "Profile", icon: <MdDashboard /> },
     // { path: "/transfers", label: "Transfers", icon: <FaExchangeAlt /> },
-    { path: "/admin/apply", label: "Apply", icon: <FaPlus /> },
-    { path: "/admin/booking", label: "Booking", icon: <FaUser /> },
+    { path: "/admin/apply", label: "Apply Forms", icon: <FaPlus /> },
+    { path: "/admin/booking", label: "Booking Forms", icon: <FaUser /> },
     // { path: "/profile", label: "Profile", icon: <FaUserAlt /> },
     // { path: "/analytics", label: "Analytics", icon: <FaChartBar /> },
     // { path: "/savings", label: "Savings", icon: <FaPiggyBank /> },

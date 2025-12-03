@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faBoxOpen } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import { CreditCard, GraduationCap, Image as ImageIcon, Globe, Clock} from "lucide-react";
+import { useState } from 'react';
 
 // import PropTypes from 'prop-types';
 // import { useSelector } from 'react-redux';
@@ -31,9 +32,24 @@ function readibleTime(isoDateTime) {
   return formattedTime;
 }
 
+const getStatusClasses = (status) => {
+    switch (status) {
+        case 'Approved':
+            return 'bg-green-100 text-green-800';
+        case 'Pending':
+            return 'bg-yellow-100 text-yellow-800';
+        case 'Rejected':
+            return 'bg-red-100 text-red-800';
+        default:
+            return 'bg-gray-100 text-gray-800';
+    }
+};
+
 
 
 const GenericTable = ({ headers,  data, currentTheme, onEdit, onDelete}) => {
+  
+const [editView, setEditView] = useState(false);
   return (
     <table className=" overflow-scroll rounded w-full">
       <thead className='text-sm text-[#1F2937]  border-b border-gray-300 '>
@@ -157,6 +173,7 @@ const GenericTable = ({ headers,  data, currentTheme, onEdit, onDelete}) => {
                   </td>
                 );
               })} */}
+              
               {headers.map((header, index) => {
                 if(header.toLowerCase() === '#'){
                   return (
@@ -255,6 +272,36 @@ const GenericTable = ({ headers,  data, currentTheme, onEdit, onDelete}) => {
                   )
                 }
 
+                if (header.toLowerCase() === 'actions') {
+                  return (
+                    <td
+                      key={index}
+                      className={`px-4 py-2 ${currentTheme === 'dark' ? 'text-white' : 'text-black'
+                        } text-center`}
+                    >
+                      <FontAwesomeIcon
+                        icon={faEdit}
+                        className="text-green-500 mr-2 cursor-pointer"
+                        // onClick={() => onEdit(item)}
+                        onClick={()=>setEditView(!editView)}
+                      />
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        className="text-red-500 cursor-pointer"
+                        onClick={() => onDelete(item)}
+                      />
+                      {editView}
+
+                      {editView && (
+                        <div className=" flex flex-col gap-2 mt-2">
+                          <button onClick={()=>{setEditView(!editView); onEdit(item , "Approved")}} className="font-semibold text-sm border border-gray-300 bg-gray-50 px-2 rounded  cursor-pointer">Approve</button>
+                          <button onClick={()=>{setEditView(!editView); onEdit(item , "Rejected")}} className="font-semibold text-sm border border-gray-300 bg-gray-50 px-2 rounded cursor-pointer">Reject</button>
+                        </div>
+                      )}
+                    </td>
+                  );
+                }
+
                 if(header === 'Documents' || header === 'Actions & Documents'){
                   return (
                       <td   key={index}>
@@ -337,13 +384,18 @@ const GenericTable = ({ headers,  data, currentTheme, onEdit, onDelete}) => {
 
                 if(header === 'Status'){
                   return (
-                    <td
-                    className='text-center pt-2'
-                      key={index}
-                      >
-                        <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                          <Clock  className="w-3 h-3 mr-1"/> Pending
-                        </span>
+                    // <td
+                    // className='text-center pt-2'
+                    //   key={index}
+                    //   >
+                    //     <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                    //       <Clock  className="w-3 h-3 mr-1"/> Pending
+                    //     </span>
+                    // </td>
+                    <td key={index} className="px-4 py-4 whitespace-nowrap">
+                      <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusClasses(item['status'])}`}>
+                          {item['status']}
+                      </span>
                     </td>
                   )
               }

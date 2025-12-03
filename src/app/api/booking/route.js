@@ -53,25 +53,20 @@ export async function POST(req) {
 
 export async function GET(request) {
   try {
-
     await connectDB();    
     const token = request.headers.get("x-user-token");
     const decoded =token && jwt.verify(token, process.env.TOKEN_SECRET);
-    console.log(decoded);
+    // console.log(decoded);
     if (!decoded?.sub || !decoded?.email) {
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
-
     const applications = await Booking.find().populate('userId');
     return NextResponse.json(applications, { status: 200 });
-
   } catch (error) {
-
     console.error("GET /api/booking error:", error);
     return NextResponse.json(
       {error: "Server error", detail: error.message},
       {status: 500}
-    );
-    
+    );  
   }
 }
