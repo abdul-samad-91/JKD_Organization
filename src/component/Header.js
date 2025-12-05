@@ -16,10 +16,12 @@ export default function Header() {
   })
   const  pages = [
     {path:'/' , name:'Home'},
-    {path:'/about-us' , name:'About us'},
+    // {path:'/about-us' , name:'About us'},
     {path:'#' , name:'Trainings' , hover:'trainings'},
     {path:'#' , name:'IT Courses' , hover:'itCourses'}, 
-    {path:'/services' , name:'Services'},
+    {path:'/services' , name:'Our Services'},
+    {path:'#' , name:'Events'},
+    {path:'/apply/job' , name:'Jobs'},
     {path:'/contact-us', name:'Contact us'}
   ]
   // const {theme , setTheme} = useGlobal();

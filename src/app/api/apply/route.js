@@ -3,12 +3,15 @@ import { connectDB } from "@/lib/dbConnect";
 import Apply from "@/models/applyModel";
 import { uploadImageToCloudinary } from "@/lib/cloudinary";
 import jwt from 'jsonwebtoken'
+import axiosInstance from "@/lib/axios";
+
 export async function POST(request) {
   try {
     await connectDB();
     // const form = await request.json();
       const formData = await request.formData();
       const {
+        userId,
       name,
       fatherName,
       gender,
@@ -51,6 +54,7 @@ export async function POST(request) {
     // const userId = request.headers.get("x-user-id");
     // const userEmail = request.headers.get("x-user-email");
     // const userRole = request.headers.get("x-user-role");
+    // console.log("userId" , userId , userEmail , userRole);
 
     if (
       !name ||
@@ -139,6 +143,7 @@ console.log(CNICPictureUrl , qualificationUrl , passportSizePicUrl , passportUrl
 
     const newApplication = new Apply({
       name,
+      userId,
       fatherName,
       email,
       dateOfBirth,
@@ -159,10 +164,28 @@ console.log(CNICPictureUrl , qualificationUrl , passportSizePicUrl , passportUrl
 
     await newApplication.save();
 
+    // Call challan generate API internally
+    const challanResponse = await axiosInstance.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/challan/generate`, {applicationId: newApplication._id} , {
+      headers: {
+        "Content-Type": "application/json"
+      },
+    });
+
+    const challanData = await challanResponse.data;
+
+    if (challanResponse.status !== 201) {
+      return NextResponse.json(
+        { error: "Application saved but challan generation failed", challanData },
+        { status: 500 }
+      );
+    }
+
+
     return NextResponse.json(
       {
         message: "Application submitted successfully",
         application: newApplication,
+        challan: challanData.challan,
         // requestedBy: { userId, userEmail, userRole },
       },
       { status: 201 }
@@ -194,7 +217,9 @@ export async function GET(request) {
     if (!decoded.sub || !decoded.email) {
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
-    const applications = await Apply.find().populate('userId');
+    const applications = await Apply.find().populate('userId');;
+    // console.log("Fetched applications:", applications);
+    // .populate('userId');
     return NextResponse.json(applications, { status: 200 });
   } catch (err) {
     console.error("GET /api/apply error:", err);

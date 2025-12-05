@@ -34,7 +34,8 @@ const Apply = () => {
   const theme = 'light';
   const [progm , setProgm] = useState(null);
   const router = useRouter();
-  const {user} = useGlobal();
+  const {state} = useGlobal();
+  const {user} = state;
   const [applyForm , setApplyForm] = useState({
     userId: user?.id || '',
     name:'',

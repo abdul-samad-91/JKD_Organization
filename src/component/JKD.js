@@ -8,7 +8,7 @@ const JKD = () => {
     // const {theme} = useGlobal()
     const theme = "dark";
     const [toggle , setToggle] = useState({
-        vision:true,
+        vision:false,
         mission:false,
         value:false,
     })
@@ -27,10 +27,13 @@ const JKD = () => {
         <div className='w-[1200px] px-4'>
             <div className='flex items-start gap-5'>
                 {/* left side */}
-                <div className='flex flex-col gap-2 w-[50%]'>
-                    <h3 className='text-[30px] font-semibold   text-black'>WORLD CLASS <span className={`text-[#177faa]`}>FACILITIES </span></h3>
-                    <p className={` text-start text-black  pt-2 `} >JKD Pakistan empowers individuals through quality training and education, developing skilled professionals ready to lead and create global impact.</p>
-                    <ul className='text-black list-disc  ml-6 py-4'>
+                <div className='flex flex-col gap-2 w-[50%] bg-[#00874F] rounded p-5 text-white'>
+                    <h3 className='text-[30px] font-semibold '>WORLD CLASS <span 
+                    // className={`text-[#177faa]`}
+                    >
+                        FACILITIES </span></h3>
+                    <p className={` text-start  pt-2 `} >JKD Pakistan empowers individuals through quality training and education, developing skilled professionals ready to lead and create global impact.</p>
+                    <ul className=' list-disc  ml-6 py-4'>
                         <li>Our programs follow global standards, providing learners with practical, real-world skills.</li>
                         <li>A modern setup with advanced tools and digital resources for hands-on learning.</li>
                         <li>Learn from certified, experienced instructors dedicated to your success.</li>
@@ -38,8 +41,8 @@ const JKD = () => {
                     {/* <p className={` text-start text-black  `} >At JKD Pakistan, we don’t just teach skills we build futures.</p> */}
                 </div>
                 {/* right side */}
-                <div className='w-[50%] flex flex-col gap-5'>
-                    <div className='w-full  p-5 bg-[#00874F]  rounded'>
+                <div className='w-[50%] flex flex-col gap-5 text-black bg-[#005f88] p-5 py-14  rounded '>
+                    <div className='w-full  p-5 bg-white rounded'>
                         <button onClick={() => handleToggle("mission")} className="cursor-pointer"><FontAwesomeIcon className='text-[20px] transition-transform duration-500' icon={toggle.mission ? faArrowCircleUp : faArrowCircleDown} />
                         <span className='ml-5 font-semibold text-[18px]'>Our Mission</span>
                         </button>
@@ -52,7 +55,7 @@ const JKD = () => {
                         </div>
                         
                     </div>
-                    <div className='bg-[#005f88] p-5 w-full rounded'>
+                    <div className=' p-5 w-full rounded bg-white'>
                         <button className="cursor-pointer w-full text-left" onClick={() => handleToggle("vision")} aria-expanded={toggle.vision}>
                             <FontAwesomeIcon className='text-[20px] transition-transform duration-500' icon={toggle.vision ? faArrowCircleUp : faArrowCircleDown} />
                             <span className='ml-5 font-semibold text-[18px]'>Our Vision</span>
@@ -61,10 +64,10 @@ const JKD = () => {
                             className={`transition-all duration-500 ease-in-out overflow-hidden ${toggle.vision ? 'max-h-96' : 'max-h-0'}`}
                             aria-hidden={!toggle.vision}
                         >
-                            <p className={`${theme === 'light' ? ' text-gray-700 ':'text-white'}  text-justify pt-4`}>To uplift and empower under-served communities through innovative and sustainable initiatives in vocational training, skill development, sustainable tourism, sports for development, health-care, and organizing events that promote social causes, community cohesion, and cultural exchange</p> 
+                            <p className={`${theme === 'light' ? ' text-gray-700 ':''}  text-justify pt-4`}>To uplift and empower under-served communities through innovative and sustainable initiatives in vocational training, skill development, sustainable tourism, sports for development, health-care, and organizing events that promote social causes, community cohesion, and cultural exchange</p> 
                         </div>
                     </div>
-                    <div className='p-5 bg-[#e98b28] rounded'>
+                    <div className='p-5 rounded bg-white'>
                             <button onClick={() => handleToggle("value")} className="cursor-pointer"><FontAwesomeIcon className='text-[20px]' icon={toggle.vision ? faArrowCircleUp : faArrowCircleDown} /><span className='ml-5 font-semibold text-[18px]'>Our Values</span>
                             </button>
                             <ul className={` transition-all duration-500 ease-in-out overflow-hidden ${toggle.value ? 'max-h-96' : 'max-h-0'}`}
@@ -72,42 +75,42 @@ const JKD = () => {
                                 <li className="pt-4 flex items-center gap-3 mb-[10px] ">
                                     {/* <FontAwesomeIcon icon={faLightbulb} className="text-yellow-500 text-xl " /> */}
                                     <p>
-                                    <span className={`font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}>Empowerment:</span> Unlocking potential through skills and resources.
+                                    <span className={`font-semibold `}>Empowerment:</span> Unlocking potential through skills and resources.
                                     </p>
                                 </li>
 
                                 <li className="flex items-center gap-3 mb-[10px] ">
                                     {/* <FontAwesomeIcon icon={faLeaf} className="text-green-600 text-xl " /> */}
                                     <p>
-                                    <span className={`font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}>Sustainability:</span> Fostering growth that benefits present and future generations.
+                                    <span className={`font-semibold `}>Sustainability:</span> Fostering growth that benefits present and future generations.
                                     </p>
                                 </li>
 
                                 <li className="flex items-center gap-3 mb-[10px] ">
                                     {/* <FontAwesomeIcon icon={faUsers} className="text-blue-500 text-xl " /> */}
                                     <p>
-                                    <span className={`font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}>Inclusive:</span> Promoting equality and accessibility for all.
+                                    <span className={`font-semibold`}>Inclusive:</span> Promoting equality and accessibility for all.
                                     </p>
                                 </li>
 
                                 <li className="flex items-center gap-3 mb-[11px] ">
                                     {/* <FontAwesomeIcon icon={faBalanceScale} className="text-gray-600 text-xl " /> */}
                                     <p>
-                                    <span className={`font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}>Integrity:</span> Upholding transparency, accountability, and ethical conduct.
+                                    <span className={`font-semibold `}>Integrity:</span> Upholding transparency, accountability, and ethical conduct.
                                     </p>
                                 </li>
 
                                 <li className="flex items-center gap-3 mb-[11px] ">
                                     {/* <FontAwesomeIcon icon={faFlask} className="text-purple-500 text-xl " /> */}
                                     <p>
-                                    <span className={`font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}>Innovation:</span> Embracing creative solutions to social challenges.
+                                    <span className={`font-semibold`}>Innovation:</span> Embracing creative solutions to social challenges.
                                     </p>
                                 </li>
 
                                 <li className="flex items-center gap-3 mb-[11px] ">
                                     {/* <FontAwesomeIcon icon={faHandshake} className="text-orange-500 text-xl " /> */}
                                     <p>
-                                    <span className={`font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}>Collaboration:</span> Partnering for collective impact.
+                                    <span className={`font-semibold `}>Collaboration:</span> Partnering for collective impact.
                                     </p>
                                 </li>
                                 
@@ -115,7 +118,7 @@ const JKD = () => {
                                 <li className="flex items-center gap-3 mb-[11px] ">
                                     {/* <FontAwesomeIcon icon={faLandmark} className="text-red-500 text-xl " /> */}
                                     <p>
-                                    <span className={`font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}>Respect for Culture:</span> Honoring and preserving cultural heritage.
+                                    <span className={`font-semibold `}>Respect for Culture:</span> Honoring and preserving cultural heritage.
                                     </p>
                                 </li>
                         </ul>

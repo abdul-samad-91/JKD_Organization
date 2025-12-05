@@ -60,7 +60,9 @@ export async function GET(request) {
     if (!decoded?.sub || !decoded?.email) {
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
-    const applications = await Booking.find().populate('userId');
+    const applications = await Booking.find().populate('userId');;
+    // console.log("Fetched bookings:", applications);
+    
     return NextResponse.json(applications, { status: 200 });
   } catch (error) {
     console.error("GET /api/booking error:", error);

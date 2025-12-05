@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 import LoadingScreen from "@/component/LoadingScreen";
 import StudentLeftSidebar from "@/component/studentLeftSidebar";
 import axiosInstance from "@/lib/axios";
+import { toast } from "react-toastify";
 
 const Apply = () => {
     const {state , dispatch} = useGlobal();
     const [loading, setLoading] = useState(false);
     const {theme , user} = state;
-    console.log("user" ,user);
+    // const [challanLoading, setChallanLoading] = useState(false);
+    // console.log("user" ,user);
     const router = useRouter();
     const [ view , setView ] = useState(false);
     const [appliedCourses, setAppliedCourses] = useState([]);
@@ -29,6 +31,7 @@ const Apply = () => {
             axiosInstance.get("/api/apply"),
             axiosInstance.get("/api/booking"),
         ]);
+        console.log("All applications fetched:", res.data, res1.data);
 
         const filteredCourses = res.data.filter(
         (application) => application?.userId?._id === user?.id
@@ -65,6 +68,22 @@ const Apply = () => {
             setView(true);
         }
     }, [user]);
+
+    const viewChallan = async (applicationId) => {
+        router.push(`/student/Challan/${applicationId}`);
+        // try{
+        //     setChallanLoading(true);
+        //     const {data} = await axiosInstance.post("/api/challan/generate", { applicationId });
+        //     console.log("Challan generated:", data);
+        //     router.push(`/student/Challan/${data.challan._id}`);
+        //     toast.success( data.message ||"Challan generated successfully");
+        // }
+        // catch(err){
+        //     console.log(err);
+        // }finally{
+        //     setChallanLoading(false);
+        // }
+    }
 
     if(!view) return <LoadingScreen />; 
     return (
@@ -105,7 +124,20 @@ const Apply = () => {
                                             <p className="text-base font-medium text-gray-800">{application.chooseCourse}</p>
                                             <p className="text-xs text-gray-500">Application ID: {application.applicationId}</p>
                                         </div>
-                                        <span className={`px-2 rounded-full ${application.status === 'Pending'?'bg-orange-100  text-orange-500' :application.status === 'Rejected' ? 'bg-red-100 text-red-500' : 'bg-green-100 text-green-500'}`}>{application.status}</span>
+                                        <div className="flex gap-2 items-center">
+                                            <span className={`px-2 rounded-full ${application.status === 'Pending'?'bg-orange-100  text-orange-500' :application.status === 'Rejected' ? 'bg-red-100 text-red-500' : 'bg-green-100 text-green-500'}`}>{application.status}</span>
+                                            {application.status === 'Pending' &&
+                                            <div className="flex flex-col gap-2">
+                                                <button className=" cursor-pointer text-sm text-white px-1 rounded bg-[#177faa]">Upload Challan</button>
+                                                {/* {
+                                                challanLoading ?
+                                                <button disabled className=" cursor-pointer text-sm text-white px-1 rounded bg-gray-400">Generating...</button>
+                                                : */}
+                                                <button onClick={()=> viewChallan(application._id)} className="cursor-pointer text-sm text-white px-1 rounded bg-[#177faa]">View Challan</button>
+                                                {/* } */}
+                                            </div>                                            
+                                            }
+                                        </div>
                                     </li>
                                 </ul>
                                 )
