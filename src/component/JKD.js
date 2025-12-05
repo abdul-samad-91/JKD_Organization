@@ -32,20 +32,43 @@ const JKD = () => {
                     // className={`text-[#177faa]`}
                     >
                         FACILITIES </span></h3>
-                    <p className={` text-start  pt-2 `} >JKD Pakistan empowers individuals through quality training and education, developing skilled professionals ready to lead and create global impact.</p>
-                    <ul className=' list-disc  ml-6 py-4'>
+                    <p className={` text-start   `} >JKD Pakistan equips individuals with quality training, developing skilled professionals ready to lead globally.</p>
+                    <ul className=' list-disc  ml-6 pt-1 '>
                         <li>Our programs follow global standards, providing learners with practical, real-world skills.</li>
                         <li>A modern setup with advanced tools and digital resources for hands-on learning.</li>
                         <li>Learn from certified, experienced instructors dedicated to your success.</li>
+                        {/* <li>Our programs follow global standards, providing learners with practical, real-world skills.</li>
+                        <li>A modern setup with advanced tools and digital resources for hands-on learning.</li>
+                        <li>Learn from certified, experienced instructors dedicated to your success.</li> */}
                     </ul>
                     {/* <p className={` text-start text-black  `} >At JKD Pakistan, we don’t just teach skills we build futures.</p> */}
                 </div>
                 {/* right side */}
-                <div className='w-[50%] flex flex-col gap-5 text-black bg-[#005f88] p-5 py-14  rounded '>
-                    <div className='w-full  p-5 bg-white rounded'>
-                        <button onClick={() => handleToggle("mission")} className="cursor-pointer"><FontAwesomeIcon className='text-[20px] transition-transform duration-500' icon={toggle.mission ? faArrowCircleUp : faArrowCircleDown} />
-                        <span className='ml-5 font-semibold text-[18px]'>Our Mission</span>
-                        </button>
+                <div className='w-[50%] flex flex-col justify-center gap-5 text-black bg-[#005f88] p-5 py-[52px]  rounded '>
+                    <div className='w-full  p-3 bg-white rounded'>
+                        {/* <button onClick={() => handleToggle("mission")} className={` cursor-pointer`}>
+                            <FontAwesomeIcon className={`${toggle.mission ? 'text-[#eb6b19]' : 'text-black'} text-[20px] transition-transform duration-500`} icon={toggle.mission ? faArrowCircleUp : faArrowCircleDown} />
+                        <span className={`${toggle.mission ? 'text-[#eb6b19]' : 'text-black'} ml-5 font-semibold text-[18px] `}>Our Mission</span>
+                        </button> */}
+
+                            <button
+                                onClick={() => handleToggle("mission")}
+                                className="cursor-pointer flex items-center"
+                                >
+                                <FontAwesomeIcon
+                                    className={`text-[20px] transition-transform duration-500 ${
+                                    toggle.mission ? "text-[#eb6b19]" : "text-black"
+                                    }`}
+                                    icon={toggle.mission ? faArrowCircleUp : faArrowCircleDown}
+                                />
+                                <span
+                                className={`ml-5 font-semibold text-[18px] ${
+                                toggle.mission ? "text-[#eb6b19]" : "text-black"
+                                }`}
+                            >
+                                Our Mission
+                                </span>
+                            </button>
                             <div 
                             className={`transition-all duration-500 ease-in-out overflow-hidden ${toggle.mission ? 'max-h-96' : 'max-h-0'}`}
                             aria-hidden={!toggle.vision}
@@ -55,10 +78,10 @@ const JKD = () => {
                         </div>
                         
                     </div>
-                    <div className=' p-5 w-full rounded bg-white'>
-                        <button className="cursor-pointer w-full text-left" onClick={() => handleToggle("vision")} aria-expanded={toggle.vision}>
-                            <FontAwesomeIcon className='text-[20px] transition-transform duration-500' icon={toggle.vision ? faArrowCircleUp : faArrowCircleDown} />
-                            <span className='ml-5 font-semibold text-[18px]'>Our Vision</span>
+                    <div className=' p-3 w-full rounded bg-white'>
+                        <button className={`cursor-pointer w-full text-left $}`} onClick={() => handleToggle("vision")} aria-expanded={toggle.vision}>
+                            <FontAwesomeIcon className={`text-[20px] transition-transform duration-500 ${toggle.vision ? "text-[#eb6b19]" : "text-black"}`} icon={toggle.vision ? faArrowCircleUp : faArrowCircleDown} />
+                            <span className={` ${toggle.vision ? "text-[#eb6b19]" : "text-black"} ml-5 font-semibold text-[18px]`}>Our Vision</span>
                         </button>
                         <div 
                             className={`transition-all duration-500 ease-in-out overflow-hidden ${toggle.vision ? 'max-h-96' : 'max-h-0'}`}
@@ -67,8 +90,8 @@ const JKD = () => {
                             <p className={`${theme === 'light' ? ' text-gray-700 ':''}  text-justify pt-4`}>To uplift and empower under-served communities through innovative and sustainable initiatives in vocational training, skill development, sustainable tourism, sports for development, health-care, and organizing events that promote social causes, community cohesion, and cultural exchange</p> 
                         </div>
                     </div>
-                    <div className='p-5 rounded bg-white'>
-                            <button onClick={() => handleToggle("value")} className="cursor-pointer"><FontAwesomeIcon className='text-[20px]' icon={toggle.vision ? faArrowCircleUp : faArrowCircleDown} /><span className='ml-5 font-semibold text-[18px]'>Our Values</span>
+                    <div className='p-3 rounded bg-white'>
+                            <button onClick={() => handleToggle("value")} className="cursor-pointer"><FontAwesomeIcon className={`text-[20px] ${toggle.value ? "text-[#eb6b19]" : "text-black"}`} icon={toggle.vision ? faArrowCircleUp : faArrowCircleDown} /><span className={`ml-5 font-semibold text-[18px] ${toggle.value ? "text-[#eb6b19]" : "text-black"}`}>Our Values</span>
                             </button>
                             <ul className={` transition-all duration-500 ease-in-out overflow-hidden ${toggle.value ? 'max-h-96' : 'max-h-0'}`}
                                 aria-hidden={!toggle.vision}>

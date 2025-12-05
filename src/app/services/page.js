@@ -223,7 +223,7 @@ const Apply = () => {
             </div>
 
             <div className=" w-full flex flex-col py-10 items-center ">
-                <h3 className='w-[1200px] text-[30px] font-semibold'>Why Choose J.K.D.?</h3>
+                <h3 className='w-[1200px] text-[30px] font-semibold'>Why Choose JKD ?</h3>
                 <ul className="w-[1200px] ml-5 list-disc">
                     <li>Government-licensed and internationally recognized recruitment agency</li>
                     <li>Large database of skilled and verified workers</li>
@@ -236,14 +236,14 @@ const Apply = () => {
             </div>
 
             {/*Uplift Events */}
-            <div className="bg-[#177faa] text-white w-full flex flex-col py-10 items-center ">
+            {/* <div className="bg-[#177faa] text-white w-full flex flex-col py-10 items-center ">
                 <h1 className={` max-w-[1200px] text-center text-[30px] md:text-[35px] pb-2 lg:text-[39px] font-semibold w-full`}>Uplift Events</h1>
-                <p  className={` text-center max-w-[1150px]`} >At J.K.D., we believe that growth isn’t limited to professional success — it’s also about community development, teamwork, and personal upliftment.</p>    
+                <p  className={` text-center max-w-[1150px]`} >At JKD, we believe that growth isn’t limited to professional success it’s also about community development, teamwork, and personal upliftment.</p>    
                 <p  className={` text-center max-w-[1150px]`} >Through our Uplift Events, we aim to inspire, engage, and empower individuals by organizing impactful programs, tournaments, and community gatherings that bring people together with a spirit of unity and motivation.</p>    
                 <p  className={` text-center max-w-[1150px]`} >We take pride in organizing events that not only entertain but also promote physical wellness, teamwork, and social awareness among youth and working professionals.</p>    
-            </div>
+            </div> */}
 
-            <div className=" w-full flex flex-col py-10 items-center bg-[#eefbff] ">
+            {/* <div className=" w-full flex flex-col py-10 items-center bg-[#eefbff] ">
                 <h3 className='text-[30px] font-semibold'>What We Do?</h3>
                 <div className="flex gap-5 justify-center flex-wrap max-w-[1200px] pt-5">
                     {
@@ -276,9 +276,9 @@ const Apply = () => {
                     <li>A proven record of successful tournaments and community programs</li>
                 </ul>
                 <p  className={`  w-[1200px] pt-4  pr-140`} >At J.K.D., we don’t just organize events we create moments that motivate, connect, and inspire.Our Uplift Events are all about celebrating talent, promoting unity, and making a meaningful difference in people’s lives.</p>
-            </div>
+            </div> */}
 
-        </div>
+        </div> 
         <Footer />
       </div>
   )

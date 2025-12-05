@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import logoPart1 from "../../public/logo-part1.png"
 import logoPart2 from "../../public/logo-part2.png"
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const KickstartCarrer = () => {
+  const router = useRouter();
   const data = [
       {
           borderColor: '#e98b28',
@@ -64,7 +66,13 @@ console.log(isVisible ,offset)
         <h3 className='text-[23px] pt-2 '>Insterted in Innovation and Design</h3>
         <div className='my-3 py-5 flex items-center overflow-visible relative '>
           <Image src={logoPart1} alt='logo' className='h-[200px] absolute top-[-40px] left-[-200px] w-[200px] object-contain overflow-auto' />
-          <span className='text-[45px] font-semibold  border-2  rounded border-[#e98b28] px-16 py-3 '>JOIN US!</span>
+          {/* <button onClick={()=> router.push('/apply/job')} className='text-[45px] hover:bg-[#e98b28]  hover:text-[#005f88] cursor-pointer font-semibold  border-2 rounded border-[#e98b28] hover:border-[#005f88] px-16 py-3 '>JOIN US!</button> */}
+          <button
+            onClick={() => router.push('/apply/job')}
+            className='text-[45px] hover:bg-[#e98b28] hover:text-[#005f88] cursor-pointer font-semibold border-2 rounded border-[#e98b28] px-16 py-3'
+          >
+            JOIN US!
+          </button>
           <Image src={logoPart2} alt='logo' className='h-[200px] absolute top-[-15px] right-[-200px] w-[200px] object-contain overflow-auto' />
         </div>
         <p className='text-center w-[1200px] pt-2'>Are you ready to embark on a journey of personal and professional growth? Look no further! Our comprehensive three-tier training program is designed to equip you with the skills, knowledge, and confidence you need to succeed in today’s competitive landscape. Whether you’re a budding professional, an aspiring entrepreneur, or a seasoned industry expert, our program has something for everyone.</p>

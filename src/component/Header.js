@@ -20,7 +20,7 @@ export default function Header() {
     {path:'#' , name:'Trainings' , hover:'trainings'},
     {path:'#' , name:'IT Courses' , hover:'itCourses'}, 
     {path:'/services' , name:'Our Services'},
-    {path:'#' , name:'Events'},
+    {path:'/events' , name:'Events'},
     {path:'/apply/job' , name:'Jobs'},
     {path:'/contact-us', name:'Contact us'}
   ]
