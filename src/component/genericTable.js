@@ -328,8 +328,11 @@ const [editView, setEditView] = useState(false);
                                 <ImageIcon className="w-3 h-3 mr-1" /> Photo
                             </a>
                             {/* <!-- Passport (if applicable) --> */}
-                            <a href={item['passportUrl']} target="_blank" className="flex items-center bg-red-500 text-white text-xs px-3 py-1 rounded-full hover:bg-red-600">
+                            {/* <a href={item['passportUrl']} target="_blank" className="flex items-center bg-red-500 text-white text-xs px-3 py-1 rounded-full hover:bg-red-600">
                                 <Globe className="w-3 h-3 mr-1" /> Passport
+                            </a> */}
+                            <a href={item['challanUrl']} target="_blank" className="flex items-center bg-black text-white text-xs px-3 py-1 rounded-full ">
+                                <Globe className="w-3 h-3 mr-1" /> Challan
                             </a>
                         </div>
                       }

@@ -46,7 +46,7 @@ const logout = async () => {
     dispatch({ type: "LOGOUT" });
     router.push("/");
     toast.success(response.data.message || "Logout Successfully");
-    setUser(null);
+    // setUser(null);
   } catch (error) {
     console.error("Logout error:", error);
     toast.error("Something went wrong with logout");

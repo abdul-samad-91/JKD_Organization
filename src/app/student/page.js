@@ -85,6 +85,37 @@ const Apply = () => {
         // }
     }
 
+    const onUploadChallan = async (e, applicationId) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+        const formData = new FormData();
+        formData.append("challanImage", file);
+        formData.append("applicationId", applicationId);
+
+        const { data } = await axiosInstance.post(
+        "/api/challan/upload",
+        formData,
+        {
+            headers: {
+            "Content-Type": "multipart/form-data",
+            },
+        }
+        );
+        console.log(data);
+
+        toast.success(data.message || "Challan uploaded successfully");
+        getstudentApplications();
+    } catch (error) {
+        console.error(error);
+        toast.error("Failed to upload challan");
+    }finally{
+        e.target.value = "";
+    }
+    };
+
+
     if(!view) return <LoadingScreen />; 
     return (
       <div className='flex h-screen  w-full'>
@@ -108,8 +139,7 @@ const Apply = () => {
             <div className="bg-white p-6 rounded-xl border border-gray-400 ">
                 <h3 className="text-2xl font-semibold  mb-4 border-gray-300 border-b pb-2">Course Applications</h3>
                 <div id="">
-                    {
-                        loading?
+                    {loading?
                         <div>loading...</div>:
                         appliedCourses.length < 1 ? (
                             <div className="text-center py-10 border-dashed border-2 bg-gray-50 border-gray-300 rounded-lg">
@@ -128,7 +158,9 @@ const Apply = () => {
                                             <span className={`px-2 rounded-full ${application.status === 'Pending'?'bg-orange-100  text-orange-500' :application.status === 'Rejected' ? 'bg-red-100 text-red-500' : 'bg-green-100 text-green-500'}`}>{application.status}</span>
                                             {application.status === 'Pending' &&
                                             <div className="flex flex-col gap-2">
-                                                <button className=" cursor-pointer text-sm text-white px-1 rounded bg-[#177faa]">Upload Challan</button>
+                                                <label htmlFor={`challan-${application._id}`} className=" cursor-pointer text-sm text-white px-1 rounded bg-[#177faa]">Upload Challan</label>
+                                                <input className="hidden" id={`challan-${application._id}`} type="file" onChange={(e)=>onUploadChallan(e,application._id)}
+                                                 />
                                                 {/* {
                                                 challanLoading ?
                                                 <button disabled className=" cursor-pointer text-sm text-white px-1 rounded bg-gray-400">Generating...</button>

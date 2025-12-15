@@ -267,8 +267,8 @@ const App = () => {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
-                                    {filteredApplications.length>0 ? filteredApplications.map((app) => (
-                                        <tr key={app.id}>
+                                    {filteredApplications.length>0 ? filteredApplications.map((app , index) => (
+                                        <tr key={index}>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{app.name}</td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-600">{app.chooseCourse}</td>
                                             <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{app.createdAt?.split('T')[0]}</td>
@@ -280,7 +280,7 @@ const App = () => {
                                         </tr>
                                     )) 
                                     :
-                                    <tr>
+                                    <tr key="no-data">
                                         <td colSpan="4" className="px-4 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No recent applications found.</td>
                                     </tr>
                                     }

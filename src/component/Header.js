@@ -13,7 +13,9 @@ export default function Header() {
   const [dropDown,setDropDown] = useState({
     itCourses:false,
     tevet:false,
-  })
+    // traingings:false
+    trainings:false
+  });
   const  pages = [
     {path:'/' , name:'Home'},
     // {path:'/about-us' , name:'About us'},
@@ -118,7 +120,6 @@ export default function Header() {
               <li key={index} onClick={()=> routChange(page.path)} onMouseEnter={()=>setDropDown({ [page.hover]:true})}  className={`flex gap-2 items-center ${theme === 'light' ? 'hover:text-[#00d17a]  ' : 'hover:text-[#177faa] '} ${ page.path === pathname ? theme === 'light' ? 'text-[#00d17a] font-bold' : 'text-[#177faa] font-bold' : ''} cursor-pointer `}>
                 {page.name}
                 {
-                  
                   page.hover === 'itCourses' || page.hover === "trainings" ? dropDown[page.hover] ?
                   <Image src={upArrow} className="w-[10px] h-[10px]" alt="icon" />
                   :
@@ -195,7 +196,7 @@ export default function Header() {
         </div>
       )}
 
-            {/* dropdown */}
+      {/* dropdown */}
       {
         dropDown.itCourses ?
         (      
@@ -228,7 +229,7 @@ export default function Header() {
             <hr className="my-2"/>
           </div>
         </div>
-        ): dropDown.tevet && (
+        ): dropDown.trainings && (
         <div className=" flex justify-center gap-10 bg-[#00874F]  py-8 text-white z-50 px-5"
         onMouseEnter={() => setDropDown({ tevet: true })}
         onMouseLeave={() => setDropDown({ tevet: false })}>

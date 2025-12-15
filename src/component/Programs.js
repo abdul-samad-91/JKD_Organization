@@ -117,9 +117,7 @@ const Programs = () => {
       className={` relative mb-10 flex flex-col items-center pt-10  w-full bg-white`}
     >
       <h1
-        className={`text-center text-[30px] md:text-[35px] lg:text-[39px] font-semibold  w-[250px] sm:w-[600px] md:w-[900px]  lg:w-[1200px] ${
-          theme === "light" ? "text-black" : "text-white"
-        }`}
+        className={`text-center text-[30px] md:text-[35px] lg:text-[39px] font-semibold  w-[250px] sm:w-[600px] md:w-[900px]  lg:w-[1200px] text-black`}
       >
         Our Programs
       </h1>
