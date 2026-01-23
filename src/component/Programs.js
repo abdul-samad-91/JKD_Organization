@@ -139,7 +139,7 @@ const Programs = () => {
           {programs?.map((program, index) => (
             <div
               key={index}
-              className={`relative px-4 mb-10 border border-gray-200 pt-4 program-card overflow-visible  shadow-lg rounded text-center min-w-[275px] sm:min-w-[275px] `}
+              className={`relative px-4 mb-10 border border-gray-200 pt-4 program-card overflow-visible  shadow-lg rounded text-center min-w-[275px] sm:min-w-[290px] `}
             >
               <div className="w-full relative z-10">
                 <Image

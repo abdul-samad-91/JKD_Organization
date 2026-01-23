@@ -67,12 +67,12 @@ const handleSubmit = async (e) => {
   return (
     <>
     <Header />
-    <div className={`w-full min-h-[600px] flex items-center justify-center px-4 ${theme === "light" ? "bg-[#eefbff]" : "bg-black"}  mt-20`}>
+    <div className={`w-full min-h-[600px] flex items-center justify-center px-4 sm:px-6 lg:px-8 ${theme === "light" ? "bg-[#eefbff]" : "bg-black"} mt-20`}>
     {/* Right - LOGIN FORM */}
-        <form onSubmit={handleSubmit}  className=" rounded gap-5 bg-white p-6 sm:p-8 lg:p-10  backdrop-blur-md flex flex-col items-center justify-center ">
-        <h2 className='text-[35px] font-semibold'>SIGN UP </h2>
+      <form onSubmit={handleSubmit}  className="w-full max-w-md sm:max-w-lg lg:max-w-2xl rounded gap-5 bg-white p-6 sm:p-8 lg:p-10 backdrop-blur-md flex flex-col items-center justify-center shadow-md">
+      <h2 className='text-2xl sm:text-3xl lg:text-4xl font-semibold'>SIGN UP</h2>
 
-        <div className='flex gap-5'>
+        <div className='flex flex-col sm:flex-row gap-5 w-full'>
         <div className="w-full  ">
             <label className='font-semibold'>Username</label>
             <div className='relative'>
@@ -108,8 +108,8 @@ const handleSubmit = async (e) => {
         </div>
         </div>
 
-        <div className='flex gap-5'>
-        <div className="w-full  ">
+        <div className='flex flex-col sm:flex-row gap-5 w-full'>
+        <div className="w-full">
             <label className='font-semibold'>Password</label>
             <div className='relative'>
                 {view ? 
@@ -125,7 +125,7 @@ const handleSubmit = async (e) => {
                 onChange={handleChange}
                 autoComplete="new-password"
                 placeholder="Password"
-                className={`border ${theme === 'dark' ? 'border-[#177eaa94]' : 'border-[#00874f85]'} p-2 rounded w-full outline-none pr-9`}              
+                className={`border ${theme === 'dark' ? 'border-[#177eaa94]' : 'border-[#00874f85]'} p-2 rounded w-full outline-none pr-9 text-sm md:text-base`}              
                 required 
                 />
             </div>
@@ -155,16 +155,16 @@ const handleSubmit = async (e) => {
         </div>
 
         <button
-            type="submit"
-            disabled={loading}
-            className={`hidden md:block px-4 py-2 w-[40%] self-start rounded ${theme !== 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}
+          type="submit"
+          disabled={loading}
+          className={`block px-4 py-2 w-full md:w-[40%] self-start rounded ${theme !== 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black' : 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}
         >
-            {loading ? "Logging in..." : "Login"}
+          {loading ? "Signing in..." : "Sign Up"}
         </button>
 
         <ul className="w-full flex flex-col sm:flex-row  justify-start gap-5 items-center  text-sm sm:text-base text-[#070E2A] sm:gap-0">
-            <li  className="cursor-pointer hover:underline text-sm ">Create an account</li>
-            <li  className="cursor-pointer hover:underlinev text-sm md:pl-5">Forgot password?</li>
+            <li  className="cursor-pointer hover:underline text-sm "><Link href="/login">Already have an account? Login</Link></li>
+            {/* <li  className="cursor-pointer hover:underlinev text-sm md:pl-5">Forgot password?</li> */}
         </ul>
         </form>
       </div>

@@ -67,14 +67,14 @@ export default function Home() {
         {/* <JkdPIcs /> */}
         {/* <About /> */}
         <div className={`${theme === 'light' ? 'bg-white':'bg-[#0b0b0b]'} w-full flex flex-col items-center mt-10 py-10`}>
-          <div className='max-w-[950px] px-4'>
+          <div className='max-w-[950px] px-8'>
             <h2 className='text-[35px] text-center font-semibold '>Welcome To <span className={` ${theme === 'dark' ? 'text-[#177faa]' : 'text-[#00874F]'}`}>JKD Pakistan</span></h2>
             <p className={` text-center  ${theme === 'dark' ? '' : 'text-gray-800'} pt-4`} >A nationally approved Training Institute and Events, Sports & Tourism Services Hub, delivering skills development, tourism & travel services, sports development programs, business incubation, community uplift events, and overseas employment opportunities.</p>
           </div>
         </div>
         <JKD />
         <div className={`${theme === 'light' ? 'bg-white':'bg-[#0b0b0b]'} w-full flex flex-col items-center mb-10 py-10`}>
-          <div className='max-w-[950px] px-4'>
+          <div className='max-w-[950px] px-8'>
             <h2 className='text-[35px] text-center font-semibold '>Who We <span className={` ${theme === 'dark' ? 'text-[#177faa]' : 'text-[#00874F]'}`}>Are?</span></h2>
             <p className={` text-center  ${theme === 'dark' ? '' : 'text-gray-700'} pt-4`} >JKD Pakistan is a dynamic organization dedicated to empowering marginalized & under served communities through sustainable economic opportunities and social development. Through its diverse and innovative programs and services, JKD Pakistan bridges the gap for vulnerable generations, ensuring equal access to opportunities and cultivating resilient communities for a brighter future.</p>
           </div>

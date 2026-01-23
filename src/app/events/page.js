@@ -32,33 +32,33 @@ export default function EventsPage() {
     ]
 
   return (
-    <div className="flex flex-col w-full  h-screen">
+    <div className="flex flex-col w-full min-h-screen">
         <Header />
-        <div className="pt-16"></div>
+        <div className="pt-16 sm:pt-20"></div>
         {/* <h1 className="text-3xl font-bold">Events Page Coming Soon!</h1> */}
-        <div className="bg-[#177faa] text-white w-full flex flex-col py-10 items-center ">
+        <div className="bg-[#177faa] text-white w-full flex flex-col py-6 sm:py-8 md:py-10 items-center px-4 sm:px-8 md:px-8">
             <h1 className={` max-w-[1200px] text-center text-[30px] md:text-[35px] pb-2 lg:text-[39px] font-semibold w-full`}>Uplift Events</h1>
             <p  className={` text-center max-w-[1150px]`} >At JKD, we believe that growth isn’t limited to professional success it’s also about community development, teamwork, and personal upliftment.</p>    
             <p  className={` text-center max-w-[1150px]`} >Through our Uplift Events, we aim to inspire, engage, and empower individuals by organizing impactful programs, tournaments, and community gatherings that bring people together with a spirit of unity and motivation.</p>    
             <p  className={` text-center max-w-[1150px]`} >We take pride in organizing events that not only entertain but also promote physical wellness, teamwork, and social awareness among youth and working professionals.</p>    
          </div>
 
-                     <div className=" w-full flex flex-col py-10 items-center bg-[#eefbff] ">
-                <h3 className='text-[30px] font-semibold'>What We Do?</h3>
-                <div className="flex gap-5 justify-center flex-wrap max-w-[1200px] pt-5">
+                     <div className="w-full flex flex-col py-6 sm:py-8 md:py-10 items-center bg-[#eefbff] px-4 sm:px-6 md:px-8">
+                <h3 className='text-xl sm:text-2xl md:text-[28px] lg:text-[30px] font-semibold text-center'>What We Do?</h3>
+                <div className="flex gap-3 sm:gap-4 md:gap-5 justify-center flex-wrap max-w-[1200px] pt-4 sm:pt-5">
                     {
                         whatWeDo?.map((element , index) => 
-                            <div className="w-[48%]  bg-[white]  rounded p-2 px-5" key={index}>
-                                <h4 className='text-[20px] font-semibold   '>{element.title}</h4>
-                                <p className="py-2">{element.firstDesc}</p>
-                                <ul className="list-disc ml-5">
+                            <div className="w-full md:w-[48%] bg-[white] rounded p-4 sm:p-5" key={index}>
+                                <h4 className='text-lg sm:text-[18px] md:text-[20px] font-semibold'>{element.title}</h4>
+                                <p className="py-2 sm:py-3 text-sm sm:text-base">{element.firstDesc}</p>
+                                <ul className="list-disc ml-4 sm:ml-5 text-sm sm:text-base">
                                     {
                                         element?.lists?.map((list , index)=>
                                         <li key={index}>{list}</li>
                                         )
                                     }
                                 </ul>
-                                <p className="pt-2">{element.lastDesc}</p>
+                                <p className="pt-2 sm:pt-3 text-sm sm:text-base">{element.lastDesc}</p>
 
                             </div>
                         )
@@ -66,16 +66,16 @@ export default function EventsPage() {
                 </div>
             </div>
 
-            <div className=" w-full flex flex-col py-10 items-center ">
-                <h3 className='w-[1200px] text-[30px] font-semibold'>Why Choose J.K.D. for Event Management?</h3>
-                <ul className="w-[1200px] ml-5 list-disc">
+            <div className="w-full flex flex-col py-6 sm:py-8 md:py-10 items-center px-8">
+                <h3 className='w-full max-w-[1200px] text-xl sm:text-2xl md:text-[28px] lg:text-[30px] font-semibold'>Why Choose J.K.D. for Event Management?</h3>
+                <ul className="w-full max-w-[1200px] ml-8 sm:ml-9 md:ml-10 list-disc text-sm sm:text-base pt-2 sm:pt-3">
                     <li>Experienced team for planning and execution</li>
                     <li>End-to-end management (venue, logistics, publicity & coordination)</li>
                     <li>Customized event planning as per client or community needs</li>
                     <li>Focus on impact, engagement, and excellence</li>
                     <li>A proven record of successful tournaments and community programs</li>
                 </ul>
-                <p  className={`  w-[1200px] pt-4  pr-140`} >At J.K.D., we don’t just organize events we create moments that motivate, connect, and inspire.Our Uplift Events are all about celebrating talent, promoting unity, and making a meaningful difference in people’s lives.</p>
+                <p className={`w-full max-w-[1200px] pt-3 sm:pt-4 text-sm sm:text-base`}>At J.K.D., we don&apos;t just organize events we create moments that motivate, connect, and inspire.Our Uplift Events are all about celebrating talent, promoting unity, and making a meaningful difference in people&apos;s lives.</p>
             </div>
          <Footer />
     </div>

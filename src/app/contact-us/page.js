@@ -20,7 +20,7 @@ const info = [
         color:"#00874F",
         name: "Address Main Campus",
         icon:icon3,
-        details: ["16-B, Old Jamrud Road University Town Peshawr"]
+        details: ["16-B, Old Jamrud Road University Town, Peshawar, Pakistan"]
     },
     {
         color:"#177faa",
@@ -94,7 +94,7 @@ const handleSubmit = async (e) => {
   return (
     <div className={` h-screen w-full  flex flex-col justify-between `}>
         <Header />
-        <div className={`${theme === 'light' ? 'bg-white text-black':'bg-black text-white'} flex flex-col items-center mt-16 sm:mt-20`}>
+        <div className={`${theme === 'light' ? 'bg-white text-black':'bg-black text-white'} flex flex-col items-center mt-8`}>
             {/* <div className=' max-w-[1200px] w-full px-4'> 
                 <h1 className={`${theme === 'light' ? 'text-[#00874F]': 'text-[#177faa]'} text-start w-full text-[30px] md:text-[35px] lg:text-[39px] font-extrabold   `}>Contact Us</h1>
                 <div className='text-sm'>
@@ -132,7 +132,7 @@ const handleSubmit = async (e) => {
                 </div>
             </section>
 
-            <section className={`${theme === "light" ?  "bg-[#eefbff]" : "bg-[#080808]"} w-full flex flex-col items-center mb-10 py-10`}>
+            <section className={`${theme === "light" ?  "bg-[#eefbff]" : "bg-[#080808]"} w-full flex flex-col items-center py-10`}>
                 <h3 className={`text-[17px] md:text-[21px] lg:text-[25px] font-semibold pb-3 w-full md:w-[600px] text-center px-5`}>Reach out to us by filling out the form below, and we’ll be in touch soon.</h3>
                 <form onSubmit={handleSubmit} className='w-full px-4 pt-3 md:pt-5 md:w-[600px]'>
                     {/* UserName */}
@@ -143,22 +143,22 @@ const handleSubmit = async (e) => {
                     {/* Email */}
                     <div className='flex flex-col gap-3  w-full pt-5'>
                         <label htmlFor='email' className=" text-sm font-semibold md:text-base" >Emails</label>
-                        <input name='email' value={contactForm.email} onChange={handleChange} type='email' id='email' placeholder='email' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} />
+                        <input name='email' value={contactForm.email} onChange={handleChange} type='email' id='email' placeholder='email' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                     </div>
                     {/* PhoneNumber */}
                     <div className='flex flex-col gap-3  w-full pt-5'>
                         <label htmlFor='number' className=" text-sm font-semibold md:text-base" >Phone Number</label>
-                        <input name='number' value={contactForm.nunber} onChange={handleChange} type='number' id='number' placeholder='phone number' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} />
+                        <input name='number' value={contactForm.nunber} onChange={handleChange} type='number' id='number' placeholder='phone number' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                     </div>
                     {/* subject */}
                     <div className='flex flex-col gap-3  w-full pt-5'>
                         <label htmlFor='subject' className=" text-sm font-semibold md:text-base">Subject</label>
-                        <input name='subject' value={contactForm.subject} onChange={handleChange} type='text' id='subject' placeholder='subject' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} />
+                        <input name='subject' value={contactForm.subject} onChange={handleChange} type='text' id='subject' placeholder='subject' className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                     </div>
                     {/* textarea */}
                     <div className='flex flex-col gap-3 w-full pt-5'>
                         <label htmlFor='message' className=" text-sm font-semibold md:text-base">Message</label>
-                        <textarea name='message' value={contactForm.message} onChange={handleChange} rows={5} id='message'  className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} />
+                        <textarea name='message' value={contactForm.message} onChange={handleChange} rows={5} id='message'  className={`text-sm  md:text-base border ${theme === 'dark' ? 'border-[#177eaa94] bg-black' : 'bg-white border-[#00874f85]'} p-2 rounded  outline-none`} required />
                     </div>
                     {/* buttton */}
                     <div className='  pt-5'>

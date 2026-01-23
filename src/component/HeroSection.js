@@ -100,14 +100,32 @@ import { useGlobal } from "@/context/GlobleContext";
 import cardPic1 from "../../public/cardPic1.jpg";
 import cardPic2 from "../../public/cardPic2.jpg";
 
-const SLIDE_WIDTH = 1150;
-
 const HeroSection = () => {
   const { theme } = useGlobal();
   const pics = [cardPic1, cardPic2];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [slideWidth, setSlideWidth] = useState(1150);
   console.log(currentIndex);
+
+  // Update slide width based on screen size
+  useEffect(() => {
+    const updateSlideWidth = () => {
+      if (window.innerWidth < 640) {
+        setSlideWidth(window.innerWidth);
+      } else if (window.innerWidth < 768) {
+        setSlideWidth(window.innerWidth * 0.9);
+      } else if (window.innerWidth < 1024) {
+        setSlideWidth(window.innerWidth * 0.85);
+      } else {
+        setSlideWidth(1150);
+      }
+    };
+
+    updateSlideWidth();
+    window.addEventListener('resize', updateSlideWidth);
+    return () => window.removeEventListener('resize', updateSlideWidth);
+  }, []);
 
   // Auto slide
   useEffect(() => {
@@ -131,26 +149,26 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-[400px] md:h-[460px] lg:h-[600px] w-full overflow-hidden bg-[#eefbff]">
+    <section className="relative h-[300px] sm:h-[400px] md:h-[460px] lg:h-[600px] w-full overflow-hidden bg-[#eefbff]">
 
-      <div className="relative flex justify-center w-full">
+      <div className="relative flex justify-center items-center w-full h-full px-2 sm:px-4 md:px-6">
 
         {/* Left Button */}
-        <button
+        {/* <button
           onClick={handlePrev}
-          className={`absolute left-6 top-1/2 -translate-y-1/2 z-50
+          className={`absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-50
             ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}
-            p-3 py-10 rounded shadow-md hover:scale-110 transition`}
+            p-2 sm:p-3 py-6 sm:py-8 md:py-10 rounded shadow-md hover:scale-110 transition`}
         >
-          <FaChevronLeft size={24} />
-        </button>
+          <FaChevronLeft className="text-sm sm:text-base md:text-xl lg:text-2xl" />
+        </button> */}
 
         {/* Slider */}
-        <div className="overflow-hidden mt-16 lg:w-[1150px] w-full max-h-[500px]">
+        <div className="overflow-hidden w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[85vw] lg:max-w-[1150px] h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px]">
           <div
-            className="flex transition-transform duration-500 ease-in-out"
+            className="flex transition-transform duration-500 ease-in-out h-full"
             style={{
-              transform: `translateX(-${currentIndex * SLIDE_WIDTH}px)`,
+              transform: `translateX(-${currentIndex * slideWidth}px)`,
             }}
           >
             {pics.map((pic, index) => (
@@ -158,7 +176,8 @@ const HeroSection = () => {
                 key={index}
                 src={pic}
                 alt="slider image"
-                className="w-[1150px] h-[500px] object-cover flex-shrink-0"
+                className="object-cover flex-shrink-0 w-full h-full"
+                style={{ width: `${slideWidth}px` }}
                 priority={index === 0}
               />
             ))}
@@ -166,14 +185,14 @@ const HeroSection = () => {
         </div>
 
         {/* Right Button */}
-        <button
+        {/* <button
           onClick={handleNext}
-          className={`absolute right-6 top-1/2 -translate-y-1/2 z-50
+          className={`absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-50
             ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}
-            p-3 py-10 rounded shadow-md hover:scale-110 transition`}
+            p-2 sm:p-3 py-6 sm:py-8 md:py-10 rounded shadow-md hover:scale-110 transition`}
         >
-          <FaChevronRight size={24} />
-        </button>
+          <FaChevronRight className="text-sm sm:text-base md:text-xl lg:text-2xl" />
+        </button> */}
 
       </div>
     </section>

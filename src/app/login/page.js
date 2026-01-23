@@ -11,6 +11,8 @@ import axiosInstance from '@/lib/axios';
 // import Loginimage from '../../../public/Image123.jpg';
 import { toast } from 'react-toastify';
 import LoadingScreen from '@/component/LoadingScreen';
+import { Link } from 'lucide-react';
+import Linkk from 'next/link';
 
 const Login = () => {
   const {theme , dispatch} = useGlobal();
@@ -72,9 +74,9 @@ const handleSubmit = async (e) => {
   return (
     <>
     <Header />
-    <div className="w-full min-h-[500px] flex items-center justify-center px-4  bg- mt-20">
-        <form onSubmit={handleSubmit} className="w-[350px] max-w-md rounded gap-5 bg-[#eefbff] p-6 sm:p-8 lg:p-10  backdrop-blur-md flex flex-col items-center justify-center ">
-        <h2 className='text-[35px] font-semibold'>LOGIN </h2>
+    <div className="w-full min-h-[500px] flex items-center justify-center px-4 sm:px-6 lg:px-8 mt-20">
+        <form onSubmit={handleSubmit} className="w-full max-w-[350px] sm:max-w-md rounded gap-5 bg-[#eefbff] p-6 sm:p-8 lg:p-10 backdrop-blur-md flex flex-col items-center justify-center shadow-md">
+        <h2 className='text-2xl sm:text-3xl lg:text-4xl font-semibold'>LOGIN</h2>
         {/* Email */}
         <div className="w-full ">
             <label className='font-semibold'>Email</label>
@@ -117,13 +119,15 @@ const handleSubmit = async (e) => {
         <button
             type="submit"
             disabled={loading}
-            className={`hidden md:block px-4 py-2 w-full rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-white hover:bg-black bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}
+            className={`block px-4 py-2 w-full rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white hover:border-1 bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}
         >
             {loading ? "Logging in..." : "Login"}
         </button>
         {/* creat and update links */}
         <ul className="w-full flex flex-col sm:flex-row  justify-between items-center  text-sm sm:text-base text-[#070E2A] gap-2 sm:gap-0">
-            <li  className="cursor-pointer hover:underline text-sm ">Create an account</li>
+            <li  className="cursor-pointer hover:underline text-sm ">
+              <Linkk href="/signup">Create an account</Linkk>
+            </li>
             <li  className="cursor-pointer hover:underline text-sm">Forgot password?</li>
         </ul>
         </form>
