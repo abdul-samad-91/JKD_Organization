@@ -20,8 +20,8 @@ const Partners = () => {
     const partners = [partner1 ,partner2 ,partner3 ,partner4 ,partner5 ,partner6 ,partner7 ,partner8 ,partner9 ,partner10 ,partner11 ,partner12];
 
   return (        
-    <section className={ ` pt-10 mb-10 flex w-full flex-col items-center sm:py-15  ${theme === 'light' ? 'text-[black] bg-[#eefbff] ' : 'text-white bg-[#0b0b0b]'} `}>
-        <h1 className={`text-center text-[30px] md:text-[35px] lg:text-[39px] font-semibold  w-[250px] sm:w-[600px] md:w-[900px] lg:w-[1200px] `}>Our Partners</h1>
+    <section className={ ` pt-10 mb-10 flex w-full flex-col items-center sm:py-15  text-[black] bg-[#BECECA96]`}>
+        <h1 className={`text-center text-[30px] md:text-[35px] lg:text-[39px] font-semibold  w-[250px] sm:w-[600px] md:w-[900px] lg:w-[1200px] text-[#275D84]`}>Our Partners</h1>
         <div className=" overflow-x-hidden w-full lg:w-[1351px] ">
         <div className="flex animate-reverse-scroll gap-10">
             {partners?.map((partner, index) => (

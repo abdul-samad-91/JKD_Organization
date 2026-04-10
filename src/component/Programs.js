@@ -21,6 +21,7 @@ import program9 from "../../public/progaram-9.png";
 import { useGlobal } from "@/context/GlobleContext";
 import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import rightArrow from "../../public/rightArrow.svg";
 
 const allprograms = [
   {
@@ -114,19 +115,22 @@ const Programs = () => {
 
   return (
     <section
-      className={` relative mb-10 flex flex-col items-center pt-10  w-full bg-white`}
+      className={`  mb-10 flex flex-col items-center pt-10  w-full `}
     >
       <h1
-        className={`text-center text-[30px] md:text-[35px] lg:text-[39px] font-semibold  w-[250px] sm:w-[600px] md:w-[900px]  lg:w-[1200px] text-black`}
+        className={`text-center text-[40px] md:text-[35px] lg:text-[39px] font-bold  w-[250px] sm:w-[600px] md:w-[900px]  lg:w-[1200px] text-[#275D84]`}
       >
         Our Programs
       </h1>
+      <p className={`text-center text-[28px] mt-2 w-[250px] sm:w-[600px] md:w-[900px] lg:w-[1200px] text-gray-900`}>
+        Comprehensive initiatives for community empowerment
+      </p>
 
-      <div className="w-[275px] sm:w-[600px] md:w-[900px] overflow-hidden  lg:w-[1200px] pt-10 p">
+      <div className="relative w-[275px] sm:w-[600px] md:w-[900px]   lg:w-[1200px] pt-10 ">
         {/* Left Button */}
         <button
           onClick={() => handlePicChange("left")}
-          className={`absolute z-50 left-1 top-1/2 -translate-y-1/2 ${theme === 'dark' ? 'bg-[white] text-black':'text-white bg-black'} p-3 rounded-full shadow-md  hover:scale-110 transition`}
+          className={`absolute z-50 left-[-50px] top-1/2 -translate-y-1/2  text-gray-800 p-3 rounded-full  hover:scale-110  transition`}
         >
           <FaChevronLeft size={24} />
         </button>
@@ -139,30 +143,25 @@ const Programs = () => {
           {programs?.map((program, index) => (
             <div
               key={index}
-              className={`relative px-4 mb-10 border border-gray-200 pt-4 program-card overflow-visible  shadow-lg rounded text-center min-w-[275px] sm:min-w-[290px] `}
+              className={`relative p-4 mb-10 border border-gray pt-4 program-card overflow-visible    text-center min-w-[275px] sm:min-w-[290px]  lg:min-w-[370px] flex flex-col items-left justify-between`}
             >
-              <div className="w-full relative z-10">
+              <div>
+                <div className="w-full relative z-10">
                 <Image
                   src={program.image}
-                  className="relative rounded h-[200px] w-full object-cover mx-auto"
+                  className="relative rounded h-[250px] w-full object-cover mx-auto"
                   alt={program.title}
                 />
+                </div>
+                <h3 className={`mt-4 text-[28px] font-bold ${theme === 'dark' ? 'text-white' : 'text-black'}`}>{program.title}</h3>
+                <p className={`${theme === 'dark' ? 'text-white' : 'text-black'} text-[22px] `}>{program.description}</p>
               </div>
-              {/* <div
-                className={`absolute z-40 w-[50px] rounded-full overflow-hidden top-5 right-5 ${
-                  theme === "light" ? "bg-white" : "bg-white"
-                }`}
-              >
-                <Image
-                  src={program.pIcon}
-                  className="object-contain"
-                  width={100}
-                  height={100}
-                  alt={program.title}
-                />
-              </div> */}
-              <h3 className={`mt-4 text-lg font-bold ${theme === 'dark' ? 'text-white' : 'text-black'}`}>{program.title}</h3>
-              <p className={`${theme === 'dark' ? 'text-white' : 'text-black'} text-sm`}>{program.description}</p>
+
+              <div className="flex justify-start">
+                <button className={`mt-4 px-6 py-2 rounded-lg text-sm bg-[#D08348] text-white hover:bg-opacity-90 transition`}>
+                  Learn More  <Image src={rightArrow} alt="right arrow" className="inline-block ml-3" />
+              </button>
+              </div>
             </div>
           ))}
         </div>
@@ -170,7 +169,7 @@ const Programs = () => {
         {/* Right Button */}
         <button
           onClick={() => handlePicChange("right")}
-          className={`absolute right-1 sm:right-1 top-1/2 ${theme === 'dark' ? 'bg-[white] text-black':'text-white bg-black'} -translate-y-1/2  p-3 rounded-full shadow-md z-50 hover:scale-110 transition`}
+          className={`absolute z-50 right-[-20px] top-1/2 -translate-y-1/2  text-gray-800 p-3 hover:scale-110 transition`}
         >
           <FaChevronRight size={24} />
         </button>

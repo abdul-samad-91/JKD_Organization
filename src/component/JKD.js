@@ -23,7 +23,7 @@ const JKD = () => {
     }
 
   return (
-    <section className={`${theme === 'light' ? 'bg-[#eefbff] text-black':'bg-[#eefbff] text-white'} w-full flex flex-col items-center my-6 sm:my-8 md:my-10 py-10 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8`}>
+    <section className={`bg-[#4A709F33] text-black w-full flex flex-col items-center my-6 sm:my-8 md:my-10 py-10 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8`}>
         <div className='w-full max-w-[1200px]'>
             <div className='flex flex-col lg:flex-row items-start gap-4 sm:gap-5'>
                 {/* left side */}

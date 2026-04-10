@@ -105,33 +105,12 @@ const HeroSection = () => {
   const pics = [cardPic1, cardPic2];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [slideWidth, setSlideWidth] = useState(1150);
-  console.log(currentIndex);
-
-  // Update slide width based on screen size
-  useEffect(() => {
-    const updateSlideWidth = () => {
-      if (window.innerWidth < 640) {
-        setSlideWidth(window.innerWidth);
-      } else if (window.innerWidth < 768) {
-        setSlideWidth(window.innerWidth * 0.9);
-      } else if (window.innerWidth < 1024) {
-        setSlideWidth(window.innerWidth * 0.85);
-      } else {
-        setSlideWidth(1150);
-      }
-    };
-
-    updateSlideWidth();
-    window.addEventListener('resize', updateSlideWidth);
-    return () => window.removeEventListener('resize', updateSlideWidth);
-  }, []);
 
   // Auto slide
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % pics.length);
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [pics.length]);
@@ -149,51 +128,101 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-[300px] sm:h-[400px] md:h-[460px] lg:h-[600px] w-full overflow-hidden bg-[#eefbff]">
+    <section className="w-full bg-gradient-to-b from-slate-900 via-#275D84 to-[#275D84] py-8 md:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center w-full">
+        <div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
+              Welcome to <span className="text-[#D08348]">JKD Pakistan</span>
+            </h1>
+            <h2 className="text-[40px] sm:text-xl md:text-2xl font-semibold text-[#3EAB3E] w-[90%] text-center">
+              Transforming Lives, Empowering Underserved
+            </h2>
+            </div>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[400px] lg:min-h-[500px] pt-2">
+          {/* Left Content */}
+          <div className="flex flex-col space-y-4 sm:space-y-20">
+            {/* <div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
+                Welcome to <span className="text-orange-500">JKD Pakistan</span>
+              </h1>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-green-400">
+                Transforming Lives, Empowering Underserved
+              </h2>
+            </div> */}
 
-      <div className="relative flex justify-center items-center w-full h-full px-2 sm:px-4 md:px-6">
+            <p className="sm:text-base lg:text-[32px] text-[#E7E8E8B2]  leading-[40px]">
+              A nationally recognized training institute and dynamic hub for events, sports, and tourism — empowering individuals through skill development, travel services, sports programs, business incubation, community initiatives, and global employment opportunities.
+            </p>
 
-        {/* Left Button */}
-        {/* <button
-          onClick={handlePrev}
-          className={`absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-50
-            ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}
-            p-2 sm:p-3 py-6 sm:py-8 md:py-10 rounded shadow-md hover:scale-110 transition`}
-        >
-          <FaChevronLeft className="text-sm sm:text-base md:text-xl lg:text-2xl" />
-        </button> */}
+            <div className="flex flex-wrap gap-3 sm:gap-4">
+              <button className="rounded-2xl bg-[#D08348] text-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded transition-all duration-300 flex items-center gap-2 text-sm sm:text-base">
+                Get Involved
+                <FaChevronRight size={16} />
+              </button>
+              <button className="rounded-2xl border-2 border-white text-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded transition-all duration-300 text-sm sm:text-base">
+                Contact Us
+              </button>
+            </div>
+          </div>
 
-        {/* Slider */}
-        <div className="overflow-hidden w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[85vw] lg:max-w-[1150px] h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px]">
-          <div
-            className="flex transition-transform duration-500 ease-in-out h-full"
-            style={{
-              transform: `translateX(-${currentIndex * slideWidth}px)`,
-            }}
-          >
-            {pics.map((pic, index) => (
-              <Image
-                key={index}
-                src={pic}
-                alt="slider image"
-                className="object-cover flex-shrink-0 w-full h-full"
-                style={{ width: `${slideWidth}px` }}
-                priority={index === 0}
-              />
-            ))}
+          {/* Right Carousel */}
+          <div className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[480px]">
+            {/* Image Container */}
+            <div className="relative w-full h-full overflow-hidden rounded-lg shadow-2xl">
+              {pics.map((pic, index) => (
+                <div
+                  key={index}
+                  className={`absolute w-full h-full transition-opacity duration-1000 ease-in-out ${
+                    index === currentIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <Image
+                    src={pic}
+                    alt={`Slide ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={handlePrev}
+                className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-40 bg-white/80 hover:bg-white text-slate-900 p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                aria-label="Previous slide"
+              >
+                <FaChevronLeft size={18} />
+              </button>
+
+              <button
+                onClick={handleNext}
+                className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-40 bg-white/80 hover:bg-white text-slate-900 p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                aria-label="Next slide"
+              >
+                <FaChevronRight size={18} />
+              </button>
+
+              {/* Slide Indicators */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 flex gap-2">
+                {pics.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`h-2 sm:h-3 rounded-full transition-all duration-300 cursor-pointer ${
+                      index === currentIndex
+                        ? "bg-orange-500 w-6 sm:w-8"
+                        : "bg-white/50 w-2 sm:w-3 hover:bg-white/75"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  ></button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Right Button */}
-        {/* <button
-          onClick={handleNext}
-          className={`absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-50
-            ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}
-            p-2 sm:p-3 py-6 sm:py-8 md:py-10 rounded shadow-md hover:scale-110 transition`}
-        >
-          <FaChevronRight className="text-sm sm:text-base md:text-xl lg:text-2xl" />
-        </button> */}
-
       </div>
     </section>
   );

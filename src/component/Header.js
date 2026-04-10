@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image"
 import logo from "../../public/jkd-icon.png"
+import jkdLogo from "../../public/jkd_logo.png"
 import text from "../../public/logo-text.png"
 import { useEffect, useState } from "react"
 import { useRouter  , usePathname } from "next/navigation"
@@ -63,35 +64,13 @@ export default function Header() {
   return (
   <>
     <header 
-      className={`fixed  z-50 w-full 
-        bg-white
-        `
-      }
+      className={`z-50 w-full bg-[#4A709F33]`}
       // onMouseLeave={()=>setDropDown({itCourses:false})}
     >
       <div className= {`  overflow-x-hidden flex items-center justify-between h-[70px] sm:h-[80px] px-4 md:px-6  mx-auto`}>
         {/* Logo Section */}
         <div onClick={()=> router.push('/')} className="flex items-center h-full  ml-[-20px] group cursor-pointer">
-          {/* TEXT (medium and large screen) */}
-          {/* <div className=" hidden md:block relative transform transition-transform duration-700 lg:group-hover:translate-x-[150px] h-[70px] w-[150px]">
-            <Image 
-              src={text} 
-              alt="TEXT" 
-              fill
-              className="object-fill"
-            />
-          </div>     */}
-
-          {/* LOGO */}
-          {/* <div className="relative h-full transform transition-all duration-700 lg:group-hover:translate-x-[100px] lg:group-hover:translate-y-[-50px] lg:group-hover:opacity-0 w-[70px] lg:h-[80px] lg:w-[70px] z-10">            
-            <Image 
-              src={logo} 
-              alt="LOGO" 
-              fill
-            />        
-          </div> */}
-  
-          <div className="relative w-[90%] h-[90%]  md:h-[80px] md:w-[70px] z-10">            
+          {/* <div className="relative w-[90%] h-[90%]  md:h-[80px] md:w-[70px] z-10">            
             <Image 
               src={logo} 
               alt="LOGO" 
@@ -106,8 +85,16 @@ export default function Header() {
               fill
               className="object-fill"
             />
-          </div>
+          </div> */}
 
+          <div className="relative w-[90%] h-[90%]  md:h-[80px] md:w-[250px] z-10">   
+            <Image 
+              src={jkdLogo} 
+              alt="jkd_logo" 
+              fill
+              className="object-fill"
+            />
+          </div> 
 
 
 
@@ -127,7 +114,7 @@ export default function Header() {
         <nav className="hidden lg:block ">
           <ul className="flex gap-6 items-center text-sm md:text-[14px] lg:text-base">
             {pages.map((page, index) => (
-              <li key={index} onClick={()=> routChange(page.path)} onMouseEnter={()=>setDropDown({ [page.hover]:true})}  className={`flex gap-2 items-center  ${theme === 'light' ? 'hover:text-[#00d17a]  ' : 'hover:text-[#177faa] '} ${ page.path === pathname ? theme === 'light' ? 'text-[#00d17a] font-bold' : 'text-[#177faa] font-bold' : ''} cursor-pointer `}>
+              <li key={index} onClick={()=> routChange(page.path)} onMouseEnter={()=>setDropDown({ [page.hover]:true})}  className={`flex gap-2 items-center  ${theme === 'light' ? 'hover:text-[#00d17a]  ' : 'hover:text-[#177faa] '} ${ page.path === pathname && 'text-[#177faa] font-bold'} cursor-pointer  `}>
                 {page.name}
                 {
                   page.hover === 'itCourses' || page.hover === "trainings" ? dropDown[page.hover] ?
@@ -152,16 +139,16 @@ export default function Header() {
                 user?.role === 'student' ? router.push('/student')
                 : user?.role === 'admin' ? router.push('/admin')
                 : router.push('/')
-              }} className={` hidden lg:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+              }} className={` hidden lg:block px-6 py-2 rounded-2xl ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
                 Profile
               </button>
             ) : (
               <>
-                <Link href={'/signup'}  className={`hidden lg:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+                <Link href={'/signup'}  className={`hidden lg:block px-6 py-2 rounded-2xl ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
                   Sign Up
                   {/* Register */}
                 </Link>          
-                <Link href={'/login'}  className={`hidden lg:block px-4 py-2 rounded ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
+                <Link href={'/login'}  className={`hidden lg:block px-8 py-2 rounded-2xl ${theme === 'light' ? 'bg-[#00874F] hover:text-white hover:bg-black': 'hover:text-black hover:bg-white bg-[#177faa]'} transition cursor-pointer text-white text-sm md:text-[14px] lg:text-base`}>
                   Login
                   {/* Register */}
                 </Link>
